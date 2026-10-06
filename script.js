@@ -103,10 +103,9 @@ const dadosPark = {
             { id: "zoo_gorila", nome: "GORILA", tipo: "RESERVA", legendaNome: "GORILA", area: "Animalia Reserva", desc: "Recinto", icone: "icons/gorila.png", categoria: "animais", top: 83, left: 73 },
             { id: "zoo_hipo", nome: "HIPOPOTAMO", tipo: "RESERVA", legendaNome: "HIPOPOTAMO", area: "Animalia Reserva", desc: "Recinto", icone: "icons/hipopotamo.png", categoria: "animais", top: 42, left: 63 },
             { id: "zoo_mandril", nome: "MANDRIL", tipo: "RESERVA", legendaNome: "MANDRIL", area: "Animalia Reserva", desc: "Recinto", icone: "icons/mandril.png", categoria: "animais", top: 70, left: 78 },
-
-            
             { id: "zoo_lobo", nome: "LOBO-MARINHO", tipo: "RESERVA", legendaNome: "LOBO-MARINHO", area: "Animalia Reserva", desc: "Recinto", icone: "icons/lobo.png", categoria: "animais", top: 80, left: 78 },
-            { id: "zoo_rino", nome: "RINOCERONTE", tipo: "RESERVA", legendaNome: "RINOCERONTE", area: "Animalia Reserva", desc: "Recinto", icone: "icons/rino.png", categoria: "animais", top: 72, left: 74 }
+            { id: "zoo_rino", nome: "RINOCERONTE", tipo: "RESERVA", legendaNome: "RINOCERONTE", area: "Animalia Reserva", desc: "Recinto", icone: "icons/rino.png", categoria: "animais", top: 72, left: 74 },
+            { id: "zoo_drome", nome: "DROMEDARIO", tipo: "RESERVA", legendaNome: "DROMEDARIO", area: "Animalia Reserva", desc: "Recinto", icone: "icons/dromedario.png", categoria: "animais", top: 45, left: 70  }
 
 
 
