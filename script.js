@@ -8,9 +8,9 @@ const dadosPark = {
             { id: 'animais', texto: 'RESERVA' },
             { id: 'alimentacao', texto: 'ALIMENTAÇÃO' },
             { id: 'souvenir', texto: 'SOUVENIR' },
-            { id: 'atracao', texto: 'ATRAÇÕES' }
+            { id: 'atracao', texto: 'ATRAÇÕES' },
             { id: 'banheiros', texto: 'BANHEIROS' },
-            { id: 'servicos', texto: 'SERVIÇOS' },
+            { id: 'servicos', texto: 'SERVIÇOS' }
         ],
         pontos: [
             // Alimentação
@@ -39,14 +39,10 @@ const dadosPark = {
             
             { id: "alim_cesta", nome: "CESTA PICNIC", tipo: "ALIMENTAÇÃO", legendaNome: "PONTO", area: "Diversão e refeição, tudo em um só lugar!", desc: "🍔 Cesta Pic Nic (Burgers e bebidas)", icone: "icons/ponto.png", categoria: "alimentacao", top: 15, left: 32 },
             { id: "alim_carrinho", nome: "CARRINHO DOCE e PIPOCA", tipo: "ALIMENTAÇÃO", legendaNome: "QUIOSQUE", area: "Diversão e refeição, tudo em um só lugar!", desc: "🍿 Carrinho de Doce e Pipoca", icone: "icons/quiosque.png", categoria: "alimentacao", top: 18, left: 32 },
-
             { id: "alim_carrosel", nome: "CESTA CARROSEL", tipo: "ALIMENTAÇÃO", legendaNome: "PONTO", area: "Diversão e refeição, tudo em um só lugar!", desc: "☕ Carrossel (Porções e Cafés)", icone: "icons/ponto.png", categoria: "alimentacao", top: 17.5, left: 35 },
             { id: "alim_deck", nome: "DECK PIC NIC", tipo: "ALIMENTAÇÃO", legendaNome: "PONTO", area: "Diversão e refeição, tudo em um só lugar!", desc: "🍿 Deck Pic nic (Doce e Pipoca)", icone: "icons/ponto.png", categoria: "alimentacao", top: 20.5, left: 35 },
-
             { id: "alim_mundodoce", nome: "MUNDO DOCE", tipo: "ALIMENTAÇÃO", legendaNome: "PONTO", area: "Diversão e refeição, tudo em um só lugar!", desc: "🥮 Mundo Doce (Doces e Bebidas)", icone: "icons/ponto.png", categoria: "alimentacao", top: 20, left: 38 },
             { id: "alim_lego", nome: "LEGO", tipo: "ALIMENTAÇÃO", legendaNome: "QUIOSQUE", area: "Diversão e refeição, tudo em um só lugar!", desc: "🥮 Lego (Doces e Bebidas)", icone: "icons/quiosque.png", categoria: "alimentacao", top: 23, left: 38 },
-
-            
             { id: "alim_splash", nome: "QUIOSQUE SPLASH", tipo: "ALIMENTAÇÃO", legendaNome: "QUIÓSQUE", area: "🍿 Café, Salgados e pipocas", desc: "Localizado próximo ao vulcão.", icone: "icons/ponto.png", categoria: "alimentacao", top: 7, left: 41 },
             { id: "alim_viking", nome: "QUIOSQUE VIKING", tipo: "ALIMENTAÇÃO", legendaNome: "QUIÓSQUE", area: "🍿 Café, Salgados e pipocas", desc: "Localizado na entrada do Outdoor.", icone: "icons/ponto.png", categoria: "alimentacao", top: 14, left: 39 },
             { id: "alim_aviario", nome: "CAFÉ AVIÁRIO", tipo: "ALIMENTAÇÃO", legendaNome: "PONTO", area: "Um dos Maiores Aviários da América Latina", desc: "☕ Café Caverna (Cafés e salgados)", icone: "icons/ponto.png", categoria: "alimentacao", top: 60, left: 35 },
@@ -91,7 +87,7 @@ const dadosPark = {
             { id: "zoo_ema", nome: "EMA", tipo: "RESERVA", legendaNome: "EMA", area: "Animalia Reserva", desc: "Recinto", icone: "icons/ema.png", categoria: "animais", top: 38, left: 50  },
             { id: "zoo_leao", nome: "LEÃO", tipo: "RESERVA", legendaNome: "LEÃO", area: "Animalia Reserva", desc: "Recinto", icone: "icons/leao.png", categoria: "animais", top: 44, left: 38.5 },
             { id: "zoo_onça", nome: "ONÇA-PINTADA", tipo: "RESERVA", legendaNome: "ONÇA-PINTADA", area: "Animalia Reserva", desc: "Recinto", icone: "icons/onca.png", categoria: "animais", top: 51, left: 29 },
-            { id: "zoo_aviário", nome: "AVIÁRIO", tipo: "RESERVA", legendaNome: "AVIÁRIO", area: "Animalia Reserva", desc: "Recinto", icone: "icons/aviario.png", categoria: "animais", top: 60, left: 35 },
+            { id: "zoo_aviario", nome: "AVIÁRIO", tipo: "RESERVA", legendaNome: "AVIÁRIO", area: "Animalia Reserva", desc: "Recinto", icone: "icons/aviario.png", categoria: "animais", top: 60, left: 35 },
             { id: "zoo_macaranha", nome: "MACACO-ARANHA", tipo: "RESERVA", legendaNome: "MACACO-ARANHA", area: "Animalia Reserva", desc: "Recinto", icone: "icons/macacoaranha.png", categoria: "animais", top: 57, left: 39 },
             { id: "zoo_sucuarana", nome: "SUÇUARANA", tipo: "RESERVA", legendaNome: "SUÇUARANA", area: "Animalia Reserva", desc: "Recinto", icone: "icons/sucuarana.png", categoria: "animais", top: 64, left: 43 },
             { id: "zoo_urso", nome: "URSO-DE-ÓCULOS", tipo: "RESERVA", legendaNome: "URSO-DE-ÓCULOS", area: "Animalia Reserva", desc: "Recinto", icone: "icons/urso.png", categoria: "animais", top: 67, left: 43 },
@@ -101,14 +97,8 @@ const dadosPark = {
             { id: "zoo_cabramontes", nome: "CABRA-DA-MONTANHA", tipo: "RESERVA", legendaNome: "CABRA-DA-MONTANHA", area: "Animalia Reserva", desc: "Recinto", icone: "icons/cabramontes.png", categoria: "animais", top: 80, left: 70 },
             { id: "zoo_gorila", nome: "GORILA", tipo: "RESERVA", legendaNome: "GORILA", area: "Animalia Reserva", desc: "Recinto", icone: "icons/gorila.png", categoria: "animais", top: 83, left: 73 },
             { id: "zoo_hipo", nome: "HIPOPOTAMO", tipo: "RESERVA", legendaNome: "HIPOPOTAMO", area: "Animalia Reserva", desc: "Recinto", icone: "icons/hipopotamo.png", categoria: "animais", top: 42, left: 63 },
-
-            
             { id: "zoo_lobo", nome: "LOBO-MARINHO", tipo: "RESERVA", legendaNome: "LOBO-MARINHO", area: "Animalia Reserva", desc: "Recinto", icone: "icons/lobo.png", categoria: "animais", top: 80, left: 78 },
             { id: "zoo_rino", nome: "RINOCERONTE", tipo: "RESERVA", legendaNome: "RINOCERONTE", area: "Animalia Reserva", desc: "Recinto", icone: "icons/rino.png", categoria: "animais", top: 72, left: 74 }
-
-
-
-            
         ]
     }
 };
@@ -295,7 +285,6 @@ document.addEventListener("DOMContentLoaded", () => {
             initialDistance = getDistance(e.targetTouches);
             initialScale = scale;
 
-            // Ponto central exato entre os dois dedos em relação ao container
             const rect = container.getBoundingClientRect();
             focalPointX = ((e.targetTouches[0].clientX + e.targetTouches[1].clientX) / 2) - rect.left;
             focalPointY = ((e.targetTouches[0].clientY + e.targetTouches[1].clientY) / 2) - rect.top;
@@ -313,7 +302,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 const zoomFactor = currentDistance / initialDistance;
                 let newScale = Math.min(Math.max(initialScale * zoomFactor, 0.2), 3.0);
 
-                // Aplica o zoom mantendo o foco exatamente onde os dedos estão pinçando
                 pointX = focalPointX - (focalPointX - pointX) * (newScale / scale);
                 pointY = focalPointY - (focalPointY - pointY) * (newScale / scale);
                 scale = newScale;
