@@ -1,57 +1,690 @@
 <!DOCTYPE html>
+
 <html lang="pt-BR">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mapa Interativo - Parque</title>
-    <link rel="stylesheet" href="style.css">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>Mapa Animália Park</title>
+
+    <style>
+
+        /* Reset básico */
+
+        * {
+
+            box-sizing: border-box;
+
+            margin: 0;
+
+            padding: 0;
+
+            -webkit-tap-highlight-color: transparent;
+
+        }
+
+
+
+        body, html {
+
+            width: 100%;
+
+            height: 100%;
+
+            overflow: hidden;
+
+            font-family: Arial, sans-serif;
+
+            background-color: #121212;
+
+        }
+
+
+
+        /* Topo Roxo Escuro (#4A154B) */
+
+        .header-animalia {
+
+            height: 45px;
+
+            background-color: #4A154B;
+
+            position: relative;
+
+            z-index: 100;
+
+        }
+
+
+
+        /* Barra de Filtros Roxo Claro (#8C1B91) */
+
+        .filtros-superior-container {
+
+            height: 55px;
+
+            background-color: #8C1B91;
+
+            display: flex;
+
+            align-items: center;
+
+            padding: 0 15px;
+
+            z-index: 90;
+
+            position: relative;
+
+            overflow-x: auto;
+
+            scroll-behavior: smooth;
+
+            -webkit-overflow-scrolling: touch;
+
+        }
+
+
+
+        .filtros-superior-container::-webkit-scrollbar {
+
+            display: none;
+
+        }
+
+
+
+        /* Logotipo Flutuante 3D sobreposto */
+
+        .logo-container-central {
+
+            position: absolute;
+
+            top: 15px;
+
+            left: 50%;
+
+            transform: translateX(-50%);
+
+            z-index: 110;
+
+            height: 55px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            pointer-events: none;
+
+        }
+
+
+
+        .logo-central-3d {
+
+            height: 55px;
+
+            width: auto;
+
+            object-fit: contain;
+
+            filter: drop-shadow(0px 4px 6px rgba(0, 0, 0, 0.4));
+
+        }
+
+
+
+        /* Lista de Filtros Estilo Pílula */
+
+        .legenda-lista-horizontal {
+
+            display: flex;
+
+            gap: 10px;
+
+            list-style: none;
+
+            padding: 0 10px;
+
+            margin: 0 auto;
+
+            align-items: center;
+
+            white-space: nowrap;
+
+        }
+
+
+
+        .filtro-item {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            background: transparent;
+
+            border: 2px solid transparent;
+
+            padding: 8px 16px;
+
+            border-radius: 20px;
+
+            cursor: pointer;
+
+            font-size: 13px;
+
+            font-weight: bold;
+
+            color: #ffffff;
+
+            letter-spacing: 0.5px;
+
+            transition: all 0.2s ease;
+
+            user-select: none;
+
+        }
+
+
+
+        .filtro-item.active {
+
+            background: #ffffff;
+
+            color: #7b1fa2;
+
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+
+        }
+
+
+
+        /* Layout principal do mapa */
+
+        .layout-principal {
+
+            width: 100%;
+
+            height: calc(100vh - 100px); 
+
+            display: flex;
+
+            flex-direction: column;
+
+            position: relative;
+
+            overflow: hidden;
+
+        }
+
+
+
+        .mapa-container {
+
+            width: 100%;
+
+            height: 100%;
+
+            position: relative;
+
+            overflow: hidden;
+
+            background-color: #1a1a1a;
+
+            touch-action: none;
+
+        }
+
+
+
+        .mapa {
+
+            position: absolute;
+
+            transform-origin: 0 0;
+
+            will-change: transform;
+
+            user-select: none;
+
+        }
+
+
+
+        #imagemMapa {
+
+            display: block;
+
+            pointer-events: none;
+
+            user-select: none;
+
+        }
+
+
+
+        #camadaPontos {
+
+            position: absolute;
+
+            top: 0;
+
+            left: 0;
+
+            width: 100%;
+
+            height: 100%;
+
+            pointer-events: none;
+
+        }
+
+
+
+        .ponto {
+
+            position: absolute;
+
+            transform: translate(-50%, -50%);
+
+            cursor: pointer;
+
+            pointer-events: auto;
+
+            z-index: 5;
+
+            transition: transform 0.2s;
+
+        }
+
+
+
+        .ponto:hover {
+
+            transform: translate(-50%, -50%) scale(1.2);
+
+        }
+
+
+
+        .icone-marcador {
+
+            width: 32px;
+
+            height: 32px;
+
+            object-fit: contain;
+
+            filter: drop-shadow(0px 2px 4px rgba(0,0,0,0.5));
+
+        }
+
+
+
+        /* Caixa de Legenda Flutuante Dinâmica */
+
+        .painel-legenda-lateral {
+
+            position: absolute;
+
+            top: 15px;
+
+            left: 15px;
+
+            background: rgba(255, 255, 255, 0.92);
+
+            padding: 12px;
+
+            border-radius: 12px;
+
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+
+            z-index: 60;
+
+            max-width: 240px;
+
+            backdrop-filter: blur(5px);
+
+        }
+
+
+
+        .painel-legenda-lateral h4 {
+
+            font-size: 12px;
+
+            color: #4A154B;
+
+            margin-bottom: 8px;
+
+            text-transform: uppercase;
+
+            letter-spacing: 0.5px;
+
+            border-bottom: 1px solid #ddd;
+
+            padding-bottom: 4px;
+
+        }
+
+
+
+        .item-legenda-visual {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 8px;
+
+            margin-bottom: 6px;
+
+            font-size: 11px;
+
+            color: #333;
+
+            font-weight: bold;
+
+        }
+
+
+
+        .item-legenda-visual:last-child {
+
+            margin-bottom: 0;
+
+        }
+
+
+
+        .item-legenda-visual img {
+
+            width: 24px;
+
+            height: 24px;
+
+            object-fit: contain;
+
+            flex-shrink: 0;
+
+        }
+
+
+
+        /* Controles Flutuantes de Zoom */
+
+        .zoom-controls {
+
+            position: absolute;
+
+            right: 15px;
+
+            bottom: 25px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 8px;
+
+            z-index: 50;
+
+        }
+
+
+
+        .zoom-controls button {
+
+            width: 40px;
+
+            height: 40px;
+
+            border-radius: 50%;
+
+            border: none;
+
+            background: #ffffff;
+
+            color: #333;
+
+            font-size: 18px;
+
+            font-weight: bold;
+
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+
+            cursor: pointer;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+        }
+
+
+
+        /* Modal Inferior (Bottom Sheet) */
+
+        .janela {
+
+            position: fixed;
+
+            bottom: -100%;
+
+            left: 0;
+
+            width: 100%;
+
+            height: 100%;
+
+            background: rgba(0, 0, 0, 0.5);
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: flex-end;
+
+            transition: bottom 0.3s ease-in-out, visibility 0.3s;
+
+            z-index: 1000;
+
+            visibility: hidden;
+
+        }
+
+
+
+        .janela.ativa {
+
+            bottom: 0;
+
+            visibility: visible;
+
+        }
+
+
+
+        .conteudo {
+
+            width: 100%;
+
+            max-width: 600px;
+
+            background: #ffffff;
+
+            border-top-left-radius: 20px;
+
+            border-top-right-radius: 20px;
+
+            padding: 20px;
+
+            box-shadow: 0 -5px 20px rgba(0,0,0,0.2);
+
+            position: relative;
+
+            max-height: 70vh;
+
+            overflow-y: auto;
+
+        }
+
+
+
+        .barra-arraste {
+
+            width: 40px;
+
+            height: 4px;
+
+            background: #ccc;
+
+            border-radius: 2px;
+
+            margin: 0 auto 15px auto;
+
+        }
+
+
+
+        .fechar {
+
+            position: absolute;
+
+            top: 15px;
+
+            right: 20px;
+
+            background: none;
+
+            border: none;
+
+            font-size: 24px;
+
+            cursor: pointer;
+
+            color: #666;
+
+        }
+
+
+
+        .conteudo h2 { font-size: 18px; color: #222; margin-bottom: 5px; }
+
+        .conteudo h3 { font-size: 14px; color: #6a1b9a; margin-bottom: 15px; }
+
+        .conteudo p { font-size: 14px; color: #444; line-height: 1.5; }
+
+    </style>
+
 </head>
+
 <body>
 
-    <header class="topo-app">
-        <h1>Mapa Interativo</h1>
-    </header>
 
-    <!-- Menu de Filtros Horizontal -->
-    <nav class="filtro-horizontal">
-        <ul id="legendaListaHorizontal">
-            <!-- Preenchido via JavaScript -->
-        </ul>
-    </nav>
 
-    <!-- Container Principal do Mapa -->
-    <main id="mapaContainer" class="mapa-container">
-        <div id="mapa" class="mapa-wrapper">
-            <img id="imagemMapa" src="" alt="Mapa do Parque">
-            <div id="camadaPontos" class="camada-pontos"></div>
-        </div>
+    <header class="header-animalia"></header>
 
-        <!-- Controles de Zoom Flutuantes -->
-        <div class="controles-zoom">
-            <button onclick="zoomIn()">+</button>
-            <button onclick="zoomOut()">-</button>
-            <button onclick="resetZoom()">⌂</button>
-        </div>
-    </main>
 
-    <!-- Legenda Lateral / Inferior Dinâmica -->
-    <aside class="legenda-lateral">
-        <div id="conteudoLegendaLateral">
-            <!-- Preenchido via JavaScript -->
-        </div>
-    </aside>
 
-    <!-- Janela Modal de Detalhes do Local -->
-    <div id="janelaLocal" class="modal-local" onclick="fecharAoClicarFora(event)">
-        <div class="modal-conteudo">
-            <button class="botao-fechar" onclick="fecharLocal()">&times;</button>
-            <span id="tipoLocal" class="modal-tipo"></span>
-            <h2 id="nomeLocal"></h2>
-            <p id="areaLocal" class="modal-area"></p>
-            <p id="descricaoLocal" class="modal-desc"></p>
-        </div>
+    <div class="logo-container-central">
+
+        <img src="logo-animalia.png" alt="Animália Park Logo" class="logo-central-3d">
+
     </div>
 
-    <script src="script.js"></script>
+
+
+    <nav class="filtros-superior-container">
+
+        <ul id="legendaListaHorizontal" class="legenda-lista-horizontal"></ul>
+
+    </nav>
+
+
+
+    <main class="layout-principal">
+
+        <div id="mapaContainer" class="mapa-container">
+
+            
+
+            <!-- CAIXINHA DE LEGENDA LATERAL FLUTUANTE -->
+
+            <div class="painel-legenda-lateral">
+
+                <h4>Legenda</h4>
+
+                <div id="conteudoLegendaLateral">
+
+                    <!-- Atualizado dinamicamente via JS -->
+
+                </div>
+
+            </div>
+
+
+
+            <div id="mapa" class="mapa">
+
+                <img id="imagemMapa" src="mapa.zoo.png" alt="Mapa do Parque">
+
+                <div id="camadaPontos"></div>
+
+            </div>
+
+
+
+            <div class="zoom-controls">
+
+                <button onclick="zoomIn()" aria-label="Aumentar Zoom">+</button>
+
+                <button onclick="zoomOut()" aria-label="Diminuir Zoom">−</button>
+
+                <button onclick="resetZoom()" aria-label="Resetar Zoom">⟲</button>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+
+    <div id="janelaLocal" class="janela" onclick="fecharAoClicarFora(event)">
+
+        <div class="conteudo">
+
+            <div class="barra-arraste"></div>
+
+            <button class="fechar" onclick="fecharLocal()" aria-label="Fechar">&times;</button>
+
+            <h3 id="tipoLocal"></h3>
+
+            <h2 id="nomeLocal"></h2>
+
+            <p id="areaLocal" style="font-weight: bold; margin-bottom: 8px;"></p>
+
+            <p id="descricaoLocal"></p>
+
+        </div>
+
+    </div>
+
+
+
+    <script src="script.js?v=2"></script>
+
 </body>
-</html>
+
+</html> 
+
