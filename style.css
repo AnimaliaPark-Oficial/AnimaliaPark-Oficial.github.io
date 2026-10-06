@@ -1,0 +1,301 @@
+/* Reset básico */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body, html {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+    background-color: #121212;
+}
+
+/* Cabeçalho roxo escuro idêntico à referência */
+.header-animalia {
+    height: 75px;
+    background-color: #4A154B; /* Roxo bem escuro de fundo superior */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: 0 15px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    z-index: 100;
+}
+
+.logo-container {
+    height: 50px;
+    display: flex;
+    align-items: center;
+    position: absolute;
+    top: 5px;
+    z-index: 10;
+}
+
+.logo-central {
+    height: 100%;
+    object-fit: contain;
+}
+
+/* Esconde a caixa de texto antiga se não for usada no topo */
+.titulo-caixa-texto {
+    display: none;
+}
+
+/* Barra de filtros superior com a faixa roxa e botões em pílula */
+.filtros-superior-container {
+    height: 60px;
+    background-color: #8C1B91; /* Tom de roxo vibrante da referência */
+    border-bottom: 1px solid #5d1279;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 15px;
+    z-index: 90;
+    overflow-x: auto;
+}
+
+.filtros-superior-container::-webkit-scrollbar {
+    display: none;
+}
+
+/* Lista de filtros na horizontal estilo botão/pílula */
+.legenda-lista-horizontal {
+    display: flex;
+    gap: 12px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    align-items: center;
+}
+
+.legenda-lista-horizontal .filtro-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: transparent; /* Inativo fica transparente na faixa roxa */
+    border: 2px solid transparent;
+    padding: 8px 20px;
+    border-radius: 30px; /* Formato de pílula idêntico à imagem */
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: bold;
+    color: #ffffff; /* Texto branco quando inativo */
+    white-space: nowrap;
+    letter-spacing: 0.5px;
+    transition: all 0.2s ease;
+}
+
+.legenda-lista-horizontal .filtro-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* Item Ativo: Fundo totalmente branco com texto e ícone em roxo */
+.legenda-lista-horizontal .filtro-item.active {
+    background: #ffffff;
+    color: #7b1fa2;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+/* Tamanho e adaptação de cor dos ícones nos botões */
+.legenda-lista-horizontal .filtro-item img {
+    width: 18px !important;
+    height: 18px !important;
+    object-fit: contain;
+    /* Faz o ícone acompanhar a cor do texto (opcional, se forem PNGs coloridos mantém original) */
+}
+
+/* Layout principal preenchendo o resto da tela (ajustado para a nova altura: header 75px + filtros 60px = 135px) */
+.layout-principal {
+    width: 100%;
+    height: calc(100vh - 135px); 
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Área do mapa */
+.mapa-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    background-color: #1a1a1a;
+    touch-action: none;
+}
+
+.mapa {
+    position: absolute;
+    transform-origin: 0 0;
+    will-change: transform;
+}
+
+#imagemMapa {
+    display: block;
+    pointer-events: none;
+    user-select: none;
+}
+
+/* Marcadores no mapa */
+#camadaPontos {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.ponto {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+    pointer-events: auto;
+    z-index: 5;
+    transition: transform 0.2s;
+}
+
+.ponto:hover {
+    transform: translate(-50%, -50%) scale(1.2);
+}
+
+.icone-marcador {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+    filter: drop-shadow(0px 2px 4px rgba(0,0,0,0.5));
+}
+
+/* Posição do usuário no mapa */
+.user-marker {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    z-index: 6;
+    font-size: 20px;
+    pointer-events: none;
+}
+
+.pulsar {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background: rgba(0, 123, 255, 0.4);
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: pulsarAnim 1.5s infinite;
+}
+
+@keyframes pulsarAnim {
+    0% { transform: translate(-50%, -50%) scale(0.5); opacity: 1; }
+    100% { transform: translate(-50%, -50%) scale(2); opacity: 0; }
+}
+
+/* Controles Flutuantes de Zoom */
+.zoom-controls {
+    position: absolute;
+    right: 15px;
+    bottom: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    z-index: 50;
+}
+
+.zoom-controls button {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: none;
+    background: #ffffff;
+    color: #333;
+    font-size: 18px;
+    font-weight: bold;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+}
+
+.zoom-controls button:active {
+    background: #e0e0e0;
+}
+
+/* Modal Inferior (Bottom Sheet) */
+.janela {
+    position: fixed;
+    bottom: -100%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    transition: bottom 0.3s ease-in-out;
+    z-index: 1000;
+    visibility: hidden;
+}
+
+.janela.ativa {
+    bottom: 0;
+    visibility: visible;
+}
+
+.conteudo {
+    width: 100%;
+    max-width: 600px;
+    background: #ffffff;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 -5px 20px rgba(0,0,0,0.2);
+    position: relative;
+    max-height: 70vh;
+    overflow-y: auto;
+}
+
+.barra-arraste {
+    width: 40px;
+    height: 4px;
+    background: #ccc;
+    border-radius: 2px;
+    margin: 0 auto 15px auto;
+}
+
+.fechar {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #666;
+}
+
+.conteudo h2 {
+    font-size: 18px;
+    color: #222;
+    margin-bottom: 5px;
+}
+
+.conteudo h3 {
+    font-size: 14px;
+    color: #6a1b9a;
+    margin-bottom: 15px;
+}
+
+.conteudo p {
+    font-size: 14px;
+    color: #444;
+    line-height: 1.5;
+}
