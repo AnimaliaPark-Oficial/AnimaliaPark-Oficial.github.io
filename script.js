@@ -7,10 +7,10 @@ const dadosPark = {
         categoriasLegenda: [
             { id: 'animais', texto: 'RESERVA' },
             { id: 'alimentacao', texto: 'ALIMENTAÇÃO' },
-            { id: 'banheiros', texto: 'BANHEIROS' },
-            { id: 'servicos', texto: 'SERVIÇOS' },
             { id: 'souvenir', texto: 'SOUVENIR' },
             { id: 'atracao', texto: 'ATRAÇÕES' }
+            { id: 'banheiros', texto: 'BANHEIROS' },
+            { id: 'servicos', texto: 'SERVIÇOS' },
         ],
         pontos: [
             // Alimentação
