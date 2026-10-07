@@ -251,7 +251,23 @@ body, html {
     margin-top: 2px;
     max-height: 250px;       /* Altura máxima antes de começar a rolar (você pode ajustar para 200px, 300px, etc.) */
     overflow-y: auto;        /* Cria a barra de rolagem vertical automática quando passar do limite */
+    /* Estilização opcional da barra de rolagem da legenda */
+.legenda-corpo-conteudo::-webkit-scrollbar {
+    width: 6px;
 }
+
+.legenda-corpo-conteudo::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+.legenda-corpo-conteudo::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 4px;
+}
+
+.legenda-corpo-conteudo::-webkit-scrollbar-thumb:hover {
+    background: #a8a8a8;
 }
 
 /* Estilo para alinhar os itens que o seu script JS injeta na legenda */
