@@ -249,6 +249,9 @@ body, html {
     padding: 0 12px 12px 12px;
     border-top: 1px solid #ddd;
     margin-top: 2px;
+    max-height: 250px;       /* Altura máxima antes de começar a rolar (você pode ajustar para 200px, 300px, etc.) */
+    overflow-y: auto;        /* Cria a barra de rolagem vertical automática quando passar do limite */
+}
 }
 
 /* Estilo para alinhar os itens que o seu script JS injeta na legenda */
