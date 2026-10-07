@@ -214,7 +214,8 @@ body, html {
 }
 
 .legenda-detalhes summary {
-    font-family: inherit;              /* Garante que herda a mesma fonte do restante do layout */    font-size: 11px;
+    font-family: inherit;              /* Garante que herda a mesma fonte do restante do layout */   
+    font-size: 11px;
     color: #4A154B;
     text-transform: uppercase;
     letter-spacing: 0.5px;
@@ -251,6 +252,7 @@ body, html {
     margin-top: 2px;
     max-height: 250px;       /* Altura máxima antes de começar a rolar (você pode ajustar para 200px, 300px, etc.) */
     overflow-y: auto;        /* Cria a barra de rolagem vertical automática quando passar do limite */
+    
     /* Estilização opcional da barra de rolagem da legenda */
 .legenda-corpo-conteudo::-webkit-scrollbar {
     width: 6px;
