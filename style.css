@@ -197,38 +197,45 @@ body, html {
 }
 
 /* ========================================================
-   CAIXINHA DE LEGENDA FLUTUANTE
+   CAIXA DE LEGENDA FLUTUANTE
    ======================================================== */
 
 .painel-legenda-lateral {
     position: absolute;
     top: 15px;
     left: 15px;
+
+    width: 260px;
+
     background: rgba(255, 255, 255, 0.95);
     border-radius: 12px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+
     z-index: 60;
-    width: 260px;
     backdrop-filter: blur(5px);
+
     overflow: hidden;
 }
 
-/* Estrutura da legenda */
+
+/* Estrutura do Details */
 .legenda-detalhes {
-    display: flex;
-    flex-direction: column;
     width: 100%;
 }
+
 
 /* Cabeçalho LEGENDA */
 .legenda-detalhes summary {
     font-family: Arial, sans-serif;
     font-size: 11px;
+
     color: #4A154B;
     text-transform: uppercase;
     letter-spacing: 0.5px;
     font-weight: bold;
+
     padding: 12px;
+
     cursor: pointer;
     user-select: none;
 
@@ -237,69 +244,89 @@ body, html {
     justify-content: space-between;
 
     background: transparent;
+
     list-style: none;
 }
 
-/* Remove seta padrão do navegador */
+
+/* Remove seta padrão */
 .legenda-detalhes summary::-webkit-details-marker {
     display: none;
 }
 
+
 /* Nossa seta */
 .legenda-detalhes summary::after {
     content: '▼';
+
     font-size: 8px;
     color: #4A154B;
+
     transition: transform 0.2s ease;
 }
 
-/* Seta vira para cima quando abre */
+
+/* Seta para cima quando aberto */
 .legenda-detalhes[open] summary::after {
     transform: rotate(180deg);
 }
 
+
 /* ========================================================
-   CONTEÚDO DA LEGENDA
+   ÁREA DA LISTA — AQUI ESTÁ O SCROLL
    ======================================================== */
 
 .legenda-corpo-conteudo {
+
+    /* altura REAL da área visível */
+    height: 180px;
+
+    /* impede que o conteúdo aumente a caixa */
+    max-height: 180px;
+
+    /* cria a rolagem */
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    /* espaçamento */
     padding: 10px 12px 12px 12px;
 
     border-top: 1px solid #ddd;
 
-    /* Limita o tamanho da lista */
-    max-height: 180px;
+    /* importante */
+    box-sizing: border-box;
+    touch-action: pan-y;
 
-    /* Cria a rolagem */
-    overflow-y: auto;
-    overflow-x: hidden;
-
-    /* Importante para o scroll funcionar corretamente */
-    min-height: 0;
 }
+
 
 /* Barra de rolagem */
 .legenda-corpo-conteudo::-webkit-scrollbar {
     width: 5px;
 }
 
+
+/* Barrinha roxa */
 .legenda-corpo-conteudo::-webkit-scrollbar-thumb {
     background: #8C1B91;
     border-radius: 4px;
 }
 
-/* Fundo da área da barra */
+
+/* Fundo da barra */
 .legenda-corpo-conteudo::-webkit-scrollbar-track {
     background: transparent;
 }
+
 
 /* ========================================================
    ITENS DA LEGENDA
    ======================================================== */
 
-.legenda-corpo-conteudo .item-legenda-visual {
+.item-legenda-visual {
     display: flex;
     align-items: center;
+
     gap: 8px;
 
     margin-top: 8px;
@@ -313,13 +340,15 @@ body, html {
     padding: 4px 0;
 }
 
-.legenda-corpo-conteudo .item-legenda-visual img {
+
+.item-legenda-visual img {
     width: 20px;
     height: 20px;
+
     object-fit: contain;
+
     flex-shrink: 0;
 }
-
 /* Controles Flutuantes de Zoom */
 .zoom-controls {
     position: absolute;
