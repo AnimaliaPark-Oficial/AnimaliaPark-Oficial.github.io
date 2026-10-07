@@ -200,11 +200,11 @@ body, html {
    CAIXA DE LEGENDA FLUTUANTE
    ======================================================== */
 
+
 .painel-legenda-lateral {
     position: absolute;
     top: 15px;
     left: 15px;
-
     width: 260px;
 
     background: rgba(255, 255, 255, 0.95);
@@ -217,18 +217,15 @@ body, html {
     overflow: hidden;
 }
 
-
-/* Estrutura do Details */
+/* Estrutura do dropdown */
 .legenda-detalhes {
     width: 100%;
 }
 
-
-/* Cabeçalho LEGENDA */
+/* Título LEGENDA */
 .legenda-detalhes summary {
     font-family: Arial, sans-serif;
     font-size: 11px;
-
     color: #4A154B;
     text-transform: uppercase;
     letter-spacing: 0.5px;
@@ -243,85 +240,69 @@ body, html {
     align-items: center;
     justify-content: space-between;
 
-    background: transparent;
-
     list-style: none;
 }
-
 
 /* Remove seta padrão */
 .legenda-detalhes summary::-webkit-details-marker {
     display: none;
 }
 
-
 /* Nossa seta */
 .legenda-detalhes summary::after {
     content: '▼';
-
     font-size: 8px;
     color: #4A154B;
 
     transition: transform 0.2s ease;
 }
 
-
-/* Seta para cima quando aberto */
+/* Gira a seta quando abre */
 .legenda-detalhes[open] summary::after {
     transform: rotate(180deg);
 }
 
 
-/* ========================================================
-   ÁREA DA LISTA — AQUI ESTÁ O SCROLL
-   ======================================================== */
+/* ================================
+   ÁREA QUE REALMENTE ROLA
+   ================================ */
 
 .legenda-corpo-conteudo {
-
-    /* altura REAL da área visível */
     height: 180px;
-
-    /* impede que o conteúdo aumente a caixa */
     max-height: 180px;
 
-    /* cria a rolagem */
-    overflow-y: auto;
+    overflow-y: scroll;
     overflow-x: hidden;
 
-    /* espaçamento */
+    box-sizing: border-box;
+
     padding: 10px 12px 12px 12px;
 
     border-top: 1px solid #ddd;
 
-    /* importante */
-    box-sizing: border-box;
+    /* Importante para celular */
     touch-action: pan-y;
-
 }
 
 
 /* Barra de rolagem */
 .legenda-corpo-conteudo::-webkit-scrollbar {
-    width: 5px;
+    width: 6px;
 }
 
-
-/* Barrinha roxa */
 .legenda-corpo-conteudo::-webkit-scrollbar-thumb {
     background: #8C1B91;
     border-radius: 4px;
 }
 
-
-/* Fundo da barra */
 .legenda-corpo-conteudo::-webkit-scrollbar-track {
-    background: transparent;
+    background: #eee;
 }
 
 
-/* ========================================================
+/* ================================
    ITENS DA LEGENDA
-   ======================================================== */
+   ================================ */
 
 .item-legenda-visual {
     display: flex;
@@ -339,7 +320,6 @@ body, html {
 
     padding: 4px 0;
 }
-
 
 .item-legenda-visual img {
     width: 20px;
