@@ -164,8 +164,8 @@
         }
 
         /* ========================================================
-           CAIXA DE LEGENDA FLUTUANTE EM LISTA SUSPENSA (ROLÁVEL)
-           ======================================================== */
+            CAIXA DE LEGENDA FLUTUANTE EM LISTA SUSPENSA (CORRIGIDO)
+            ======================================================== */
         .painel-legenda-lateral {
             position: absolute;
             top: 15px;
@@ -177,13 +177,18 @@
             max-width: 260px;
             min-width: 180px;
             backdrop-filter: blur(5px);
-        }
-
-        /* Quando o details estiver ABERTO, limita a altura e ativa o flex */
-        .legenda-detalhes[open] {
-            max-height: 55vh; /* Ocupa no máximo 55% da altura da tela */
+            /* Impede que o painel flutuante ultrapasse a altura visível do ecrã */
+            max-height: calc(100vh - 130px);
             display: flex;
             flex-direction: column;
+        }
+
+        .legenda-detalhes {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            max-height: 100%;
+            overflow: hidden; /* Trava qualquer transbordo nas bordas arredondadas */
         }
 
         .legenda-detalhes summary {
@@ -202,6 +207,7 @@
             justify-content: space-between;
             gap: 10px;
             flex-shrink: 0;
+            background: transparent;
         }
 
         /* Setinha personalizada que gira ao abrir/fechar */
@@ -220,13 +226,14 @@
             display: none;
         }
 
-        /* Corpo da legenda com rolagem vertical */
+        /* Corpo da legenda com rolagem vertical rígida */
         .legenda-corpo-conteudo {
             padding: 0 12px 12px 12px;
             border-top: 1px solid #ddd;
             margin-top: 2px;
-            overflow-y: auto;     /* Cria a barra de rolagem */
-            flex-grow: 1;         /* Ocupa o espaço e permite rolar por dentro */
+            overflow-y: auto !important; /* Força a barra de rolagem vertical */
+            overflow-x: hidden;
+            flex-grow: 1;                /* Ocupa o espaço restante interno com scroll */
         }
 
         .legenda-corpo-conteudo::-webkit-scrollbar {
@@ -234,7 +241,7 @@
         }
 
         .legenda-corpo-conteudo::-webkit-scrollbar-thumb {
-            background: #ccc;
+            background: #8C1B91;
             border-radius: 4px;
         }
 
@@ -373,9 +380,9 @@
             </div>
 
             <div class="zoom-controls">
-                <button onclick="zoomIn()" aria-label="Aumentar Zoom">+</button>
-                <button onclick="zoomOut()" aria-label="Diminuir Zoom">−</button>
-                <button onclick="resetZoom()" aria-label="Resetar Zoom">⟲</button>
+                <button onclick="zoomIn()" aria-label="Aumentar Zoom">+ Zoom</button>
+                <button onclick="zoomOut()" aria-label="Diminuir Zoom">− Zoom</button>
+                <button onclick="resetZoom()" aria-label="Resetar Zoom">Alinhar ⟲</button>
             </div>
         </div>
     </main>
