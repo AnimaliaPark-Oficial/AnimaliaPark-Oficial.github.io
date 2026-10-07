@@ -5,8 +5,8 @@ const dadosPark = {
     reserva: {
         imagem: "mapa.zoo.png",
         categoriasLegenda: [
-            { id: 'animais', texto: 'RESERVA' },
             { id: 'alimentacao', texto: 'ALIMENTAÇÃO' },
+            { id: 'animais', texto: 'RESERVA' },
             { id: 'atracao', texto: 'ATRAÇÕES' },
             { id: 'souvenir', texto: 'SOUVENIR' },
             { id: 'banheiros', texto: 'BANHEIROS' },
