@@ -364,19 +364,20 @@
     <main class="layout-principal">
         <div id="mapaContainer" class="mapa-container">
             
-<!-- CAIXINHA DE LEGENDA SUSPENSA (COM SCROLL REAL) -->
-          <div class="painel-legenda-lateral">
-              <!-- Cabeçalho fixo que clica para abrir/fechar -->
-            <div class="legenda-cabecalho" onclick="toggleLegenda()">
-                <span>Legenda</span>
-                <span class="seta">▼</span>
-            </div>
-            
-            <!-- Corpo com rolagem travada -->
-            <div id="conteudoLegendaLateral" class="legenda-corpo-conteudo">
-                <!-- Atualizado dinamicamente via JS -->
-            </div>
-          </div>
+<!-- CAIXINHA DE LEGENDA SUSPENSA -->
+<div class="painel-legenda-lateral">
+
+    <details class="legenda-detalhes">
+
+        <summary>LEGENDA</summary>
+
+        <div id="conteudoLegendaLateral" class="legenda-corpo-conteudo">
+            <!-- Atualizado dinamicamente via JS -->
+        </div>
+
+    </details>
+
+</div>
 
             <div id="mapa" class="mapa">
                 <img id="imagemMapa" src="mapa.zoo.png" alt="Mapa do Parque">
