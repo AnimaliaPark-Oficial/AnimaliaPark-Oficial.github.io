@@ -210,7 +210,12 @@ body, html {
     max-width: 260px;
     min-width: 180px;
     backdrop-filter: blur(5px);
-    /* Removido o overflow: hidden daqui para permitir a rolagem livre */
+    overflow: hidden; /* <-- OBRIGATÓRIO: Mantém o conteúdo preso dentro da caixinha com borda arredondada */
+}
+
+.legenda-detalhes {
+    display: flex;
+    flex-direction: column;
 }
 
 .legenda-detalhes summary {
@@ -229,6 +234,7 @@ body, html {
     justify-content: space-between;
     gap: 10px;
     flex-shrink: 0; /* Impede que o título encolha */
+    background: rgba(255, 255, 255, 0.95);
 }
 
 /* Setinha personalizada que gira ao abrir/fechar */
@@ -252,10 +258,19 @@ body, html {
     padding: 0 12px 12px 12px;
     border-top: 1px solid #ddd;
     margin-top: 2px;
-    max-height: 250px;
-    overflow-y: auto;     /* Cria a barra de rolagem vertical */
+    max-height: 250px;      /* Altura máxima antes de criar a rolagem */
+    overflow-y: auto;       /* Cria a barra de rolagem vertical */
     overflow-x: hidden;
-    flex-grow: 1;         /* Preenche o espaço disponível com rolagem */
+}
+
+/* Estilização sutil da barra de rolagem */
+.legenda-corpo-conteudo::-webkit-scrollbar {
+    width: 5px;
+}
+
+.legenda-corpo-conteudo::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 4px;
 }
 
 /* Estilo para alinhar os itens que o seu script JS injeta na legenda */
@@ -267,6 +282,8 @@ body, html {
     font-size: 11px;
     color: #333;
     font-weight: bold;
+    cursor: pointer;
+    padding: 4px 0;
 }
 
 .legenda-corpo-conteudo .item-legenda-visual img {
