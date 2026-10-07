@@ -197,7 +197,7 @@ body, html {
 }
 
 /* ========================================================
-   NOVO: CAIXA DE LEGENDA FLUTUANTE EM LISTA SUSPENSA (ACORDEÃO)
+   CAIXA DE LEGENDA FLUTUANTE EM LISTA SUSPENSA (ACORDEÃO)
    ======================================================== */
 .painel-legenda-lateral {
     position: absolute;
@@ -207,14 +207,21 @@ body, html {
     border-radius: 12px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
     z-index: 60;
-    max-width: 250px;
+    max-width: 260px;
     min-width: 180px;
     backdrop-filter: blur(5px);
-    overflow: hidden;
+    /* Removido o overflow: hidden daqui para permitir a rolagem livre */
+}
+
+/* Quando o details estiver ABERTO, limitamos a altura máxima da caixinha inteira */
+.legenda-detalhes[open] {
+    max-height: 60vh; /* Ocupa no máximo 60% da altura da tela do celular/PC */
+    display: flex;
+    flex-direction: column;
 }
 
 .legenda-detalhes summary {
-    font-family: inherit;              /* Garante que herda a mesma fonte do restante do layout */   
+    font-family: inherit;
     font-size: 11px;
     color: #4A154B;
     text-transform: uppercase;
@@ -223,16 +230,17 @@ body, html {
     padding: 12px;
     cursor: pointer;
     user-select: none;
-    list-style: none; /* Remove a setinha feia padrão do navegador */
+    list-style: none;
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 10px;
+    flex-shrink: 0; /* Impede que o título encolha */
 }
 
 /* Setinha personalizada que gira ao abrir/fechar */
 .legenda-detalhes summary::after {
-    content: '▼ ';
+    content: '▼';
     font-size: 8px;
     transition: transform 0.2s ease;
     color: #4A154B;
@@ -243,16 +251,16 @@ body, html {
 }
 
 .legenda-detalhes summary::-webkit-details-marker {
-    display: none; /* Compatibilidade extra para sumir com setas nativas */
+    display: none;
 }
 
+/* Corpo da legenda com rolagem funcional */
 .legenda-corpo-conteudo {
     padding: 0 12px 12px 12px;
     border-top: 1px solid #ddd;
     margin-top: 2px;
-    max-height: 250px;       /* Altura máxima antes de começar a rolar (você pode ajustar para 200px, 300px, etc.) */
-    overflow-y: auto;        /* Cria a barra de rolagem vertical automática quando passar do limite */
-    
+    overflow-y: auto;     /* Cria a barra de rolagem vertical */
+    flex-grow: 1;         /* Preenche o espaço disponível com rolagem */
 }
 
 /* Estilo para alinhar os itens que o seu script JS injeta na legenda */
