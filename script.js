@@ -14,7 +14,7 @@ const dadosPark = {
         ],
         pontos: [
             // Alimentação
-            { id: "alim_recepcao", nome: "CAFÉ RECEPÇÃO", tipo: "ALIMENTAÇÃO", legendaNome: "QUIÓSQUE CAFÉ RECEPÇÃO", area: "Onde tudo começa e aonde damos um até breve!", desc: "☕ Cafeteria (Cafés e salgados)", icone: "icons/cafereceocao.png", categoria: "alimentacao", top: 27, left: 48 },
+            { id: "alim_recepcao", nome: "CAFÉ RECEPÇÃO", tipo: "ALIMENTAÇÃO", legendaNome: "QUIÓSQUE CAFÉ RECEPÇÃO", area: "Onde tudo começa e aonde damos um até breve!", desc: "☕ Cafeteria (Cafés e salgados)", icone: "icons/caferecepcao.png", categoria: "alimentacao", top: 27, left: 48 },
             { id: "alim_leao", nome: "QUIOSQUE LEÃO", tipo: "ALIMENTAÇÃO", legendaNome: "QUIÓSQUE LEÃO", area: "🍿 Café, Salgados e pipocas", desc: "Logo após o recinto do Leão.", icone: "icons/pontoleao.png", categoria: "alimentacao", top: 48, left: 41 },
             { id: "alim_sucuarana", nome: "QUIOSQUE SUÇUARANA", tipo: "ALIMENTAÇÃO", legendaNome: "QUIÓSQUE SUÇUARANA", area: "🍿 Salgados e pipocas", desc: "Em frente ao recinto Suçuarana.", icone: "icons/pontosucuarana.png", categoria: "alimentacao", top: 64, left: 43 },
             { id: "alim_tamandua", nome: "QUIOSQUE TAMANDUÁ", tipo: "ALIMENTAÇÃO", legendaNome: "QUIÓSQUE TAMANDUA", area: "🍿 Café, Salgados e pipocas", desc: "Localizado em frente ao recinto tamanduá.", icone: "icons/pontotamandua.png", categoria: "alimentacao", top: 60, left: 50 },
