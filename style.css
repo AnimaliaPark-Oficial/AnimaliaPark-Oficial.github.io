@@ -197,7 +197,7 @@ body, html {
 }
 
 /* ========================================================
-   CAIXA DE LEGENDA FLUTUANTE EM LISTA SUSPENSA (CORRIGIDO)
+   CAIXA DE LEGENDA FLUTUANTE - TAMANHO TRAVADO COM SCROLL
    ======================================================== */
 .painel-legenda-lateral {
     position: absolute;
@@ -208,23 +208,19 @@ body, html {
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
     z-index: 60;
     width: 260px;
+    max-height: 280px !important; /* TRAVA ABSOLUTA da altura da caixa inteira */
     display: flex;
     flex-direction: column;
     backdrop-filter: blur(5px);
-    overflow: hidden;
+    overflow: hidden !important;   /* Impede que qualquer conteúdo vaze para fora */
 }
 
 .legenda-detalhes {
     display: flex;
     flex-direction: column;
     width: 100%;
-}
-
-/* Trava a altura máxima do details apenas quando estiver aberto */
-.legenda-detalhes[open] {
-    max-height: 280px; 
-    display: flex;
-    flex-direction: column;
+    max-height: 280px !important;
+    overflow: hidden !important;
 }
 
 .legenda-detalhes summary {
@@ -242,8 +238,8 @@ body, html {
     align-items: center;
     justify-content: space-between;
     gap: 10px;
-    flex-shrink: 0;
-    background: transparent;
+    flex-shrink: 0;             /* Impede que o cabeçalho encolha ou estique */
+    background: #ffffff;        /* Fundo sólido para o cabeçalho */
 }
 
 /* Setinha personalizada que gira ao abrir/fechar */
@@ -251,7 +247,7 @@ body, html {
     content: '▼';
     font-size: 8px;
     transition: transform 0.2s ease;
-    color: #4A154B;
+    color: #4A150B;
 }
 
 .legenda-detalhes[open] summary::after {
@@ -262,27 +258,27 @@ body, html {
     display: none;
 }
 
-/* Corpo da legenda com rolagem ativa e travada */
+/* CORPO DA LEGENDA: Onde a mágica do scroll acontece */
 .legenda-corpo-conteudo {
     padding: 0 12px 12px 12px;
     border-top: 1px solid #ddd;
     margin-top: 2px;
-    max-height: 210px;                  /* Limita a área interna para 5-8 itens */
-    overflow-y: auto !important;        /* Força a barra de rolagem vertical */
+    overflow-y: auto !important;  /* Força a barra de rolagem vertical */
     overflow-x: hidden;
+    flex-grow: 1;                 /* Ocupa exatamente o espaço restante até o teto de 280px */
 }
 
-/* Estilização sutil da barra de rolagem */
+/* Estilização da barra de rolagem */
 .legenda-corpo-conteudo::-webkit-scrollbar {
     width: 6px;
 }
 
 .legenda-corpo-conteudo::-webkit-scrollbar-thumb {
-    background: #8C1B91;       /* Tom roxo combinando com o tema */
+    background: #8C1B91;
     border-radius: 4px;
 }
 
-/* Estilo para alinhar os itens que o seu script JS injeta na legenda */
+/* Itens internos injetados pelo JS */
 .legenda-corpo-conteudo .item-legenda-visual {
     display: flex;
     align-items: center;
