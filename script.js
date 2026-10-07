@@ -75,8 +75,8 @@ const dadosPark = {
 
             // Serviços
             { id: "serv_ambulatorio", nome: "AMBULATÓRIO", tipo: "SERVIÇOS", legendaNome: "AMBULATÓRIO MÉDICO", area: "Ambulatório teste Animália Park", desc: "Localizado na Vila Animália.", icone: "icons/ambulatorio.png", categoria: "servicos", top: 26, left: 53 },
-            { id: "serv_estacionamento2", nome: "ESTACIONAMENTO EXTERNO", tipo: "SERVIÇOS", legendaNome: "ESTACIONAMENTO", area: "Estacionamento seguro e com Transfer", desc: "🚗 Vagas Comuns<br>♿ Vagas Acessíveis<br>", icone: "icons/estacionamento.png", categoria: "servicos", top: 76, left: 46 },
-            { id: "serv_estacionamento1", nome: "ESTACIONAMENTO INTERNO", tipo: "SERVIÇOS", legendaNome: "ESTACIONAMENTO", area: "Vaga garantida e seu carro assegurado!", desc: "🚗 Vagas Comuns<br>♿ Vagas Acessíveis<br>🪫 Vagas para Carros Eletrificados<br>", icone: "icons/estacionamento.png", categoria: "servicos", top: 40, left: 28 },
+            { id: "serv_estacionamento2", nome: "ESTACIONAMENTO EXTERNO", tipo: "SERVIÇOS", legendaNome: "ESTACIONAMENTO EXTERNO", area: "Estacionamento seguro e com Transfer", desc: "🚗 Vagas Comuns<br>♿ Vagas Acessíveis<br>", icone: "icons/estacionamento.png", categoria: "servicos", top: 76, left: 46 },
+            { id: "serv_estacionamento1", nome: "ESTACIONAMENTO INTERNO", tipo: "SERVIÇOS", legendaNome: "ESTACIONAMENTO INTERNO", area: "Vaga garantida e seu carro assegurado!", desc: "🚗 Vagas Comuns<br>♿ Vagas Acessíveis<br>🪫 Vagas para Carros Eletrificados<br>", icone: "icons/estacionamento.png", categoria: "servicos", top: 40, left: 28 },
             { id: "serv_sav", nome: "SAV", tipo: "SERVIÇOS", legendaNome: "SAV - ATENDIMENTO AO VISITANTE", area: "Reclamações, elogios ou retirada de duvidas", desc: "💻 SAV (Serviço de Atendimento ao Visitante)", icone: "icons/recepcao.png", categoria: "servicos", top: 27, left: 48 },
 
             // Atrações
