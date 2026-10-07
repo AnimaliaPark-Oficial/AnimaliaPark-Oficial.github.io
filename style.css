@@ -210,12 +210,12 @@ body, html {
     max-width: 260px;
     min-width: 180px;
     backdrop-filter: blur(5px);
-    overflow: hidden; /* <-- OBRIGATÓRIO: Mantém o conteúdo preso dentro da caixinha com borda arredondada */
 }
 
 .legenda-detalhes {
     display: flex;
     flex-direction: column;
+    max-height: 80vh; /* Garante que nunca passe da tela */
 }
 
 .legenda-detalhes summary {
@@ -233,8 +233,8 @@ body, html {
     align-items: center;
     justify-content: space-between;
     gap: 10px;
-    flex-shrink: 0; /* Impede que o título encolha */
-    background: rgba(255, 255, 255, 0.95);
+    flex-shrink: 0;
+    background: transparent;
 }
 
 /* Setinha personalizada que gira ao abrir/fechar */
@@ -258,8 +258,8 @@ body, html {
     padding: 0 12px 12px 12px;
     border-top: 1px solid #ddd;
     margin-top: 2px;
-    max-height: 250px;      /* Altura máxima antes de criar a rolagem */
-    overflow-y: auto;       /* Cria a barra de rolagem vertical */
+    max-height: 60vh;          /* Altura máxima da lista antes de rolar */
+    overflow-y: auto;          /* Habilita a barra de rolagem vertical */
     overflow-x: hidden;
 }
 
@@ -269,7 +269,7 @@ body, html {
 }
 
 .legenda-corpo-conteudo::-webkit-scrollbar-thumb {
-    background: yellow !important; /* Só para testar se ele está aplicando o estilo */
+    background: #8C1B91;       /* Tom roxo combinando com o tema */
     border-radius: 4px;
 }
 
@@ -292,7 +292,6 @@ body, html {
     object-fit: contain;
     flex-shrink: 0;
 }
-
 
 /* Controles Flutuantes de Zoom */
 .zoom-controls {
