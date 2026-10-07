@@ -107,7 +107,7 @@ const dadosPark = {
             { id: "zoo_rino", nome: "RINOCERONTE", tipo: "RESERVA", legendaNome: "RINOCERONTE", area: "Animalia Reserva", desc: "Recinto", icone: "icons/rino.png", categoria: "animais", top: 72, left: 74 },
             { id: "zoo_drome", nome: "DROMEDARIO", tipo: "RESERVA", legendaNome: "DROMEDARIO", area: "Animalia Reserva", desc: "Recinto", icone: "icons/dromedario.png", categoria: "animais", top: 45, left: 70 },
             { id: "zoo_canguru", nome: "CANGURU", tipo: "RESERVA", legendaNome: "CANGURU", area: "Animalia Reserva", desc: "Recinto", icone: "icons/canguru.png", categoria: "animais", top: 43, left: 75 },
-            { id: "zoo_aviario2", nome: "AVIARIO 2", tipo: "RESERVA", legendaNome: "AVIARIO 2", area: "Animalia Reserva", desc: "Recinto", icone: "icons/aviario2.png", categoria: "animais",  top: 23, left: 59 }
+            { id: "zoo_aviario2", nome: "AVIARIO 2", tipo: "RESERVA", legendaNome: "AVIARIO 2", area: "Animalia Reserva", desc: "Recinto", icone: "icons/aviario2.png",  top: 23, left: 59 }
         ]
     }
 };
@@ -133,7 +133,6 @@ function renderizarPontos(categoriaFiltro = 'alimentacao') {
 
     dadosPark.reserva.pontos.forEach(ponto => {
         if (categoriaFiltro === 'todos' || ponto.categoria === categoriaFiltro) {
-            // Cria o marcador interativo no mapa
             const el = document.createElement("div");
             el.className = "ponto";
             el.style.top = ponto.top + "%";
@@ -142,7 +141,6 @@ function renderizarPontos(categoriaFiltro = 'alimentacao') {
             el.onclick = (e) => { e.stopPropagation(); abrirLocal(ponto); };
             camada.appendChild(el);
 
-            // Adiciona na lista que vai popular a legenda lateral
             pontosDaLegenda.push(ponto);
         }
     });
@@ -167,7 +165,6 @@ function atualizarLegendaLateral(pontos) {
         const textoLegenda = ponto.legendaNome || ponto.nome;
         item.innerHTML = `<img src="${ponto.icone}" alt="${textoLegenda}" style="width: 20px; height: 20px; object-fit: contain;"> <span>${textoLegenda}</span>`;
 
-        // AO CLICAR NO ITEM DA LEGENDA: Dá zoom suave no mapa e abre o card de detalhes do local
         item.onclick = () => {
             focarNoPonto(ponto.top, ponto.left);
             abrirLocal(ponto);
@@ -177,7 +174,6 @@ function atualizarLegendaLateral(pontos) {
     });
 }
 
-// NOVA FUNÇÃO: Foca e centraliza suavemente no ponto clicado na legenda
 function focarNoPonto(topPercent, leftPercent) {
     const container = document.getElementById("mapaContainer");
     const imgMapa = document.getElementById("imagemMapa");
@@ -185,7 +181,6 @@ function focarNoPonto(topPercent, leftPercent) {
     
     if (!container || !imgMapa) return;
 
-    // Define o zoom ideal para focar no ponto (ex: 2.2x)
     scale = 1.2; 
     atualizarTransformacao();
 
@@ -194,19 +189,15 @@ function focarNoPonto(topPercent, leftPercent) {
     const containerWidth = container.clientWidth;
     const containerHeight = container.clientHeight;
 
-    // Calcula a posição em pixels correspondente à porcentagem do ponto
     const pontoXPx = (leftPercent / 100) * realWidth;
     const pontoYPx = (topPercent / 100) * realHeight;
 
-    // Centraliza o ponto no meio exato da tela
     pointX = (containerWidth / 2) - pontoXPx;
     pointY = (containerHeight / 2) - pontoYPx;
 
-    // Aplica animação de transição suave
     mapaWrapper.style.transition = "transform 0.4s ease-in-out";
     atualizarTransformacao();
 
-    // Remove a transição após o movimento para o arraste manual continuar livre
     setTimeout(() => {
         mapaWrapper.style.transition = "none";
     }, 400);
@@ -256,6 +247,7 @@ function resetZoom() {
 
 function inicializarMapa() {
     const imgMapa = document.getElementById("imagemMapa");
+    if (!imgMapa) return;
     imgMapa.onload = () => { 
         resetZoom(); 
         renderizarPontos(dadosPark.reserva.categoriasLegenda[0].id); 
@@ -314,7 +306,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const container = document.getElementById("mapaContainer");
     if (!container) return;
 
-    // Eventos de Mouse
     container.addEventListener("mousedown", (e) => {
         isDragging = true; 
         startX = e.clientX - pointX; 
@@ -332,7 +323,6 @@ document.addEventListener("DOMContentLoaded", () => {
         isDragging = false; 
     });
 
-    // Eventos de Toque (Mobile - Arraste e Zoom focado na pinça)
     container.addEventListener("touchstart", (e) => {
         if (e.targetTouches.length === 1) {
             isDragging = true;
@@ -386,17 +376,13 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 });
-let lastWidth = window.innerWidth;
-    window.addEventListener("resize", () => {
-        if (window.innerWidth !== lastWidth) {
-            lastWidth = window.innerWidth;
-            resetZoom();
-        }
-    });
-});
 
-// >>> COLE A FUNÇÃO AQUI NO FINAL DO ARQUIVO:
+// ==========================================
+// FUNÇÃO DA LEGENDA LATERAL
+// ==========================================
 function toggleLegenda() {
     const painel = document.querySelector('.painel-legenda-lateral');
-    painel.classList.toggle('ativa');
+    if (painel) {
+        painel.classList.toggle('ativa');
+    }
 }
