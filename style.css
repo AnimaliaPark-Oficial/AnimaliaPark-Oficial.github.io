@@ -213,13 +213,6 @@ body, html {
     /* Removido o overflow: hidden daqui para permitir a rolagem livre */
 }
 
-/* Quando o details estiver ABERTO, limitamos a altura máxima da caixinha inteira */
-.legenda-detalhes[open] {
-    max-height: 60vh; /* Ocupa no máximo 60% da altura da tela do celular/PC */
-    display: flex;
-    flex-direction: column;
-}
-
 .legenda-detalhes summary {
     font-family: inherit;
     font-size: 11px;
@@ -259,7 +252,9 @@ body, html {
     padding: 0 12px 12px 12px;
     border-top: 1px solid #ddd;
     margin-top: 2px;
+    max-height: 250px;
     overflow-y: auto;     /* Cria a barra de rolagem vertical */
+    overflow-x: hidden;
     flex-grow: 1;         /* Preenche o espaço disponível com rolagem */
 }
 
