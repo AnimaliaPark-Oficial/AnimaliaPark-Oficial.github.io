@@ -323,22 +323,39 @@ document.addEventListener("DOMContentLoaded", () => {
         isDragging = false; 
     });
 
-    container.addEventListener("touchstart", (e) => {
-        if (e.targetTouches.length === 1) {
-            isDragging = true;
-            startX = e.targetTouches[0].clientX - pointX;
-            startY = e.targetTouches[0].clientY - pointY;
-        } else if (e.targetTouches.length === 2) {
-            isDragging = false;
-            initialDistance = getDistance(e.targetTouches);
-            initialScale = scale;
+container.addEventListener("touchstart", (e) => {
 
-            const rect = container.getBoundingClientRect();
-            focalPointX = ((e.targetTouches[0].clientX + e.targetTouches[1].clientX) / 2) - rect.left;
-            focalPointY = ((e.targetTouches[0].clientY + e.targetTouches[1].clientY) / 2) - rect.top;
-        }
-    }, { passive: false });
+    // Se o toque começou dentro da legenda,
+    // não inicia o arraste do mapa
+    if (e.target.closest(".painel-legenda-lateral")) {
+        return;
+    }
 
+    if (e.targetTouches.length === 1) {
+        isDragging = true;
+        startX = e.targetTouches[0].clientX - pointX;
+        startY = e.targetTouches[0].clientY - pointY;
+
+    } else if (e.targetTouches.length === 2) {
+        isDragging = false;
+        initialDistance = getDistance(e.targetTouches);
+        initialScale = scale;
+
+        const rect = container.getBoundingClientRect();
+
+        focalPointX =
+            ((e.targetTouches[0].clientX + e.targetTouches[1].clientX) / 2)
+            - rect.left;
+
+        focalPointY =
+            ((e.targetTouches[0].clientY + e.targetTouches[1].clientY) / 2)
+            - rect.top;
+    }
+
+}, { passive: false });
+
+
+    
     container.addEventListener("touchmove", (e) => {
         if (e.targetTouches.length === 1 && isDragging) {
             pointX = e.targetTouches[0].clientX - startX;
