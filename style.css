@@ -214,7 +214,7 @@ body, html {
 }
 
 .legenda-detalhes summary {
-    font-size: 11px;
+    font-family: inherit;              /* Garante que herda a mesma fonte do restante do layout */    font-size: 11px;
     color: #4A154B;
     text-transform: uppercase;
     letter-spacing: 0.5px;
@@ -231,7 +231,7 @@ body, html {
 
 /* Setinha personalizada que gira ao abrir/fechar */
 .legenda-detalhes summary::after {
-    content: '▼';
+    content: '▼ ';
     font-size: 9px;
     transition: transform 0.2s ease;
     color: #4A154B;
