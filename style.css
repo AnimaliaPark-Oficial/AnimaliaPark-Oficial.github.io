@@ -197,8 +197,9 @@ body, html {
 }
 
 /* ========================================================
-   CAIXINHA DE LEGENDA FLUTUANTE (ACORDEÃO CUSTOMIZADO COM JS)
+   CAIXINHA DE LEGENDA FLUTUANTE
    ======================================================== */
+
 .painel-legenda-lateral {
     position: absolute;
     top: 15px;
@@ -212,53 +213,72 @@ body, html {
     overflow: hidden;
 }
 
-/* Cabeçalho fixo que você clica para abrir/fechar */
-.legenda-cabecalho {
+/* Estrutura da legenda */
+.legenda-detalhes {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+/* Cabeçalho LEGENDA */
+.legenda-detalhes summary {
     font-family: Arial, sans-serif;
     font-size: 11px;
-    color: #4A154B; /* Roxo original idêntico ao padrão do parque */
+    color: #4A154B;
     text-transform: uppercase;
     letter-spacing: 0.5px;
     font-weight: bold;
     padding: 12px;
     cursor: pointer;
     user-select: none;
+
     display: flex;
     align-items: center;
     justify-content: space-between;
+
     background: transparent;
+    list-style: none;
 }
 
-/* Seta animada que gira ao abrir/fechar */
-.legenda-cabecalho .seta {
+/* Remove seta padrão do navegador */
+.legenda-detalhes summary::-webkit-details-marker {
+    display: none;
+}
+
+/* Nossa seta */
+.legenda-detalhes summary::after {
+    content: '▼';
     font-size: 8px;
-    transition: transform 0.2s ease;
     color: #4A154B;
+    transition: transform 0.2s ease;
 }
 
-/* O corpo começa totalmente fechado (escondido) */
-.legenda-corpo-conteudo {
-    max-height: 0;
-    overflow-y: auto !important;
-    overflow-x: hidden;
-    padding: 0 12px;
-    transition: max-height 0.3s ease, padding 0.3s ease;
-    border-top: 0px solid #ddd;
-}
-
-/* Quando o JS adiciona a classe .ativa na caixa, ela abre suavemente e ativa o scroll */
-.painel-legenda-lateral.ativa .legenda-corpo-conteudo {
-    max-height: 180px; /* Trava a altura máxima permitindo ver os itens com rolagem */
-    padding: 10px 12px 12px 12px;
-    border-top: 1px solid #ddd;
-}
-
-/* Gira a setinha para cima quando está ativo/aberto */
-.painel-legenda-lateral.ativa .legenda-cabecalho .seta {
+/* Seta vira para cima quando abre */
+.legenda-detalhes[open] summary::after {
     transform: rotate(180deg);
 }
 
-/* Estilização da barra de rolagem */
+/* ========================================================
+   CONTEÚDO DA LEGENDA
+   ======================================================== */
+
+.legenda-corpo-conteudo {
+    padding: 10px 12px 12px 12px;
+
+    border-top: 1px solid #ddd;
+
+    /* Limita o tamanho da lista */
+    max-height: 180px;
+
+    /* Cria a rolagem */
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    /* Importante para o scroll funcionar corretamente */
+    min-height: 0;
+}
+
+/* Barra de rolagem */
 .legenda-corpo-conteudo::-webkit-scrollbar {
     width: 5px;
 }
@@ -268,16 +288,28 @@ body, html {
     border-radius: 4px;
 }
 
-/* Itens internos da lista */
+/* Fundo da área da barra */
+.legenda-corpo-conteudo::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+/* ========================================================
+   ITENS DA LEGENDA
+   ======================================================== */
+
 .legenda-corpo-conteudo .item-legenda-visual {
     display: flex;
     align-items: center;
     gap: 8px;
+
     margin-top: 8px;
+
     font-size: 11px;
     color: #333;
     font-weight: bold;
+
     cursor: pointer;
+
     padding: 4px 0;
 }
 
