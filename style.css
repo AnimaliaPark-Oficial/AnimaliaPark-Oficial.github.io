@@ -216,7 +216,6 @@ body, html {
 
     overflow: hidden;
 }
-
 /* Estrutura do dropdown */
 .legenda-detalhes {
     width: 100%;
@@ -226,16 +225,15 @@ body, html {
 .legenda-corpo-conteudo {
     height: 140px;
     max-height: 140px;
-    min-height: 0;
     box-sizing: border-box;
 
     padding: 10px 12px 12px 12px;
     border-top: 1px solid #ddd;
 
-    overflow-y: auto !important;
+    overflow-y: auto;
     overflow-x: hidden;
 
-    flex: none;
+    touch-action: pan-y;
 }
 
 /* Remove seta padrão */
@@ -248,37 +246,12 @@ body, html {
     content: '▼';
     font-size: 8px;
     color: #4A154B;
-
     transition: transform 0.2s ease;
 }
 
-/* Gira a seta quando abre */
 .legenda-detalhes[open] summary::after {
     transform: rotate(180deg);
 }
-
-
-/* ================================
-   ÁREA QUE REALMENTE ROLA
-   ================================ */
-
-.legenda-corpo-conteudo {
-    height: 180px;
-    max-height: 180px;
-
-    overflow-y: scroll;
-    overflow-x: hidden;
-
-    box-sizing: border-box;
-
-    padding: 10px 12px 12px 12px;
-
-    border-top: 1px solid #ddd;
-
-    /* Importante para celular */
-    touch-action: pan-y;
-}
-
 
 /* Barra de rolagem */
 .legenda-corpo-conteudo::-webkit-scrollbar {
@@ -293,7 +266,6 @@ body, html {
 .legenda-corpo-conteudo::-webkit-scrollbar-track {
     background: #eee;
 }
-
 
 /* ================================
    ITENS DA LEGENDA
