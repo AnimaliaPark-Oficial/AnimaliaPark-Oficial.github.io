@@ -308,12 +308,14 @@
     <main class="layout-principal">
         <div id="mapaContainer" class="mapa-container">
             
-            <!-- CAIXINHA DE LEGENDA LATERAL FLUTUANTE -->
+          <!-- CAIXINHA DE LEGENDA SUSPENSA (ACORDEÃO) -->
             <div class="painel-legenda-lateral">
-                <h4>Legenda</h4>
-                <div id="conteudoLegendaLateral">
-                    <!-- Atualizado dinamicamente via JS -->
-                </div>
+                <details class="legenda-detalhes">
+                    <summary>Legenda do Mapa</summary>
+                    <div id="conteudoLegendaLateral" class="legenda-corpo-conteudo">
+                        <!-- Atualizado dinamicamente via JS -->
+                    </div>
+                </details>
             </div>
 
             <div id="mapa" class="mapa">
