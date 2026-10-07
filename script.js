@@ -306,22 +306,31 @@ document.addEventListener("DOMContentLoaded", () => {
     const container = document.getElementById("mapaContainer");
     if (!container) return;
 
-    container.addEventListener("mousedown", (e) => {
-        isDragging = true; 
-        startX = e.clientX - pointX; 
-        startY = e.clientY - pointY;
-    });
+container.addEventListener("mousedown", (e) => {
 
-    window.addEventListener("mousemove", (e) => {
-        if (!isDragging) return;
-        pointX = e.clientX - startX; 
-        pointY = e.clientY - startY;
-        atualizarTransformacao();
-    });
+    // Se o clique começou dentro da legenda,
+    // não inicia o arraste do mapa
+    if (e.target.closest(".painel-legenda-lateral")) {
+        return;
+    }
 
-    window.addEventListener("mouseup", () => { 
-        isDragging = false; 
-    });
+    isDragging = true; 
+    startX = e.clientX - pointX; 
+    startY = e.clientY - pointY;
+});
+
+window.addEventListener("mousemove", (e) => {
+    if (!isDragging) return;
+
+    pointX = e.clientX - startX; 
+    pointY = e.clientY - startY;
+
+    atualizarTransformacao();
+});
+
+window.addEventListener("mouseup", () => { 
+    isDragging = false; 
+});
 
 container.addEventListener("touchstart", (e) => {
 
@@ -355,26 +364,42 @@ container.addEventListener("touchstart", (e) => {
 }, { passive: false });
 
 
-    
-    container.addEventListener("touchmove", (e) => {
-        if (e.targetTouches.length === 1 && isDragging) {
-            pointX = e.targetTouches[0].clientX - startX;
-            pointY = e.targetTouches[0].clientY - startY;
+container.addEventListener("touchmove", (e) => {
+
+    // Se estiver mexendo dentro da legenda,
+    // não interfere no mapa
+    if (e.target.closest(".painel-legenda-lateral")) {
+        return;
+    }
+
+    if (e.targetTouches.length === 1 && isDragging) {
+        pointX = e.targetTouches[0].clientX - startX;
+        pointY = e.targetTouches[0].clientY - startY;
+        atualizarTransformacao();
+
+    } else if (e.targetTouches.length === 2) {
+        const currentDistance = getDistance(e.targetTouches);
+
+        if (initialDistance > 0) {
+            const zoomFactor = currentDistance / initialDistance;
+            let newScale = Math.min(
+                Math.max(initialScale * zoomFactor, 0.2),
+                3.0
+            );
+
+            pointX = focalPointX -
+                (focalPointX - pointX) * (newScale / scale);
+
+            pointY = focalPointY -
+                (focalPointY - pointY) * (newScale / scale);
+
+            scale = newScale;
+
             atualizarTransformacao();
-        } else if (e.targetTouches.length === 2) {
-            const currentDistance = getDistance(e.targetTouches);
-            if (initialDistance > 0) {
-                const zoomFactor = currentDistance / initialDistance;
-                let newScale = Math.min(Math.max(initialScale * zoomFactor, 0.2), 3.0);
-
-                pointX = focalPointX - (focalPointX - pointX) * (newScale / scale);
-                pointY = focalPointY - (focalPointY - pointY) * (newScale / scale);
-                scale = newScale;
-
-                atualizarTransformacao();
-            }
         }
-    }, { passive: false });
+    }
+
+}, { passive: false });
 
     container.addEventListener("touchend", (e) => {
         if (e.targetTouches.length < 2) {
