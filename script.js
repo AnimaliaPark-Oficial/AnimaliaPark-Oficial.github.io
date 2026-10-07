@@ -12,6 +12,7 @@ const dadosPark = {
             { id: 'banheiros', texto: 'BANHEIROS' },
             { id: 'servicos', texto: 'SERVIÇOS' }
         ],
+ 
         pontos: [
             // Alimentação
             { id: "alim_recepcao", nome: "CAFÉ RECEPÇÃO", tipo: "ALIMENTAÇÃO", legendaNome: "QUIÓSQUE CAFÉ RECEPÇÃO", area: "Onde tudo começa e aonde damos um até breve!", desc: "☕ Cafeteria (Cafés e salgados.)", icone: "icons/caferecepcao.png", categoria: "alimentacao", top: 27, left: 48 },
@@ -385,3 +386,17 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 });
+let lastWidth = window.innerWidth;
+    window.addEventListener("resize", () => {
+        if (window.innerWidth !== lastWidth) {
+            lastWidth = window.innerWidth;
+            resetZoom();
+        }
+    });
+});
+
+// >>> COLE A FUNÇÃO AQUI NO FINAL DO ARQUIVO:
+function toggleLegenda() {
+    const painel = document.querySelector('.painel-legenda-lateral');
+    painel.classList.toggle('ativa');
+}
