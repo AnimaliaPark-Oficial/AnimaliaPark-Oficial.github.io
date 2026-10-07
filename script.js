@@ -86,7 +86,6 @@ const dadosPark = {
             { id: "atracao_tel_est1", nome: "EST.1 VILA ANIMALIA", tipo: "ATRAÇÕES", legendaNome: "ESTAÇÃO TELEFÉRICO", area: "Embarca e se divirta com a paisagem", desc: "🚠 Estação Teleférico (Vai e Volta ou só vai)", icone: "icons/estacao.png", categoria: "atracao", top: 20, left: 53 },
 
             // Zoológico / Animais
-
             { id: "zoo_zebra", nome: "ZEBRA", tipo: "RESERVA", legendaNome: "ZEBRA", area: "Animalia Reserva", desc: "Recinto", icone: "icons/zebra.png", categoria: "animais", top: 35, left: 52  },
             { id: "zoo_girafa", nome: "GIRAFA", tipo: "RESERVA", legendaNome: "GIRAFA", area: "Animalia Reserva", desc: "Recinto", icone: "icons/girafa.png", categoria: "animais", top: 35, left: 55  },
             { id: "zoo_ema", nome: "EMA", tipo: "RESERVA", legendaNome: "EMA", area: "Animalia Reserva", desc: "Recinto", icone: "icons/ema.png", categoria: "animais", top: 38, left: 50  },
@@ -107,11 +106,7 @@ const dadosPark = {
             { id: "zoo_rino", nome: "RINOCERONTE", tipo: "RESERVA", legendaNome: "RINOCERONTE", area: "Animalia Reserva", desc: "Recinto", icone: "icons/rino.png", categoria: "animais", top: 72, left: 74 },
             { id: "zoo_drome", nome: "DROMEDARIO", tipo: "RESERVA", legendaNome: "DROMEDARIO", area: "Animalia Reserva", desc: "Recinto", icone: "icons/dromedario.png", categoria: "animais", top: 45, left: 70 },
             { id: "zoo_canguru", nome: "CANGURU", tipo: "RESERVA", legendaNome: "CANGURU", area: "Animalia Reserva", desc: "Recinto", icone: "icons/canguru.png", categoria: "animais", top: 43, left: 75 },
-            { id: "zoo_aviario2", nome: "AVIARIO 2", tipo: "RESERVA", legendaNome: "AVIARIO 2", area: "Animalia Reserva", desc: "Recinto", icone: "icons/aviario2.png", categoria: "animais",  top: 23, left: 59 } 
-
-
-
-            
+            { id: "zoo_aviario2", nome: "AVIARIO 2", tipo: "RESERVA", legendaNome: "AVIARIO 2", area: "Animalia Reserva", desc: "Recinto", icone: "icons/aviario2.png", categoria: "animais",  top: 23, left: 59 }
         ]
     }
 };
@@ -133,10 +128,11 @@ function renderizarPontos(categoriaFiltro = 'alimentacao') {
     if (!camada) return;
     camada.innerHTML = "";
     
-    const iconesUnicos = new Map();
+    const pontosDaLegenda = [];
 
     dadosPark.reserva.pontos.forEach(ponto => {
         if (categoriaFiltro === 'todos' || ponto.categoria === categoriaFiltro) {
+            // Cria o marcador interativo no mapa
             const el = document.createElement("div");
             el.className = "ponto";
             el.style.top = ponto.top + "%";
@@ -145,26 +141,74 @@ function renderizarPontos(categoriaFiltro = 'alimentacao') {
             el.onclick = (e) => { e.stopPropagation(); abrirLocal(ponto); };
             camada.appendChild(el);
 
-            if (!iconesUnicos.has(ponto.icone)) {
-                iconesUnicos.set(ponto.icone, ponto.legendaNome || ponto.tipo || "Local");
-            }
+            // Adiciona na lista que vai popular a legenda lateral
+            pontosDaLegenda.push(ponto);
         }
     });
 
-    atualizarLegendaLateral(iconesUnicos);
+    atualizarLegendaLateral(pontosDaLegenda);
 }
 
-function atualizarLegendaLateral(iconesMap) {
+function atualizarLegendaLateral(pontos) {
     const containerLegenda = document.getElementById("conteudoLegendaLateral");
     if (!containerLegenda) return;
     containerLegenda.innerHTML = "";
 
-    iconesMap.forEach((texto, icone) => {
+    pontos.forEach(ponto => {
         const item = document.createElement("div");
         item.className = "item-legenda-visual";
-        item.innerHTML = `<img src="${icone}" alt="${texto}"> <span>${texto}</span>`;
+        item.style.cursor = "pointer";
+        item.style.padding = "4px 0";
+        item.style.alignItems = "center";
+        item.style.display = "flex";
+        item.style.gap = "8px";
+        
+        const textoLegenda = ponto.legendaNome || ponto.nome;
+        item.innerHTML = `<img src="${ponto.icone}" alt="${textoLegenda}" style="width: 20px; height: 20px; object-fit: contain;"> <span>${textoLegenda}</span>`;
+
+        // AO CLICAR NO ITEM DA LEGENDA: Dá zoom suave no mapa e abre o card de detalhes do local
+        item.onclick = () => {
+            focarNoPonto(ponto.top, ponto.left);
+            abrirLocal(ponto);
+        };
+
         containerLegenda.appendChild(item);
     });
+}
+
+// NOVA FUNÇÃO: Foca e centraliza suavemente no ponto clicado na legenda
+function focarNoPonto(topPercent, leftPercent) {
+    const container = document.getElementById("mapaContainer");
+    const imgMapa = document.getElementById("imagemMapa");
+    const mapaWrapper = document.getElementById("mapa");
+    
+    if (!container || !imgMapa) return;
+
+    // Define o zoom ideal para focar no ponto (ex: 2.2x)
+    scale = 2.2; 
+    atualizarTransformacao();
+
+    const realWidth = imgMapa.naturalWidth * scale;
+    const realHeight = imgMapa.naturalHeight * scale;
+    const containerWidth = container.clientWidth;
+    const containerHeight = container.clientHeight;
+
+    // Calcula a posição em pixels correspondente à porcentagem do ponto
+    const pontoXPx = (leftPercent / 100) * realWidth;
+    const pontoYPx = (topPercent / 100) * realHeight;
+
+    // Centraliza o ponto no meio exato da tela
+    pointX = (containerWidth / 2) - pontoXPx;
+    pointY = (containerHeight / 2) - pontoYPx;
+
+    // Aplica animação de transição suave
+    mapaWrapper.style.transition = "transform 0.4s ease-in-out";
+    atualizarTransformacao();
+
+    // Remove a transição após o movimento para o arraste manual continuar livre
+    setTimeout(() => {
+        mapaWrapper.style.transition = "none";
+    }, 400);
 }
 
 function atualizarLegendaHorizontal() {
@@ -298,7 +342,6 @@ document.addEventListener("DOMContentLoaded", () => {
             initialDistance = getDistance(e.targetTouches);
             initialScale = scale;
 
-            // Ponto central exato entre os dois dedos em relação ao container
             const rect = container.getBoundingClientRect();
             focalPointX = ((e.targetTouches[0].clientX + e.targetTouches[1].clientX) / 2) - rect.left;
             focalPointY = ((e.targetTouches[0].clientY + e.targetTouches[1].clientY) / 2) - rect.top;
@@ -316,7 +359,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 const zoomFactor = currentDistance / initialDistance;
                 let newScale = Math.min(Math.max(initialScale * zoomFactor, 0.2), 3.0);
 
-                // Aplica o zoom mantendo o foco exatamente onde os dedos estão pinçando
                 pointX = focalPointX - (focalPointX - pointX) * (newScale / scale);
                 pointY = focalPointY - (focalPointY - pointY) * (newScale / scale);
                 scale = newScale;
