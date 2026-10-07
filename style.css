@@ -197,7 +197,7 @@ body, html {
 }
 
 /* ========================================================
-   CAIXA DE LEGENDA FLUTUANTE EM LISTA SUSPENSA (ACORDEÃO)
+   CAIXA DE LEGENDA FLUTUANTE EM LISTA SUSPENSA (CORRIGIDO)
    ======================================================== */
 .painel-legenda-lateral {
     position: absolute;
@@ -207,20 +207,24 @@ body, html {
     border-radius: 12px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
     z-index: 60;
-    max-width: 260px;
-    min-width: 180px;
-    backdrop-filter: blur(5px);
-    /* Força o container principal a respeitar o limite da tela */
-    max-height: calc(100vh - 150px);
+    width: 260px;
     display: flex;
     flex-direction: column;
+    backdrop-filter: blur(5px);
+    overflow: hidden;
 }
 
 .legenda-detalhes {
     display: flex;
     flex-direction: column;
     width: 100%;
+}
 
+/* Trava a altura máxima do details apenas quando estiver aberto */
+.legenda-detalhes[open] {
+    max-height: 280px; 
+    display: flex;
+    flex-direction: column;
 }
 
 .legenda-detalhes summary {
@@ -258,13 +262,13 @@ body, html {
     display: none;
 }
 
-/* Corpo da legenda com rolagem funcional */
+/* Corpo da legenda com rolagem ativa e travada */
 .legenda-corpo-conteudo {
     padding: 0 12px 12px 12px;
     border-top: 1px solid #ddd;
     margin-top: 2px;
-    max-height:210px;
-    overflow-y: auto !important;        /* Habilita a barra de rolagem vertical */
+    max-height: 210px;                  /* Limita a área interna para 5-8 itens */
+    overflow-y: auto !important;        /* Força a barra de rolagem vertical */
     overflow-x: hidden;
 }
 
