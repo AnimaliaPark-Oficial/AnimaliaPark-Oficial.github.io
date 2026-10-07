@@ -185,7 +185,7 @@ function focarNoPonto(topPercent, leftPercent) {
     if (!container || !imgMapa) return;
 
     // Define o zoom ideal para focar no ponto (ex: 2.2x)
-    scale = 2.2; 
+    scale = 2.0; 
     atualizarTransformacao();
 
     const realWidth = imgMapa.naturalWidth * scale;
