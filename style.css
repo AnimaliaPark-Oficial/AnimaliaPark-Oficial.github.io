@@ -248,7 +248,7 @@ body, html {
 
 /* Quando o JS adiciona a classe .ativa na caixa, ela abre suavemente e ativa o scroll */
 .painel-legenda-lateral.ativa .legenda-corpo-conteudo {
-    max-height: 220px; /* Trava a altura máxima permitindo ver os itens com rolagem */
+    max-height: 180px; /* Trava a altura máxima permitindo ver os itens com rolagem */
     padding: 10px 12px 12px 12px;
     border-top: 1px solid #ddd;
 }
