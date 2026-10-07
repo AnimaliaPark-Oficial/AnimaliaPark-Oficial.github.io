@@ -16,7 +16,7 @@ body, html {
 /* Cabeçalho roxo escuro idêntico à referência */
 .header-animalia {
     height: 75px;
-    background-color: #4A154B; /* Roxo bem escuro de fundo superior */
+    background-color: #4A154B;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -48,7 +48,7 @@ body, html {
 /* Barra de filtros superior com a faixa roxa e botões em pílula */
 .filtros-superior-container {
     height: 60px;
-    background-color: #8C1B91; /* Tom de roxo vibrante da referência */
+    background-color: #8C1B91;
     border-bottom: 1px solid #5d1279;
     display: flex;
     align-items: center;
@@ -77,14 +77,14 @@ body, html {
     align-items: center;
     justify-content: center;
     gap: 8px;
-    background: transparent; /* Inativo fica transparente na faixa roxa */
+    background: transparent;
     border: 2px solid transparent;
     padding: 8px 20px;
-    border-radius: 30px; /* Formato de pílula idêntico à imagem */
+    border-radius: 30px;
     cursor: pointer;
     font-size: 13px;
     font-weight: bold;
-    color: #ffffff; /* Texto branco quando inativo */
+    color: #ffffff;
     white-space: nowrap;
     letter-spacing: 0.5px;
     transition: all 0.2s ease;
@@ -94,24 +94,24 @@ body, html {
     background: rgba(255, 255, 255, 0.1);
 }
 
-/* Item Ativo: Fundo totalmente branco com texto e ícone em roxo */
+/* Item Ativo */
 .legenda-lista-horizontal .filtro-item.active {
     background: #ffffff;
     color: #7b1fa2;
     box-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }
 
-/* Tamanho e adaptação de cor dos ícones nos botões */
+/* Tamanho dos ícones nos botões */
 .legenda-lista-horizontal .filtro-item img {
     width: 18px !important;
     height: 18px !important;
     object-fit: contain;
 }
 
-/* Layout principal preenchendo o resto da tela (ajustado para a nova altura: header 75px + filtros 60px = 135px) */
+/* Layout principal */
 .layout-principal {
     width: 100%;
-    height: calc(100vh - 135px); 
+    height: calc(100vh - 135px);
     display: flex;
     flex-direction: column;
     position: relative;
@@ -192,19 +192,26 @@ body, html {
 }
 
 @keyframes pulsarAnim {
-    0% { transform: translate(-50%, -50%) scale(0.5); opacity: 1; }
-    100% { transform: translate(-50%, -50%) scale(2); opacity: 0; }
+    0% {
+        transform: translate(-50%, -50%) scale(0.5);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translate(-50%, -50%) scale(2);
+        opacity: 0;
+    }
 }
 
 /* ========================================================
    CAIXA DE LEGENDA FLUTUANTE
    ======================================================== */
+
 .painel-legenda-lateral {
     position: absolute;
     top: 15px;
     left: 15px;
     width: 260px;
-    height: auto;
 
     background: rgba(255, 255, 255, 0.95);
     border-radius: 12px;
@@ -216,16 +223,25 @@ body, html {
     overflow: hidden;
 }
 
+/* Estrutura do dropdown */
+.legenda-detalhes {
+    width: 100%;
+    overflow: hidden;
+}
+
+/* Área da legenda com rolagem */
 .legenda-corpo-conteudo {
-    height: 140px;
-    max-height: 140px;
+    height: 140px !important;
+    max-height: 140px !important;
+    min-height: 140px !important;
+
     box-sizing: border-box;
 
     padding: 10px 12px 12px 12px;
     border-top: 1px solid #ddd;
 
-    overflow-y: auto;
-    overflow-x: hidden;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
 
     touch-action: pan-y;
 }
@@ -243,6 +259,7 @@ body, html {
     transition: transform 0.2s ease;
 }
 
+/* Gira a seta quando abre */
 .legenda-detalhes[open] summary::after {
     transform: rotate(180deg);
 }
@@ -268,28 +285,22 @@ body, html {
 .item-legenda-visual {
     display: flex;
     align-items: center;
-
     gap: 8px;
-
     margin-top: 8px;
-
     font-size: 11px;
     color: #333;
     font-weight: bold;
-
     cursor: pointer;
-
     padding: 4px 0;
 }
 
 .item-legenda-visual img {
     width: 20px;
     height: 20px;
-
     object-fit: contain;
-
     flex-shrink: 0;
 }
+
 /* Controles Flutuantes de Zoom */
 .zoom-controls {
     position: absolute;
