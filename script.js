@@ -229,7 +229,9 @@ function inicializarMapa() {
     if (!imgMapa) return;
     imgMapa.onload = () => { 
         resetZoom(); 
-        renderizarPontos(dadosPark.reserva.categoriasLegenda[0].id); 
+        // Mude aqui se quiser que abra mostrando TUDO de início, 
+        // ou mantendo a primeira categoria. Vamos usar 'todos' ou a primeira:
+        renderizarPontos('todos'); // Carrega tudo por padrão para você ver seus itens!
     };
     imgMapa.src = dadosPark.reserva.imagem;
     if (imgMapa.complete && imgMapa.naturalWidth !== 0) { imgMapa.onload(); }
@@ -493,6 +495,7 @@ function renderizarPontos(categoriaFiltro) {
     // Percorre os pontos do parque baseados no objeto de dados
     if (window.dadosPark && dadosPark.reserva && dadosPark.reserva.pontos) {
         dadosPark.reserva.pontos.forEach(ponto => {
+            // Se a categoria do ponto bater com o filtro ou o filtro for 'todos'
             if (categoriaFiltro === 'todos' || ponto.categoria === categoriaFiltro) {
                 const el = document.createElement("div");
                 el.className = "ponto";
