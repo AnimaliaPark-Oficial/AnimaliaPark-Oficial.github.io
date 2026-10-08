@@ -114,6 +114,8 @@ const dadosPark = {
 
 let scale = 1, pointX = 0, pointY = 0, startX = 0, startY = 0, isDragging = false;
 let marcadorUsuario = null; // Guarda o elemento HTML do seu ponto de GPS no mapa
+let ultimaLatGps = null;   // Salva a última latitude para não perder ao trocar de filtro
+let ultimaLngGps = null;   // Salva a última longitude para não perder ao trocar de filtro
 
 // ==========================================
 // FUNÇÕES DE MAPA E INTERFACE
@@ -126,7 +128,7 @@ function atualizarTransformacao() {
 }
 
 function atualizarMarcadorGpsNoMapa(lat, lng) {
-    // Salva as últimas coordenadas conhecidas
+    // Salva as últimas coordenadas conhecidas globalmente
     ultimaLatGps = lat;
     ultimaLngGps = lng;
 
