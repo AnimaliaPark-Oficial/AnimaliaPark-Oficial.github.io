@@ -112,7 +112,7 @@ const dadosPark = {
     }
 };
 // ==========================================
-// VARIÁVEis GLOBAIS DE CONTROLE DO MAPA
+// VARIÁVEIS GLOBAIS DE CONTROLE DO MAPA
 // ==========================================
 let pointX = 0;
 let pointY = 0;
@@ -126,8 +126,7 @@ let initialScale = 1;
 let focalPointX = 0;
 let focalPointY = 0;
 
-let marcadorUsuario = null; // Referência para o marcador de GPS
-let pontosDaLegenda = [];  // Array para armazenar os pontos da legenda lateral
+let pontosDaLegenda = []; // Array para armazenar os pontos da legenda lateral
 
 // ==========================================
 // FUNÇÕES DE TRANSFORMAÇÃO E ZOOM
@@ -157,7 +156,6 @@ function getDistance(touches) {
 
 document.addEventListener("DOMContentLoaded", () => {
     if (typeof inicializarMapa === 'function') inicializarMapa();
-    if (typeof iniciarGeolocalizacao === 'function') iniciarGeolocalizacao();
 
     const container = document.getElementById("mapaContainer");
     if (!container) return;
@@ -267,21 +265,13 @@ function renderizarPontos(categoriaFiltro) {
     const camada = document.getElementById("camadaPontos");
     if (!camada) return;
 
-    // 1. Guarda o marcador do GPS temporariamente antes de limpar a camada
-    let tempGps = marcadorUsuario;
-
-    // 2. Limpa a camada inteira
+    // 1. Limpa a camada inteira de pontos
     camada.innerHTML = "";
 
-    // 3. Reseta o array da legenda para evitar duplicações ao filtrar
+    // 2. Reseta o array da legenda para evitar duplicações ao filtrar
     pontosDaLegenda = [];
 
-    // 4. Devolve o marcador do GPS para a camada, se ele existir
-    if (tempGps) {
-        camada.appendChild(tempGps);
-    }
-
-    // 5. Desenha os pontos filtrados do parque
+    // 3. Desenha os pontos filtrados do parque
     if (window.dadosPark && dadosPark.reserva && dadosPark.reserva.pontos) {
         dadosPark.reserva.pontos.forEach(ponto => {
             if (categoriaFiltro === 'todos' || ponto.categoria === categoriaFiltro) {
@@ -309,7 +299,7 @@ function renderizarPontos(categoriaFiltro) {
         });
     }
 
-    // 6. Atualiza a legenda lateral com os itens devidamente filtrados
+    // 4. Atualiza a legenda lateral com os itens devidamente filtrados
     if (typeof atualizarLegendaLateral === 'function') {
         atualizarLegendaLateral(pontosDaLegenda);
     }
