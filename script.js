@@ -480,12 +480,42 @@ function renderizarPontos(categoriaFiltro) {
     const camada = document.getElementById("camadaPontos");
     if (!camada) return;
     
-    camada.innerHTML = ""; // Limpa os pontos antigos
+    // Limpa os pontos anteriores do mapa
+    camada.innerHTML = "";
 
     // REINSERE O MARCADOR DO GPS PARA ELE NÃO SUMIR AO TROCAR DE FILTRO
     if (marcadorUsuario) {
         camada.appendChild(marcadorUsuario);
     }
 
-    // ... restante do código que desenha os pontos do parque ...
+    const pontosDaLegenda = [];
+
+    // Percorre os pontos do parque baseados no objeto de dados
+    if (window.dadosPark && dadosPark.reserva && dadosPark.reserva.pontos) {
+        dadosPark.reserva.pontos.forEach(ponto => {
+            if (categoriaFiltro === 'todos' || ponto.categoria === categoriaFiltro) {
+                const el = document.createElement("div");
+                el.className = "ponto";
+                el.style.position = "absolute";
+                el.style.top = ponto.top + "%";
+                el.style.left = ponto.left + "%";
+                el.style.transform = "translate(-50%, -50%)";
+                el.style.cursor = "pointer";
+                el.style.zIndex = "100";
+                
+                el.innerHTML = `<img src="${ponto.icone}" alt="${ponto.nome}" class="icone-marcador" style="width: 24px; height: 24px; object-fit: contain;">`;
+                
+                el.onclick = (e) => { 
+                    e.stopPropagation(); 
+                    abrirLocal(ponto); 
+                };
+                
+                camada.appendChild(el);
+                pontosDaLegenda.push(ponto);
+            }
+        });
+    }
+
+    // Atualiza a legenda lateral com os pontos filtrados visíveis
+    atualizarLegendaLateral(pontosDaLegenda);
 }
