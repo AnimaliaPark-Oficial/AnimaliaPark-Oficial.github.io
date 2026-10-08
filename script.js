@@ -132,9 +132,10 @@ let pontosDaLegenda = []; // Array para armazenar os pontos da legenda lateral
 // FUNÇÕES DE TRANSFORMAÇÃO E ZOOM
 // ==========================================
 function atualizarTransformacao() {
-    const conteudoMapa = document.getElementById("conteudoMapa");
-    if (conteudoMapa) {
-        conteudoMapa.style.transform = `translate(${pointX}px, ${pointY}px) scale(${scale})`;
+    // CORRIGIDO: O ID correto no seu HTML é "mapa" e não "conteudoMapa"
+    const elementoMapa = document.getElementById("mapa");
+    if (elementoMapa) {
+        elementoMapa.style.transform = `translate(${pointX}px, ${pointY}px) scale(${scale})`;
     }
 }
 
@@ -142,6 +143,16 @@ function resetZoom() {
     scale = 1;
     pointX = 0;
     pointY = 0;
+    atualizarTransformacao();
+}
+
+function zoomIn() {
+    scale = Math.min(scale * 1.25, 3.0);
+    atualizarTransformacao();
+}
+
+function zoomOut() {
+    scale = Math.max(scale / 1.25, 0.2);
     atualizarTransformacao();
 }
 
@@ -284,7 +295,7 @@ function renderizarPontos(categoriaFiltro) {
                 el.style.cursor = "pointer";
                 el.style.zIndex = "100";
 
-                el.innerHTML = `<img src="${ponto.icone}" alt="${ponto.nome}" style="width: 24px; height: 24px; object-fit: contain;">`;
+                el.innerHTML = `<img src="${ponto.icone}" alt="${ponto.nome}" class="icone-marcador">`;
 
                 el.onclick = (e) => { 
                     e.stopPropagation(); 
