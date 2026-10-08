@@ -224,6 +224,7 @@ body, html {
     overflow-y: auto !important;
     overflow-x: hidden;
     flex-grow: 1;
+    max-height: 180px;
 }
 
 .legenda-corpo-conteudo::-webkit-scrollbar {
