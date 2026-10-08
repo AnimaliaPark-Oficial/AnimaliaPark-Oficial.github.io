@@ -164,7 +164,7 @@ function atualizarLegendaLateral(pontos) {
         item.style.gap = "8px";
         
         const textoLegenda = ponto.legendaNome || ponto.nome;
-        item.innerHTML = `<img src="${ponto.icone}" alt="${textoLegenda}" style="width: 20px; height: 20px; object-fit: contain;"> <span>${textoLegenda}</span>`;
+        item.innerHTML = `<img src="${ponto.icone}" alt="${textoLegenda}" style="width: 40px; height: 40px; object-fit: contain;"> <span>${textoLegenda}</span>`;
 
         // AO CLICAR NO ITEM DA LEGENDA: Dá zoom suave no mapa e abre o card de detalhes do local
         item.onclick = () => {
