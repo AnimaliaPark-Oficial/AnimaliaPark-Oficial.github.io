@@ -3,415 +3,199 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Mapa Animália Park</title>
-    <style>
-        /* Reset básico */
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            -webkit-tap-highlight-color: transparent;
-        }
-
-        body, html {
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            font-family: Arial, sans-serif;
-            background-color: #121212;
-        }
-
-        /* Topo Roxo Escuro (#4A154B) */
-        .header-animalia {
-            height: 45px;
-            background-color: #4A154B;
-            position: relative;
-            z-index: 100;
-        }
-
-        /* Barra de Filtros Roxo Claro (#8C1B91) */
-        .filtros-superior-container {
-            height: 55px;
-            background-color: #8C1B91;
-            display: flex;
-            align-items: center;
-            padding: 0 15px;
-            z-index: 90;
-            position: relative;
-            overflow-x: auto;
-            scroll-behavior: smooth;
-            -webkit-overflow-scrolling: touch;
-        }
-
-        .filtros-superior-container::-webkit-scrollbar {
-            display: none;
-        }
-
-        /* Logotipo Flutuante 3D sobreposto */
-        .logo-container-central {
-            position: absolute;
-            top: 15px;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 110;
-            height: 55px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            pointer-events: none;
-        }
-
-        .logo-central-3d {
-            height: 55px;
-            width: auto;
-            object-fit: contain;
-            filter: drop-shadow(0px 4px 6px rgba(0, 0, 0, 0.4));
-        }
-
-        /* Lista de Filtros Estilo Pílula */
-        .legenda-lista-horizontal {
-            display: flex;
-            gap: 10px;
-            list-style: none;
-            padding: 0 10px;
-            margin: 0 auto;
-            align-items: center;
-            white-space: nowrap;
-        }
-
-        .filtro-item {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: transparent;
-            border: 2px solid transparent;
-            padding: 8px 16px;
-            border-radius: 20px;
-            cursor: pointer;
-            font-size: 13px;
-            font-weight: bold;
-            color: #ffffff;
-            letter-spacing: 0.5px;
-            transition: all 0.2s ease;
-            user-select: none;
-        }
-
-        .filtro-item.active {
-            background: #ffffff;
-            color: #7b1fa2;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-        }
-
-        /* Layout principal do mapa */
-        .layout-principal {
-            width: 100%;
-            height: calc(100vh - 100px); 
-            display: flex;
-            flex-direction: column;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .mapa-container {
-            width: 100%;
-            height: 100%;
-            position: relative;
-            overflow: hidden;
-            background-color: #1a1a1a;
-            touch-action: none;
-        }
-
-        .mapa {
-            position: absolute;
-            transform-origin: 0 0;
-            will-change: transform;
-            user-select: none;
-        }
-
-        #imagemMapa {
-            display: block;
-            pointer-events: none;
-            user-select: none;
-        }
-
-        #camadaPontos {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-        }
-
-        .ponto {
-            position: absolute;
-            transform: translate(-50%, -50%);
-            cursor: pointer;
-            pointer-events: auto;
-            z-index: 5;
-            transition: transform 0.2s;
-        }
-
-        .ponto:hover {
-            transform: translate(-50%, -50%) scale(1.2);
-        }
-
-        .icone-marcador {
-            width: 44px;
-            height: 44px;
-            object-fit: contain;
-            filter: drop-shadow(0px 2px 4px rgba(0,0,0,0.5));
-        }
-
-        /* ========================================================
-           CAIXA DE LEGENDA FLUTUANTE EM LISTA SUSPENSA (CORRIGIDO)
-           ======================================================== */
-        .painel-legenda-lateral {
-            position: absolute;
-            top: 15px;
-            left: 15px;
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-            z-index: 60;
-            width: 260px;
-            backdrop-filter: blur(5px);
-            
-            /* Trava a altura máxima total que o painel pode ocupar na tela do celular */
-            max-height: calc(100vh - 120px);
-            display: flex;
-            flex-direction: column;
-        }
-
-        .legenda-detalhes {
-            display: flex;
-            flex-direction: column;
-            width: 100%;
-            max-height: 100%;
-            overflow: hidden;
-        }
-
-        .legenda-detalhes summary {
-            font-family: inherit;
-            font-size: 11px;
-            color: #4A154B;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            font-weight: bold;
-            padding: 12px;
-            cursor: pointer;
-            user-select: none;
-            list-style: none;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 10px;
-            flex-shrink: 0;
-            background: transparent;
-        }
-
-        /* Setinha personalizada que gira ao abrir/fechar */
-        .legenda-detalhes summary::after {
-            content: '▼';
-            font-size: 8px;
-            transition: transform 0.2s ease;
-            color: #4A154B;
-        }
-
-        .legenda-detalhes[open] summary::after {
-            transform: rotate(180deg);
-        }
-
-        .legenda-detalhes summary::-webkit-details-marker {
-            display: none;
-        }
-
-        /* Corpo da legenda com rolagem vertical rígida e limite de ~5 itens */
-        .legenda-corpo-conteudo {
-            padding: 0 12px 12px 12px;
-            border-top: 1px solid #ddd;
-            margin-top: 2px;
-            
-            /* Altura exata para exibir cerca de 5 itens (aproximadamente 170px) antes do scroll */
-            max-height: 170px !important;
-            min-height: 50px;
-            
-            overflow-y: auto !important; 
-            overflow-x: hidden;
-            flex-shrink: 1;
-        }
-
-        .legenda-corpo-conteudo::-webkit-scrollbar {
-            width: 5px;
-        }
-
-        .legenda-corpo-conteudo::-webkit-scrollbar-thumb {
-            background: #8C1B91;
-            border-radius: 4px;
-        }
-
-        .legenda-corpo-conteudo::-webkit-scrollbar-track {
-            background: #eee;
-        }
-
-        .item-legenda-visual {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            margin-top: 8px;
-            font-size: 11px;
-            color: #333;
-            font-weight: bold;
-            cursor: pointer;
-            padding: 4px 0;
-        }
-
-        .item-legenda-visual img {
-            width: 20px;
-            height: 20px;
-            object-fit: contain;
-            flex-shrink: 0;
-        }
-
-        /* Controles Flutuantes de Zoom */
-        .zoom-controls {
-            position: absolute;
-            right: 15px;
-            bottom: 25px;
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-            z-index: 50;
-        }
-
-        .zoom-controls button {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            border: none;
-            background: #ffffff;
-            color: #333;
-            font-size: 18px;
-            font-weight: bold;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        /* Modal Inferior (Bottom Sheet) */
-        .janela {
-            position: fixed;
-            bottom: -100%;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            display: flex;
-            justify-content: center;
-            align-items: flex-end;
-            transition: bottom 0.3s ease-in-out, visibility 0.3s;
-            z-index: 1000;
-            visibility: hidden;
-        }
-
-        .janela.ativa {
-            bottom: 0;
-            visibility: visible;
-        }
-
-        .conteudo {
-            width: 100%;
-            max-width: 600px;
-            background: #ffffff;
-            border-top-left-radius: 20px;
-            border-top-right-radius: 20px;
-            padding: 20px;
-            box-shadow: 0 -5px 20px rgba(0,0,0,0.2);
-            position: relative;
-            max-height: 70vh;
-            overflow-y: auto;
-        }
-
-        .barra-arraste {
-            width: 40px;
-            height: 4px;
-            background: #ccc;
-            border-radius: 2px;
-            margin: 0 auto 15px auto;
-        }
-
-        .fechar {
-            position: absolute;
-            top: 15px;
-            right: 20px;
-            background: none;
-            border: none;
-            font-size: 24px;
-            cursor: pointer;
-            color: #666;
-        }
-
-        .conteudo h2 { font-size: 18px; color: #222; margin-bottom: 5px; }
-        .conteudo h3 { font-size: 14px; color: #6a1b9a; margin-bottom: 15px; }
-        .conteudo p { font-size: 14px; color: #444; line-height: 1.5; }
-    </style>
+    <title>Mapa Interativo - Animália Park</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <header class="header-animalia"></header>
+    <!-- ========================================== -->
+    <!-- CABEÇALHO DO PARQUE                        -->
+    <!-- ========================================== -->
+    <header class="header-animalia">
+        <div class="logo-container">
+            <img src="logo.png" alt="Animália Park" class="logo-central">
+        </div>
+    </header>
 
-    <div class="logo-container-central">
-        <img src="logo-animalia.png" alt="Animália Park Logo" class="logo-central-3d">
-    </div>
-
+    <!-- ========================================== -->
+    <!-- BARRA DE FILTROS SUPERIOR                  -->
+    <!-- ========================================== -->
     <nav class="filtros-superior-container">
-        <ul id="legendaListaHorizontal" class="legenda-lista-horizontal"></ul>
+        <ul class="legenda-lista-horizontal">
+            <li>
+                <button class="filtro-item active" onclick="filtrar('todos', this)">
+                    <img src="icone-todos.png" alt="Todos"> Todos
+                </button>
+            </li>
+            <li>
+                <button class="filtro-item" onclick="filtrar('alimentacao', this)">
+                    <img src="icone-alimentacao.png" alt="Alimentação"> Alimentação
+                </button>
+            </li>
+            <li>
+                <button class="filtro-item" onclick="filtrar('banheiro', this)">
+                    <img src="icone-banheiro.png" alt="Banheiros"> Banheiros
+                </button>
+            </li>
+            <li>
+                <button class="filtro-item" onclick="filtrar('atracao', this)">
+                    <img src="icone-atracao.png" alt="Atrações"> Atrações
+                </button>
+            </li>
+            <li>
+                <button class="filtro-item" onclick="filtrar('loja', this)">
+                    <img src="icone-loja.png" alt="Lojas"> Lojas
+                </button>
+            </li>
+        </ul>
     </nav>
 
+    <!-- ========================================== -->
+    <!-- CONTEÚDO PRINCIPAL (MAPA)                  -->
+    <!-- ========================================== -->
     <main class="layout-principal">
-        <div id="mapaContainer" class="mapa-container">
-            
-<!-- CAIXINHA DE LEGENDA SUSPENSA -->
-<div class="painel-legenda-lateral">
+        
+        <!-- Painel de Legenda Lateral Retrátil (Canto Superior Esquerdo) -->
+        <aside class="painel-legenda-lateral">
+            <details class="legenda-detalhes" open>
+                <summary>Legenda</summary>
+                <div class="legenda-corpo-conteudo" id="listaLegendaLateral">
+                    <!-- Preenchido dinamicamente pelo JavaScript -->
+                </div>
+            </details>
+        </aside>
 
-    <details class="legenda-detalhes">
-
-        <summary>LEGENDA</summary>
-
-        <div id="conteudoLegendaLateral" class="legenda-corpo-conteudo">
-            <!-- Atualizado dinamicamente via JS -->
-        </div>
-
-    </details>
-
-</div>
-
-            <div id="mapa" class="mapa">
-                <img id="imagemMapa" src="mapa.zoo.webp" alt="Mapa do Parque">
+        <!-- Container de Arraste e Zoom -->
+        <div class="mapa-container" id="mapaContainer">
+            <div class="mapa" id="conteudoMapa">
+                <img id="imagemMapa" src="mapa.zoo.webp" alt="Mapa Animália Park">
                 <div id="camadaPontos"></div>
             </div>
+        </div>
 
-            <div class="zoom-controls">
-                <button onclick="zoomIn()" aria-label="Aumentar Zoom">+</button>
-                <button onclick="zoomOut()" aria-label="Diminuir Zoom">−</button>
-                <button onclick="resetZoom()" aria-label="Resetar Zoom">⟲</button>
-            </div>
+        <!-- Controles Flutuantes de Zoom -->
+        <div class="zoom-controls">
+            <button onclick="ajustarZoom(0.2)">+</button>
+            <button onclick="ajustarZoom(-0.2)">-</button>
+            <button onclick="resetZoom()">⟲</button>
         </div>
     </main>
 
-    <div id="janelaLocal" class="janela" onclick="fecharAoClicarFora(event)">
+    <!-- ========================================== -->
+    <!-- MODAL DE DETALHES DO LOCAL                 -->
+    <!-- ========================================== -->
+    <div class="janela" id="janelaLocal" onclick="fecharAoClicarFora(event)">
         <div class="conteudo">
             <div class="barra-arraste"></div>
-            <button class="fechar" onclick="fecharLocal()" aria-label="Fechar">&times;</button>
-            <h3 id="tipoLocal"></h3>
-            <h2 id="nomeLocal"></h2>
-            <p id="areaLocal" style="font-weight: bold; margin-bottom: 8px;"></p>
-            <p id="descricaoLocal"></p>
+            <button class="fechar" onclick="fecharModal()">&times;</button>
+            <h2 id="modalTitulo">Nome do Local</h2>
+            <h3 id="modalCategoria">Categoria</h3>
+            <p id="modalDescricao">Descrição detalhada do ponto selecionado no parque.</p>
         </div>
     </div>
 
-    <script src="script.js"></script>
+    <!-- ========================================== -->
+    <!-- SCRIPTS E DADOS DO PARQUE                  -->
+    <!-- ========================================== -->
+    <script>
+        const dadosPark = {
+            reserva: {
+                pontos: [
+                    { id: 1, nome: "Restaurante Principal", categoria: "alimentacao", top: 45, left: 50, icone: "icone-alimentacao.png", descricao: "Variedade de pratos quentes e lanches." },
+                    { id: 2, nome: "Sanitários Norte", categoria: "banheiro", top: 30, left: 40, icone: "icone-banheiro.png", descricao: "Banheiros masculinos, femininos e acessíveis." },
+                    { id: 3, nome: "Área dos Tigres", categoria: "atracao", top: 60, left: 70, icone: "icone-atracao.png", descricao: "Observação dos tigres de bengala." },
+                    { id: 4, nome: "Loja de Souvenirs", categoria: "loja", top: 25, left: 55, icone: "icone-loja.png", descricao: "Lembranças exclusivas do Animália Park." }
+                ]
+            }
+        };
+
+        function filtrar(categoria, botaoElemento) {
+            document.querySelectorAll('.filtro-item').forEach(btn => btn.classList.remove('active'));
+            if(botaoElemento) botaoElemento.classList.add('active');
+            renderizarPontos(categoria);
+        }
+
+        function renderizarPontos(categoriaFiltro) {
+            const camada = document.getElementById("camadaPontos");
+            if (!camada) return;
+            camada.innerHTML = "";
+
+            let pontosDaLegenda = [];
+
+            if (window.dadosPark && dadosPark.reserva && dadosPark.reserva.pontos) {
+                dadosPark.reserva.pontos.forEach(ponto => {
+                    if (categoriaFiltro === 'todos' || ponto.categoria === categoriaFiltro) {
+                        const el = document.createElement("div");
+                        el.className = "ponto";
+                        el.style.top = ponto.top + "%";
+                        el.style.left = ponto.left + "%";
+                        
+                        el.innerHTML = `<img src="${ponto.icone}" alt="${ponto.nome}" class="icone-marcador" style="width: 24px; height: 24px; object-fit: contain;">`;
+
+                        el.onclick = (e) => { 
+                            e.stopPropagation(); 
+                            abrirLocal(ponto); 
+                        };
+
+                        camada.appendChild(el);
+                        pontosDaLegenda.push(ponto);
+                    }
+                });
+            }
+
+            atualizarLegendaLateral(pontosDaLegenda);
+        }
+
+        function atualizarLegendaLateral(pontos) {
+            const containerLegenda = document.getElementById("listaLegendaLateral");
+            if (!containerLegenda) return;
+
+            containerLegenda.innerHTML = "";
+            pontos.forEach(ponto => {
+                const item = document.createElement("div");
+                item.className = "item-legenda-visual";
+                item.innerHTML = `<img src="${ponto.icone}" alt=""> <span>${ponto.nome}</span>`;
+                item.onclick = () => abrirLocal(ponto);
+                containerLegenda.appendChild(item);
+            });
+        }
+
+        function abrirLocal(ponto) {
+            document.getElementById("modalTitulo").innerText = ponto.nome;
+            document.getElementById("modalCategoria").innerText = ponto.categoria.toUpperCase();
+            document.getElementById("modalDescricao").innerText = ponto.descricao;
+            document.getElementById("janelaLocal").classList.add("ativa");
+        }
+
+        function fecharModal() {
+            document.getElementById("janelaLocal").classList.remove("ativa");
+        }
+
+        function fecharAoClicarFora(event) {
+            const janela = document.getElementById('janelaLocal');
+            if (event.target === janela) fecharModal();
+        }
+
+        let scale = 1;
+        function ajustarZoom(fator) {
+            scale = Math.min(Math.max(scale + fator, 0.2), 3.0);
+            const conteudoMapa = document.getElementById("conteudoMapa");
+            if (conteudoMapa) {
+                conteudoMapa.style.transform = `scale(${scale})`;
+            }
+        }
+
+        function resetZoom() {
+            scale = 1;
+            const conteudoMapa = document.getElementById("conteudoMapa");
+            if (conteudoMapa) {
+                conteudoMapa.style.transform = `scale(1)`;
+            }
+        }
+
+        window.addEventListener("DOMContentLoaded", () => {
+            renderizarPontos('todos');
+        });
+    </script>
 </body>
 </html>
