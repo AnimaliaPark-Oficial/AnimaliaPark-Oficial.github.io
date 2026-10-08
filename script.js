@@ -480,25 +480,22 @@ function fecharAoClicarFora(event) {
 
 function renderizarPontos(categoriaFiltro) {
     const camada = document.getElementById("camadaPontos");
-    if (!camada) {
-        console.error("ERRO: Elemento #camadaPontos não encontrado!");
-        return;
-    }
-    
-    // Limpa todos os pontos anteriores do mapa
+    if (!camada) return;
+
+    // Guarda o marcador do GPS temporariamente antes de limpar a camada
+    let tempGps = marcadorUsuario;
+
+    // Limpa a camada inteira
     camada.innerHTML = "";
 
-    // REINSERE O MARCADOR DO GPS PARA ELE NÃO SUMIR
-    if (typeof marcadorUsuario !== 'undefined' && marcadorUsuario) {
-        camada.appendChild(marcadorUsuario);
+    // Devolve o marcador do GPS para a camada
+    if (tempGps) {
+        camada.appendChild(tempGps);
     }
 
-    const pontosDaLegenda = [];
-
-    // Valida se os dados do parque existem
+    // Desenha os pontos filtrados do parque
     if (window.dadosPark && dadosPark.reserva && dadosPark.reserva.pontos) {
         dadosPark.reserva.pontos.forEach(ponto => {
-            // Se o filtro for 'todos' ou se a categoria bater exatamente
             if (categoriaFiltro === 'todos' || ponto.categoria === categoriaFiltro) {
                 const el = document.createElement("div");
                 el.className = "ponto";
@@ -508,16 +505,16 @@ function renderizarPontos(categoriaFiltro) {
                 el.style.transform = "translate(-50%, -50%)";
                 el.style.cursor = "pointer";
                 el.style.zIndex = "100";
-                
-                el.innerHTML = `<img src="${ponto.icone}" alt="${ponto.nome}" class="icone-marcador" style="width: 24px; height: 24px; object-fit: contain;">`;
-                
+
+                el.innerHTML = `<img src="${ponto.icone}" alt="${ponto.nome}" style="width: 24px; height: 24px; object-fit: contain;">`;
+
                 el.onclick = (e) => { 
                     e.stopPropagation(); 
                     if (typeof abrirLocal === 'function') abrirLocal(ponto); 
                 };
-                
+
                 camada.appendChild(el);
-                pontosDaLegenda.push(ponto);
+             pontosDaLegenda.push(ponto);
             }
         });
     }
