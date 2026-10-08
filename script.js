@@ -12,7 +12,7 @@ const dadosPark = {
             { id: 'banheiros', texto: 'BANHEIROS' },
             { id: 'servicos', texto: 'SERVIÇOS' }
         ],
- 
+
         pontos: [
             // Alimentação
             { id: "alim_recepcao", nome: "CAFÉ RECEPÇÃO", tipo: "ALIMENTAÇÃO", legendaNome: "QUIÓSQUE CAFÉ RECEPÇÃO", area: "Onde tudo começa e aonde damos um até breve!", desc: "☕ Cafeteria (Cafés e salgados.)", icone: "icons/caferecepcao.png", categoria: "alimentacao", top: 27, left: 48 },
@@ -113,6 +113,7 @@ const dadosPark = {
 };
 
 let scale = 1, pointX = 0, pointY = 0, startX = 0, startY = 0, isDragging = false;
+let marcadorUsuario = null; // Guarda o elemento HTML do seu ponto de GPS no mapa
 
 // ==========================================
 // FUNÇÕES DE MAPA E INTERFACE
@@ -127,7 +128,13 @@ function atualizarTransformacao() {
 function renderizarPontos(categoriaFiltro = 'alimentacao') {
     const camada = document.getElementById("camadaPontos");
     if (!camada) return;
-    camada.innerHTML = "";
+    
+    // Preserva o marcador do usuário se ele já existir na camada
+    const htmlUsuario = marcadorUsuario ? marcadorUsuario.outerHTML : '';
+    camada.innerHTML = htmlUsuario;
+    if (marcadorUsuario) {
+        marcadorUsuario = camada.querySelector('.ponto-usuario-gps');
+    }
     
     const pontosDaLegenda = [];
 
@@ -272,10 +279,6 @@ function fecharLocal() {
     document.getElementById("janelaLocal").classList.remove("ativa"); 
 }
 
-function fecharAoClicarFora(e) { 
-    if (e.target.id === "janelaLocal") fecharLocal(); 
-}
-
 function zoomIn() { 
     scale = Math.min(scale + 0.25, 3.0); 
     atualizarTransformacao(); 
@@ -284,6 +287,55 @@ function zoomIn() {
 function zoomOut() { 
     scale = Math.max(scale - 0.25, 0.2); 
     atualizarTransformacao(); 
+}
+
+// ==========================================
+// GEOLOCALIZAÇÃO EM TEMPO REAL
+// ==========================================
+
+function iniciarGeolocalizacao() {
+    if (!navigator.geolocation) {
+        console.log("Geolocalização não suportada pelo navegador.");
+        return;
+    }
+
+    navigator.geolocation.watchPosition(
+        (position) => {
+            const lat = position.coords.latitude;
+            const lng = position.coords.longitude;
+            atualizarMarcadorUsuario(lat, lng);
+        },
+        (error) => {
+            console.error("Erro no GPS: ", error.message);
+        },
+        {
+            enableHighAccuracy: true,
+            maximumAge: 10000,
+            timeout: 20000
+        }
+    );
+}
+
+function atualizarMarcadorUsuario(lat, lng) {
+    const camadaPontos = document.getElementById('camadaPontos');
+    if (!camadaPontos) return;
+
+    if (!marcadorUsuario) {
+        marcadorUsuario = document.createElement('div');
+        marcadorUsuario.className = 'ponto-usuario-gps';
+        marcadorUsuario.innerHTML = '<div class="pulso-gps"></div><div class="centro-gps"></div>';
+        camadaPontos.appendChild(marcadorUsuario);
+    }
+
+    const coords = converterLatLongParaPorcentagem(lat, lng);
+
+    marcadorUsuario.style.top = `${coords.top}%`;
+    marcadorUsuario.style.left = `${coords.left}%`;
+}
+
+function converterLatLongParaPorcentagem(lat, lng) {
+    // ⚠️ ATENÇÃO: Aqui faremos a calibração real das coordenadas do parque posteriormente.
+    return { top: 50, left: 50 };
 }
 
 // ==========================================
@@ -303,103 +355,95 @@ function getDistance(touches) {
 
 document.addEventListener("DOMContentLoaded", () => {
     inicializarMapa();
+    iniciarGeolocalizacao(); // <--- Rastreamento de GPS iniciado junto com a página
+
     const container = document.getElementById("mapaContainer");
     if (!container) return;
 
-container.addEventListener("mousedown", (e) => {
-
-    // Se o clique começou dentro da legenda,
-    // não inicia o arraste do mapa
-    if (e.target.closest(".painel-legenda-lateral")) {
-        return;
-    }
-
-    isDragging = true; 
-    startX = e.clientX - pointX; 
-    startY = e.clientY - pointY;
-});
-
-window.addEventListener("mousemove", (e) => {
-    if (!isDragging) return;
-
-    pointX = e.clientX - startX; 
-    pointY = e.clientY - startY;
-
-    atualizarTransformacao();
-});
-
-window.addEventListener("mouseup", () => { 
-    isDragging = false; 
-});
-
-container.addEventListener("touchstart", (e) => {
-
-    // Se o toque começou dentro da legenda,
-    // não inicia o arraste do mapa
-    if (e.target.closest(".painel-legenda-lateral")) {
-        return;
-    }
-
-    if (e.targetTouches.length === 1) {
-        isDragging = true;
-        startX = e.targetTouches[0].clientX - pointX;
-        startY = e.targetTouches[0].clientY - pointY;
-
-    } else if (e.targetTouches.length === 2) {
-        isDragging = false;
-        initialDistance = getDistance(e.targetTouches);
-        initialScale = scale;
-
-        const rect = container.getBoundingClientRect();
-
-        focalPointX =
-            ((e.targetTouches[0].clientX + e.targetTouches[1].clientX) / 2)
-            - rect.left;
-
-        focalPointY =
-            ((e.targetTouches[0].clientY + e.targetTouches[1].clientY) / 2)
-            - rect.top;
-    }
-
-}, { passive: false });
-
-
-container.addEventListener("touchmove", (e) => {
-
-    // Se estiver mexendo dentro da legenda,
-    // não interfere no mapa
-    if (e.target.closest(".painel-legenda-lateral")) {
-        return;
-    }
-
-    if (e.targetTouches.length === 1 && isDragging) {
-        pointX = e.targetTouches[0].clientX - startX;
-        pointY = e.targetTouches[0].clientY - startY;
-        atualizarTransformacao();
-
-    } else if (e.targetTouches.length === 2) {
-        const currentDistance = getDistance(e.targetTouches);
-
-        if (initialDistance > 0) {
-            const zoomFactor = currentDistance / initialDistance;
-            let newScale = Math.min(
-                Math.max(initialScale * zoomFactor, 0.2),
-                3.0
-            );
-
-            pointX = focalPointX -
-                (focalPointX - pointX) * (newScale / scale);
-
-            pointY = focalPointY -
-                (focalPointY - pointY) * (newScale / scale);
-
-            scale = newScale;
-
-            atualizarTransformacao();
+    container.addEventListener("mousedown", (e) => {
+        if (e.target.closest(".painel-legenda-lateral")) {
+            return;
         }
-    }
 
-}, { passive: false });
+        isDragging = true; 
+        startX = e.clientX - pointX; 
+        startY = e.clientY - pointY;
+    });
+
+    window.addEventListener("mousemove", (e) => {
+        if (!isDragging) return;
+
+        pointX = e.clientX - startX; 
+        pointY = e.clientY - startY;
+
+        atualizarTransformacao();
+    });
+
+    window.addEventListener("mouseup", () => { 
+        isDragging = false; 
+    });
+
+    container.addEventListener("touchstart", (e) => {
+        if (e.target.closest(".painel-legenda-lateral")) {
+            return;
+        }
+
+        if (e.targetTouches.length === 1) {
+            isDragging = true;
+            startX = e.targetTouches[0].clientX - pointX;
+            startY = e.targetTouches[0].clientY - pointY;
+
+        } else if (e.targetTouches.length === 2) {
+            isDragging = false;
+            initialDistance = getDistance(e.targetTouches);
+            initialScale = scale;
+
+            const rect = container.getBoundingClientRect();
+
+            focalPointX =
+                ((e.targetTouches[0].clientX + e.targetTouches[1].clientX) / 2)
+                - rect.left;
+
+            focalPointY =
+                ((e.targetTouches[0].clientY + e.targetTouches[1].clientY) / 2)
+                - rect.top;
+        }
+
+    }, { passive: false });
+
+    container.addEventListener("touchmove", (e) => {
+        if (e.target.closest(".painel-legenda-lateral")) {
+            return;
+        }
+
+        if (e.targetTouches.length === 1 && isDragging) {
+            pointX = e.targetTouches[0].clientX - startX;
+            pointY = e.targetTouches[0].clientY - startY;
+            atualizarTransformacao();
+
+        } else if (e.targetTouches.length === 2) {
+            const currentDistance = getDistance(e.targetTouches);
+
+            if (initialDistance > 0) {
+                const zoomFactor = currentDistance / initialDistance;
+                let newScale = Math.min(
+                    Math.max(initialScale * zoomFactor, 0.2),
+                    3.0
+                );
+
+                pointX = focalPointX -
+                    (focalPointX - pointX) * (newScale / scale);
+
+                pointY = focalPointY -
+                    (focalPointY - pointY) * (newScale / scale);
+
+                scale = newScale;
+
+                atualizarTransformacao();
+            }
+        }
+
+    }, { passive: false });
 
     container.addEventListener("touchend", (e) => {
         if (e.targetTouches.length < 2) {
