@@ -86,11 +86,11 @@ const dadosPark = {
             { id: "atracao_tel_est1", nome: "EST.1 VILA ANIMALIA", tipo: "ATRAÇÕES", legendaNome: "ESTAÇÃO TELEFÉRICO", area: "Embarca e se divirta com a paisagem", desc: "🚠 Estação Teleférico (Vai e Volta ou só vai)", icone: "icons/estacao.png", categoria: "atracao", top: 20, left: 53 },
 
             // Zoológico / Animais
-            { id: "zoo_zebra", nome: "ZEBRA", tipo: "RESERVA", legendaNome: "ZEBRA", area: "Animalia Reserva", desc: "Recinto", icone: "icons/zebra.png", categoria: "animais", top: 35, left: 52  },
-            { id: "zoo_girafa", nome: "GIRAFA", tipo: "RESERVA", legendaNome: "GIRAFA", area: "Animalia Reserva", desc: "Recinto", icone: "icons/girafa.png", categoria: "animais", top: 35, left: 55  },
-            { id: "zoo_ema", nome: "EMA", tipo: "RESERVA", legendaNome: "EMA", area: "Animalia Reserva", desc: "Recinto", icone: "icons/ema.png", categoria: "animais", top: 38, left: 50  },
-            { id: "zoo_leao", nome: "LEÃO", tipo: "RESERVA", legendaNome: "LEÃO", area: "Animalia Reserva", desc: "Recinto", icone: "icons/leao.png", categoria: "animais", top: 44, left: 38.5 },
-            { id: "zoo_onça", nome: "ONÇA-PINTADA", tipo: "RESERVA", legendaNome: "ONÇA-PINTADA", area: "Animalia Reserva", desc: "Recinto", icone: "icons/onca.png", categoria: "animais", top: 51, left: 29 },
+            { id: "zoo_zebra", nome: "ZEBRA", tipo: "AMBIENTE: SAVANA", legendaNome: "ZEBRA", area: "Animalia Reserva", desc: "Recinto", icone: "icons/zebra.png", categoria: "animais", top: 35, left: 52  },
+            { id: "zoo_girafa", nome: "GIRAFA", tipo: "AMBIENTE: SAVANA", legendaNome: "GIRAFA", area: "Animalia Reserva", desc: "Recinto", icone: "icons/girafa.png", categoria: "animais", top: 35, left: 55  },
+            { id: "zoo_ema", nome: "EMA", tipo: "AMBIENTE: SAVANA", legendaNome: "EMA", area: "Animalia Reserva", desc: "Recinto", icone: "icons/ema.png", categoria: "animais", top: 38, left: 50  },
+            { id: "zoo_leao", nome: "LEÃO", tipo: "AMBIENTE: SAVANA", legendaNome: "LEÃO", area: "Animalia Reserva", desc: "Recinto", icone: "icons/leao.png", categoria: "animais", top: 44, left: 38.5 },
+            { id: "zoo_onça", nome: "ONÇA-PINTADA", tipo: "AMBIENTE: SAVANA", legendaNome: "ONÇA-PINTADA", area: "Animalia Reserva", desc: "Recinto", icone: "icons/onca.png", categoria: "animais", top: 51, left: 29 },
             { id: "zoo_aviário", nome: "AVIÁRIO", tipo: "RESERVA", legendaNome: "AVIÁRIO", area: "Animalia Reserva", desc: "Recinto", icone: "icons/aviario.png", categoria: "animais", top: 60, left: 35 },
             { id: "zoo_macaranha", nome: "MACACO-ARANHA", tipo: "RESERVA", legendaNome: "MACACO-ARANHA", area: "Animalia Reserva", desc: "Recinto", icone: "icons/macacoaranha.png", categoria: "animais", top: 57, left: 39 },
             { id: "zoo_sucuarana", nome: "SUÇUARANA", tipo: "RESERVA", legendaNome: "SUÇUARANA", area: "Animalia Reserva", desc: "Recinto", icone: "icons/sucuarana.png", categoria: "animais", top: 64, left: 43 },
@@ -106,7 +106,7 @@ const dadosPark = {
             { id: "zoo_rino", nome: "RINOCERONTE", tipo: "RESERVA", legendaNome: "RINOCERONTE", area: "Animalia Reserva", desc: "Recinto", icone: "icons/rino.png", categoria: "animais", top: 72, left: 74 },
             { id: "zoo_drome", nome: "DROMEDARIO", tipo: "RESERVA", legendaNome: "DROMEDARIO", area: "Animalia Reserva", desc: "Recinto", icone: "icons/dromedario.png", categoria: "animais", top: 45, left: 70 },
             { id: "zoo_canguru", nome: "CANGURU", tipo: "RESERVA", legendaNome: "CANGURU", area: "Animalia Reserva", desc: "Recinto", icone: "icons/canguru.png", categoria: "animais", top: 43, left: 75 },
-            { id: "zoo_aviario2", nome: "AVIARIO 2", tipo: "RESERVA", legendaNome: "AVIARIO 2", area: "Animalia Reserva", desc: "Recinto", icone: "icons/aviario2.png", categoria: "animais",  top: 23, left: 59 }
+            { id: "zoo_aviario2", nome: "AVES EXÓTICAS", tipo: "RESERVA", legendaNome: "AVIARIO 2", area: "Animalia Reserva", desc: "Recinto", icone: "icons/aviario2.png", categoria: "animais",  top: 23, left: 59 }
         ]
     }
 };
