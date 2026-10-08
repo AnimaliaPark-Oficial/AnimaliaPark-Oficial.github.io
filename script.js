@@ -481,24 +481,24 @@ function fecharAoClicarFora(event) {
 function renderizarPontos(categoriaFiltro) {
     const camada = document.getElementById("camadaPontos");
     if (!camada) {
-        console.error("ERRO: Elemento com ID 'camadaPontos' não foi encontrado no HTML!");
+        console.error("ERRO: Elemento #camadaPontos não encontrado!");
         return;
     }
     
-    // Limpa os pontos anteriores
+    // Limpa todos os pontos anteriores do mapa
     camada.innerHTML = "";
 
-    // Mantém o marcador do usuário se existir
+    // REINSERE O MARCADOR DO GPS PARA ELE NÃO SUMIR
     if (typeof marcadorUsuario !== 'undefined' && marcadorUsuario) {
         camada.appendChild(marcadorUsuario);
     }
 
     const pontosDaLegenda = [];
 
-    // Valida se os dados existem
+    // Valida se os dados do parque existem
     if (window.dadosPark && dadosPark.reserva && dadosPark.reserva.pontos) {
         dadosPark.reserva.pontos.forEach(ponto => {
-            // Compara a categoria do ponto com o filtro clicado
+            // Se o filtro for 'todos' ou se a categoria bater exatamente
             if (categoriaFiltro === 'todos' || ponto.categoria === categoriaFiltro) {
                 const el = document.createElement("div");
                 el.className = "ponto";
@@ -522,7 +522,7 @@ function renderizarPontos(categoriaFiltro) {
         });
     }
 
-    // Atualiza a legenda lateral (verifique se essa função existe no seu código)
+    // Atualiza a legenda lateral com os itens filtrados
     if (typeof atualizarLegendaLateral === 'function') {
         atualizarLegendaLateral(pontosDaLegenda);
     }
