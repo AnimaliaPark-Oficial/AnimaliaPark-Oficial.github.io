@@ -114,8 +114,8 @@ const dadosPark = {
 
 let scale = 1, pointX = 0, pointY = 0, startX = 0, startY = 0, isDragging = false;
 let marcadorUsuario = null; // Guarda o elemento HTML do seu ponto de GPS no mapa
-let ultimaLatGps = null;   // Salva a última latitude para não perder ao trocar de filtro
-let ultimaLngGps = null;   // Salva a última longitude para não perder ao trocar de filtro
+let ultimaLatGps = null;   // Salva a última latitude para persistir ao trocar de filtro
+let ultimaLngGps = null;   // Salva a última longitude para persistir ao trocar de filtro
 
 // ==========================================
 // FUNÇÕES DE MAPA E INTERFACE
@@ -125,49 +125,6 @@ function atualizarTransformacao() {
     const mapa = document.getElementById("mapa");
     if (!mapa) return;
     mapa.style.transform = `translate(${pointX}px, ${pointY}px) scale(${scale})`;
-}
-
-function atualizarMarcadorGpsNoMapa(lat, lng) {
-    // Salva as últimas coordenadas conhecidas globalmente
-    ultimaLatGps = lat;
-    ultimaLngGps = lng;
-
-    const camadaPontos = document.getElementById('camadaPontos');
-    if (!camadaPontos) return;
-
-    criarOuAtualizarMarcadorGpsNaCamada(camadaPontos, lat, lng);
-}
-
-function criarOuAtualizarMarcadorGpsNaCamada(camada, lat, lng) {
-    let elementoMarcadorGps = camada.querySelector('.ponto-usuario-gps');
-
-    if (!elementoMarcadorGps) {
-        elementoMarcadorGps = document.createElement('div');
-        elementoMarcadorGps.className = 'ponto-usuario-gps';
-        elementoMarcadorGps.style.position = 'absolute';
-        elementoMarcadorGps.style.width = '24px';
-        elementoMarcadorGps.style.height = '24px';
-        elementoMarcadorGps.style.transform = 'translate(-50%, -50%)';
-        elementoMarcadorGps.style.zIndex = '9999';
-        elementoMarcadorGps.innerHTML = `
-            <div class="pulso-gps" style="position:absolute; width:36px; height:36px; background:rgba(0,122,255,0.4); border-radius:50%; top:50%; left:50%; transform:translate(-50%,-50%);"></div>
-            <div class="centro-gps" style="position:absolute; width:14px; height:14px; background:#007AFF; border:2px solid #fff; border-radius:50%; top:50%; left:50%; transform:translate(-50%,-50%);"></div>
-        `;
-        camada.appendChild(elementoMarcadorGps);
-    }
-
-    const coordsMapeadas = converterLatLonParaPorcentagem(lat, lng);
-    const imagemMapa = document.getElementById('imagemMapa');
-
-    if (imagemMapa && imagemMapa.clientWidth > 0) {
-        const posX = (coordsMapeadas.x / 100) * imagemMapa.clientWidth;
-        const posY = (coordsMapeadas.y / 100) * imagemMapa.clientHeight;
-        elementoMarcadorGps.style.left = `${posX}px`;
-        elementoMarcadorGps.style.top = `${posY}px`;
-    } else {
-        elementoMarcadorGps.style.left = `${coordsMapeadas.x}%`;
-        elementoMarcadorGps.style.top = `${coordsMapeadas.y}%`;
-    }
 }
 
 function atualizarLegendaLateral(pontos) {
@@ -305,23 +262,25 @@ function zoomOut() {
 }
 
 // ==========================================
-// GEOLOCALIZAÇÃO EM TEMPO REAL
+// GEOLOCALIZAÇÃO E MARCADOR DO USUÁRIO
 // ==========================================
 
 function iniciarGeolocalizacao() {
     if (!navigator.geolocation) {
-        console.log("Geolocalização não suportada pelo navegador.");
+        console.warn("Geolocalização não é suportada pelo seu navegador.");
         return;
     }
 
     navigator.geolocation.watchPosition(
-        (position) => {
-            const lat = position.coords.latitude;
-            const lng = position.coords.longitude;
-            atualizarMarcadorUsuario(lat, lng);
+        (posicao) => {
+            const latitude = posicao.coords.latitude;
+            const longitude = posicao.coords.longitude;
+            
+            console.log(`GPS atualizado: Lat ${latitude}, Lng ${longitude}`);
+            atualizarMarcadorGpsNoMapa(latitude, longitude);
         },
-        (error) => {
-            console.error("Erro no GPS: ", error.message);
+        (erro) => {
+            console.error("Erro ao obter geolocalização:", erro.message);
         },
         {
             enableHighAccuracy: true,
@@ -331,26 +290,70 @@ function iniciarGeolocalizacao() {
     );
 }
 
-function atualizarMarcadorUsuario(lat, lng) {
-    const camadaPontos = document.getElementById('camadaPontos');
-    if (!camadaPontos) return;
+function atualizarMarcadorGpsNoMapa(lat, lng) {
+    // Salva as coordenadas globalmente para reexibir caso a camada seja limpa (ex: filtros)
+    ultimaLatGps = lat;
+    ultimaLngGps = lng;
 
+    const camadaPontos = document.getElementById('camadaPontos');
+    const imagemMapa = document.getElementById('imagemMapa');
+    
+    if (!camadaPontos) {
+        console.error("Erro crítico: #camadaPontos não existe no HTML.");
+        return;
+    }
+
+    // Cria o marcador se ele não existir
     if (!marcadorUsuario) {
         marcadorUsuario = document.createElement('div');
         marcadorUsuario.className = 'ponto-usuario-gps';
-        marcadorUsuario.innerHTML = '<div class="pulso-gps"></div><div class="centro-gps"></div>';
+        marcadorUsuario.style.position = 'absolute';
+        marcadorUsuario.style.width = '24px';
+        marcadorUsuario.style.height = '24px';
+        marcadorUsuario.style.transform = 'translate(-50%, -50%)';
+        marcadorUsuario.style.zIndex = '9999';
+        marcadorUsuario.innerHTML = `
+            <div class="pulso-gps" style="position:absolute; width:36px; height:36px; background:rgba(0,122,255,0.4); border-radius:50%; top:50%; left:50%; transform:translate(-50%,-50%);"></div>
+            <div class="centro-gps" style="position:absolute; width:14px; height:14px; background:#007AFF; border:2px solid #fff; border-radius:50%; top:50%; left:50%; transform:translate(-50%,-50%);"></div>
+        `;
         camadaPontos.appendChild(marcadorUsuario);
+        console.log("Elemento GPS injetado com estilos diretos!");
+    } else {
+        // Garante que se a camada foi recriada/limpa, o marcador volta para dentro dela
+        if (!camadaPontos.contains(marcadorUsuario)) {
+            camadaPontos.appendChild(marcadorUsuario);
+        }
     }
 
-    const coords = converterLatLongParaPorcentagem(lat, lng);
+    const coordsMapeadas = converterLatLonParaPorcentagem(lat, lng);
 
-    marcadorUsuario.style.top = `${coords.top}%`;
-    marcadorUsuario.style.left = `${coords.left}%`;
+    if (imagemMapa && imagemMapa.clientWidth > 0) {
+        const posX = (coordsMapeadas.x / 100) * imagemMapa.clientWidth;
+        const posY = (coordsMapeadas.y / 100) * imagemMapa.clientHeight;
+        marcadorUsuario.style.left = `${posX}px`;
+        marcadorUsuario.style.top = `${posY}px`;
+    } else {
+        marcadorUsuario.style.left = `${coordsMapeadas.x}%`;
+        marcadorUsuario.style.top = `${coordsMapeadas.y}%`;
+    }
 }
 
-function converterLatLongParaPorcentagem(lat, lng) {
-    // ⚠️ ATENÇÃO: Aqui faremos a calibração real das coordenadas do parque posteriormente.
-    return { top: 50, left: 50 };
+// Função de conversão utilizando os seus limites exatos calibrados
+function converterLatLonParaPorcentagem(lat, lng) {
+    const latMin = -23.626065; // Inferior Direito (Sul)
+    const latMax = -23.619751; // Superior Esquerdo (Norte)
+    const lngMin = -46.970382; // Superior Esquerdo (Oeste)
+    const lngMax = -46.962582; // Inferior Direito (Leste)
+
+    let x = ((lng - lngMin) / (lngMax - lngMin)) * 100;
+    let y = ((latMax - lat) / (latMax - latMin)) * 100; 
+
+    console.log(`Posição calculada -> X: ${x.toFixed(1)}%, Y: ${y.toFixed(1)}%`);
+
+    x = Math.max(0, Math.min(100, x));
+    y = Math.max(0, Math.min(100, y));
+
+    return { x, y };
 }
 
 // ==========================================
@@ -370,15 +373,13 @@ function getDistance(touches) {
 
 document.addEventListener("DOMContentLoaded", () => {
     inicializarMapa();
-    iniciarGeolocalizacao(); // <--- Rastreamento de GPS iniciado junto com a página
+    iniciarGeolocalizacao();
 
     const container = document.getElementById("mapaContainer");
     if (!container) return;
 
     container.addEventListener("mousedown", (e) => {
-        if (e.target.closest(".painel-legenda-lateral")) {
-            return;
-        }
+        if (e.target.closest(".painel-legenda-lateral")) return;
 
         isDragging = true; 
         startX = e.clientX - pointX; 
@@ -399,65 +400,44 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     container.addEventListener("touchstart", (e) => {
-        if (e.target.closest(".painel-legenda-lateral")) {
-            return;
-        }
+        if (e.target.closest(".painel-legenda-lateral")) return;
 
         if (e.targetTouches.length === 1) {
             isDragging = true;
             startX = e.targetTouches[0].clientX - pointX;
             startY = e.targetTouches[0].clientY - pointY;
-
         } else if (e.targetTouches.length === 2) {
             isDragging = false;
             initialDistance = getDistance(e.targetTouches);
             initialScale = scale;
 
             const rect = container.getBoundingClientRect();
-
-            focalPointX =
-                ((e.targetTouches[0].clientX + e.targetTouches[1].clientX) / 2)
-                - rect.left;
-
-            focalPointY =
-                ((e.targetTouches[0].clientY + e.targetTouches[1].clientY) / 2)
-                - rect.top;
+            focalPointX = ((e.targetTouches[0].clientX + e.targetTouches[1].clientX) / 2) - rect.left;
+            focalPointY = ((e.targetTouches[0].clientY + e.targetTouches[1].clientY) / 2) - rect.top;
         }
-
     }, { passive: false });
 
     container.addEventListener("touchmove", (e) => {
-        if (e.target.closest(".painel-legenda-lateral")) {
-            return;
-        }
+        if (e.target.closest(".painel-legenda-lateral")) return;
 
         if (e.targetTouches.length === 1 && isDragging) {
             pointX = e.targetTouches[0].clientX - startX;
             pointY = e.targetTouches[0].clientY - startY;
             atualizarTransformacao();
-
         } else if (e.targetTouches.length === 2) {
             const currentDistance = getDistance(e.targetTouches);
 
             if (initialDistance > 0) {
                 const zoomFactor = currentDistance / initialDistance;
-                let newScale = Math.min(
-                    Math.max(initialScale * zoomFactor, 0.2),
-                    3.0
-                );
+                let newScale = Math.min(Math.max(initialScale * zoomFactor, 0.2), 3.0);
 
-                pointX = focalPointX -
-                    (focalPointX - pointX) * (newScale / scale);
-
-                pointY = focalPointY -
-                    (focalPointY - pointY) * (newScale / scale);
-
+                pointX = focalPointX - (focalPointX - pointX) * (newScale / scale);
+                pointY = focalPointY - (focalPointY - pointY) * (newScale / scale);
                 scale = newScale;
 
                 atualizarTransformacao();
             }
         }
-
     }, { passive: false });
 
     container.addEventListener("touchend", (e) => {
@@ -479,8 +459,9 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // ==========================================
-// FUNÇÃO DA LEGENDA LATERAL
+// FUNÇÕES AUXILIARES DE UI
 // ==========================================
+
 function toggleLegenda() {
     const painel = document.querySelector('.painel-legenda-lateral');
     if (painel) {
@@ -488,99 +469,6 @@ function toggleLegenda() {
     }
 }
 
-// Variável para armazenar o elemento do marcador de GPS do usuário
-let elementoMarcadorGps = null;
-
-function iniciarGeolocalizacao() {
-    if (!navigator.geolocation) {
-        console.warn("Geolocalização não é suportada pelo seu navegador.");
-        return;
-    }
-
-    navigator.geolocation.watchPosition(
-        (posicao) => {
-            const latitude = posicao.coords.latitude;
-            const longitude = posicao.coords.longitude;
-            
-            console.log(`GPS atualizado: Lat ${latitude}, Lng ${longitude}`);
-            
-            // Chama a função exata que desenha o marcador na tela
-            atualizarMarcadorGpsNoMapa(latitude, longitude);
-        },
-        (erro) => {
-            console.error("Erro ao obter geolocalização:", erro.message);
-        },
-        {
-            enableHighAccuracy: true,
-            maximumAge: 10000,
-            timeout: 20000
-        }
-    );
-}
-
-function atualizarMarcadorGpsNoMapa(lat, lng) {
-    const camadaPontos = document.getElementById('camadaPontos');
-    const imagemMapa = document.getElementById('imagemMapa');
-    
-    if (!camadaPontos) {
-        console.error("Erro crítico: #camadaPontos não existe no HTML.");
-        return;
-    }
-
-    // Cria o marcador se ele não existir
-    if (!elementoMarcadorGps) {
-        elementoMarcadorGps = document.createElement('div');
-        elementoMarcadorGps.className = 'ponto-usuario-gps';
-        // Estilo inline direto para garantir visibilidade visual imediata
-        elementoMarcadorGps.style.position = 'absolute';
-        elementoMarcadorGps.style.width = '24px';
-        elementoMarcadorGps.style.height = '24px';
-        elementoMarcadorGps.style.transform = 'translate(-50%, -50%)';
-        elementoMarcadorGps.style.zIndex = '9999';
-        elementoMarcadorGps.innerHTML = `
-            <div class="pulso-gps" style="position:absolute; width:36px; height:36px; background:rgba(0,122,255,0.4); border-radius:50%; top:50%; left:50%; transform:translate(-50%,-50%);"></div>
-            <div class="centro-gps" style="position:absolute; width:14px; height:14px; background:#007AFF; border:2px solid #fff; border-radius:50%; top:50%; left:50%; transform:translate(-50%,-50%);"></div>
-        `;
-        camadaPontos.appendChild(elementoMarcadorGps);
-        console.log("Elemento GPS injetado com estilos diretos!");
-    }
-
-    const coordsMapeadas = converterLatLonParaPorcentagem(lat, lng);
-
-    // Se a imagem tiver tamanho carregado, usa pixels; senão, usa porcentagem pura
-    if (imagemMapa && imagemMapa.clientWidth > 0) {
-        const posX = (coordsMapeadas.x / 100) * imagemMapa.clientWidth;
-        const posY = (coordsMapeadas.y / 100) * imagemMapa.clientHeight;
-        elementoMarcadorGps.style.left = `${posX}px`;
-        elementoMarcadorGps.style.top = `${posY}px`;
-    } else {
-        elementoMarcadorGps.style.left = `${coordsMapeadas.x}%`;
-        elementoMarcadorGps.style.top = `${coordsMapeadas.y}%`;
-    }
-}
-
-// Função de conversão utilizando os seus limites exatos calibrados
-function converterLatLonParaPorcentagem(lat, lng) {
-    const latMin = -23.626065; // Inferior Direito (Sul)
-    const latMax = -23.619751; // Superior Esquerdo (Norte)
-    const lngMin = -46.970382; // Superior Esquerdo (Oeste)
-    const lngMax = -46.962582; // Inferior Direito (Leste)
-
-    // Cálculo proporcional
-    let x = ((lng - lngMin) / (lngMax - lngMin)) * 100;
-    let y = ((latMax - lat) / (latMax - latMin)) * 100; 
-
-    // MOSTRE NO CONSOLE ONDE O PONTO ESTÁ A TENTAR FICAR:
-    console.log(`Posição calculada -> X: ${x.toFixed(1)}%, Y: ${y.toFixed(1)}%`);
-
-    // Garante que o marcador fique confinado dentro da imagem (0 a 100%)
-    x = Math.max(0, Math.min(100, x));
-    y = Math.max(0, Math.min(100, y));
-
-    return { x, y };
-}
-
-// Função auxiliar para evitar o erro do clique fora (modal)
 function fecharAoClicarFora(event) {
     const janela = document.getElementById('janelaLocal');
     if (event.target === janela) {
@@ -588,3 +476,16 @@ function fecharAoClicarFora(event) {
     }
 }
 
+function renderizarPontos(categoriaFiltro) {
+    const camada = document.getElementById("camadaPontos");
+    if (!camada) return;
+    
+    camada.innerHTML = ""; // Limpa os pontos antigos
+
+    // REINSERE O MARCADOR DO GPS PARA ELE NÃO SUMIR AO TROCAR DE FILTRO
+    if (marcadorUsuario) {
+        camada.appendChild(marcadorUsuario);
+    }
+
+    // ... restante do código que desenha os pontos do parque ...
+}
