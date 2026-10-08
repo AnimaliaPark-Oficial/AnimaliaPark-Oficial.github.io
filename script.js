@@ -111,262 +111,44 @@ const dadosPark = {
         ]
     }
 };
-
-let scale = 1, pointX = 0, pointY = 0, startX = 0, startY = 0, isDragging = false;
-let marcadorUsuario = null; // Guarda o elemento HTML do seu ponto de GPS no mapa
-let ultimaLatGps = null;   // Salva a última latitude para persistir ao trocar de filtro
-let ultimaLngGps = null;   // Salva a última longitude para persistir ao trocar de filtro
-
 // ==========================================
-// FUNÇÕES DE MAPA E INTERFACE
+// VARIÁVEis GLOBAIS DE CONTROLE DO MAPA
 // ==========================================
-
-function atualizarTransformacao() {
-    const mapa = document.getElementById("mapa");
-    if (!mapa) return;
-    mapa.style.transform = `translate(${pointX}px, ${pointY}px) scale(${scale})`;
-}
-
-function atualizarLegendaLateral(pontos) {
-    const containerLegenda = document.getElementById("conteudoLegendaLateral");
-    if (!containerLegenda) return;
-    containerLegenda.innerHTML = "";
-
-    pontos.forEach(ponto => {
-        const item = document.createElement("div");
-        item.className = "item-legenda-visual";
-        item.style.cursor = "pointer";
-        item.style.padding = "4px 0";
-        item.style.alignItems = "center";
-        item.style.display = "flex";
-        item.style.gap = "8px";
-        
-        const textoLegenda = ponto.legendaNome || ponto.nome;
-        item.innerHTML = `<img src="${ponto.icone}" alt="${textoLegenda}" style="width: 20px; height: 20px; object-fit: contain;"> <span>${textoLegenda}</span>`;
-
-        item.onclick = () => {
-            focarNoPonto(ponto.top, ponto.left);
-            abrirLocal(ponto);
-        };
-
-        containerLegenda.appendChild(item);
-    });
-}
-
-function focarNoPonto(topPercent, leftPercent) {
-    const container = document.getElementById("mapaContainer");
-    const imgMapa = document.getElementById("imagemMapa");
-    const mapaWrapper = document.getElementById("mapa");
-    
-    if (!container || !imgMapa) return;
-
-    scale = 1.2; 
-    atualizarTransformacao();
-
-    const realWidth = imgMapa.naturalWidth * scale;
-    const realHeight = imgMapa.naturalHeight * scale;
-    const containerWidth = container.clientWidth;
-    const containerHeight = container.clientHeight;
-
-    const pontoXPx = (leftPercent / 100) * realWidth;
-    const pontoYPx = (topPercent / 100) * realHeight;
-
-    pointX = (containerWidth / 2) - pontoXPx;
-    pointY = (containerHeight / 2) - pontoYPx;
-
-    mapaWrapper.style.transition = "transform 0.4s ease-in-out";
-    atualizarTransformacao();
-
-    setTimeout(() => {
-        mapaWrapper.style.transition = "none";
-    }, 400);
-}
-
-function atualizarLegendaHorizontal() {
-    const lista = document.getElementById("legendaListaHorizontal");
-    if (!lista) return;
-    lista.innerHTML = "";
-
-    dadosPark.reserva.categoriasLegenda.forEach((cat, index) => {
-        const li = document.createElement("li");
-        li.className = "filtro-item" + (index === 0 ? " active" : "");
-        li.innerText = cat.texto;
-
-        li.onclick = () => {
-            document.querySelectorAll('.filtro-item').forEach(el => el.classList.remove('active'));
-            li.classList.add('active');
-            renderizarPontos(cat.id);
-        };
-        lista.appendChild(li);
-    });
-}
-
-function resetZoom() {
-    const container = document.getElementById("mapaContainer");
-    const imgMapa = document.getElementById("imagemMapa");
-    const mapaWrapper = document.getElementById("mapa");
-    
-    if (!container || !imgMapa || !imgMapa.naturalWidth || imgMapa.naturalWidth === 0) return;
-
-    const realWidth = imgMapa.naturalWidth;
-    const realHeight = imgMapa.naturalHeight;
-    mapaWrapper.style.width = realWidth + "px";
-    mapaWrapper.style.height = realHeight + "px";
-
-    const containerWidth = container.clientWidth;
-    const containerHeight = container.clientHeight;
-    
-    if (containerWidth === 0 || containerHeight === 0) return;
-
-    scale = Math.min(containerWidth / realWidth, containerHeight / realHeight);
-    pointX = (containerWidth - realWidth * scale) / 2;
-    pointY = (containerHeight - realHeight * scale) / 2;
-    atualizarTransformacao();
-}
-
-function inicializarMapa() {
-    const imgMapa = document.getElementById("imagemMapa");
-    if (!imgMapa) return;
-    imgMapa.onload = () => { 
-        resetZoom(); 
-        // Mude aqui se quiser que abra mostrando TUDO de início, 
-        // ou mantendo a primeira categoria. Vamos usar 'todos' ou a primeira:
-        renderizarPontos('todos'); // Carrega tudo por padrão para você ver seus itens!
-    };
-    imgMapa.src = dadosPark.reserva.imagem;
-    if (imgMapa.complete && imgMapa.naturalWidth !== 0) { imgMapa.onload(); }
-    atualizarLegendaHorizontal();
-}
-
-function abrirLocal(ponto) {
-    const elTipo = document.getElementById("tipoLocal");
-    if (elTipo) {
-        elTipo.innerText = ponto.tipo || "LOCAL";
-    }
-    document.getElementById("nomeLocal").innerText = ponto.nome;
-    document.getElementById("areaLocal").innerText = ponto.area;
-    document.getElementById("descricaoLocal").innerHTML = ponto.desc;
-    document.getElementById("janelaLocal").classList.add("ativa");
-}
-
-function fecharLocal() { 
-    document.getElementById("janelaLocal").classList.remove("ativa"); 
-}
-
-function zoomIn() { 
-    scale = Math.min(scale + 0.25, 3.0); 
-    atualizarTransformacao(); 
-}
-
-function zoomOut() { 
-    scale = Math.max(scale - 0.25, 0.2); 
-    atualizarTransformacao(); 
-}
-
-// ==========================================
-// GEOLOCALIZAÇÃO E MARCADOR DO USUÁRIO
-// ==========================================
-
-function iniciarGeolocalizacao() {
-    if (!navigator.geolocation) {
-        console.warn("Geolocalização não é suportada pelo seu navegador.");
-        return;
-    }
-
-    navigator.geolocation.watchPosition(
-        (posicao) => {
-            const latitude = posicao.coords.latitude;
-            const longitude = posicao.coords.longitude;
-            
-            console.log(`GPS atualizado: Lat ${latitude}, Lng ${longitude}`);
-            atualizarMarcadorGpsNoMapa(latitude, longitude);
-        },
-        (erro) => {
-            console.error("Erro ao obter geolocalização:", erro.message);
-        },
-        {
-            enableHighAccuracy: true,
-            maximumAge: 10000,
-            timeout: 20000
-        }
-    );
-}
-
-function atualizarMarcadorGpsNoMapa(lat, lng) {
-    // Salva as coordenadas globalmente para reexibir caso a camada seja limpa (ex: filtros)
-    ultimaLatGps = lat;
-    ultimaLngGps = lng;
-
-    const camadaPontos = document.getElementById('camadaPontos');
-    const imagemMapa = document.getElementById('imagemMapa');
-    
-    if (!camadaPontos) {
-        console.error("Erro crítico: #camadaPontos não existe no HTML.");
-        return;
-    }
-
-    // Cria o marcador se ele não existir
-    if (!marcadorUsuario) {
-        marcadorUsuario = document.createElement('div');
-        marcadorUsuario.className = 'ponto-usuario-gps';
-        marcadorUsuario.style.position = 'absolute';
-        marcadorUsuario.style.width = '24px';
-        marcadorUsuario.style.height = '24px';
-        marcadorUsuario.style.transform = 'translate(-50%, -50%)';
-        marcadorUsuario.style.zIndex = '9999';
-        marcadorUsuario.innerHTML = `
-            <div class="pulso-gps" style="position:absolute; width:36px; height:36px; background:rgba(0,122,255,0.4); border-radius:50%; top:50%; left:50%; transform:translate(-50%,-50%);"></div>
-            <div class="centro-gps" style="position:absolute; width:14px; height:14px; background:#007AFF; border:2px solid #fff; border-radius:50%; top:50%; left:50%; transform:translate(-50%,-50%);"></div>
-        `;
-        camadaPontos.appendChild(marcadorUsuario);
-        console.log("Elemento GPS injetado com estilos diretos!");
-    } else {
-        // Garante que se a camada foi recriada/limpa, o marcador volta para dentro dela
-        if (!camadaPontos.contains(marcadorUsuario)) {
-            camadaPontos.appendChild(marcadorUsuario);
-        }
-    }
-
-    const coordsMapeadas = converterLatLonParaPorcentagem(lat, lng);
-
-    if (imagemMapa && imagemMapa.clientWidth > 0) {
-        const posX = (coordsMapeadas.x / 100) * imagemMapa.clientWidth;
-        const posY = (coordsMapeadas.y / 100) * imagemMapa.clientHeight;
-        marcadorUsuario.style.left = `${posX}px`;
-        marcadorUsuario.style.top = `${posY}px`;
-    } else {
-        marcadorUsuario.style.left = `${coordsMapeadas.x}%`;
-        marcadorUsuario.style.top = `${coordsMapeadas.y}%`;
-    }
-}
-
-// Função de conversão utilizando os seus limites exatos calibrados
-function converterLatLonParaPorcentagem(lat, lng) {
-    const latMin = -23.626065; // Inferior Direito (Sul)
-    const latMax = -23.619751; // Superior Esquerdo (Norte)
-    const lngMin = -46.970382; // Superior Esquerdo (Oeste)
-    const lngMax = -46.962582; // Inferior Direito (Leste)
-
-    let x = ((lng - lngMin) / (lngMax - lngMin)) * 100;
-    let y = ((latMax - lat) / (latMax - latMin)) * 100; 
-
-    console.log(`Posição calculada -> X: ${x.toFixed(1)}%, Y: ${y.toFixed(1)}%`);
-
-    x = Math.max(0, Math.min(100, x));
-    y = Math.max(0, Math.min(100, y));
-
-    return { x, y };
-}
-
-// ==========================================
-// EVENTOS DE GESTO E ARRASTO (MOUSE & TOUCH)
-// ==========================================
+let pointX = 0;
+let pointY = 0;
+let scale = 1;
+let isDragging = false;
+let startX = 0;
+let startY = 0;
 
 let initialDistance = 0;
 let initialScale = 1;
 let focalPointX = 0;
 let focalPointY = 0;
 
+let marcadorUsuario = null; // Referência para o marcador de GPS
+let pontosDaLegenda = [];  // Array para armazenar os pontos da legenda lateral
+
+// ==========================================
+// FUNÇÕES DE TRANSFORMAÇÃO E ZOOM
+// ==========================================
+function atualizarTransformacao() {
+    const conteudoMapa = document.getElementById("conteudoMapa");
+    if (conteudoMapa) {
+        conteudoMapa.style.transform = `translate(${pointX}px, ${pointY}px) scale(${scale})`;
+    }
+}
+
+function resetZoom() {
+    scale = 1;
+    pointX = 0;
+    pointY = 0;
+    atualizarTransformacao();
+}
+
+// ==========================================
+// EVENTOS DE GESTO E ARRASTO (MOUSE & TOUCH)
+// ==========================================
 function getDistance(touches) {
     const dx = touches[0].clientX - touches[1].clientX;
     const dy = touches[0].clientY - touches[1].clientY;
@@ -374,12 +156,13 @@ function getDistance(touches) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-    inicializarMapa();
-    iniciarGeolocalizacao();
+    if (typeof inicializarMapa === 'function') inicializarMapa();
+    if (typeof iniciarGeolocalizacao === 'function') iniciarGeolocalizacao();
 
     const container = document.getElementById("mapaContainer");
     if (!container) return;
 
+    // --- MOUSE EVENTS (Desktop) ---
     container.addEventListener("mousedown", (e) => {
         if (e.target.closest(".painel-legenda-lateral")) return;
 
@@ -401,6 +184,7 @@ document.addEventListener("DOMContentLoaded", () => {
         isDragging = false; 
     });
 
+    // --- TOUCH EVENTS (Mobile - Arraste e Zoom por Pinça) ---
     container.addEventListener("touchstart", (e) => {
         if (e.target.closest(".painel-legenda-lateral")) return;
 
@@ -451,6 +235,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
+    // --- RESPONSIVIDADE DE TELA ---
     let lastWidth = window.innerWidth;
     window.addEventListener("resize", () => {
         if (window.innerWidth !== lastWidth) {
@@ -461,7 +246,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // ==========================================
-// FUNÇÕES AUXILIARES DE UI
+// FUNÇÕES AUXILIARES DE UI E FILTROS
 // ==========================================
 
 function toggleLegenda() {
@@ -473,7 +258,7 @@ function toggleLegenda() {
 
 function fecharAoClicarFora(event) {
     const janela = document.getElementById('janelaLocal');
-    if (event.target === janela) {
+    if (janela && event.target === janela) {
         janela.classList.remove('ativa');
     }
 }
@@ -482,18 +267,21 @@ function renderizarPontos(categoriaFiltro) {
     const camada = document.getElementById("camadaPontos");
     if (!camada) return;
 
-    // Guarda o marcador do GPS temporariamente antes de limpar a camada
+    // 1. Guarda o marcador do GPS temporariamente antes de limpar a camada
     let tempGps = marcadorUsuario;
 
-    // Limpa a camada inteira
+    // 2. Limpa a camada inteira
     camada.innerHTML = "";
 
-    // Devolve o marcador do GPS para a camada
+    // 3. Reseta o array da legenda para evitar duplicações ao filtrar
+    pontosDaLegenda = [];
+
+    // 4. Devolve o marcador do GPS para a camada, se ele existir
     if (tempGps) {
         camada.appendChild(tempGps);
     }
 
-    // Desenha os pontos filtrados do parque
+    // 5. Desenha os pontos filtrados do parque
     if (window.dadosPark && dadosPark.reserva && dadosPark.reserva.pontos) {
         dadosPark.reserva.pontos.forEach(ponto => {
             if (categoriaFiltro === 'todos' || ponto.categoria === categoriaFiltro) {
@@ -514,12 +302,14 @@ function renderizarPontos(categoriaFiltro) {
                 };
 
                 camada.appendChild(el);
-             pontosDaLegenda.push(ponto);
+                
+                // Adiciona ao array para alimentar a legenda lateral
+                pontosDaLegenda.push(ponto);
             }
         });
     }
 
-    // Atualiza a legenda lateral com os itens filtrados
+    // 6. Atualiza a legenda lateral com os itens devidamente filtrados
     if (typeof atualizarLegendaLateral === 'function') {
         atualizarLegendaLateral(pontosDaLegenda);
     }
