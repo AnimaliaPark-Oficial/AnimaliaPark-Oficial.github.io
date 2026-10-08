@@ -164,8 +164,8 @@
         }
 
         /* ========================================================
-            CAIXA DE LEGENDA FLUTUANTE EM LISTA SUSPENSA (CORRIGIDO)
-            ======================================================== */
+           CAIXA DE LEGENDA FLUTUANTE EM LISTA SUSPENSA (CORRIGIDO)
+           ======================================================== */
         .painel-legenda-lateral {
             position: absolute;
             top: 15px;
@@ -174,11 +174,11 @@
             border-radius: 12px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
             z-index: 60;
-            max-width: 260px;
-            min-width: 180px;
+            width: 260px;
             backdrop-filter: blur(5px);
-            /* Impede que o painel flutuante ultrapasse a altura visível do ecrã */
-            max-height: calc(100vh - 130px);
+            
+            /* Trava a altura máxima total que o painel pode ocupar na tela do celular */
+            max-height: calc(100vh - 120px);
             display: flex;
             flex-direction: column;
         }
@@ -188,7 +188,7 @@
             flex-direction: column;
             width: 100%;
             max-height: 100%;
-            overflow: hidden; /* Trava qualquer transbordo nas bordas arredondadas */
+            overflow: hidden;
         }
 
         .legenda-detalhes summary {
@@ -226,14 +226,19 @@
             display: none;
         }
 
-        /* Corpo da legenda com rolagem vertical rígida */
+        /* Corpo da legenda com rolagem vertical rígida e limite de ~5 itens */
         .legenda-corpo-conteudo {
             padding: 0 12px 12px 12px;
             border-top: 1px solid #ddd;
             margin-top: 2px;
-            overflow-y: auto !important; /* Força a barra de rolagem vertical */
+            
+            /* Altura exata para exibir cerca de 5 itens (aproximadamente 170px) antes do scroll */
+            max-height: 170px !important;
+            min-height: 50px;
+            
+            overflow-y: auto !important; 
             overflow-x: hidden;
-            flex-grow: 1;                /* Ocupa o espaço restante interno com scroll */
+            flex-shrink: 1;
         }
 
         .legenda-corpo-conteudo::-webkit-scrollbar {
@@ -243,6 +248,10 @@
         .legenda-corpo-conteudo::-webkit-scrollbar-thumb {
             background: #8C1B91;
             border-radius: 4px;
+        }
+
+        .legenda-corpo-conteudo::-webkit-scrollbar-track {
+            background: #eee;
         }
 
         .item-legenda-visual {
@@ -403,6 +412,6 @@
         </div>
     </div>
 
-    <script src="script.js?v=2"></script>
+    <script src="script.js"></script>
 </body>
 </html>
