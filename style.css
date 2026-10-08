@@ -3,7 +3,6 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    -webkit-tap-highlight-color: transparent;
 }
 
 body, html {
@@ -14,97 +13,112 @@ body, html {
     background-color: #121212;
 }
 
-/* Topo Roxo Escuro (#4A154B) */
+/* Cabeçalho roxo escuro idêntico à referência */
 .header-animalia {
-    height: 45px;
+    height: 75px;
     background-color: #4A154B;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     position: relative;
+    padding: 0 15px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
     z-index: 100;
 }
 
-/* Barra de Filtros Roxo Claro (#8C1B91) */
-.filtros-superior-container {
-    height: 55px;
-    background-color: #8C1B91;
+.logo-container {
+    height: 50px;
     display: flex;
     align-items: center;
+    position: absolute;
+    top: 5px;
+    z-index: 10;
+}
+
+.logo-central {
+    height: 100%;
+    object-fit: contain;
+}
+
+/* Esconde a caixa de texto antiga se não for usada no topo */
+.titulo-caixa-texto {
+    display: none;
+}
+
+/* Barra de filtros superior com a faixa roxa e botões em pílula */
+.filtros-superior-container {
+    height: 60px;
+    background-color: #8C1B91;
+    border-bottom: 1px solid #5d1279;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     padding: 0 15px;
     z-index: 90;
-    position: relative;
     overflow-x: auto;
-    scroll-behavior: smooth;
-    -webkit-overflow-scrolling: touch;
 }
 
 .filtros-superior-container::-webkit-scrollbar {
     display: none;
 }
 
-/* Logotipo Flutuante 3D sobreposto */
-.logo-container-central {
-    position: absolute;
-    top: 15px;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 110;
-    height: 55px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    pointer-events: none;
-}
-
-.logo-central-3d {
-    height: 55px;
-    width: auto;
-    object-fit: contain;
-    filter: drop-shadow(0px 4px 6px rgba(0, 0, 0, 0.4));
-}
-
-/* Lista de Filtros Estilo Pílula */
+/* Lista de filtros na horizontal estilo botão/pílula */
 .legenda-lista-horizontal {
     display: flex;
-    gap: 10px;
+    gap: 12px;
     list-style: none;
-    padding: 0 10px;
-    margin: 0 auto;
+    padding: 0;
+    margin: 0;
     align-items: center;
-    white-space: nowrap;
 }
 
-.filtro-item {
+.legenda-lista-horizontal .filtro-item {
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: 8px;
     background: transparent;
     border: 2px solid transparent;
-    padding: 8px 16px;
-    border-radius: 20px;
+    padding: 8px 20px;
+    border-radius: 30px;
     cursor: pointer;
     font-size: 13px;
     font-weight: bold;
     color: #ffffff;
+    white-space: nowrap;
     letter-spacing: 0.5px;
     transition: all 0.2s ease;
-    user-select: none;
 }
 
-.filtro-item.active {
+.legenda-lista-horizontal .filtro-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* Item Ativo */
+.legenda-lista-horizontal .filtro-item.active {
     background: #ffffff;
     color: #7b1fa2;
     box-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }
 
-/* Layout principal do mapa */
+/* Tamanho dos ícones nos botões */
+.legenda-lista-horizontal .filtro-item img {
+    width: 18px !important;
+    height: 18px !important;
+    object-fit: contain;
+}
+
+/* Layout principal */
 .layout-principal {
     width: 100%;
-    height: calc(100vh - 100px); 
+    height: calc(100vh - 135px);
     display: flex;
     flex-direction: column;
     position: relative;
     overflow: hidden;
 }
 
+/* Área do mapa */
 .mapa-container {
     width: 100%;
     height: 100%;
@@ -118,7 +132,6 @@ body, html {
     position: absolute;
     transform-origin: 0 0;
     will-change: transform;
-    user-select: none;
 }
 
 #imagemMapa {
@@ -127,6 +140,7 @@ body, html {
     user-select: none;
 }
 
+/* Marcadores no mapa */
 #camadaPontos {
     position: absolute;
     top: 0;
@@ -156,9 +170,42 @@ body, html {
     filter: drop-shadow(0px 2px 4px rgba(0,0,0,0.5));
 }
 
+/* Posição do usuário no mapa */
+.user-marker {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    z-index: 6;
+    font-size: 20px;
+    pointer-events: none;
+}
+
+.pulsar {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background: rgba(0, 123, 255, 0.4);
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: pulsarAnim 1.5s infinite;
+}
+
+@keyframes pulsarAnim {
+    0% {
+        transform: translate(-50%, -50%) scale(0.5);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translate(-50%, -50%) scale(2);
+        opacity: 0;
+    }
+}
+
 /* ========================================================
-    CAIXA DE LEGENDA FLUTUANTE EM LISTA SUSPENSA
-    ================================================-------- */
+   CAIXA DE LEGENDA FLUTUANTE EM LISTA SUSPENSA (CORRIGIDO)
+   ======================================================== */
 .painel-legenda-lateral {
     position: absolute;
     top: 15px;
@@ -167,10 +214,11 @@ body, html {
     border-radius: 12px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
     z-index: 60;
-    max-width: 260px;
-    min-width: 180px;
+    width: 260px;
     backdrop-filter: blur(5px);
-    max-height: calc(100vh - 130px);
+    
+    /* Trava a altura máxima total que o painel pode ocupar na tela do celular */
+    max-height: calc(100vh - 120px);
     display: flex;
     flex-direction: column;
 }
@@ -202,6 +250,7 @@ body, html {
     background: transparent;
 }
 
+/* Setinha personalizada que gira ao abrir/fechar */
 .legenda-detalhes summary::after {
     content: '▼';
     font-size: 8px;
@@ -217,14 +266,19 @@ body, html {
     display: none;
 }
 
+/* Corpo da legenda com rolagem vertical rígida e limite de ~5 itens */
 .legenda-corpo-conteudo {
     padding: 0 12px 12px 12px;
     border-top: 1px solid #ddd;
     margin-top: 2px;
-    overflow-y: auto !important;
+    
+    /* Altura exata para exibir cerca de 5 itens (aproximadamente 170px) */
+    max-height: 170px !important;
+    min-height: 50px;
+    
+    overflow-y: auto !important; 
     overflow-x: hidden;
-    flex-grow: 1;
-    max-height: 180px;
+    flex-shrink: 1;
 }
 
 .legenda-corpo-conteudo::-webkit-scrollbar {
@@ -235,6 +289,14 @@ body, html {
     background: #8C1B91;
     border-radius: 4px;
 }
+
+.legenda-corpo-conteudo::-webkit-scrollbar-track {
+    background: #eee;
+}
+
+/* ================================
+   ITENS DA LEGENDA
+   ================================ */
 
 .item-legenda-visual {
     display: flex;
@@ -280,6 +342,11 @@ body, html {
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: background 0.2s;
+}
+
+.zoom-controls button:active {
+    background: #e0e0e0;
 }
 
 /* Modal Inferior (Bottom Sheet) */
@@ -293,7 +360,7 @@ body, html {
     display: flex;
     justify-content: center;
     align-items: flex-end;
-    transition: bottom 0.3s ease-in-out, visibility 0.3s;
+    transition: bottom 0.3s ease-in-out;
     z-index: 1000;
     visibility: hidden;
 }
@@ -335,6 +402,20 @@ body, html {
     color: #666;
 }
 
-.conteudo h2 { font-size: 18px; color: #222; margin-bottom: 5px; }
-.conteudo h3 { font-size: 14px; color: #6a1b9a; margin-bottom: 15px; }
-.conteudo p { font-size: 14px; color: #444; line-height: 1.5; }
+.conteudo h2 {
+    font-size: 18px;
+    color: #222;
+    margin-bottom: 5px;
+}
+
+.conteudo h3 {
+    font-size: 14px;
+    color: #6a1b9a;
+    margin-bottom: 15px;
+}
+
+.conteudo p {
+    font-size: 14px;
+    color: #444;
+    line-height: 1.5;
+}
