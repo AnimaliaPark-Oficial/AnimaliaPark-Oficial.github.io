@@ -480,22 +480,25 @@ function fecharAoClicarFora(event) {
 
 function renderizarPontos(categoriaFiltro) {
     const camada = document.getElementById("camadaPontos");
-    if (!camada) return;
+    if (!camada) {
+        console.error("ERRO: Elemento com ID 'camadaPontos' não foi encontrado no HTML!");
+        return;
+    }
     
-    // Limpa os pontos anteriores do mapa
+    // Limpa os pontos anteriores
     camada.innerHTML = "";
 
-    // REINSERE O MARCADOR DO GPS PARA ELE NÃO SUMIR AO TROCAR DE FILTRO
-    if (marcadorUsuario) {
+    // Mantém o marcador do usuário se existir
+    if (typeof marcadorUsuario !== 'undefined' && marcadorUsuario) {
         camada.appendChild(marcadorUsuario);
     }
 
     const pontosDaLegenda = [];
 
-    // Percorre os pontos do parque baseados no objeto de dados
+    // Valida se os dados existem
     if (window.dadosPark && dadosPark.reserva && dadosPark.reserva.pontos) {
         dadosPark.reserva.pontos.forEach(ponto => {
-            // Se a categoria do ponto bater com o filtro ou o filtro for 'todos'
+            // Compara a categoria do ponto com o filtro clicado
             if (categoriaFiltro === 'todos' || ponto.categoria === categoriaFiltro) {
                 const el = document.createElement("div");
                 el.className = "ponto";
@@ -510,7 +513,7 @@ function renderizarPontos(categoriaFiltro) {
                 
                 el.onclick = (e) => { 
                     e.stopPropagation(); 
-                    abrirLocal(ponto); 
+                    if (typeof abrirLocal === 'function') abrirLocal(ponto); 
                 };
                 
                 camada.appendChild(el);
@@ -519,6 +522,8 @@ function renderizarPontos(categoriaFiltro) {
         });
     }
 
-    // Atualiza a legenda lateral com os pontos filtrados visíveis
-    atualizarLegendaLateral(pontosDaLegenda);
+    // Atualiza a legenda lateral (verifique se essa função existe no seu código)
+    if (typeof atualizarLegendaLateral === 'function') {
+        atualizarLegendaLateral(pontosDaLegenda);
+    }
 }
