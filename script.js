@@ -309,9 +309,46 @@ function renderizarPontos(categoriaFiltro) {
             }
         });
     }
-
-    // 4. Atualiza a legenda lateral com os itens devidamente filtrados
+    
+// 4. Atualiza a legenda lateral com os itens devidamente filtrados
     if (typeof atualizarLegendaLateral === 'function') {
         atualizarLegendaLateral(pontosDaLegenda);
     }
+} // <--- Fecha a função renderizarPontos
+
+// ==========================================
+// FUNÇÃO DE ATUALIZAÇÃO DA LEGENDA LATERAL
+// ==========================================
+function atualizarLegendaLateral(pontos) {
+    const corpoLegenda = document.querySelector('.legenda-corpo-conteudo');
+    if (!corpoLegenda) return;
+
+    // Limpa o conteúdo anterior
+    corpoLegenda.innerHTML = '';
+
+    if (pontos.length === 0) {
+        corpoLegenda.innerHTML = '<div style="font-size:11px; color:#666; padding:4px 0;">Nenhum item encontrado</div>';
+        return;
+    }
+
+    // Cria os itens na lista lateral com scroll
+    pontos.forEach(ponto => {
+        const itemDiv = document.createElement('div');
+        itemDiv.className = 'item-legenda-visual';
+        
+        itemDiv.innerHTML = `
+            <img src="${ponto.icone}" alt="${ponto.legendaNome || ponto.nome}">
+            <span>${ponto.legendaNome || ponto.nome}</span>
+        `;
+
+        // Ao clicar no item da legenda, centraliza/abre o ponto correspondente
+        itemDiv.onclick = (e) => {
+            e.stopPropagation();
+            if (typeof abrirLocal === 'function') {
+                abrirLocal(ponto);
+            }
+        };
+
+        corpoLegenda.appendChild(itemDiv);
+    });
 }
