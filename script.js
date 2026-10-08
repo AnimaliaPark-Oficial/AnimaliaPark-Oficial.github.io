@@ -125,15 +125,17 @@ function atualizarTransformacao() {
     mapa.style.transform = `translate(${pointX}px, ${pointY}px) scale(${scale})`;
 }
 
+
 function renderizarPontos(categoriaFiltro = 'alimentacao') {
     const camada = document.getElementById("camadaPontos");
     if (!camada) return;
     
-    // Preserva o marcador do usuário se ele já existir na camada
-    const htmlUsuario = marcadorUsuario ? marcadorUsuario.outerHTML : '';
-    camada.innerHTML = htmlUsuario;
+    // Limpa apenas os pontos antigos, mas limpa o HTML da camada de forma segura
+    camada.innerHTML = "";
+    
+    // Se o marcador do usuário já existia antes, reinserimos ele imediatamente na camada limpa
     if (marcadorUsuario) {
-        marcadorUsuario = camada.querySelector('.ponto-usuario-gps');
+        camada.appendChild(marcadorUsuario);
     }
     
     const pontosDaLegenda = [];
