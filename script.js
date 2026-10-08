@@ -12,7 +12,6 @@ const dadosPark = {
             { id: 'banheiros', texto: 'BANHEIROS' },
             { id: 'servicos', texto: 'SERVIÇOS' }
         ],
-
         pontos: [
             // Alimentação
             { id: "alim_recepcao", nome: "CAFÉ RECEPÇÃO", tipo: "ALIMENTAÇÃO", legendaNome: "QUIÓSQUE CAFÉ RECEPÇÃO", area: "Onde tudo começa e aonde damos um até breve!", desc: "☕ Cafeteria (Cafés e salgados.)", icone: "icons/caferecepcao.png", categoria: "alimentacao", top: 27, left: 48 },
@@ -111,54 +110,198 @@ const dadosPark = {
         ]
     }
 };
+
+let scale = 1, pointX = 0, pointY = 0, startX = 0, startY = 0, isDragging = false;
+
 // ==========================================
-// VARIÁVEIS GLOBAIS DE CONTROLE DO MAPA
+// FUNÇÕES DE MAPA E INTERFACE
 // ==========================================
-let pointX = 0;
-let pointY = 0;
-let scale = 1;
-let isDragging = false;
-let startX = 0;
-let startY = 0;
+
+function atualizarTransformacao() {
+    const mapa = document.getElementById("mapa");
+    if (!mapa) return;
+    mapa.style.transform = `translate(${pointX}px, ${pointY}px) scale(${scale})`;
+}
+
+function renderizarPontos(categoriaFiltro = 'alimentacao') {
+    const camada = document.getElementById("camadaPontos");
+    if (!camada) return;
+    camada.innerHTML = "";
+    
+    const pontosDaLegenda = [];
+
+    dadosPark.reserva.pontos.forEach(ponto => {
+        if (categoriaFiltro === 'todos' || ponto.categoria === categoriaFiltro) {
+            // Cria o marcador interativo no mapa
+            const el = document.createElement("div");
+            el.className = "ponto";
+            el.style.top = ponto.top + "%";
+            el.style.left = ponto.left + "%";
+            el.innerHTML = `<img src="${ponto.icone}" alt="${ponto.nome}" class="icone-marcador">`;
+            el.onclick = (e) => { e.stopPropagation(); abrirLocal(ponto); };
+            camada.appendChild(el);
+
+            // Adiciona na lista que vai popular a legenda lateral
+            pontosDaLegenda.push(ponto);
+        }
+    });
+
+    atualizarLegendaLateral(pontosDaLegenda);
+}
+
+function atualizarLegendaLateral(pontos) {
+    const containerLegenda = document.getElementById("conteudoLegendaLateral");
+    if (!containerLegenda) return;
+    containerLegenda.innerHTML = "";
+
+    pontos.forEach(ponto => {
+        const item = document.createElement("div");
+        item.className = "item-legenda-visual";
+        item.style.cursor = "pointer";
+        item.style.padding = "4px 0";
+        item.style.alignItems = "center";
+        item.style.display = "flex";
+        item.style.gap = "8px";
+        
+        const textoLegenda = ponto.legendaNome || ponto.nome;
+        item.innerHTML = `<img src="${ponto.icone}" alt="${textoLegenda}" style="width: 20px; height: 20px; object-fit: contain;"> <span>${textoLegenda}</span>`;
+
+        // AO CLICAR NO ITEM DA LEGENDA: Dá zoom suave no mapa e abre o card de detalhes do local
+        item.onclick = () => {
+            focarNoPonto(ponto.top, ponto.left);
+            abrirLocal(ponto);
+        };
+
+        containerLegenda.appendChild(item);
+    });
+}
+
+// NOVA FUNÇÃO: Foca e centraliza suavemente no ponto clicado na legenda
+function focarNoPonto(topPercent, leftPercent) {
+    const container = document.getElementById("mapaContainer");
+    const imgMapa = document.getElementById("imagemMapa");
+    const mapaWrapper = document.getElementById("mapa");
+    
+    if (!container || !imgMapa) return;
+
+    // Define o zoom ideal para focar no ponto (ex: 2.2x)
+    scale = 1.8; 
+    atualizarTransformacao();
+
+    const realWidth = imgMapa.naturalWidth * scale;
+    const realHeight = imgMapa.naturalHeight * scale;
+    const containerWidth = container.clientWidth;
+    const containerHeight = container.clientHeight;
+
+    // Calcula a posição em pixels correspondente à porcentagem do ponto
+    const pontoXPx = (leftPercent / 100) * realWidth;
+    const pontoYPx = (topPercent / 100) * realHeight;
+
+    // Centraliza o ponto no meio exato da tela
+    pointX = (containerWidth / 2) - pontoXPx;
+    pointY = (containerHeight / 2) - pontoYPx;
+
+    // Aplica animação de transição suave
+    mapaWrapper.style.transition = "transform 0.4s ease-in-out";
+    atualizarTransformacao();
+
+    // Remove a transição após o movimento para o arraste manual continuar livre
+    setTimeout(() => {
+        mapaWrapper.style.transition = "none";
+    }, 400);
+}
+
+function atualizarLegendaHorizontal() {
+    const lista = document.getElementById("legendaListaHorizontal");
+    if (!lista) return;
+    lista.innerHTML = "";
+
+    dadosPark.reserva.categoriasLegenda.forEach((cat, index) => {
+        const li = document.createElement("li");
+        li.className = "filtro-item" + (index === 0 ? " active" : "");
+        li.innerText = cat.texto;
+
+        li.onclick = () => {
+            document.querySelectorAll('.filtro-item').forEach(el => el.classList.remove('active'));
+            li.classList.add('active');
+            renderizarPontos(cat.id);
+        };
+        lista.appendChild(li);
+    });
+}
+
+function resetZoom() {
+    const container = document.getElementById("mapaContainer");
+    const imgMapa = document.getElementById("imagemMapa");
+    const mapaWrapper = document.getElementById("mapa");
+    
+    if (!container || !imgMapa || !imgMapa.naturalWidth || imgMapa.naturalWidth === 0) return;
+
+    const realWidth = imgMapa.naturalWidth;
+    const realHeight = imgMapa.naturalHeight;
+    mapaWrapper.style.width = realWidth + "px";
+    mapaWrapper.style.height = realHeight + "px";
+
+    const containerWidth = container.clientWidth;
+    const containerHeight = container.clientHeight;
+    
+    if (containerWidth === 0 || containerHeight === 0) return;
+
+    scale = Math.min(containerWidth / realWidth, containerHeight / realHeight);
+    pointX = (containerWidth - realWidth * scale) / 2;
+    pointY = (containerHeight - realHeight * scale) / 2;
+    atualizarTransformacao();
+}
+
+function inicializarMapa() {
+    const imgMapa = document.getElementById("imagemMapa");
+    imgMapa.onload = () => { 
+        resetZoom(); 
+        renderizarPontos(dadosPark.reserva.categoriasLegenda[0].id); 
+    };
+    imgMapa.src = dadosPark.reserva.imagem;
+    if (imgMapa.complete && imgMapa.naturalWidth !== 0) { imgMapa.onload(); }
+    atualizarLegendaHorizontal();
+}
+
+function abrirLocal(ponto) {
+    const elTipo = document.getElementById("tipoLocal");
+    if (elTipo) {
+        elTipo.innerText = ponto.tipo || "LOCAL";
+    }
+    document.getElementById("nomeLocal").innerText = ponto.nome;
+    document.getElementById("areaLocal").innerText = ponto.area;
+    document.getElementById("descricaoLocal").innerHTML = ponto.desc;
+    document.getElementById("janelaLocal").classList.add("ativa");
+}
+
+function fecharLocal() { 
+    document.getElementById("janelaLocal").classList.remove("ativa"); 
+}
+
+function fecharAoClicarFora(e) { 
+    if (e.target.id === "janelaLocal") fecharLocal(); 
+}
+
+function zoomIn() { 
+    scale = Math.min(scale + 0.25, 3.0); 
+    atualizarTransformacao(); 
+}
+
+function zoomOut() { 
+    scale = Math.max(scale - 0.25, 0.2); 
+    atualizarTransformacao(); 
+}
+
+// ==========================================
+// EVENTOS DE GESTO E ARRASTO (MOUSE & TOUCH)
+// ==========================================
 
 let initialDistance = 0;
 let initialScale = 1;
 let focalPointX = 0;
 let focalPointY = 0;
 
-let pontosDaLegenda = []; // Array para armazenar os pontos da legenda lateral
-
-// ==========================================
-// FUNÇÕES DE TRANSFORMAÇÃO E ZOOM
-// ==========================================
-function atualizarTransformacao() {
-    // CORRIGIDO: O ID correto no seu HTML é "mapa" e não "conteudoMapa"
-    const elementoMapa = document.getElementById("mapa");
-    if (elementoMapa) {
-        elementoMapa.style.transform = `translate(${pointX}px, ${pointY}px) scale(${scale})`;
-    }
-}
-
-function resetZoom() {
-    scale = 1;
-    pointX = 0;
-    pointY = 0;
-    atualizarTransformacao();
-}
-
-function zoomIn() {
-    scale = Math.min(scale * 1.25, 3.0);
-    atualizarTransformacao();
-}
-
-function zoomOut() {
-    scale = Math.max(scale / 1.25, 0.2);
-    atualizarTransformacao();
-}
-
-// ==========================================
-// EVENTOS DE GESTO E ARRASTO (MOUSE & TOUCH)
-// ==========================================
 function getDistance(touches) {
     const dx = touches[0].clientX - touches[1].clientX;
     const dy = touches[0].clientY - touches[1].clientY;
@@ -166,15 +309,12 @@ function getDistance(touches) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-    if (typeof inicializarMapa === 'function') inicializarMapa();
-
+    inicializarMapa();
     const container = document.getElementById("mapaContainer");
     if (!container) return;
 
-    // --- MOUSE EVENTS (Desktop) ---
+    // Eventos de Mouse
     container.addEventListener("mousedown", (e) => {
-        if (e.target.closest(".painel-legenda-lateral")) return;
-
         isDragging = true; 
         startX = e.clientX - pointX; 
         startY = e.clientY - pointY;
@@ -182,10 +322,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     window.addEventListener("mousemove", (e) => {
         if (!isDragging) return;
-
         pointX = e.clientX - startX; 
         pointY = e.clientY - startY;
-
         atualizarTransformacao();
     });
 
@@ -193,10 +331,8 @@ document.addEventListener("DOMContentLoaded", () => {
         isDragging = false; 
     });
 
-    // --- TOUCH EVENTS (Mobile - Arraste e Zoom por Pinça) ---
+    // Eventos de Toque (Mobile - Arraste e Zoom focado na pinça)
     container.addEventListener("touchstart", (e) => {
-        if (e.target.closest(".painel-legenda-lateral")) return;
-
         if (e.targetTouches.length === 1) {
             isDragging = true;
             startX = e.targetTouches[0].clientX - pointX;
@@ -213,15 +349,12 @@ document.addEventListener("DOMContentLoaded", () => {
     }, { passive: false });
 
     container.addEventListener("touchmove", (e) => {
-        if (e.target.closest(".painel-legenda-lateral")) return;
-
         if (e.targetTouches.length === 1 && isDragging) {
             pointX = e.targetTouches[0].clientX - startX;
             pointY = e.targetTouches[0].clientY - startY;
             atualizarTransformacao();
         } else if (e.targetTouches.length === 2) {
             const currentDistance = getDistance(e.targetTouches);
-
             if (initialDistance > 0) {
                 const zoomFactor = currentDistance / initialDistance;
                 let newScale = Math.min(Math.max(initialScale * zoomFactor, 0.2), 3.0);
@@ -244,7 +377,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    // --- RESPONSIVIDADE DE TELA ---
     let lastWidth = window.innerWidth;
     window.addEventListener("resize", () => {
         if (window.innerWidth !== lastWidth) {
@@ -253,102 +385,3 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 });
-
-// ==========================================
-// FUNÇÕES AUXILIARES DE UI E FILTROS
-// ==========================================
-
-function toggleLegenda() {
-    const painel = document.querySelector('.painel-legenda-lateral');
-    if (painel) {
-        painel.classList.toggle('ativa');
-    }
-}
-
-function fecharAoClicarFora(event) {
-    const janela = document.getElementById('janelaLocal');
-    if (janela && event.target === janela) {
-        janela.classList.remove('ativa');
-    }
-}
-
-function renderizarPontos(categoriaFiltro) {
-    const camada = document.getElementById("camadaPontos");
-    if (!camada) return;
-
-    // 1. Limpa a camada inteira de pontos
-    camada.innerHTML = "";
-
-    // 2. Reseta o array da legenda para evitar duplicações ao filtrar
-    pontosDaLegenda = [];
-
-    // 3. Desenha os pontos filtrados do parque
-    if (window.dadosPark && dadosPark.reserva && dadosPark.reserva.pontos) {
-        dadosPark.reserva.pontos.forEach(ponto => {
-            if (categoriaFiltro === 'todos' || ponto.categoria === categoriaFiltro) {
-                const el = document.createElement("div");
-                el.className = "ponto";
-                el.style.position = "absolute";
-                el.style.top = ponto.top + "%";
-                el.style.left = ponto.left + "%";
-                el.style.transform = "translate(-50%, -50%)";
-                el.style.cursor = "pointer";
-                el.style.zIndex = "100";
-
-                el.innerHTML = `<img src="${ponto.icone}" alt="${ponto.nome}" class="icone-marcador">`;
-
-                el.onclick = (e) => { 
-                    e.stopPropagation(); 
-                    if (typeof abrirLocal === 'function') abrirLocal(ponto); 
-                };
-
-                camada.appendChild(el);
-                
-                // Adiciona ao array para alimentar a legenda lateral
-                pontosDaLegenda.push(ponto);
-            }
-        });
-    }
-    
-// 4. Atualiza a legenda lateral com os itens devidamente filtrados
-    if (typeof atualizarLegendaLateral === 'function') {
-        atualizarLegendaLateral(pontosDaLegenda);
-    }
-} // <--- Fecha a função renderizarPontos
-
-// ==========================================
-// FUNÇÃO DE ATUALIZAÇÃO DA LEGENDA LATERAL
-// ==========================================
-function atualizarLegendaLateral(pontos) {
-    const corpoLegenda = document.querySelector('.legenda-corpo-conteudo');
-    if (!corpoLegenda) return;
-
-    // Limpa o conteúdo anterior
-    corpoLegenda.innerHTML = '';
-
-    if (pontos.length === 0) {
-        corpoLegenda.innerHTML = '<div style="font-size:11px; color:#666; padding:4px 0;">Nenhum item encontrado</div>';
-        return;
-    }
-
-    // Cria os itens na lista lateral com scroll
-    pontos.forEach(ponto => {
-        const itemDiv = document.createElement('div');
-        itemDiv.className = 'item-legenda-visual';
-        
-        itemDiv.innerHTML = `
-            <img src="${ponto.icone}" alt="${ponto.legendaNome || ponto.nome}">
-            <span>${ponto.legendaNome || ponto.nome}</span>
-        `;
-
-        // Ao clicar no item da legenda, centraliza/abre o ponto correspondente
-        itemDiv.onclick = (e) => {
-            e.stopPropagation();
-            if (typeof abrirLocal === 'function') {
-                abrirLocal(ponto);
-            }
-        };
-
-        corpoLegenda.appendChild(itemDiv);
-    });
-}
