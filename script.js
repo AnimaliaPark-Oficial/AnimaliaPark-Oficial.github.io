@@ -472,3 +472,82 @@ function toggleLegenda() {
         painel.classList.toggle('ativa');
     }
 }
+
+// Variável para armazenar o elemento do marcador de GPS do usuário
+let elementoMarcadorGps = null;
+
+function iniciarGeolocalizacao() {
+    if (!navigator.geolocation) {
+        console.warn("Geolocalização não é suportada pelo seu navegador.");
+        return;
+    }
+
+    // watchPosition rastreia o movimento em tempo real
+    navigator.geolocation.watchPosition(
+        (posicao) => {
+            const latitude = posicao.coords.latitude;
+            const longitude = posicao.coords.longitude;
+            
+            console.log(`GPS atualizado: Lat ${latitude}, Lng ${longitude}`);
+            
+            // Atualiza ou cria o marcador visual no mapa
+            atualizarMarcadorGpsNoMapa(latitude, longitude);
+        },
+        (erro) => {
+            console.error("Erro ao obter geolocalização:", erro.message);
+        },
+        {
+            enableHighAccuracy: true,
+            maximumAge: 10000,
+            timeout: 20000
+        }
+    );
+}
+
+function atualizarMarcadorGpsNoMapa(lat, lng) {
+    const camadaPontos = document.getElementById('camadaPontos');
+    if (!camadaPontos) return;
+
+    // Se o marcador ainda não existe na tela, cria ele
+    if (!elementoMarcadorGps) {
+        elementoMarcadorGps = document.createElement('div');
+        elementoMarcadorGps.className = 'ponto-usuario-gps';
+        elementoMarcadorGps.innerHTML = `
+            <div class="pulso-gps"></div>
+            <div class="centro-gps"></div>
+        `;
+        camadaPontos.appendChild(elementoMarcadorGps);
+    }
+
+    // Converte a Latitude e Longitude real para a porcentagem (%) da sua imagem
+    const coordsMapeadas = converterLatLonParaPorcentagem(lat, lng);
+
+    // Posiciona o elemento usando left e top em porcentagem (%)
+    elementoMarcadorGps.style.left = `${coordsMapeadas.x}%`;
+    elementoMarcadorGps.style.top = `${coordsMapeadas.y}%`;
+}
+
+// Função com os seus limites exatos calibrados
+function converterLatLonParaPorcentagem(lat, lng) {
+    // Seus pontos de referência:
+    // Superior Esquerdo: Lat -23.619751, Lng -46.970382
+    // Inferior Direito:  Lat -23.626065, Lng -46.962582
+
+    const latMin = -23.626065; // Sul (fundo da imagem)
+    const latMax = -23.619751; // Norte (topo da imagem)
+    const lngMin = -46.970382; // Oeste (esquerda da imagem)
+    const lngMax = -46.962582; // Leste (direita da imagem)
+
+    // Cálculo proporcional (Regra de Três)
+    let x = ((lng - lngMin) / (lngMax - lngMin)) * 100;
+    let y = ((latMax - lat) / (latMax - latMin)) * 100; // Invertido porque o eixo Y do navegador cresce para baixo
+
+    // Garante que o marcador não fuja de 0% a 100% da tela/imagem
+    x = Math.max(0, Math.min(100, x));
+    y = Math.max(0, Math.min(100, y));
+
+    return { x, y };
+}
+
+// Para testar, basta chamar a função (ou acoplá-la a um botão de GPS):
+// iniciarGeolocalizacao();
