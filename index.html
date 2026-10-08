@@ -164,8 +164,8 @@
         }
 
         /* ========================================================
-            CAIXA DE LEGENDA FLUTUANTE EM LISTA SUSPENSA
-            ================================================-------- */
+           CAIXA DE LEGENDA FLUTUANTE EM LISTA SUSPENSA (CORRIGIDO)
+           ======================================================== */
         .painel-legenda-lateral {
             position: absolute;
             top: 15px;
@@ -174,10 +174,11 @@
             border-radius: 12px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
             z-index: 60;
-            max-width: 260px;
-            min-width: 180px;
+            width: 260px;
             backdrop-filter: blur(5px);
-            max-height: calc(100vh - 130px);
+            
+            /* Trava a altura máxima total que o painel pode ocupar na tela do celular */
+            max-height: calc(100vh - 120px);
             display: flex;
             flex-direction: column;
         }
@@ -209,6 +210,7 @@
             background: transparent;
         }
 
+        /* Setinha personalizada que gira ao abrir/fechar */
         .legenda-detalhes summary::after {
             content: '▼';
             font-size: 8px;
@@ -224,13 +226,19 @@
             display: none;
         }
 
+        /* Corpo da legenda com rolagem vertical rígida e limite de ~5 itens */
         .legenda-corpo-conteudo {
             padding: 0 12px 12px 12px;
             border-top: 1px solid #ddd;
             margin-top: 2px;
-            overflow-y: auto !important;
+            
+            /* Altura exata para exibir cerca de 5 itens (aproximadamente 170px) antes do scroll */
+            max-height: 170px !important;
+            min-height: 50px;
+            
+            overflow-y: auto !important; 
             overflow-x: hidden;
-            flex-grow: 1;
+            flex-shrink: 1;
         }
 
         .legenda-corpo-conteudo::-webkit-scrollbar {
@@ -240,6 +248,10 @@
         .legenda-corpo-conteudo::-webkit-scrollbar-thumb {
             background: #8C1B91;
             border-radius: 4px;
+        }
+
+        .legenda-corpo-conteudo::-webkit-scrollbar-track {
+            background: #eee;
         }
 
         .item-legenda-visual {
@@ -361,15 +373,20 @@
     <main class="layout-principal">
         <div id="mapaContainer" class="mapa-container">
             
-            <!-- CAIXINHA DE LEGENDA SUSPENSA -->
-            <div class="painel-legenda-lateral">
-                <details class="legenda-detalhes">
-                    <summary>LEGENDA</summary>
-                    <div id="conteudoLegendaLateral" class="legenda-corpo-conteudo">
-                        <!-- Atualizado dinamicamente via JS -->
-                    </div>
-                </details>
-            </div>
+<!-- CAIXINHA DE LEGENDA SUSPENSA -->
+<div class="painel-legenda-lateral">
+
+    <details class="legenda-detalhes">
+
+        <summary>LEGENDA</summary>
+
+        <div id="conteudoLegendaLateral" class="legenda-corpo-conteudo">
+            <!-- Atualizado dinamicamente via JS -->
+        </div>
+
+    </details>
+
+</div>
 
             <div id="mapa" class="mapa">
                 <img id="imagemMapa" src="mapa.zoo.webp" alt="Mapa do Parque">
@@ -395,6 +412,6 @@
         </div>
     </div>
 
-    <script src="script.js?v=2"></script>
+    <script src="script.js"></script>
 </body>
 </html>
