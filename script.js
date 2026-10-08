@@ -505,29 +505,43 @@ function iniciarGeolocalizacao() {
 
 function atualizarMarcadorGpsNoMapa(lat, lng) {
     const camadaPontos = document.getElementById('camadaPontos');
+    const imagemMapa = document.getElementById('imagemMapa');
+    
     if (!camadaPontos) {
-        console.error("Elemento 'camadaPontos' não foi encontrado no HTML!");
+        console.error("Erro crítico: #camadaPontos não existe no HTML.");
         return;
     }
 
-    // Se o marcador ainda não existe na tela, cria ele
+    // Cria o marcador se ele não existir
     if (!elementoMarcadorGps) {
         elementoMarcadorGps = document.createElement('div');
         elementoMarcadorGps.className = 'ponto-usuario-gps';
+        // Estilo inline direto para garantir visibilidade visual imediata
+        elementoMarcadorGps.style.position = 'absolute';
+        elementoMarcadorGps.style.width = '24px';
+        elementoMarcadorGps.style.height = '24px';
+        elementoMarcadorGps.style.transform = 'translate(-50%, -50%)';
+        elementoMarcadorGps.style.zIndex = '9999';
         elementoMarcadorGps.innerHTML = `
-            <div class="pulso-gps"></div>
-            <div class="centro-gps"></div>
+            <div class="pulso-gps" style="position:absolute; width:36px; height:36px; background:rgba(0,122,255,0.4); border-radius:50%; top:50%; left:50%; transform:translate(-50%,-50%);"></div>
+            <div class="centro-gps" style="position:absolute; width:14px; height:14px; background:#007AFF; border:2px solid #fff; border-radius:50%; top:50%; left:50%; transform:translate(-50%,-50%);"></div>
         `;
         camadaPontos.appendChild(elementoMarcadorGps);
-        console.log("Marcador de GPS criado com sucesso no DOM!");
+        console.log("Elemento GPS injetado com estilos diretos!");
     }
 
-    // Converte a Latitude e Longitude real para a porcentagem (%) da sua imagem
     const coordsMapeadas = converterLatLonParaPorcentagem(lat, lng);
 
-    // Posiciona o elemento usando left e top em porcentagem (%)
-    elementoMarcadorGps.style.left = `${coordsMapeadas.x}%`;
-    elementoMarcadorGps.style.top = `${coordsMapeadas.y}%`;
+    // Se a imagem tiver tamanho carregado, usa pixels; senão, usa porcentagem pura
+    if (imagemMapa && imagemMapa.clientWidth > 0) {
+        const posX = (coordsMapeadas.x / 100) * imagemMapa.clientWidth;
+        const posY = (coordsMapeadas.y / 100) * imagemMapa.clientHeight;
+        elementoMarcadorGps.style.left = `${posX}px`;
+        elementoMarcadorGps.style.top = `${posY}px`;
+    } else {
+        elementoMarcadorGps.style.left = `${coordsMapeadas.x}%`;
+        elementoMarcadorGps.style.top = `${coordsMapeadas.y}%`;
+    }
 }
 
 // Função de conversão utilizando os seus limites exatos calibrados
