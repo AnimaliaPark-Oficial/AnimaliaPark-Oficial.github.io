@@ -125,36 +125,47 @@ function atualizarTransformacao() {
     mapa.style.transform = `translate(${pointX}px, ${pointY}px) scale(${scale})`;
 }
 
+function atualizarMarcadorGpsNoMapa(lat, lng) {
+    // Salva as últimas coordenadas conhecidas
+    ultimaLatGps = lat;
+    ultimaLngGps = lng;
 
-function renderizarPontos(categoriaFiltro = 'alimentacao') {
-    const camada = document.getElementById("camadaPontos");
-    if (!camada) return;
-    
-    // Limpa apenas os pontos antigos, mas limpa o HTML da camada de forma segura
-    camada.innerHTML = "";
-    
-    // Se o marcador do usuário já existia antes, reinserimos ele imediatamente na camada limpa
-    if (marcadorUsuario) {
-        camada.appendChild(marcadorUsuario);
+    const camadaPontos = document.getElementById('camadaPontos');
+    if (!camadaPontos) return;
+
+    criarOuAtualizarMarcadorGpsNaCamada(camadaPontos, lat, lng);
+}
+
+function criarOuAtualizarMarcadorGpsNaCamada(camada, lat, lng) {
+    let elementoMarcadorGps = camada.querySelector('.ponto-usuario-gps');
+
+    if (!elementoMarcadorGps) {
+        elementoMarcadorGps = document.createElement('div');
+        elementoMarcadorGps.className = 'ponto-usuario-gps';
+        elementoMarcadorGps.style.position = 'absolute';
+        elementoMarcadorGps.style.width = '24px';
+        elementoMarcadorGps.style.height = '24px';
+        elementoMarcadorGps.style.transform = 'translate(-50%, -50%)';
+        elementoMarcadorGps.style.zIndex = '9999';
+        elementoMarcadorGps.innerHTML = `
+            <div class="pulso-gps" style="position:absolute; width:36px; height:36px; background:rgba(0,122,255,0.4); border-radius:50%; top:50%; left:50%; transform:translate(-50%,-50%);"></div>
+            <div class="centro-gps" style="position:absolute; width:14px; height:14px; background:#007AFF; border:2px solid #fff; border-radius:50%; top:50%; left:50%; transform:translate(-50%,-50%);"></div>
+        `;
+        camada.appendChild(elementoMarcadorGps);
     }
-    
-    const pontosDaLegenda = [];
 
-    dadosPark.reserva.pontos.forEach(ponto => {
-        if (categoriaFiltro === 'todos' || ponto.categoria === categoriaFiltro) {
-            const el = document.createElement("div");
-            el.className = "ponto";
-            el.style.top = ponto.top + "%";
-            el.style.left = ponto.left + "%";
-            el.innerHTML = `<img src="${ponto.icone}" alt="${ponto.nome}" class="icone-marcador">`;
-            el.onclick = (e) => { e.stopPropagation(); abrirLocal(ponto); };
-            camada.appendChild(el);
+    const coordsMapeadas = converterLatLonParaPorcentagem(lat, lng);
+    const imagemMapa = document.getElementById('imagemMapa');
 
-            pontosDaLegenda.push(ponto);
-        }
-    });
-
-    atualizarLegendaLateral(pontosDaLegenda);
+    if (imagemMapa && imagemMapa.clientWidth > 0) {
+        const posX = (coordsMapeadas.x / 100) * imagemMapa.clientWidth;
+        const posY = (coordsMapeadas.y / 100) * imagemMapa.clientHeight;
+        elementoMarcadorGps.style.left = `${posX}px`;
+        elementoMarcadorGps.style.top = `${posY}px`;
+    } else {
+        elementoMarcadorGps.style.left = `${coordsMapeadas.x}%`;
+        elementoMarcadorGps.style.top = `${coordsMapeadas.y}%`;
+    }
 }
 
 function atualizarLegendaLateral(pontos) {
