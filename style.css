@@ -1,4 +1,6 @@
-/* Reset básico */
+/* ========================================== */
+/* RESET E CONFIGURAÇÕES GLOBAIS              */
+/* ========================================== */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -11,9 +13,12 @@ body, html {
     overflow: hidden;
     font-family: Arial, sans-serif;
     background-color: #121212;
+    touch-action: manipulation; /* Evita delays de clique no mobile */
 }
 
-/* Cabeçalho roxo escuro idêntico à referência */
+/* ========================================== */
+/* CABEÇALHO E FILTROS                        */
+/* ========================================== */
 .header-animalia {
     height: 75px;
     background-color: #4A154B;
@@ -40,12 +45,10 @@ body, html {
     object-fit: contain;
 }
 
-/* Esconde a caixa de texto antiga se não for usada no topo */
 .titulo-caixa-texto {
     display: none;
 }
 
-/* Barra de filtros superior com a faixa roxa e botões em pílula */
 .filtros-superior-container {
     height: 60px;
     background-color: #8C1B91;
@@ -56,13 +59,13 @@ body, html {
     padding: 0 15px;
     z-index: 90;
     overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
 }
 
 .filtros-superior-container::-webkit-scrollbar {
     display: none;
 }
 
-/* Lista de filtros na horizontal estilo botão/pílula */
 .legenda-lista-horizontal {
     display: flex;
     gap: 12px;
@@ -94,21 +97,21 @@ body, html {
     background: rgba(255, 255, 255, 0.1);
 }
 
-/* Item Ativo */
 .legenda-lista-horizontal .filtro-item.active {
     background: #ffffff;
     color: #7b1fa2;
     box-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }
 
-/* Tamanho dos ícones nos botões */
 .legenda-lista-horizontal .filtro-item img {
     width: 18px !important;
     height: 18px !important;
     object-fit: contain;
 }
 
-/* Layout principal */
+/* ========================================== */
+/* LAYOUT PRINCIPAL E MAPA                    */
+/* ========================================== */
 .layout-principal {
     width: 100%;
     height: calc(100vh - 135px);
@@ -118,14 +121,13 @@ body, html {
     overflow: hidden;
 }
 
-/* Área do mapa */
 .mapa-container {
     width: 100%;
     height: 100%;
     position: relative;
     overflow: hidden;
     background-color: #1a1a1a;
-    touch-action: none;
+    touch-action: none; /* Essencial para o Pinch-to-Zoom e Arraste funcionarem sem conflito */
 }
 
 .mapa {
@@ -136,28 +138,29 @@ body, html {
 
 #imagemMapa {
     display: block;
-    width: 100%;       /* Garante que ocupe largura legível */
-    height: auto;      /* Mantém a proporção */
+    width: 100%;
+    height: auto;
     pointer-events: none;
     user-select: none;
 }
 
+/* Camada de Pontos otimizada para capturar toques corretamente */
 #camadaPontos {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    pointer-events: none;
-    z-index: 999; /* Força ficar acima de qualquer outra camada */
+    pointer-events: none; /* Deixa o container transparente a toques vazios */
+    z-index: 99;
 }
 
 .ponto {
     position: absolute;
     transform: translate(-50%, -50%);
     cursor: pointer;
-    pointer-events: auto;
-    z-index: 5;
+    pointer-events: auto; /* Permite que o ícone em si seja clicable */
+    z-index: 100;
     transition: transform 0.2s;
 }
 
@@ -165,49 +168,57 @@ body, html {
     transform: translate(-50%, -50%) scale(1.2);
 }
 
-.icone-marcador {
-    width: 60px;
-    height: 60px;
-    object-fit: contain;
-    filter: drop-shadow(0px 2px 4px rgba(0,0,0,0.5));
-}
-
-/* Posição do usuário no mapa */
-.user-marker {
+/* ========================================== */
+/* MARCADOR DE GPS DO USUÁRIO                 */
+/* ========================================== */
+.ponto-usuario-gps {
     position: absolute;
+    width: 24px;
+    height: 24px;
     transform: translate(-50%, -50%);
-    z-index: 6;
-    font-size: 20px;
-    pointer-events: none;
+    z-index: 105; /* Fica acima dos pontos comuns */
+    pointer-events: none; 
 }
 
-.pulsar {
+.centro-gps {
     position: absolute;
-    width: 40px;
-    height: 40px;
-    background: rgba(0, 123, 255, 0.4);
-    border-radius: 50%;
     top: 50%;
     left: 50%;
+    width: 14px;
+    height: 14px;
+    background-color: #007AFF; 
+    border: 3px solid #ffffff;  
+    border-radius: 50%;
     transform: translate(-50%, -50%);
-    animation: pulsarAnim 1.5s infinite;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.4);
 }
 
-@keyframes pulsarAnim {
+.pulso-gps {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 36px;
+    height: 36px;
+    background-color: rgba(0, 122, 255, 0.4);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    animation: animacao-pulso-gps 2s infinite ease-out;
+}
+
+@keyframes animacao-pulso-gps {
     0% {
         transform: translate(-50%, -50%) scale(0.5);
         opacity: 1;
     }
-
     100% {
-        transform: translate(-50%, -50%) scale(2);
+        transform: translate(-50%, -50%) scale(2.2);
         opacity: 0;
     }
 }
 
-/* ========================================================
-   CAIXA DE LEGENDA FLUTUANTE EM LISTA SUSPENSA (CORRIGIDO)
-   ======================================================== */
+/* ========================================== */
+/* PAINEL DE LEGENDA LATERAL                  */
+/* ========================================== */
 .painel-legenda-lateral {
     position: absolute;
     top: 15px;
@@ -218,8 +229,6 @@ body, html {
     z-index: 60;
     width: 260px;
     backdrop-filter: blur(5px);
-    
-    /* Trava a altura máxima total que o painel pode ocupar na tela do celular */
     max-height: calc(100vh - 120px);
     display: flex;
     flex-direction: column;
@@ -252,7 +261,6 @@ body, html {
     background: transparent;
 }
 
-/* Setinha personalizada que gira ao abrir/fechar */
 .legenda-detalhes summary::after {
     content: '▼';
     font-size: 8px;
@@ -268,16 +276,12 @@ body, html {
     display: none;
 }
 
-/* Corpo da legenda com rolagem vertical rígida e limite de ~5 itens */
 .legenda-corpo-conteudo {
     padding: 0 12px 12px 12px;
     border-top: 1px solid #ddd;
     margin-top: 2px;
-    
-    /* Altura exata para exibir cerca de 5 itens (aproximadamente 170px) */
     max-height: 170px !important;
     min-height: 50px;
-    
     overflow-y: auto !important; 
     overflow-x: hidden;
     flex-shrink: 1;
@@ -295,10 +299,6 @@ body, html {
 .legenda-corpo-conteudo::-webkit-scrollbar-track {
     background: #eee;
 }
-
-/* ================================
-   ITENS DA LEGENDA
-   ================================ */
 
 .item-legenda-visual {
     display: flex;
@@ -319,7 +319,9 @@ body, html {
     flex-shrink: 0;
 }
 
-/* Controles Flutuantes de Zoom */
+/* ========================================== */
+/* CONTROLES DE ZOOM E MODAL                  */
+/* ========================================== */
 .zoom-controls {
     position: absolute;
     right: 15px;
@@ -351,7 +353,6 @@ body, html {
     background: #e0e0e0;
 }
 
-/* Modal Inferior (Bottom Sheet) */
 .janela {
     position: fixed;
     bottom: -100%;
@@ -420,75 +421,4 @@ body, html {
     font-size: 14px;
     color: #444;
     line-height: 1.5;
-}
-
-/* ========================================================
-   ESTILO DO MARCADOR DE GPS DO USUÁRIO
-   ======================================================== */
-.ponto-usuario-gps {
-    position: absolute;
-    width: 24px;
-    height: 24px;
-    transform: translate(-50%, -50%);
-    z-index: 100; /* Fica acima dos outros pontos do mapa */
-    pointer-events: none; /* Para não atrapalhar cliques no mapa */
-}
-
-/* O círculo central azul */
-.centro-gps {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 14px;
-    height: 14px;
-    background-color: #007AFF; /* Azul vivo estilo Apple/Google Maps */
-    border: 3px solid #ffffff;  /* Borda branca para destacar no mapa */
-    border-radius: 50%;
-    transform: translate(-50%, -50%);
-    box-shadow: 0 0 6px rgba(0, 0, 0, 0.4);
-}
-
-/* Efeito de pulso/radar ao redor do ponto */
-.pulso-gps {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 36px;
-    height: 36px;
-    background-color: rgba(0, 122, 255, 0.4);
-    border-radius: 50%;
-    transform: translate(-50%, -50%);
-    animation: animacao-pulso-gps 2s infinite ease-out;
-}
-
-@keyframes animacao-pulso-gps {
-    0% {
-        transform: translate(-50%, -50%) scale(0.5);
-        opacity: 1;
-    }
-    100% {
-        transform: translate(-50%, -50%) scale(2.2);
-        opacity: 0;
-    }
-}
-
-/* ========================================== */
-/* ESTILOS DA GAVETA LATERAL DE GPS           */
-/* ========================================== */
-.painel-gaveta-lateral {
-    position: fixed;
-    top: 0;
-    right: -300px; /* Escondido por padrão na lateral direita */
-    width: 280px;
-    height: 100%;
-    background-color: #ffffff;
-    box-shadow: -4px 0 15px rgba(0, 0, 0, 0.1);
-    transition: right 0.3s ease-in-out;
-    z-index: 1100;
-    display: flex;
-    flex-direction: column;
-}
-
-.painel-gaveta-lateral.ativa {
-    right: 0; /* Mostra o painel quando ativo */
 }
