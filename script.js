@@ -308,11 +308,12 @@ function getDistance(touches) {
     return Math.sqrt(dx * dx + dy * dy);
 }
 
-documentaddEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", () => {
     inicializarMapa();
-    // ==========================================
-    // TRAVAR ARRASTE DO MAPA AO ROLAR A LEGENDA
-    // ==========================================
+    const container = document.getElementById("mapaContainer");
+    if (!container) return;
+
+    // --- COLOQUE AQUI TAMBÉM FUNCIONA PERFEITAMENTE ---
     const painelLegenda = document.querySelector('.painel-legenda-lateral');
     if (painelLegenda) {
         ['touchstart', 'touchmove', 'touchend', 'mousedown', 'mousemove', 'mouseup', 'wheel'].forEach(evento => {
@@ -321,11 +322,6 @@ documentaddEventListener("DOMContentLoaded", () => {
             }, { passive: false });
         });
     }
-    // ==========================================
-
-    const container = document.getElementById("mapaContainer");
-    if (!container) return;
-
 
     // Eventos de Mouse
     container.addEventListener("mousedown", (e) => {
