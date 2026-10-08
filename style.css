@@ -136,11 +136,12 @@ body, html {
 
 #imagemMapa {
     display: block;
+    width: 100%;       /* Garante que ocupe largura legível */
+    height: auto;      /* Mantém a proporção */
     pointer-events: none;
     user-select: none;
 }
 
-/* Marcadores no mapa */
 #camadaPontos {
     position: absolute;
     top: 0;
@@ -148,6 +149,7 @@ body, html {
     width: 100%;
     height: 100%;
     pointer-events: none;
+    z-index: 999; /* Força ficar acima de qualquer outra camada */
 }
 
 .ponto {
