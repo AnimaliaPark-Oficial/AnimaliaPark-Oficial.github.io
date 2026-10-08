@@ -551,3 +551,11 @@ function converterLatLonParaPorcentagem(lat, lng) {
 
 // Para testar, basta chamar a função (ou acoplá-la a um botão de GPS):
 // iniciarGeolocalizacao();
+
+function fecharaAoClicarFora() {
+    // Função genérica para fechar modais ou painéis ao clicar fora
+    const janelaModal = document.querySelector('.janela.ativa');
+    if (janelaModal) {
+        janelaModal.classList.remove('ativa');
+    }
+}
