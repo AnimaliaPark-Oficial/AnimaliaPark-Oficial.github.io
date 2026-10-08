@@ -308,10 +308,24 @@ function getDistance(touches) {
     return Math.sqrt(dx * dx + dy * dy);
 }
 
-document.addEventListener("DOMContentLoaded", () => {
+documentaddEventListener("DOMContentLoaded", () => {
     inicializarMapa();
+    // ==========================================
+    // TRAVAR ARRASTE DO MAPA AO ROLAR A LEGENDA
+    // ==========================================
+    const painelLegenda = document.querySelector('.painel-legenda-lateral');
+    if (painelLegenda) {
+        ['touchstart', 'touchmove', 'touchend', 'mousedown', 'mousemove', 'mouseup', 'wheel'].forEach(evento => {
+            painelLegenda.addEventListener(evento, (e) => {
+                e.stopPropagation();
+            }, { passive: false });
+        });
+    }
+    // ==========================================
+
     const container = document.getElementById("mapaContainer");
     if (!container) return;
+
 
     // Eventos de Mouse
     container.addEventListener("mousedown", (e) => {
