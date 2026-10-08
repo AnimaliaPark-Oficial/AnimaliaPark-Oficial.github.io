@@ -104,11 +104,11 @@ const dadosPark = {
             { id: "zoo_onça", nome: "ONÇA-PINTADA / Jaguar", tipo: "ZOO", legendaNome: "ONÇA-PINTADA", area: "Animalia Reserva", desc: "Recinto", icone: "icons/onca.png", categoria: "animais", top: 51, left: 29 },
             { id: "zoo_sai", nome: "SAUIM-DE-COLEIRA / Pied Tamarin", tipo: "ZOO", legendaNome: "SAUIM-DE-COLEIRA", area: "Animalia Reserva", desc: "Recinto", icone: "icons/ambulatorio.png", categoria: "animais", top: 51, left: 29 },
 
-            { id: "zoo_aviário", nome: "ANIMÁLIA FOREST", tipo: "ANIMÁLIA FOREST", legendaNome: "ANIMÁLIA FOREST", area: "Animalia Reserva", desc: "AVES / Birds<br>ANTA / Lowland Tapir<br>CUTIA / Azara's Agouti<br>LONTRA / Neotropical Otter<br>VEADO-CATINGUEIRO / Gray brocket<br>CAGADOS - JABUTIS / Chelidae - Tortoise<br>IGUANA<br>", icone: "icons/aviario.png", categoria: "animais", top: 60, left: 35 },
+            { id: "zoo_aviário", nome: "ANIMÁLIA FOREST", tipo: "ANIMÁLIA FOREST", legendaNome: "ANIMÁLIA FOREST", area: "Animalia Reserva", desc: "AVES / Birds<br>ANTA / Lowland Tapir<br>CUTIA / Azara's Agouti<br>LONTRA / Neotropical Otter<br>VEADO-CATINGUEIRO / Gray brocket<br>CAGADOS - JABUTIS / Chelidae - Tortoise<br>IGUANA<br>JIBOIAS - ARIRANHA / Boa - Giant Otter<br>", icone: "icons/aviario.png", categoria: "animais", top: 60, left: 35 },
 
+            { id: "zoo_macaranha", nome: "MACACO-ARANHA ", tipo: "ZOO", legendaNome: "MACACO-ARANHA", area: "Animalia Reserva", desc: "Recinto", icone: "icons/macacoaranha.png", categoria: "animais", top: 57, left: 39 },
 
             
-            { id: "zoo_macaranha", nome: "MACACO-ARANHA", tipo: "RESERVA", legendaNome: "MACACO-ARANHA", area: "Animalia Reserva", desc: "Recinto", icone: "icons/macacoaranha.png", categoria: "animais", top: 57, left: 39 },
             { id: "zoo_sucuarana", nome: "SUÇUARANA", tipo: "RESERVA", legendaNome: "SUÇUARANA", area: "Animalia Reserva", desc: "Recinto", icone: "icons/sucuarana.png", categoria: "animais", top: 64, left: 43 },
             { id: "zoo_urso", nome: "URSO-DE-ÓCULOS", tipo: "RESERVA", legendaNome: "URSO-DE-ÓCULOS", area: "Animalia Reserva", desc: "Recinto", icone: "icons/urso.png", categoria: "animais", top: 67, left: 43 },
             { id: "zoo_tamandua", nome: "TAMANDUA", tipo: "RESERVA", legendaNome: "TAMANDUA", area: "Animalia Reserva", desc: "Recinto", icone: "icons/tamandua.png", categoria: "animais", top: 60, left: 50 },
