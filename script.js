@@ -86,9 +86,21 @@ const dadosPark = {
             { id: "atracao_tel_est1", nome: "EST.1 VILA ANIMALIA", tipo: "ATRAÇÕES", legendaNome: "ESTAÇÃO TELEFÉRICO", area: "Embarca e se divirta com a paisagem", desc: "🚠 Estação Teleférico (Vai e Volta ou só vai)", icone: "icons/estacao.png", categoria: "atracao", top: 20, left: 53 },
 
             // Zoológico / Animais
-            { id: "zoo_zebra", nome: "ZEBRA", tipo: "AMBIENTE: SAVANA", legendaNome: "ZEBRA", area: "Animalia Reserva", desc: "Recinto", icone: "icons/zebra.png", categoria: "animais", top: 35, left: 52  },
-            { id: "zoo_girafa", nome: "GIRAFA", tipo: "AMBIENTE: SAVANA", legendaNome: "GIRAFA", area: "Animalia Reserva", desc: "Recinto", icone: "icons/girafa.png", categoria: "animais", top: 35, left: 55  },
-            { id: "zoo_ema", nome: "EMA", tipo: "AMBIENTE: SAVANA", legendaNome: "EMA", area: "Animalia Reserva", desc: "Recinto", icone: "icons/ema.png", categoria: "animais", top: 38, left: 50  },
+            { id: "zoo_girafa", nome: "GIRAFA / Southern Giraffe", tipo: "AMBIENTE: SAVANA AFRICANA", legendaNome: "GIRAFA", area: "Animalia Reserva", desc: "Recinto", icone: "icons/girafa.png", categoria: "animais", top: 35, left: 55  },
+            { id: "zoo_zebra", nome: "ZEBRA / Plains Zebra", tipo: "AMBIENTE: SAVANA AFRICANA", legendaNome: "ZEBRA", area: "Animalia Reserva", desc: "Recinto", icone: "icons/zebra.png", categoria: "animais", top: 35, left: 52  },
+            { id: "zoo_ema", nome: "AVESTRUZ COMUM / Ostrich", tipo: "AMBIENTE: SAVANA AFRICANA", legendaNome: "AVESTRUZ COMUM", area: "Animalia Reserva", desc: "Recinto", icone: "icons/ema.png", categoria: "animais", top: 38, left: 50  },
+            { id: "zoo_cobo", nome: "COBO-DO-NILO / Nile lechwe", tipo: "AMBIENTE: SAVANA AFRICANA", legendaNome: "COBO-DO-NILO", area: "Animalia Reserva", desc: "Recinto", icone: "icons/ambulatorio.png", categoria: "animais", top: 38, left: 40  },
+            { id: "zoo_oryx", nome: "ORYX / Gemsbok", tipo: "AMBIENTE: SAVANA AFRICANA", legendaNome: "ORYX", area: "Animalia Reserva", desc: "Recinto", icone: "icons/ambulatorio.png", categoria: "animais", top: 41, left: 40  },
+            { id: "zoo_cervi", nome: "CERVICABRA / Blackbuk", tipo: "AMBIENTE: SAVANA AFRICANA", legendaNome: "CERVICABRA", area: "Animalia Reserva", desc: "Recinto", icone: "icons/ambulatorio.png", categoria: "animais", top: 41, left: 40  },
+            { id: "zoo_wat", nome: "WATERBUCK", tipo: "AMBIENTE: SAVANA AFRICANA", legendaNome: "WATERBUCK", area: "Animalia Reserva", desc: "Recinto", icone: "icons/ambulatorio.png", categoria: "animais", top: 41, left: 40  },
+            { id: "zoo_adax", nome: "ADAX / Addax", tipo: "AMBIENTE: SAVANA AFRICANA", legendaNome: "ADAX", area: "Animalia Reserva", desc: "Recinto", icone: "icons/ambulatorio.png", categoria: "animais", top: 41, left: 40  },
+            { id: "zoo_fla", nome: "FLAMINGO-ROSADO / Greater Flamingo", nome: "FLAMINGO-ROSADO", tipo: "AMBIENTE: SAVANA AFRICANA", legendaNome: "ADAX", area: "Animalia Reserva", desc: "Recinto", icone: "icons/ambulatorio.png", categoria: "animais", top: 41, left: 40  },
+            { id: "zoo_gal", nome: "GALINHA-D'ANGOLA / Helmeted Guineafowl", nome: "GALINHA-D'ANGOLA", tipo: "AMBIENTE: SAVANA AFRICANA", legendaNome: "ADAX", area: "Animalia Reserva", desc: "Recinto", icone: "icons/ambulatorio.png", categoria: "animais", top: 41, left: 40  },
+
+
+
+
+            
             { id: "zoo_leao", nome: "LEÃO", tipo: "AMBIENTE: SAVANA", legendaNome: "LEÃO", area: "Animalia Reserva", desc: "Recinto", icone: "icons/leao.png", categoria: "animais", top: 44, left: 38.5 },
             { id: "zoo_onça", nome: "ONÇA-PINTADA", tipo: "AMBIENTE: SAVANA", legendaNome: "ONÇA-PINTADA", area: "Animalia Reserva", desc: "Recinto", icone: "icons/onca.png", categoria: "animais", top: 51, left: 29 },
             { id: "zoo_aviário", nome: "AVIÁRIO", tipo: "RESERVA", legendaNome: "AVIÁRIO", area: "Animalia Reserva", desc: "Recinto", icone: "icons/aviario.png", categoria: "animais", top: 60, left: 35 },
