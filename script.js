@@ -482,7 +482,6 @@ function iniciarGeolocalizacao() {
         return;
     }
 
-    // watchPosition rastreia o movimento em tempo real
     navigator.geolocation.watchPosition(
         (posicao) => {
             const latitude = posicao.coords.latitude;
@@ -490,7 +489,7 @@ function iniciarGeolocalizacao() {
             
             console.log(`GPS atualizado: Lat ${latitude}, Lng ${longitude}`);
             
-            // Atualiza ou cria o marcador visual no mapa
+            // Chama a função exata que desenha o marcador na tela
             atualizarMarcadorGpsNoMapa(latitude, longitude);
         },
         (erro) => {
@@ -506,7 +505,10 @@ function iniciarGeolocalizacao() {
 
 function atualizarMarcadorGpsNoMapa(lat, lng) {
     const camadaPontos = document.getElementById('camadaPontos');
-    if (!camadaPontos) return;
+    if (!camadaPontos) {
+        console.error("Elemento 'camadaPontos' não foi encontrado no HTML!");
+        return;
+    }
 
     // Se o marcador ainda não existe na tela, cria ele
     if (!elementoMarcadorGps) {
@@ -517,6 +519,7 @@ function atualizarMarcadorGpsNoMapa(lat, lng) {
             <div class="centro-gps"></div>
         `;
         camadaPontos.appendChild(elementoMarcadorGps);
+        console.log("Marcador de GPS criado com sucesso no DOM!");
     }
 
     // Converte a Latitude e Longitude real para a porcentagem (%) da sua imagem
@@ -527,35 +530,29 @@ function atualizarMarcadorGpsNoMapa(lat, lng) {
     elementoMarcadorGps.style.top = `${coordsMapeadas.y}%`;
 }
 
-// Função com os seus limites exatos calibrados
+// Função de conversão utilizando os seus limites exatos calibrados
 function converterLatLonParaPorcentagem(lat, lng) {
-    // Seus pontos de referência:
-    // Superior Esquerdo: Lat -23.619751, Lng -46.970382
-    // Inferior Direito:  Lat -23.626065, Lng -46.962582
+    const latMin = -23.626065; // Inferior Direito (Sul)
+    const latMax = -23.619751; // Superior Esquerdo (Norte)
+    const lngMin = -46.970382; // Superior Esquerdo (Oeste)
+    const lngMax = -46.962582; // Inferior Direito (Leste)
 
-    const latMin = -23.626065; // Sul (fundo da imagem)
-    const latMax = -23.619751; // Norte (topo da imagem)
-    const lngMin = -46.970382; // Oeste (esquerda da imagem)
-    const lngMax = -46.962582; // Leste (direita da imagem)
-
-    // Cálculo proporcional (Regra de Três)
+    // Cálculo proporcional
     let x = ((lng - lngMin) / (lngMax - lngMin)) * 100;
-    let y = ((latMax - lat) / (latMax - latMin)) * 100; // Invertido porque o eixo Y do navegador cresce para baixo
+    let y = ((latMax - lat) / (latMax - latMin)) * 100; 
 
-    // Garante que o marcador não fuja de 0% a 100% da tela/imagem
+    // Garante que o marcador fique confinado dentro da imagem (0 a 100%)
     x = Math.max(0, Math.min(100, x));
     y = Math.max(0, Math.min(100, y));
 
     return { x, y };
 }
 
-// Para testar, basta chamar a função (ou acoplá-la a um botão de GPS):
-// iniciarGeolocalizacao();
-
-function fecharaAoClicarFora() {
-    // Função genérica para fechar modais ou painéis ao clicar fora
-    const janelaModal = document.querySelector('.janela.ativa');
-    if (janelaModal) {
-        janelaModal.classList.remove('ativa');
+// Função auxiliar para evitar o erro do clique fora (modal)
+function fecharAoClicarFora(event) {
+    const janela = document.getElementById('janelaLocal');
+    if (event.target === janela) {
+        janela.classList.remove('ativa');
     }
 }
+
