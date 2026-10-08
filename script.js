@@ -541,6 +541,9 @@ function converterLatLonParaPorcentagem(lat, lng) {
     let x = ((lng - lngMin) / (lngMax - lngMin)) * 100;
     let y = ((latMax - lat) / (latMax - latMin)) * 100; 
 
+    // MOSTRE NO CONSOLE ONDE O PONTO ESTÁ A TENTAR FICAR:
+    console.log(`Posição calculada -> X: ${x.toFixed(1)}%, Y: ${y.toFixed(1)}%`);
+
     // Garante que o marcador fique confinado dentro da imagem (0 a 100%)
     x = Math.max(0, Math.min(100, x));
     y = Math.max(0, Math.min(100, y));
