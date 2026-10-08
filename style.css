@@ -204,69 +204,85 @@ body, html {
 }
 
 /* ========================================================
-   CAIXA DE LEGENDA FLUTUANTE
+   CAIXA DE LEGENDA FLUTUANTE EM LISTA SUSPENSA (CORRIGIDO)
    ======================================================== */
-
 .painel-legenda-lateral {
     position: absolute;
     top: 15px;
     left: 15px;
-    width: 260px;
-
     background: rgba(255, 255, 255, 0.95);
     border-radius: 12px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-
     z-index: 60;
+    width: 260px;
     backdrop-filter: blur(5px);
-
-    overflow: hidden;
+    
+    /* Trava a altura máxima total que o painel pode ocupar na tela do celular */
+    max-height: calc(100vh - 120px);
+    display: flex;
+    flex-direction: column;
 }
 
-/* Estrutura do dropdown */
 .legenda-detalhes {
+    display: flex;
+    flex-direction: column;
     width: 100%;
+    max-height: 100%;
     overflow: hidden;
 }
 
-/* Área da legenda com rolagem */
-.legenda-corpo-conteudo {
-    height: 140px !important;
-    max-height: 140px !important;
-    min-height: 140px !important;
-
-    box-sizing: border-box;
-
-    padding: 10px 12px 12px 12px;
-    border-top: 1px solid #ddd;
-
-    overflow-y: auto !important;
-    overflow-x: hidden !important;
-
-    touch-action: pan-y;
+.legenda-detalhes summary {
+    font-family: inherit;
+    font-size: 11px;
+    color: #4A154B;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: bold;
+    padding: 12px;
+    cursor: pointer;
+    user-select: none;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    flex-shrink: 0;
+    background: transparent;
 }
 
-/* Remove seta padrão */
-.legenda-detalhes summary::-webkit-details-marker {
-    display: none;
-}
-
-/* Nossa seta */
+/* Setinha personalizada que gira ao abrir/fechar */
 .legenda-detalhes summary::after {
     content: '▼';
     font-size: 8px;
-    color: #4A154B;
     transition: transform 0.2s ease;
+    color: #4A154B;
 }
 
-/* Gira a seta quando abre */
 .legenda-detalhes[open] summary::after {
     transform: rotate(180deg);
 }
 
-/* Barra de rolagem */
+.legenda-detalhes summary::-webkit-details-marker {
+    display: none;
+}
+
+/* Corpo da legenda com rolagem vertical rígida e limite de ~5 itens */
+.legenda-corpo-conteudo {
+    padding: 0 12px 12px 12px;
+    border-top: 1px solid #ddd;
+    margin-top: 2px;
+    
+    /* Altura exata para exibir cerca de 5 itens (aproximadamente 170px) */
+    max-height: 170px !important;
+    min-height: 50px;
+    
+    overflow-y: auto !important; 
+    overflow-x: hidden;
+    flex-shrink: 1;
+}
+
 .legenda-corpo-conteudo::-webkit-scrollbar {
-    width: 6px;
+    width: 5px;
 }
 
 .legenda-corpo-conteudo::-webkit-scrollbar-thumb {
