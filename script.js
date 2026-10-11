@@ -86,8 +86,8 @@ const dadosPark = {
             { id: "atracao_tel_est1", nome: "EST.1 VILA ANIMALIA", tipo: "ATRAÇÕES", legendaNome: "ESTAÇÃO TELEFÉRICO", area: "Embarca e se divirta com a paisagem", desc: "🚠 Estação Teleférico (Vai e Volta ou só vai)", icone: "icons/estacao.png", categoria: "atracao", top: 20, left: 53 },
 
             // Zoológico / Animais
-            { id: "zoo_savanafricana", nome: "Savana de uma forma divertida", tipo: "ANIMÁLIA SAVANA AFRICANA", legendaNome: "SAVANA AFRICANA", area: "GIRAFA / Southern Giraffe<br>ZEBRA / Plains Zebra<br>AVESTRUZ COMUM / Ostrich<br>COBO-DO-NILO / Nile lechwe<br>ORYX / Gemsbok<br>CERVICABRA / Blackbuk<br>WATERBUCK<br>ADAX / Addax<br>FLAMINGO-ROSADO / Greater Flamingo<br>GALINHA-D'ANGOLA / Helmeted Guineafowl<br>GANSO-DO-EGITO / Egyptian Goose<br>", desc: "Recinto", icone: "icons/savanaafricana.png", categoria: "animais", top: 35, left: 55 },
-
+            { id: "zoo_savanafricana", nome: "ANIMÁLIA SAVANA AFRICANA", tipo: "ANIMÁLIA SAVANA AFRICANA", legendaNome: "SAVANA AFRICANA", area: "Savana de um jeito Divertido!", desc: "GIRAFA / Southern Giraffe<br>ZEBRA / Plains Zebra<br>AVESTRUZ COMUM / Ostrich<br>COBO-DO-NILO / Nile lechwe<br>ORYX / Gemsbok<br>CERVICABRA / Blackbuk<br>WATERBUCK<br>ADAX / Addax<br>FLAMINGO-ROSADO / Greater Flamingo<br>GALINHA-D'ANGOLA / Helmeted Guineafowl<br>GANSO-DO-EGITO / Egyptian Goose<br>
+", icone: "icons/savanaafricana.png", categoria: "animais", top: 35, left: 55 },
 
 
             
