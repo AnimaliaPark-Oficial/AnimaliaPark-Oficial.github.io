@@ -106,7 +106,7 @@ const dadosPark = {
                  // ZOO 1
             { id: "zoo_leao", nome: "LEÃO", tipo: "ANIMÁLIA RESERVA", legendaNome: "LEÃO<br>Lion", area: "Lion", desc: "Colocar descrição do animal", icone: "icons/2.png", categoria: "animais", top: 44, left: 38.5 },
             { id: "zoo_Fig", nome: "MIRANTE-FIGUEIRA", tipo: "ANIMÁLIA RESERVA", legendaNome: "MIRANTE-FIGUEIRA<br>Fig tree belvedere", area: "Fig tree belvedere", desc: "Colocar descrição do animal", icone: "icons/3.png", categoria: "animais", top: 48, left: 43 },
-            { id: "zoo_orq", nome: "ORQUIDÁRIO", tipo: "ANIMÁLIA RESERVA", legendaNome: "ORQUIDÁRIO<br>Orchidary", area: "Orchidary", desc: "Colocar descrição do animal", icone: "icons/4.png", categoria: "animais", top: 51, left: 29 },
+            { id: "zoo_orq", nome: "ORQUIDÁRIO", tipo: "ANIMÁLIA RESERVA", legendaNome: "ORQUIDÁRIO<br>Orchidary", area: "Orchidary", desc: "Colocar descrição do animal", icone: "icons/4.png", categoria: "animais", top: 50, left: 39 },
             { id: "zoo_onça", nome: "ONÇA-PINTADA", tipo: "ANIMÁLIA RESERVA", legendaNome: "ONÇA-PINTADA<br>Jaguar", area: "Jaguar", desc: "Colocar descrição do animal", icone: "icons/5.png", categoria: "animais", top: 51, left: 29 },
             { id: "zoo_sai", nome: "SAUIM-DE-COLEIRA", tipo: "ANIMÁLIA RESERVA", legendaNome: "SAUIM-DE-COLEIRA<br>Pied Tamarin", area: "Pied Tamarin", desc: "Colocar descrição do animal", icone: "icons/6.png", categoria: "animais", top: 51, left: 29 },
 
