@@ -101,12 +101,11 @@ const dadosPark = {
             //{ id: "zoo_gans", nome: "GANSO-DO-EGITO / Egyptian Goose", nome: "GANSO-DO-EGITO", tipo: "SAVANA AFRICANA", legendaNome: "ADAX", area: "Animalia Reserva", desc: "Recinto", icone: "icons/11.png", categoria: "animais", top: 41, left: 40  },
 
                  // SAVANA AFRICANA
-            { id: "zoo_savanafricana", nome: "SAVANA AFRICANA / African Savanna", tipo: "ANIMÁLIA SAVANA AFRICANA / Animália African Savanna", legendaNome: "SAVANA AFRICANA", area: "Animais que voce encontra aqui:", desc: "GIRAFA / Southern Giraffe<br>ZEBRA / Plains Zebra<br>AVESTRUZ COMUM / Ostrich<br>COBO-DO-NILO / Nile lechwe<br>ORYX / Gemsbok<br>CERVICABRA / Blackbuk<br>WATERBUCK<br>ADAX / Addax<br>FLAMINGO-ROSADO / Greater Flamingo<br>GALINHA-D'ANGOLA / Helmeted Guineafowl<br>GANSO-DO-EGITO / Egyptian Goose<br>", icone: "icons/1.png", categoria: "animais", top: 35, left: 55 },
-
+            { id: "zoo_savanafricana", nome: "SAVANA AFRICANA / African Savanna", tipo: "ANIMÁLIA SAVANA AFRICANA / Animália African Savanna", legendaNome: "SAVANA AFRICANA", area: "Animais que voce encontra aqui:", desc: "GIRAFA / Southern Giraffe<br>ZEBRA / Plains Zebra<br>AVESTRUZ COMUM / Ostrich<br>COBO-DO-NILO / Nile lechwe<br>ORYX / Gemsbok<br>CERVICABRA / Blackbuk<br>WATERBUCK<br>ADAX / Addax<br>FLAMINGO-ROSADO / Greater Flamingo<br>GALINHA-D'ANGOLA / Helmeted Guineafowl<br>GANSO-DO-EGITO / Egyptian Goose<br>", icone: "icons/1.png", categoria: "animais", top: 35, left: 52 },
 
                  // ZOO 1
             { id: "zoo_leao", nome: "LEÃO / Lion", tipo: "ZOO", legendaNome: "LEÃO", area: "Animalia Reserva", desc: "Recinto", icone: "icons/2.png", categoria: "animais", top: 44, left: 38.5 },
-            { id: "zoo_Fig", nome: "MIRANTE-FIGUEIRA / Fig tree belvedere", tipo: "ZOO", legendaNome: "MIRANTE FIGUEIRA", area: "Animalia Reserva", desc: "Recinto", icone: "icons3.png", categoria: "animais", top: 44, left: 40 },
+            { id: "zoo_Fig", nome: "MIRANTE-FIGUEIRA / Fig tree belvedere", tipo: "ZOO", legendaNome: "MIRANTE FIGUEIRA", area: "Animalia Reserva", desc: "Recinto", icone: "icons3.png", categoria: "animais", top: 48, left: 43 },
             { id: "zoo_orq", nome: "ORQUIDÁRIO / Orchidary", tipo: "ZOO", legendaNome: "ORQUIDÁRIO", area: "Animalia Reserva", desc: "Recinto", icone: "icons/4.png", categoria: "animais", top: 51, left: 29 },
             { id: "zoo_onça", nome: "ONÇA-PINTADA / Jaguar", tipo: "ZOO", legendaNome: "ONÇA-PINTADA", area: "Animalia Reserva", desc: "Recinto", icone: "icons/5.png", categoria: "animais", top: 51, left: 29 },
             { id: "zoo_sai", nome: "SAUIM-DE-COLEIRA / Pied Tamarin", tipo: "ZOO", legendaNome: "SAUIM-DE-COLEIRA", area: "Animalia Reserva", desc: "Recinto", icone: "icons/6.png", categoria: "animais", top: 51, left: 29 },
@@ -114,23 +113,23 @@ const dadosPark = {
                  // FOREST
             { id: "zoo_aviário", nome: "ANIMÁLIA FOREST", tipo: "ANIMÁLIA FOREST", legendaNome: "ANIMÁLIA FOREST", area: "Animais que voce encontra aqui:", desc: "AVES / Birds<br>ANTA / Lowland Tapir<br>CUTIA / Azara's Agouti<br>LONTRA / Neotropical Otter<br>VEADO-CATINGUEIRO / Gray brocket<br>CAGADOS - JABUTIS / Chelidae - Tortoise<br>IGUANA<br>JIBOIAS - ARIRANHA / Boa - Giant Otter<br>", icone: "icons/aviario.png", categoria: "animais", top: 60, left: 35 },
 
-
                 // ZOO 2
-            { id: "zoo_macaranha", nome: "MACACO-ARANHA / BUGIO-RUIVO", tipo: "ANIMÁLIA RESERVA", legendaNome: "MACACO-ARANHA / BUGIO-RUIVO", area: "Guiana Spider MOnkey / Southern Brown Howler Monkey", desc: "Recinto", icone: "icons/7.png", categoria: "animais", top: 57, left: 39 },
+            { id: "zoo_macaranha", nome: "MACACO-ARANHA / BUGIO-RUIVO", tipo: "ANIMÁLIA RESERVA", legendaNome: "MACACO-ARANHA / BUGIO-RUIVO", area: "Guiana Spider MOnkey / Southern Brown Howler Monkey", desc: "Colocar descrição do animal", icone: "icons/8.png", categoria: "animais", top: 57, left: 39 },
+            { id: "zoo_sucuarana", nome: "SUÇUARANA / Puma", tipo: "ANIMÁLIA RESERVA", legendaNome: "SUÇUARANA / Puma", area: "Puma", desc: "Colocar descrição do animal", icone: "icons/9.png", categoria: "animais", top: 64, left: 43 },
+            { id: "zoo_urso", nome: "URSO-DE-ÓCULOS / Spectacled Bear", tipo: "ANIMÁLIA RESERVA", legendaNome: "URSO-DE-ÓCULOS / Spectacled Bear", area: "Spectacled Bear", desc: "Colocar descrição do animal", icone: "icons/10.png", categoria: "animais", top: 67, left: 43 },
+            { id: "zoo_tamandua", nome: "TAMANDUÁ / Southern Tamanudá", tipo: "ANIMÁLIA RESERVA", legendaNome: "TAMANDUÁ / Southern Tamanudá", area: "Southern Tamanudá", desc: "Colocar descrição do animal", icone: "icons/11.png", categoria: "animais", top: 60, left: 50 },
+            { id: "zoo_lobo", nome: "LOBO-GUARÁ / Maned Wolf", tipo: "ANIMÁLIA RESERVA", legendaNome: "LOBO-GUARÁ / Maned Wolf", area: "Maned Wolf", desc: "Colocar descrição do animal", icone: "icons/12.png", categoria: "animais", top: 10, left: 0 },
+            { id: "zoo_raposa", nome: "RAPOSINHA-DO-CAMPO / Hoary Fox", tipo: "ANIMÁLIA RESERVA", legendaNome: "RAPOSINHA-DO-CAMPO / Hoary Fox", area: "Hoary Fox", desc: "Colocar descrição do animal", icone: "icons/13.png", categoria: "animais", top: 15, left: 00 },
+            { id: "zoo_tamandban", nome: "TAMANDUÁ-BANDEIRA / Giant Anteater", tipo: "ANIMÁLIA RESERVA", legendaNome: "TAMANDUÁ-BANDEIRA / Giant Anteater", area: "Giant Anteater", desc: "Colocar descrição do animal", icone: "icons/14.png", categoria: "animais", top: 20, left: 00 },
+            { id: "zoo_arara", nome: "ARARAS ESPECIAIS / Special Macaws", tipo: "ANIMÁLIA RESERVA", legendaNome: "ARARAS ESPECIAIS / Special Macaws", area: "Special Macaws", desc: "Colocar descrição do animal", icone: "icons/15.png", categoria: "animais", top: 25, left: 00 },
 
-    
+
 
 
             
             
-            { id: "zoo_sucuarana", nome: "SUÇUARANA", tipo: "RESERVA", legendaNome: "SUÇUARANA", area: "Animalia Reserva", desc: "Recinto", icone: "icons/sucuarana.png", categoria: "animais", top: 64, left: 43 },
-            { id: "zoo_urso", nome: "URSO-DE-ÓCULOS", tipo: "RESERVA", legendaNome: "URSO-DE-ÓCULOS", area: "Animalia Reserva", desc: "Recinto", icone: "icons/urso.png", categoria: "animais", top: 67, left: 43 },
-            { id: "zoo_tamandua", nome: "TAMANDUA", tipo: "RESERVA", legendaNome: "TAMANDUA", area: "Animalia Reserva", desc: "Recinto", icone: "icons/tamandua.png", categoria: "animais", top: 60, left: 50 },
 
             { id: "zoo_cahvinagre", nome: "CACHORRO-VINAGRE", tipo: "RESERVA", legendaNome: "CACHORRO-VINAGRE", area: "Animalia Reserva", desc: "Recinto", icone: "icons/cachorrovinagre.png", categoria: "animais", top: 75, left: 57  },
-            
-
-                        { id: "zoo_cahvinagre", nome: "CACHORRO-VINAGRE", tipo: "RESERVA", legendaNome: "CACHORRO-VINAGRE", area: "Animalia Reserva", desc: "Recinto", icone: "icons/cachorrovinagre.png", categoria: "animais", top: 75, left: 57  },
 
             { id: "zoo_fazenda", nome: "FAZENDINHA", tipo: "RESERVA", legendaNome: "FAZENDINHA", area: "Animalia Reserva", desc: "Recinto", icone: "icons/fazenda.png", categoria: "animais", top: 83, left: 57 },
             { id: "zoo_cabramontes", nome: "CABRA-DA-MONTANHA", tipo: "RESERVA", legendaNome: "CABRA-DA-MONTANHA", area: "Animalia Reserva", desc: "Recinto", icone: "icons/cabramontes.png", categoria: "animais", top: 80, left: 70 },
