@@ -86,11 +86,16 @@ const dadosPark = {
             { id: "atracao_tel_est1", nome: "EST.1 VILA ANIMALIA", tipo: "ATRAÇÕES", legendaNome: "ESTAÇÃO TELEFÉRICO", area: "Embarca e se divirta com a paisagem", desc: "🚠 Estação Teleférico (Vai e Volta ou só vai)", icone: "icons/estacao.png", categoria: "atracao", top: 20, left: 53 },
 
             // Zoológico / Animais
-            { id: "zoo_savanafricana", nome: "ANIMÁLIA SAVANA AFRICANA", tipo: "ANIMÁLIA SAVANA AFRICANA", legendaNome: "SAVANA AFRICANA", area: "Savana de um jeito Divertido!", desc: "GIRAFA / Southern Giraffe<br>ZEBRA / Plains Zebra<br>AVESTRUZ COMUM / Ostrich<br>COBO-DO-NILO / Nile lechwe<br>ORYX / Gemsbok<br>CERVICABRA / Blackbuk<br>WATERBUCK<br>ADAX / Addax<br>FLAMINGO-ROSADO / Greater Flamingo<br>GALINHA-D'ANGOLA / Helmeted Guineafowl<br>GANSO-DO-EGITO / Egyptian Goose<br>", icone: "icons/savanaafricana.png", categoria: "animais", top: 35, left: 60 },
+            { id: "zoo_savanafricana", nome: "SAVANA AFRICANA", tipo: "ANIMÁLIA SAVANA AFRICANA", legendaNome: "SAVANA AFRICANA", area: "Animais que voce encontra aqui:", desc: "GIRAFA / Southern Giraffe<br>ZEBRA / Plains Zebra<br>AVESTRUZ COMUM / Ostrich<br>COBO-DO-NILO / Nile lechwe<br>ORYX / Gemsbok<br>CERVICABRA / Blackbuk<br>WATERBUCK<br>ADAX / Addax<br>FLAMINGO-ROSADO / Greater Flamingo<br>GALINHA-D'ANGOLA / Helmeted Guineafowl<br>GANSO-DO-EGITO / Egyptian Goose<br>", icone: "icons/savanaafricana.png", categoria: "animais", top: 35, left: 60 },
 
 
 
-            
+
+
+
+
+
+
             { id: "zoo_girafa", nome: "GIRAFA / Southern Giraffe", tipo: "SAVANA AFRICANA", legendaNome: "GIRAFA", area: "Animalia Reserva", desc: "Recinto", icone: "icons/1.png", categoria: "animais", top: 35, left: 55  },
             { id: "zoo_zebra", nome: "ZEBRA / Plains Zebra", tipo: "SAVANA AFRICANA", legendaNome: "ZEBRA", area: "Animalia Reserva", desc: "Recinto", icone: "icons/2.png", categoria: "animais", top: 35, left: 52  },
             { id: "zoo_ema", nome: "AVESTRUZ COMUM / Ostrich", tipo: "SAVANA AFRICANA", legendaNome: "AVESTRUZ COMUM", area: "Animalia Reserva", desc: "Recinto", icone: "icons/3.png", categoria: "animais", top: 38, left: 50  },
