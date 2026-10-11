@@ -101,7 +101,7 @@ const dadosPark = {
             //{ id: "zoo_gans", nome: "GANSO-DO-EGITO / Egyptian Goose", nome: "GANSO-DO-EGITO", tipo: "SAVANA AFRICANA", legendaNome: "ADAX", area: "Animalia Reserva", desc: "Recinto", icone: "icons/11.png", categoria: "animais", top: 41, left: 40  },
 
                  // SAVANA AFRICANA
-            { id: "zoo_savanafricana", nome: "SAVANA AFRICANA", tipo: "ANIMÁLIA SAVANA AFRICANA / Animália African Savanna", legendaNome: "SAVANA AFRICANA<br>African Savanna", area: "AFRICAN SAVANNA", desc: "GIRAFA / Southern Giraffe<br>ZEBRA / Plains Zebra<br>AVESTRUZ COMUM / Ostrich<br>COBO-DO-NILO / Nile lechwe<br>ORYX / Gemsbok<br>CERVICABRA / Blackbuk<br>WATERBUCK<br>ADAX / Addax<br>FLAMINGO-ROSADO / Greater Flamingo<br>GALINHA-D'ANGOLA / Helmeted Guineafowl<br>GANSO-DO-EGITO / Egyptian Goose<br>", icone: "icons/1.png", categoria: "animais", top: 35, left: 52 },
+            { id: "zoo_savanafricana", nome: "SAVANA AFRICANA", tipo: "ANIMÁLIA SAVANA AFRICANA", legendaNome: "SAVANA AFRICANA<br>African Savanna", area: "African Savanna", desc: "GIRAFA / Southern Giraffe<br>ZEBRA / Plains Zebra<br>AVESTRUZ COMUM / Ostrich<br>COBO-DO-NILO / Nile lechwe<br>ORYX / Gemsbok<br>CERVICABRA / Blackbuk<br>WATERBUCK<br>ADAX / Addax<br>FLAMINGO-ROSADO / Greater Flamingo<br>GALINHA-D'ANGOLA / Helmeted Guineafowl<br>GANSO-DO-EGITO / Egyptian Goose<br>", icone: "icons/1.png", categoria: "animais", top: 35, left: 52 },
 
                  // ZOO 1
             { id: "zoo_leao", nome: "LEÃO", tipo: "ANIMÁLIA RESERVA", legendaNome: "LEÃO<br>Lion", area: "Lion", desc: "Colocar descrição do animal", icone: "icons/2.png", categoria: "animais", top: 44, left: 38.5 },
@@ -119,9 +119,7 @@ const dadosPark = {
             { id: "zoo_sucuarana", nome: "SUÇUARANA", tipo: "ANIMÁLIA RESERVA", legendaNome: "SUÇUARANA<br>Puma", area: "Puma", desc: "Colocar descrição do animal", icone: "icons/9.png", categoria: "animais", top: 64, left: 43 },
             { id: "zoo_urso", nome: "URSO-DE-ÓCULOS", tipo: "ANIMÁLIA RESERVA", legendaNome: "URSO-DE-ÓCULOS<br>Spectacled Bear", area: "Spectacled Bear", desc: "Colocar descrição do animal", icone: "icons/10.png", categoria: "animais", top: 67, left: 43 },
             { id: "zoo_tamandua", nome: "TAMANDUÁ", tipo: "ANIMÁLIA RESERVA", legendaNome: "TAMANDUÁ<br>Southern Tamanudá", area: "Southern Tamanudá", desc: "Colocar descrição do animal", icone: "icons/11.png", categoria: "animais", top: 60, left: 50 },
-
-            
-            { id: "zoo_lobo", nome: "LOBO-GUARÁ", tipo: "ANIMÁLIA RESERVA", legendaNome: "LOBO-GUARÁ<br>Maned Wolf", area: "Maned Wolf", desc: "Colocar descrição do animal", icone: "icons/12.png", categoria: "animais", top: 67, left: 44 },
+            { id: "zoo_lobo", nome: "LOBO-GUARÁ", tipo: "ANIMÁLIA RESERVA", legendaNome: "LOBO-GUARÁ<br>Maned Wolf", area: "Maned Wolf", desc: "Colocar descrição do animal", icone: "icons/12.png", categoria: "animais", top: 57, left: 44 },
 
 
             
