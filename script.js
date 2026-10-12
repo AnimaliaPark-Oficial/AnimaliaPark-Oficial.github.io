@@ -100,6 +100,31 @@ const dadosPark = {
             //{ id: "zoo_gal", nome: "GALINHA-D'ANGOLA / Helmeted Guineafowl", nome: "GALINHA-D'ANGOLA", tipo: "SAVANA AFRICANA", legendaNome: "ADAX", area: "Animalia Reserva", desc: "Recinto", icone: "icons/10.png", categoria: "animais", top: 41, left: 40  },
             //{ id: "zoo_gans", nome: "GANSO-DO-EGITO / Egyptian Goose", nome: "GANSO-DO-EGITO", tipo: "SAVANA AFRICANA", legendaNome: "ADAX", area: "Animalia Reserva", desc: "Recinto", icone: "icons/11.png", categoria: "animais", top: 41, left: 40  },
 
+            { id: "teste1", nome: "teste", tipo: "RESERVA", legendaNome: "teste", area: "Animalia Reserva", desc: "Recinto", icone: "icons/ambulatorio.png", categoria: "animais", top: 10, left: 0  },
+            { id: "teste1", nome: "teste", tipo: "RESERVA", legendaNome: "teste", area: "Animalia Reserva", desc: "Recinto", icone: "icons/ambulatorio.png", categoria: "animais", top: 20, left: 0  },
+            { id: "teste1", nome: "teste", tipo: "RESERVA", legendaNome: "teste", area: "Animalia Reserva", desc: "Recinto", icone: "icons/ambulatorio.png", categoria: "animais", top: 30, left: 0  },
+            { id: "teste1", nome: "teste", tipo: "RESERVA", legendaNome: "teste", area: "Animalia Reserva", desc: "Recinto", icone: "icons/ambulatorio.png", categoria: "animais", top: 40, left: 0  },
+            { id: "teste1", nome: "teste", tipo: "RESERVA", legendaNome: "teste", area: "Animalia Reserva", desc: "Recinto", icone: "icons/ambulatorio.png", categoria: "animais", top: 50, left: 0  },
+            { id: "teste1", nome: "teste", tipo: "RESERVA", legendaNome: "teste", area: "Animalia Reserva", desc: "Recinto", icone: "icons/ambulatorio.png", categoria: "animais", top: 60, left: 0  },
+            { id: "teste1", nome: "teste", tipo: "RESERVA", legendaNome: "teste", area: "Animalia Reserva", desc: "Recinto", icone: "icons/ambulatorio.png", categoria: "animais", top: 70, left: 0  },
+            { id: "teste1", nome: "teste", tipo: "RESERVA", legendaNome: "teste", area: "Animalia Reserva", desc: "Recinto", icone: "icons/ambulatorio.png", categoria: "animais", top: 80, left: 0  },
+            { id: "teste1", nome: "teste", tipo: "RESERVA", legendaNome: "teste", area: "Animalia Reserva", desc: "Recinto", icone: "icons/ambulatorio.png", categoria: "animais", top: 90, left: 0  },
+            { id: "teste1", nome: "teste", tipo: "RESERVA", legendaNome: "teste", area: "Animalia Reserva", desc: "Recinto", icone: "icons/ambulatorio.png", categoria: "animais", top: 100, left: 0 },
+            { id: "teste1", nome: "teste", tipo: "RESERVA", legendaNome: "teste", area: "Animalia Reserva", desc: "Recinto", icone: "icons/ambulatorio.png", categoria: "animais", top: 50, left: 50 },
+
+            { id: "teste1", nome: "teste", tipo: "RESERVA", legendaNome: "teste", area: "Animalia Reserva", desc: "Recinto", icone: "icons/ambulatorio.png", categoria: "animais", top: 0, left: 10  },
+            { id: "teste1", nome: "teste", tipo: "RESERVA", legendaNome: "teste", area: "Animalia Reserva", desc: "Recinto", icone: "icons/ambulatorio.png", categoria: "animais", top: 0, left: 20  },
+            { id: "teste1", nome: "teste", tipo: "RESERVA", legendaNome: "teste", area: "Animalia Reserva", desc: "Recinto", icone: "icons/ambulatorio.png", categoria: "animais", top: 0, left: 30  },
+            { id: "teste1", nome: "teste", tipo: "RESERVA", legendaNome: "teste", area: "Animalia Reserva", desc: "Recinto", icone: "icons/ambulatorio.png", categoria: "animais", top: 0, left: 40  },
+            { id: "teste1", nome: "teste", tipo: "RESERVA", legendaNome: "teste", area: "Animalia Reserva", desc: "Recinto", icone: "icons/ambulatorio.png", categoria: "animais", top: 0, left: 50  },
+            { id: "teste1", nome: "teste", tipo: "RESERVA", legendaNome: "teste", area: "Animalia Reserva", desc: "Recinto", icone: "icons/ambulatorio.png", categoria: "animais", top: 0, left: 60  },
+            { id: "teste1", nome: "teste", tipo: "RESERVA", legendaNome: "teste", area: "Animalia Reserva", desc: "Recinto", icone: "icons/ambulatorio.png", categoria: "animais", top: 0, left: 70  },
+            { id: "teste1", nome: "teste", tipo: "RESERVA", legendaNome: "teste", area: "Animalia Reserva", desc: "Recinto", icone: "icons/ambulatorio.png", categoria: "animais", top: 0, left: 80  },
+            { id: "teste1", nome: "teste", tipo: "RESERVA", legendaNome: "teste", area: "Animalia Reserva", desc: "Recinto", icone: "icons/ambulatorio.png", categoria: "animais", top: 0, left: 90  },
+            { id: "teste1", nome: "teste", tipo: "RESERVA", legendaNome: "teste", area: "Animalia Reserva", desc: "Recinto", icone: "icons/ambulatorio.png", categoria: "animais", top: 0, left: 100 },  
+
+
+            
                  // SAVANA AFRICANA
             { id: "zoo_savanafricana", nome: "SAVANA AFRICANA", tipo: "ANIMÁLIA SAVANA AFRICANA", legendaNome: "SAVANA AFRICANA<br>African Savanna", area: "African Savanna", desc: "GIRAFA / Southern Giraffe<br>ZEBRA / Plains Zebra<br>AVESTRUZ COMUM / Ostrich<br>COBO-DO-NILO / Nile lechwe<br>ORYX / Gemsbok<br>CERVICABRA / Blackbuk<br>WATERBUCK<br>ADAX / Addax<br>FLAMINGO-ROSADO / Greater Flamingo<br>GALINHA-D'ANGOLA / Helmeted Guineafowl<br>GANSO-DO-EGITO / Egyptian Goose<br>", icone: "icons/1.png", categoria: "animais", top: 35, left: 52 },
 
