@@ -145,22 +145,24 @@ const dadosPark = {
             { id: "zoo_urso", nome: "URSO-DE-ÓCULOS", tipo: "ANIMÁLIA RESERVA", legendaNome: "URSO-DE-ÓCULOS<br>Spectacled Bear", area: "Spectacled Bear", desc: "Colocar descrição do animal", icone: "icons/10.png", categoria: "animais", top: 68, left: 50 },
             { id: "zoo_tamandua", nome: "TAMANDUÁ-MIRIM", tipo: "ANIMÁLIA RESERVA", legendaNome: "TAMANDUÁ-MIRIM<br>Southern Tamanudá", area: "Southern Tamanudá", desc: "Colocar descrição do animal", icone: "icons/11.png", categoria: "animais", top: 57, left: 45 },
             { id: "zoo_lobo", nome: "LOBO-GUARÁ", tipo: "ANIMÁLIA RESERVA", legendaNome: "LOBO-GUARÁ<br>Maned Wolf", area: "Maned Wolf", desc: "Colocar descrição do animal", icone: "icons/12.png", categoria: "animais", top: 60, left: 44 },
+            { id: "zoo_raposa", nome: "RAPOSINHA-DO-CAMPO", tipo: "ANIMÁLIA RESERVA", legendaNome: "RAPOSINHA-DO-CAMPO<br>Hoary Fox", area: "Hoary Fox", desc: "Colocar descrição do animal", icone: "icons/13.png", categoria: "animais", top: 40, left: 45 },
+            { id: "zoo_tamandban", nome: "TAMANDUÁ-BANDEIRA", tipo: "ANIMÁLIA RESERVA", legendaNome: "TAMANDUÁ-BANDEIRA<br>Giant Anteater", area: "Giant Anteater", desc: "Colocar descrição do animal", icone: "icons/14.png", categoria: "animais", top: 60, left: 52.5 },
+            { id: "zoo_arara", nome: "ARARAS ESPECIAIS", tipo: "ANIMÁLIA RESERVA", legendaNome: "ARARAS ESPECIAIS<br>Special Macaws", area: "Special Macaws", desc: "Colocar descrição do animal", icone: "icons/15.png", categoria: "animais", top: 65, left: 58 },
+            { id: "zoo_cahvinagre", nome: "CACHORRO-VINAGRE", tipo: "ANIMÁLIA RESERVA", legendaNome: "CACHORRO-VINAGRE<br>Bush Dog", area: "Bush Dog", desc: "Colocar descrição do animal", icone: "icons/16.png", categoria: "animais", top: 75, left: 57 },
+                 
+                   // FAZENDA
+            { id: "zoo_fazenda", nome: "FAZENDA ANIMÁLIA", tipo: "FAZENDA ANIMÁLIA", legendaNome: "FAZENDA ANIMÁLIA", area: "Animais que voce encontra aqui:", desc: "PATO<br>CAVALO<br>", icone: "icons/17.png", categoria: "animais", top: 83, left: 57 },
+            { id: "zoo_chimp", nome: "CHIMPANZÉ", tipo: "ANIMÁLIA RESERVA", legendaNome: "CHIMPANZÉ<br>Chimpanzee", area: "Chimpanzee", desc: "Colocar descrição do animal", icone: "icons/18.png", categoria: "animais", top: 78, left: 78  },
+            { id: "zoo_aoud", nome: "AOUDADS", tipo: "ANIMÁLIA RESERVA", legendaNome: "AOUDADS<br>Barbary Sheep", area: "Barbary Sheep", desc: "Colocar descrição do animal", icone: "icons/19.png", categoria: "animais", top: 78, left: 75 },
+            { id: "zoo_beng", nome: "TIGRE-DE-BENGALA", tipo: "ANIMÁLIA RESERVA", legendaNome: "TIGRE-DE-BENGALA<br>Bengal Tiger", area: "Bengal Tiger", desc: "Colocar descrição do animal", icone: "icons/20.png", categoria: "animais", top: 90, left: 70 },
+            { id: "zoo_jaca", nome: "JACARÉ-DE-PAPO-AMARELO", tipo: "ANIMÁLIA RESERVA", legendaNome: "JACARÉ-DE-PAPO-AMARELO<br>Yellow-Snouted Caiman", area: "Yellow-Snouted Caiman", desc: "Colocar descrição do animal", icone: "icons/21.png", categoria: "animais", top: 93, left: 73 },
+            { id: "zoo_hie", nome: "HIENA-LISTRADA", tipo: "ANIMÁLIA RESERVA", legendaNome: "HIENA-LISTRADA<br>Striped Hyaena", area: "Striped Hyaena", desc: "Colocar descrição do animal", icone: "icons/22.png", categoria: "animais", top: 55, left: 00 },
 
 
             
-            { id: "zoo_raposa", nome: "RAPOSINHA-DO-CAMPO", tipo: "ANIMÁLIA RESERVA", legendaNome: "RAPOSINHA-DO-CAMPO<br>Hoary Fox", area: "Hoary Fox", desc: "Colocar descrição do animal", icone: "icons/13.png", categoria: "animais", top: 15, left: 00 },
-            { id: "zoo_tamandban", nome: "TAMANDUÁ-BANDEIRA", tipo: "ANIMÁLIA RESERVA", legendaNome: "TAMANDUÁ-BANDEIRA<br>Giant Anteater", area: "Giant Anteater", desc: "Colocar descrição do animal", icone: "icons/14.png", categoria: "animais", top: 20, left: 00 },
-            { id: "zoo_arara", nome: "ARARAS ESPECIAIS", tipo: "ANIMÁLIA RESERVA", legendaNome: "ARARAS ESPECIAIS<br>Special Macaws", area: "Special Macaws", desc: "Colocar descrição do animal", icone: "icons/15.png", categoria: "animais", top: 25, left: 00 },
-            { id: "zoo_mudas", nome: "VIVEIRO DE MUDAS", tipo: "ANIMÁLIA RESERVA", legendaNome: "VIVEIRO DE MUDAS<br>Seedling Nursery", area: "Seedling Nursery", desc: "Colocar descrição do animal", icone: "icons/16.png", categoria: "animais", top: 30, left: 00 },
-            { id: "zoo_cahvinagre", nome: "CACHORRO-VINAGRE", tipo: "ANIMÁLIA RESERVA", legendaNome: "CACHORRO-VINAGRE<br>Bush Dog", area: "Bush Dog", desc: "Colocar descrição do animal", icone: "icons/17.png", categoria: "animais", top: 75, left: 57 },
-                 
-                   // FAZENDA
-            { id: "zoo_fazenda", nome: "FAZENDA ANIMÁLIA", tipo: "FAZENDA ANIMÁLIA", legendaNome: "FAZENDA ANIMÁLIA", area: "Animais que voce encontra aqui:", desc: "PATO<br>CAVALO<br>", icone: "icons/fazenda.png", categoria: "animais", top: 83, left: 57 },
-            { id: "zoo_chimp", nome: "CHIMPANZÉ", tipo: "ANIMÁLIA RESERVA", legendaNome: "CHIMPANZÉ<br>Chimpanzee", area: "Chimpanzee", desc: "Colocar descrição do animal", icone: "icons/18.png", categoria: "animais", top: 35, left: 00  },
-            { id: "zoo_aoud", nome: "AOUDADS", tipo: "ANIMÁLIA RESERVA", legendaNome: "AOUDADS<br>Barbary Sheep", area: "Barbary Sheep", desc: "Colocar descrição do animal", icone: "icons/19.png", categoria: "animais", top: 80, left: 70 },
-            { id: "zoo_beng", nome: "TIGRE-DE-BENGALA", tipo: "ANIMÁLIA RESERVA", legendaNome: "TIGRE-DE-BENGALA<br>Bengal Tiger", area: "Bengal Tiger", desc: "Colocar descrição do animal", icone: "icons/20.png", categoria: "animais", top: 45, left: 00 },
-            { id: "zoo_jaca", nome: "JACARÉ-DE-PAPO-AMARELO", tipo: "ANIMÁLIA RESERVA", legendaNome: "JACARÉ-DE-PAPO-AMARELO<br>Yellow-Snouted Caiman", area: "Yellow-Snouted Caiman", desc: "Colocar descrição do animal", icone: "icons/21.png", categoria: "animais", top: 50, left: 00 },
-            { id: "zoo_hie", nome: "HIENA-LISTRADA", tipo: "ANIMÁLIA RESERVA", legendaNome: "HIENA-LISTRADA<br>Striped Hyaena", area: "Striped Hyaena", desc: "Colocar descrição do animal", icone: "icons/22.png", categoria: "animais", top: 55, left: 00 },
+            
+            
+            
             { id: "zoo_lemur", nome: "LÊMURE-NEGRO", tipo: "ANIMÁLIA RESERVA", legendaNome: "LÊMURE-NEGRO<br>lack Lemur", area: "Black Lemur", desc: "Colocar descrição do animal", icone: "icons/23.png", categoria: "animais", top: 60, left: 00 },
             { id: "zoo_Hien", nome: "HIENA-MALHADA", tipo: "ANIMÁLIA RESERVA", legendaNome: "HIENA-MALHADA<br>Spotted Hyaenar", area: "Spotted Hyaena", desc: "Colocar descrição do animal", icone: "icons/24.png", categoria: "animais", top: 65, left: 00 },
             { id: "zoo_sur", nome: "SURICATO", tipo: "ANIMÁLIA RESERVA", legendaNome: "SURICATO<br>Meerkat", area: "Meerkat", desc: "Colocar descrição do animal", icone: "icons/25.png", categoria: "animais", top: 70, left: 00 },
