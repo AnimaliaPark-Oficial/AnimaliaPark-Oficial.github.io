@@ -158,14 +158,14 @@ const dadosPark = {
             { id: "zoo_jaca", nome: "JACARÉ-DE-PAPO-AMARELO", tipo: "ANIMÁLIA RESERVA", legendaNome: "JACARÉ-DE-PAPO-AMARELO<br>Yellow-Snouted Caiman", area: "Yellow-Snouted Caiman", desc: "Colocar descrição do animal", icone: "icons/21.png", categoria: "animais", top: 90, left: 72 },
             { id: "zoo_hie", nome: "HIENA-LISTRADA", tipo: "ANIMÁLIA RESERVA", legendaNome: "HIENA-LISTRADA<br>Striped Hyaena", area: "Striped Hyaena", desc: "Colocar descrição do animal", icone: "icons/22.png", categoria: "animais", top: 88, left: 73 },
             { id: "zoo_lemur", nome: "LÊMURE-NEGRO", tipo: "ANIMÁLIA RESERVA", legendaNome: "LÊMURE-NEGRO<br>lack Lemur", area: "Black Lemur", desc: "Colocar descrição do animal", icone: "icons/23.png", categoria: "animais", top: 89, left: 75 },
-            { id: "zoo_Hien", nome: "HIENA-MALHADA", tipo: "ANIMÁLIA RESERVA", legendaNome: "HIENA-MALHADA<br>Spotted Hyaenar", area: "Spotted Hyaena", desc: "Colocar descrição do animal", icone: "icons/24.png", categoria: "animais", top: 88, left: 79 },
+            { id: "zoo_Hien", nome: "HIENA-MALHADA", tipo: "ANIMÁLIA RESERVA", legendaNome: "HIENA-MALHADA<br>Spotted Hyaenar", area: "Spotted Hyaena", desc: "Colocar descrição do animal", icone: "icons/24.png", categoria: "animais", top: 88, left: 78 },
 
-            { id: "zoo_sur", nome: "SURICATO", tipo: "ANIMÁLIA RESERVA", legendaNome: "SURICATO<br>Meerkat", area: "Meerkat", desc: "Colocar descrição do animal", icone: "icons/25.png", categoria: "animais", top: 85, left: 78 },
+            { id: "zoo_sur", nome: "SURICATO", tipo: "ANIMÁLIA RESERVA", legendaNome: "SURICATO<br>Meerkat", area: "Meerkat", desc: "Colocar descrição do animal", icone: "icons/25.png", categoria: "animais", top: 85, left: 77 },
 
 
             { id: "zoo_gorila", nome: "GORILA", tipo: "ANIMÁLIA RESERVA", legendaNome: "GORILA<br>Gorilla", area: "Gorilla", desc: "Colocar descrição do animal", icone: "icons/26.png", categoria: "animais", top: 83, left: 73 },
 
-            { id: "zoo_lemur", nome: "LÊMURE-PRETO-E-BRANCO", tipo: "ANIMÁLIA RESERVA", legendaNome: "LÊMURE-PRETO-E-BRANCO<br>Black and White Lemur", area: "Black and White Lemur", desc: "Colocar descrição do animal", icone: "icons/27.png", categoria: "animais", top: 82, left: 78 },
+            { id: "zoo_lemur", nome: "LÊMURE-PRETO-E-BRANCO", tipo: "ANIMÁLIA RESERVA", legendaNome: "LÊMURE-PRETO-E-BRANCO<br>Black and White Lemur", area: "Black and White Lemur", desc: "Colocar descrição do animal", icone: "icons/27.png", categoria: "animais", top: 83, left: 77 },
 
 
             
