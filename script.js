@@ -166,8 +166,8 @@ const dadosPark = {
             { id: "zoo_rino", nome: "RINOCERONTE-INDIANO", tipo: "ANIMÁLIA RESERVA", legendaNome: "RINOCERONTE-INDIANO<br>Greater One-Horned Rhino", area: "Greater One-Horned Rhino", desc: "Recinto", icone: "icons/29.png", categoria: "animais", top: 72, left: 74 },
 
 
-            { id: "zoo_lemur", nome: "LÊMURE-DE-CAUDA-ANELADA", tipo: "ANIMÁLIA RESERVA", legendaNome: "LÊMURE-DE-CAUDA-ANELADA<br>Ring-Tailed Lemur", area: "Ring-Tailed Lemur", desc: "Colocar descrição do animal", icone: "icons/30.png", categoria: "animais",  top: 70, left: 78 },
-            { id: "zoo_mandril", nome: "MANDRIL", tipo: "ANIMÁLIA RESERVA", legendaNome: "MANDRIL<br>Mandrill", area: "Mandrill", desc: "Colocar descrição do animal", icone: "icons/31.png", categoria: "animais", top: 68, left: 75 },
+            { id: "zoo_lemur", nome: "LÊMURE-DE-CAUDA-ANELADA", tipo: "ANIMÁLIA RESERVA", legendaNome: "LÊMURE-DE-CAUDA-ANELADA<br>Ring-Tailed Lemur", area: "Ring-Tailed Lemur", desc: "Colocar descrição do animal", icone: "icons/30.png", categoria: "animais",  top: 68, left: 77 },
+            { id: "zoo_mandril", nome: "MANDRIL", tipo: "ANIMÁLIA RESERVA", legendaNome: "MANDRIL<br>Mandrill", area: "Mandrill", desc: "Colocar descrição do animal", icone: "icons/31.png", categoria: "animais", top: 65, left: 75 },
 
 
 
