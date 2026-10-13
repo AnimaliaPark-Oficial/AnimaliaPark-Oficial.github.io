@@ -129,7 +129,7 @@ const dadosPark = {
             { id: "zoo_hipo", nome: "HIPOPOTAMO", tipo: "ANIMÁLIA RESERVA", legendaNome: "HIPOPOTAMO<br>Hippopotamus", area: "Hippopotamus", desc: "Colocar descrição do animal", icone: "icons/32.png", categoria: "animais", top: 42, left: 63 },
             { id: "zoo_camel", nome: "EMU-CAMELO", tipo: "ANIMÁLIA RESERVA", legendaNome: "EMU-CAMELO<br>Emu-Bactrian Camel", area: "Emu-Bactrian Camel", desc: "Colocar descrição do animal", icone: "icons/33.png", categoria: "animais", top: 45, left: 70 },
             { id: "zoo_canguru", nome: "CANGURU-VERMELHO", tipo: "ANIMÁLIA RESERVA", legendaNome: "CANGURU-VERMELHO<br>Red Kangaroo", area: "Red Kangaroo", desc: "Colocar descrição do animal", icone: "icons/34.png", categoria: "animais", top: 43, left: 75 },
-            { id: "zoo_viveiro", nome: "VIVEIRO AVES ORNAMENTAIS", tipo: "ANIMÁLIA RESERVA", legendaNome: "VIVEIRO AVES ORNAMENTAIS<br>Ornamental Birds Aviary", area: "Ornamental Birds Aviary", desc: "Colocar descrição do animal", icone: "icons/35.png", categoria: "animais",  top: 23, left: 59 }
+            { id: "zoo_viveiro", nome: "VIVEIRO AVES ORNAMENTAIS", tipo: "ANIMÁLIA RESERVA", legendaNome: "VIVEIRO AVES ORNAMENTAIS<br>Ornamental Birds Aviary", area: "Ornamental Birds Aviary", desc: "Colocar descrição do animal", icone: "icons/35.png", categoria: "animais",  top: 23, left: 59 },
 
             // TODOS!!!!!
 
