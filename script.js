@@ -152,19 +152,18 @@ const dadosPark = {
                  
                    // FAZENDA
             { id: "zoo_fazenda", nome: "FAZENDA ANIMÁLIA", tipo: "FAZENDA ANIMÁLIA", legendaNome: "FAZENDA ANIMÁLIA", area: "Animais que voce encontra aqui:", desc: "PATO<br>CAVALO<br>", icone: "icons/17.png", categoria: "animais", top: 83, left: 57 },
-            { id: "zoo_chimp", nome: "CHIMPANZÉ", tipo: "ANIMÁLIA RESERVA", legendaNome: "CHIMPANZÉ<br>Chimpanzee", area: "Chimpanzee", desc: "Colocar descrição do animal", icone: "icons/18.png", categoria: "animais", top: 78, left: 78  },
-            { id: "zoo_aoud", nome: "AOUDADS", tipo: "ANIMÁLIA RESERVA", legendaNome: "AOUDADS<br>Barbary Sheep", area: "Barbary Sheep", desc: "Colocar descrição do animal", icone: "icons/19.png", categoria: "animais", top: 78, left: 75 },
+            { id: "zoo_chimp", nome: "CHIMPANZÉ", tipo: "ANIMÁLIA RESERVA", legendaNome: "CHIMPANZÉ<br>Chimpanzee", area: "Chimpanzee", desc: "Colocar descrição do animal", icone: "icons/18.png", categoria: "animais", top: 78, left: 58  },
+            { id: "zoo_aoud", nome: "AOUDADS", tipo: "ANIMÁLIA RESERVA", legendaNome: "AOUDADS<br>Barbary Sheep", area: "Barbary Sheep", desc: "Colocar descrição do animal", icone: "icons/19.png", categoria: "animais", top: 78, left: 70 },
             { id: "zoo_beng", nome: "TIGRE-DE-BENGALA", tipo: "ANIMÁLIA RESERVA", legendaNome: "TIGRE-DE-BENGALA<br>Bengal Tiger", area: "Bengal Tiger", desc: "Colocar descrição do animal", icone: "icons/20.png", categoria: "animais", top: 90, left: 70 },
-            { id: "zoo_jaca", nome: "JACARÉ-DE-PAPO-AMARELO", tipo: "ANIMÁLIA RESERVA", legendaNome: "JACARÉ-DE-PAPO-AMARELO<br>Yellow-Snouted Caiman", area: "Yellow-Snouted Caiman", desc: "Colocar descrição do animal", icone: "icons/21.png", categoria: "animais", top: 93, left: 73 },
+            { id: "zoo_jaca", nome: "JACARÉ-DE-PAPO-AMARELO", tipo: "ANIMÁLIA RESERVA", legendaNome: "JACARÉ-DE-PAPO-AMARELO<br>Yellow-Snouted Caiman", area: "Yellow-Snouted Caiman", desc: "Colocar descrição do animal", icone: "icons/21.png", categoria: "animais", top: 90, left: 73 },
             { id: "zoo_hie", nome: "HIENA-LISTRADA", tipo: "ANIMÁLIA RESERVA", legendaNome: "HIENA-LISTRADA<br>Striped Hyaena", area: "Striped Hyaena", desc: "Colocar descrição do animal", icone: "icons/22.png", categoria: "animais", top: 55, left: 00 },
+            { id: "zoo_lemur", nome: "LÊMURE-NEGRO", tipo: "ANIMÁLIA RESERVA", legendaNome: "LÊMURE-NEGRO<br>lack Lemur", area: "Black Lemur", desc: "Colocar descrição do animal", icone: "icons/23.png", categoria: "animais", top: 85, left: 75 },
+            { id: "zoo_Hien", nome: "HIENA-MALHADA", tipo: "ANIMÁLIA RESERVA", legendaNome: "HIENA-MALHADA<br>Spotted Hyaenar", area: "Spotted Hyaena", desc: "Colocar descrição do animal", icone: "icons/24.png", categoria: "animais", top: 68, left: 90 },
 
-
             
             
             
             
-            { id: "zoo_lemur", nome: "LÊMURE-NEGRO", tipo: "ANIMÁLIA RESERVA", legendaNome: "LÊMURE-NEGRO<br>lack Lemur", area: "Black Lemur", desc: "Colocar descrição do animal", icone: "icons/23.png", categoria: "animais", top: 60, left: 00 },
-            { id: "zoo_Hien", nome: "HIENA-MALHADA", tipo: "ANIMÁLIA RESERVA", legendaNome: "HIENA-MALHADA<br>Spotted Hyaenar", area: "Spotted Hyaena", desc: "Colocar descrição do animal", icone: "icons/24.png", categoria: "animais", top: 65, left: 00 },
             { id: "zoo_sur", nome: "SURICATO", tipo: "ANIMÁLIA RESERVA", legendaNome: "SURICATO<br>Meerkat", area: "Meerkat", desc: "Colocar descrição do animal", icone: "icons/25.png", categoria: "animais", top: 70, left: 00 },
             { id: "zoo_gorila", nome: "GORILA", tipo: "ANIMÁLIA RESERVA", legendaNome: "GORILA<br>Gorilla", area: "Gorilla", desc: "Colocar descrição do animal", icone: "icons/26.png", categoria: "animais", top: 83, left: 73 },
             { id: "zoo_lemur", nome: "LÊMURE-PRETO-E-BRANCO", tipo: "ANIMÁLIA RESERVA", legendaNome: "LÊMURE-PRETO-E-BRANCO<br>Black and White Lemur", area: "Black and White Lemur", desc: "Colocar descrição do animal", icone: "icons/27.png", categoria: "animais", top: 75, left: 00 },
