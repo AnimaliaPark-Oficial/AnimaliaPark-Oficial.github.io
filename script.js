@@ -5,7 +5,6 @@ const dadosPark = {
     reserva: {
         imagem: "mapa.zoo.webp",
         categoriasLegenda: [
-            { id: 'todos', texto: 'TODOS' },
             { id: 'alimentacao', texto: 'ALIMENTAÇÃO' },
             { id: 'animais', texto: 'ZOOLOGICO' },
             { id: 'atracao', texto: 'ATRAÇÕES' },
@@ -130,56 +129,7 @@ const dadosPark = {
             { id: "zoo_camel", nome: "EMU-CAMELO", tipo: "ANIMÁLIA RESERVA", legendaNome: "EMU-CAMELO<br>Emu-Bactrian Camel", area: "Emu-Bactrian Camel", desc: "Colocar descrição do animal", icone: "icons/33.png", categoria: "animais", top: 45, left: 70 },
             { id: "zoo_canguru", nome: "CANGURU-VERMELHO", tipo: "ANIMÁLIA RESERVA", legendaNome: "CANGURU-VERMELHO<br>Red Kangaroo", area: "Red Kangaroo", desc: "Colocar descrição do animal", icone: "icons/34.png", categoria: "animais", top: 43, left: 75 },
             { id: "zoo_viveiro", nome: "VIVEIRO AVES ORNAMENTAIS", tipo: "ANIMÁLIA RESERVA", legendaNome: "VIVEIRO AVES ORNAMENTAIS<br>Ornamental Birds Aviary", area: "Ornamental Birds Aviary", desc: "Colocar descrição do animal", icone: "icons/35.png", categoria: "animais",  top: 23, left: 59 },
-
-            // TODOS!!!!!
-
-            { id: "alim_recepcao", nome: "CAFÉ RECEPÇÃO", tipo: "ALIMENTAÇÃO", legendaNome: "QUIÓSQUE CAFÉ RECEPÇÃO", area: "Onde tudo começa e aonde damos um até breve!", desc: "☕ Cafeteria (Cafés e salgados.)", icone: "icons/caferecepcao.png", categoria: "todos", top: 27, left: 48 },
-            { id: "alim_leao", nome: "QUIOSQUE LEÃO", tipo: "ALIMENTAÇÃO", legendaNome: "QUIÓSQUE LEÃO", area: "🍿 Café, Salgados e pipocas", desc: "Logo após o recinto do Leão.", icone: "icons/pontoleao.png", categoria: "todos", top: 48, left: 41 },
-            { id: "alim_sucuarana", nome: "QUIOSQUE SUÇUARANA", tipo: "ALIMENTAÇÃO", legendaNome: "QUIÓSQUE SUÇUARANA", area: "🍿 Salgados e pipocas", desc: "Em frente ao recinto Suçuarana.", icone: "icons/pontosucuarana.png", categoria: "todos", top: 64, left: 43 },
-            { id: "alim_tamandua", nome: "QUIOSQUE TAMANDUÁ", tipo: "ALIMENTAÇÃO", legendaNome: "QUIÓSQUE TAMANDUA", area: "🍿 Café, Salgados e pipocas", desc: "Localizado em frente ao recinto tamanduá.", icone: "icons/pontotamandua.png", categoria: "todos", top: 60, left: 50 },
-            { id: "alim_fazendinha", nome: "QUIOSQUE FAZENDINHA", tipo: "ALIMENTAÇÃO", legendaNome: "QUIÓSQUE FAZENDINHA", area: "Doces e Pipocas", desc: "🍿 Quiosque Fazendinha (Doces e Bebidas)", icone: "icons/pontofazendinha.png", categoria: "todos", top: 78, left: 64 },  
-            { id: "alim_hamb_est2", nome: "HAMBURGUERIA EST.2", tipo: "ALIMENTAÇÃO", legendaNome: "HAMBURGUERIA EST.2", area: "Ambiente aconchegante para refeições e lembranças", desc: "🍔 Hamburgueria Teleférico (Burgers e bebidas)<br>", icone: "icons/hambestacao.png", categoria: "todos", top: 80, left: 65 },
-            { id: "alim_lobo_marinho", nome: "QUIOSQUE LOBO MARINHO", tipo: "ALIMENTAÇÃO", legendaNome: "QUIÓSQUE LOBO MARINHO", area: "🍿 Café, Salgados e pipocas", desc: "Localizado na Reserva.", icone: "icons/pontolobomarinho.png", categoria: "todos", top: 80, left: 80 },
-            { id: "alim_pastelaria", nome: "FOOD PARK PASTELARIA", tipo: "ALIMENTAÇÃO", legendaNome: "FOOD PARK PASTEL", area: "Natureza e uma boa alimentação", desc: "🥟 Pastelaria", icone: "icons/foodpastel.png", categoria: "todos", top: 60, left: 71 },
-            { id: "alim_yakisoba", nome: "FOOD PARK YAKISOBA", tipo: "ALIMENTAÇÃO", legendaNome: "FOOD PARK YAKISOBRA", area: "Natureza e uma boa alimentação", desc: "🍜 Yakissoba", icone: "icons/foodyakisoba.png", categoria: "todos", top: 63, left: 71 },
-            { id: "alim_chickenfries", nome: "FOOD PARK CHICKEN & FRIES", tipo: "ALIMENTAÇÃO", legendaNome: "FOOD PARK CHICKEN & FRIES", area: "Natureza e uma boa alimentação", desc: "🍗 Chicken & Fries", icone: "icons/foodchicken.png", categoria: "todos", top: 60, left: 69 },
-            { id: "alim_espetaria", nome: "FOOD PARK ESPETARIA/LINGUIÇARIA", tipo: "ALIMENTAÇÃO", legendaNome: "FOOD PARK ESPETO/LINGUIÇA", area: "Natureza e uma boa alimentação", desc: "🍖 Espetaria/Linguiçaria", icone: "icons/foodespeto.png", categoria: "todos", top: 63, left: 69 },
-            { id: "alim_rest_central", nome: "RESTAURANTE CENTRAL", tipo: "ALIMENTAÇÃO", legendaNome: "RESTAURANTE BAOBÁ", area: "Buffet a Vontade", desc: "🍽️ Restaurante Baboá (Buffet por Pessoa)", icone: "icons/restbaoba.png", categoria: "todos", top: 45.5, left: 55.5 },
-            { id: "alim_iglu", nome: "MOBILE IGLU", tipo: "ALIMENTAÇÃO", legendaNome: "MOBILE KIBON IGLU", area: "Sorvete para resfrescar!", desc: "Localizado na Reserva.", icone: "icons/mobileiglu.png", categoria: "todos", top: 40, left: 70 },
-            { id: "alim_canguru", nome: "QUIOSQUE CANGURU", tipo: "ALIMENTAÇÃO", legendaNome: "QUIÓSQUE CANGURU", area: "🍿 Café, Salgados e pipocas", desc: "Localizado na Reserva.", icone: "icons/pontocanguru.png", categoria: "todos", top: 40, left: 74.5 },
-            { id: "alim_hambvila", nome: "HAMBURGUERIA DA VILA", tipo: "ALIMENTAÇÃO", legendaNome: "HAMBURGUERIA DA VILA", area: "Ambiente aconchegante para refeições e lembranças", desc: "🍔Hamburgueria da Vila (Burgues e bebidas)", icone: "icons/hambvila.png", categoria: "todos", top: 21, left: 51 },
-            { id: "alim_cafevila", nome: "CAFETERIA DA VILA", tipo: "ALIMENTAÇÃO", legendaNome: "CAFETERIA DA VILA", area: "Ambiente aconchegante para refeições e lembranças", desc: "☕Vila Cafeteria (Cafés e salgados)", icone: "icons/cafevila.png", categoria: "todos", top: 20.1, left: 53 },
-            { id: "alim_shakedobin", nome: "SHAKE DO BIN", tipo: "ALIMENTAÇÃO", legendaNome: "SHAKE DO BIN", area: "Ambiente aconchegante para refeições e lembranças", desc: "🥤 Shake do Bin (Sorvetes e Shakes)", icone: "icons/pontoshake.png", categoria: "todos", top: 19.1, left: 55 },
-            { id: "alim_savana", nome: "RESTAURANTE SAVANA", tipo: "ALIMENTAÇÃO", legendaNome: "RESTAURANTE SAVANA", area: "Ambiente aconchegante para refeições e lembranças", desc: "🥩 Restaurante Savana (Carnes nobres)", icone: "icons/restsavana.png", categoria: "todos", top: 18.5, left: 57 },
-            { id: "alim_selva", nome: "SELVA DOS SABORES", tipo: "ALIMENTAÇÃO", legendaNome: "SELVA DOS SABORES", area: "Ambiente aconchegante para refeições e lembranças", desc: "🍕 Selva de Sabores (Pizzas e Crepes)<br>", icone: "icons/selvasabores.png", categoria: "todos", top: 23.5, left: 52 },
-            { id: "alim_hotdog", nome: "HOTDOG DO KIRAN", tipo: "ALIMENTAÇÃO", legendaNome: "HOT DOG DO KIRAN", area: "Ambiente aconchegante para refeições e lembranças", desc: "🌭Hot Dog do Kiran (Hot Dog's)", icone: "icons/hotdog.png", categoria: "todos", top: 23, left: 54 },
-            { id: "alim_tratoria", nome: "VILA TRATORIA", tipo: "ALIMENTAÇÃO", legendaNome: "VILA TRATORIA", area: "Ambiente aconchegante para refeições e lembranças", desc: "🍝Vila Tratoria (Massas e Carnes)", icone: "icons/tratoria.png", categoria: "todos", top: 22, left: 56 },
-            { id: "alim_cantgira", nome: "CANTINHO DA GIRAFA", tipo: "ALIMENTAÇÃO", legendaNome: "CANTINHO DA GIRAFA", area: "Ambiente aconchegante para refeições e lembranças", desc: "🍨 Cantinho da Girafa (Picoles e massas)", icone: "icons/pontocantinho.png", categoria: "todos", top: 26, left: 53 },
-            { id: "alim_cesta", nome: "CESTA PICNIC", tipo: "ALIMENTAÇÃO", legendaNome: "CESTA PIC NIC", area: "Diversão e refeição, tudo em um só lugar!", desc: "🍔 Cesta Pic Nic (Burgers e bebidas)", icone: "icons/cesta.png", categoria: "todos", top: 15, left: 32 },
-            { id: "alim_carrinho", nome: "CARRINHO DOCE e PIPOCA", tipo: "ALIMENTAÇÃO", legendaNome: "CARRINHO DE DOCE/PIPOCA", area: "Diversão e refeição, tudo em um só lugar!", desc: "🍿 Carrinho de Doce e Pipoca", icone: "icons/carrinho.png", categoria: "todos", top: 18, left: 32 },
-            { id: "alim_carrosel", nome: "CESTA CARROSEL", tipo: "ALIMENTAÇÃO", legendaNome: "CESTA CARROSEL", area: "Diversão e refeição, tudo em um só lugar!", desc: "☕ Carrossel (Porções e Cafés)", icone: "icons/carrosel.png", categoria: "todos", top: 17.5, left: 35 },
-            { id: "alim_deck", nome: "DECK PIC NIC", tipo: "ALIMENTAÇÃO", legendaNome: "DECK PIC NIC", area: "Diversão e refeição, tudo em um só lugar!", desc: "🍿 Deck Pic nic (Doce e Pipoca)", icone: "icons/deck.png", categoria: "todos", top: 20.5, left: 35 },
-            { id: "alim_mundodoce", nome: "MUNDO DOCE", tipo: "ALIMENTAÇÃO", legendaNome: "MUNDO DOCE", area: "Diversão e refeição, tudo em um só lugar!", desc: "🥮 Mundo Doce (Doces e Bebidas)", icone: "icons/mundodoce.png", categoria: "todos", top: 20, left: 38 },
-            { id: "alim_lego", nome: "LEGO", tipo: "ALIMENTAÇÃO", legendaNome: "QUIÓSQUE LEGO", area: "Diversão e refeição, tudo em um só lugar!", desc: "🥮 Lego (Doces e Bebidas)", icone: "icons/lego.png", categoria: "todos", top: 23, left: 38 },
-            { id: "alim_splash", nome: "QUIOSQUE SPLASH", tipo: "ALIMENTAÇÃO", legendaNome: "QUIÓSQUE SPLASH", area: "🍿 Café, Salgados e pipocas", desc: "Localizado próximo ao vulcão.", icone: "icons/splash.png", categoria: "todos", top: 7, left: 41 },
-            { id: "alim_viking", nome: "QUIOSQUE VIKING", tipo: "ALIMENTAÇÃO", legendaNome: "QUIÓSQUE VIKING", area: "🍿 Café, Salgados e pipocas", desc: "Localizado na entrada do Outdoor.", icone: "icons/viking.png", categoria: "todos", top: 14, left: 39 },
-            { id: "alim_aviario", nome: "CAFÉ AVIÁRIO", tipo: "ALIMENTAÇÃO", legendaNome: "CAFÉ CAVERNA/AVIÁRIO", area: "Um dos Maiores Aviários da América Latina", desc: "☕ Café Caverna (Cafés e salgados)", icone: "icons/cafecaverna.png", categoria: "todos", top: 60, left: 35 },
-
-
-            { id: "wc_recepcao", nome: "WC RECEPÇÃO", tipo: "BANHEIROS", legendaNome: "RECEPÇÃO", area: "Localizado na Recepção", desc: "🚻 Banheiro (Comum e Acessível)", icone: "icons/banheiro.png", categoria: "todos", top: 27, left: 48 },
-            { id: "wc_leao", nome: "WC LEÃO", tipo: "BANHEIROS", legendaNome: "LEÃO", area: "Localizado logo após o recinto do leão", desc: "🚻 Banheiro (Comum e Acessível)", icone: "icons/banheiro.png", categoria: "todos", top: 47.5, left: 42 },
-            { id: "wc_aviario", nome: "WC AVIÁRIO", tipo: "BANHEIROS", legendaNome: "AVIÁRIO", area: "Localizado dentro do Aviário", desc: "🚻 Banheiro (Comum e Acessível)", icone: "icons/banheiro.png", categoria: "todos", top: 60, left: 35 },
-            { id: "wc_baoba", nome: "WC RESTAURANTE BAOBÁ", tipo: "BANHEIROS", legendaNome: "RESTAURANTE BAOBÁ", area: "Localizado na parte externa do Buffet", desc: "🚻 Banheiro (Comum e Acessível)", icone: "icons/banheiro.png", categoria: "todos", top: 53, left: 52 },
-            { id: "wc_fazendinha", nome: "WC FAZENDINHA", tipo: "BANHEIROS", legendaNome: "FAZENDINHA", area: "Localizado perto do desembarque Estação 2.", desc: "🚻 Banheiro (Comum e Acessível)", icone: "icons/banheiro.png", categoria: "todos", top: 80, left: 60 },
-            { id: "wc_food_park", nome: "WC FOOD PARK", tipo: "BANHEIROS", legendaNome: "FOOD PARK", area: "Localizado no Food Park", desc: "🚻 Banheiro (Comum e Acessível)", icone: "icons/banheiro.png", categoria: "todos", top: 60.5, left: 74.5 },
-            { id: "wc_vila_animalia", nome: "WC VILA ANIMÁLIA", tipo: "BANHEIROS", legendaNome: "VILA ANIMALIA", area: "Localizado na Saída do Zoológico", desc: "🚻 Banheiro (Comum e Acessível)", icone: "icons/banheiro.png", categoria: "todos", top: 21, left: 56 },
-            { id: "wc_div_indoor", nome: "WC DIV INDOOR", tipo: "BANHEIROS", legendaNome: "ANIMALIA DIVERSÃO", area: "Localizado dentro do Animália Diversão", desc: "🚻 Banheiro (Comum e Acessível)", icone: "icons/banheiro.png", categoria: "todos", top: 20, left: 38 },
-            { id: "wc_div_outdoor", nome: "WC DIV OUTDOOR", tipo: "BANHEIROS", legendaNome: "ANIMALIA AVENTURA", area: "Localizado ao redor do Diversão Aventura", desc: "🚻 Banheiro (Comum e Acessível)", icone: "icons/banheiro.png", categoria: "todos", top: 15, left: 48 },
-            { id: "wc_borboletario", nome: "WC BORBOLETÁRIO", tipo: "BANHEIROS", legendaNome: "JARDIM DAS BORBOLETAS", area: "Localizado na parte externa do Buffet", desc: "🚻 Banheiro (Comum e Acessível)", icone: "icons/banheiro.png", categoria: "todos", top: 55, left: 55.5 },
-            { id: "wc_hipopotamo", nome: "WC HIPOPOTAMO", tipo: "BANHEIROS", legendaNome: "HIPOPOTAMO", area: "Localizado em frente ao recinto do Hipopotamo", desc: "🚻 Banheiro (Comum e Acessível)", icone: "icons/banheiro.png", categoria: "todos", top: 43, left: 68 },
-
-
-            
+ 
             
         ]
     }
