@@ -156,23 +156,22 @@ const dadosPark = {
             { id: "zoo_aoud", nome: "AOUDADS", tipo: "ANIMÁLIA RESERVA", legendaNome: "AOUDADS<br>Barbary Sheep", area: "Barbary Sheep", desc: "Colocar descrição do animal", icone: "icons/19.png", categoria: "animais", top: 78, left: 70 },
             { id: "zoo_beng", nome: "TIGRE-DE-BENGALA", tipo: "ANIMÁLIA RESERVA", legendaNome: "TIGRE-DE-BENGALA<br>Bengal Tiger", area: "Bengal Tiger", desc: "Colocar descrição do animal", icone: "icons/20.png", categoria: "animais", top: 87.5, left: 70 },
             { id: "zoo_jaca", nome: "JACARÉ-DE-PAPO-AMARELO", tipo: "ANIMÁLIA RESERVA", legendaNome: "JACARÉ-DE-PAPO-AMARELO<br>Yellow-Snouted Caiman", area: "Yellow-Snouted Caiman", desc: "Colocar descrição do animal", icone: "icons/21.png", categoria: "animais", top: 90, left: 72 },
-            { id: "zoo_hie", nome: "HIENA-LISTRADA", tipo: "ANIMÁLIA RESERVA", legendaNome: "HIENA-LISTRADA<br>Striped Hyaena", area: "Striped Hyaena", desc: "Colocar descrição do animal", icone: "icons/22.png", categoria: "animais", top: 88, left: 73 },
+            { id: "zoo_hie", nome: "HIENA-LISTRADA", tipo: "ANIMÁLIA RESERVA", legendaNome: "HIENA-LISTRADA<br>Striped Hyaena", area: "Striped Hyaena", desc: "Colocar descrição do animal", icone: "icons/22.png", categoria: "animais", top: 88, left: 74 },
             { id: "zoo_lemur", nome: "LÊMURE-NEGRO", tipo: "ANIMÁLIA RESERVA", legendaNome: "LÊMURE-NEGRO<br>lack Lemur", area: "Black Lemur", desc: "Colocar descrição do animal", icone: "icons/23.png", categoria: "animais", top: 89, left: 75 },
             { id: "zoo_Hien", nome: "HIENA-MALHADA", tipo: "ANIMÁLIA RESERVA", legendaNome: "HIENA-MALHADA<br>Spotted Hyaenar", area: "Spotted Hyaena", desc: "Colocar descrição do animal", icone: "icons/24.png", categoria: "animais", top: 88, left: 78 },
-
-            { id: "zoo_sur", nome: "SURICATO", tipo: "ANIMÁLIA RESERVA", legendaNome: "SURICATO<br>Meerkat", area: "Meerkat", desc: "Colocar descrição do animal", icone: "icons/25.png", categoria: "animais", top: 85, left: 77 },
-
-
+            { id: "zoo_sur", nome: "SURICATO", tipo: "ANIMÁLIA RESERVA", legendaNome: "SURICATO<br>Meerkat", area: "Meerkat", desc: "Colocar descrição do animal", icone: "icons/25.png", categoria: "animais", top: 86, left: 77 },
             { id: "zoo_gorila", nome: "GORILA", tipo: "ANIMÁLIA RESERVA", legendaNome: "GORILA<br>Gorilla", area: "Gorilla", desc: "Colocar descrição do animal", icone: "icons/26.png", categoria: "animais", top: 83, left: 73 },
-
             { id: "zoo_lemur", nome: "LÊMURE-PRETO-E-BRANCO", tipo: "ANIMÁLIA RESERVA", legendaNome: "LÊMURE-PRETO-E-BRANCO<br>Black and White Lemur", area: "Black and White Lemur", desc: "Colocar descrição do animal", icone: "icons/27.png", categoria: "animais", top: 83, left: 77 },
+            { id: "zoo_lobo", nome: "LOBO-MARINHO", tipo: "ANIMÁLIA RESERVA", legendaNome: "LOBO-MARINHO<br>Afro-Australian fur Seal", area: "Afro-Australian fur Seal", desc: "Colocar descrição do animal", icone: "icons/28.png", categoria: "animais", top: 80, left: 78 },
+            { id: "zoo_rino", nome: "RINOCERONTE-INDIANO", tipo: "ANIMÁLIA RESERVA", legendaNome: "RINOCERONTE-INDIANO<br>Greater One-Horned Rhino", area: "Greater One-Horned Rhino", desc: "Recinto", icone: "icons/29.png", categoria: "animais", top: 72, left: 74 },
+
+
+            { id: "zoo_lemur", nome: "LÊMURE-DE-CAUDA-ANELADA", tipo: "ANIMÁLIA RESERVA", legendaNome: "LÊMURE-DE-CAUDA-ANELADA<br>Ring-Tailed Lemur", area: "Ring-Tailed Lemur", desc: "Colocar descrição do animal", icone: "icons/30.png", categoria: "animais",  top: 70, left: 78 },
+            { id: "zoo_mandril", nome: "MANDRIL", tipo: "ANIMÁLIA RESERVA", legendaNome: "MANDRIL<br>Mandrill", area: "Mandrill", desc: "Colocar descrição do animal", icone: "icons/31.png", categoria: "animais", top: 68, left: 75 },
+
 
 
             
-            { id: "zoo_lobo", nome: "LOBO-MARINHO", tipo: "ANIMÁLIA RESERVA", legendaNome: "LOBO-MARINHO<br>Afro-Australian fur Seal", area: "Afro-Australian fur Seal", desc: "Colocar descrição do animal", icone: "icons/28.png", categoria: "animais", top: 80, left: 78 },
-            { id: "zoo_rino", nome: "RINOCERONTE-INDIANO", tipo: "ANIMÁLIA RESERVA", legendaNome: "RINOCERONTE-INDIANO<br>Greater One-Horned Rhino", area: "Greater One-Horned Rhino", desc: "Recinto", icone: "icons/29.png", categoria: "animais", top: 72, left: 74 },
-            { id: "zoo_lemur", nome: "LÊMURE-DE-CAUDA-ANELADA", tipo: "ANIMÁLIA RESERVA", legendaNome: "LÊMURE-DE-CAUDA-ANELADA<br>Ring-Tailed Lemur", area: "Ring-Tailed Lemur", desc: "Colocar descrição do animal", icone: "icons/30.png", categoria: "animais", top: 85, left: 00 },
-            { id: "zoo_mandril", nome: "MANDRIL", tipo: "ANIMÁLIA RESERVA", legendaNome: "MANDRIL<br>Mandrill", area: "Mandrill", desc: "Colocar descrição do animal", icone: "icons/31.png", categoria: "animais", top: 70, left: 78 },
             { id: "zoo_carn", nome: "PLANTAS CARNIVORAS", tipo: "ANIMÁLIA RESERVA", legendaNome: "PLANTAS CARNIVORAS<br>Carnivorous Plants", area: "Carnivorous Plants", desc: "Colocar descrição do animal", icone: "icons/32.png", categoria: "animais", top: 90, left: 00 },
             { id: "zoo_hipo", nome: "HIPOPOTAMOs", tipo: "ANIMÁLIA RESERVA", legendaNome: "HIPOPOTAMO<br>Hippopotamus", area: "Hippopotamus", desc: "Colocar descrição do animal", icone: "icons/33.png", categoria: "animais", top: 42, left: 63 },
             { id: "zoo_camel", nome: "EMU-CAMELO", tipo: "ANIMÁLIA RESERVA", legendaNome: "EMU-CAMELO<br>Emu-Bactrian Camel", area: "Emu-Bactrian Camel", desc: "Colocar descrição do animal", icone: "icons/34.png", categoria: "animais", top: 45, left: 70 },
