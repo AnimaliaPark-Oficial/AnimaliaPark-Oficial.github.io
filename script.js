@@ -100,30 +100,6 @@ const dadosPark = {
             //{ id: "zoo_gal", nome: "GALINHA-D'ANGOLA / Helmeted Guineafowl", nome: "GALINHA-D'ANGOLA", tipo: "SAVANA AFRICANA", legendaNome: "ADAX", area: "Animalia Reserva", desc: "Recinto", icone: "icons/10.png", categoria: "animais", top: 41, left: 40  },
             //{ id: "zoo_gans", nome: "GANSO-DO-EGITO / Egyptian Goose", nome: "GANSO-DO-EGITO", tipo: "SAVANA AFRICANA", legendaNome: "ADAX", area: "Animalia Reserva", desc: "Recinto", icone: "icons/11.png", categoria: "animais", top: 41, left: 40  },
 
-            { id: "teste1", nome: "teste", tipo: "RESERVA", legendaNome: "teste", area: "Animalia Reserva", desc: "Recinto", icone: "icons/ambulatorio.png", categoria: "animais", top: 10, left: 0  },
-            { id: "teste1", nome: "teste", tipo: "RESERVA", legendaNome: "teste", area: "Animalia Reserva", desc: "Recinto", icone: "icons/ambulatorio.png", categoria: "animais", top: 20, left: 0  },
-            { id: "teste1", nome: "teste", tipo: "RESERVA", legendaNome: "teste", area: "Animalia Reserva", desc: "Recinto", icone: "icons/ambulatorio.png", categoria: "animais", top: 30, left: 0  },
-            { id: "teste1", nome: "teste", tipo: "RESERVA", legendaNome: "teste", area: "Animalia Reserva", desc: "Recinto", icone: "icons/ambulatorio.png", categoria: "animais", top: 40, left: 0  },
-            { id: "teste1", nome: "teste", tipo: "RESERVA", legendaNome: "teste", area: "Animalia Reserva", desc: "Recinto", icone: "icons/ambulatorio.png", categoria: "animais", top: 50, left: 0  },
-            { id: "teste1", nome: "teste", tipo: "RESERVA", legendaNome: "teste", area: "Animalia Reserva", desc: "Recinto", icone: "icons/ambulatorio.png", categoria: "animais", top: 60, left: 0  },
-            { id: "teste1", nome: "teste", tipo: "RESERVA", legendaNome: "teste", area: "Animalia Reserva", desc: "Recinto", icone: "icons/ambulatorio.png", categoria: "animais", top: 70, left: 0  },
-            { id: "teste1", nome: "teste", tipo: "RESERVA", legendaNome: "teste", area: "Animalia Reserva", desc: "Recinto", icone: "icons/ambulatorio.png", categoria: "animais", top: 80, left: 0  },
-            { id: "teste1", nome: "teste", tipo: "RESERVA", legendaNome: "teste", area: "Animalia Reserva", desc: "Recinto", icone: "icons/ambulatorio.png", categoria: "animais", top: 90, left: 0  },
-            { id: "teste1", nome: "teste", tipo: "RESERVA", legendaNome: "teste", area: "Animalia Reserva", desc: "Recinto", icone: "icons/ambulatorio.png", categoria: "animais", top: 100, left: 0 },
-            { id: "teste1", nome: "teste", tipo: "RESERVA", legendaNome: "teste", area: "Animalia Reserva", desc: "Recinto", icone: "icons/ambulatorio.png", categoria: "animais", top: 50, left: 50 },
-
-            { id: "teste1", nome: "teste", tipo: "RESERVA", legendaNome: "teste", area: "Animalia Reserva", desc: "Recinto", icone: "icons/ambulatorio.png", categoria: "animais", top: 0, left: 10  },
-            { id: "teste1", nome: "teste", tipo: "RESERVA", legendaNome: "teste", area: "Animalia Reserva", desc: "Recinto", icone: "icons/ambulatorio.png", categoria: "animais", top: 0, left: 20  },
-            { id: "teste1", nome: "teste", tipo: "RESERVA", legendaNome: "teste", area: "Animalia Reserva", desc: "Recinto", icone: "icons/ambulatorio.png", categoria: "animais", top: 0, left: 30  },
-            { id: "teste1", nome: "teste", tipo: "RESERVA", legendaNome: "teste", area: "Animalia Reserva", desc: "Recinto", icone: "icons/ambulatorio.png", categoria: "animais", top: 0, left: 40  },
-            { id: "teste1", nome: "teste", tipo: "RESERVA", legendaNome: "teste", area: "Animalia Reserva", desc: "Recinto", icone: "icons/ambulatorio.png", categoria: "animais", top: 0, left: 50  },
-            { id: "teste1", nome: "teste", tipo: "RESERVA", legendaNome: "teste", area: "Animalia Reserva", desc: "Recinto", icone: "icons/ambulatorio.png", categoria: "animais", top: 0, left: 60  },
-            { id: "teste1", nome: "teste", tipo: "RESERVA", legendaNome: "teste", area: "Animalia Reserva", desc: "Recinto", icone: "icons/ambulatorio.png", categoria: "animais", top: 0, left: 70  },
-            { id: "teste1", nome: "teste", tipo: "RESERVA", legendaNome: "teste", area: "Animalia Reserva", desc: "Recinto", icone: "icons/ambulatorio.png", categoria: "animais", top: 0, left: 80  },
-            { id: "teste1", nome: "teste", tipo: "RESERVA", legendaNome: "teste", area: "Animalia Reserva", desc: "Recinto", icone: "icons/ambulatorio.png", categoria: "animais", top: 0, left: 90  },
-            { id: "teste1", nome: "teste", tipo: "RESERVA", legendaNome: "teste", area: "Animalia Reserva", desc: "Recinto", icone: "icons/ambulatorio.png", categoria: "animais", top: 0, left: 100 },  
-
-
             
                  // SAVANA AFRICANA
             { id: "zoo_savanafricana", nome: "SAVANA AFRICANA", tipo: "ANIMÁLIA SAVANA AFRICANA", legendaNome: "SAVANA AFRICANA<br>African Savanna", area: "African Savanna", desc: "GIRAFA / Southern Giraffe<br>ZEBRA / Plains Zebra<br>AVESTRUZ COMUM / Ostrich<br>COBO-DO-NILO / Nile lechwe<br>ORYX / Gemsbok<br>CERVICABRA / Blackbuk<br>WATERBUCK<br>ADAX / Addax<br>FLAMINGO-ROSADO / Greater Flamingo<br>GALINHA-D'ANGOLA / Helmeted Guineafowl<br>GANSO-DO-EGITO / Egyptian Goose<br>", icone: "icons/1.png", categoria: "animais", top: 35, left: 52 },
@@ -140,7 +116,6 @@ const dadosPark = {
 
                 // ZOO 2
             { id: "zoo_macaranha", nome: "MACACO-ARANHA / BUGIO-RUIVO", tipo: "ANIMÁLIA RESERVA", legendaNome: "MACACO-ARANHA / BUGIO-RUIVO", area: "Guiana Spider Monkey / Southern Brown Howler Monkey", desc: "Colocar descrição do animal", icone: "icons/8.png", categoria: "animais", top: 57, left: 39 },
-            
             { id: "zoo_sucuarana", nome: "SUÇUARANA", tipo: "ANIMÁLIA RESERVA", legendaNome: "SUÇUARANA<br>Puma", area: "Puma", desc: "Colocar descrição do animal", icone: "icons/9.png", categoria: "animais", top: 65, left: 45 },
             { id: "zoo_urso", nome: "URSO-DE-ÓCULOS", tipo: "ANIMÁLIA RESERVA", legendaNome: "URSO-DE-ÓCULOS<br>Spectacled Bear", area: "Spectacled Bear", desc: "Colocar descrição do animal", icone: "icons/10.png", categoria: "animais", top: 68, left: 50 },
             { id: "zoo_tamandua", nome: "TAMANDUÁ-MIRIM", tipo: "ANIMÁLIA RESERVA", legendaNome: "TAMANDUÁ-MIRIM<br>Southern Tamanudá", area: "Southern Tamanudá", desc: "Colocar descrição do animal", icone: "icons/11.png", categoria: "animais", top: 57, left: 45 },
@@ -164,19 +139,14 @@ const dadosPark = {
             { id: "zoo_lemur", nome: "LÊMURE-PRETO-E-BRANCO", tipo: "ANIMÁLIA RESERVA", legendaNome: "LÊMURE-PRETO-E-BRANCO<br>Black and White Lemur", area: "Black and White Lemur", desc: "Colocar descrição do animal", icone: "icons/27.png", categoria: "animais", top: 83, left: 77 },
             { id: "zoo_lobo", nome: "LOBO-MARINHO", tipo: "ANIMÁLIA RESERVA", legendaNome: "LOBO-MARINHO<br>Afro-Australian fur Seal", area: "Afro-Australian fur Seal", desc: "Colocar descrição do animal", icone: "icons/28.png", categoria: "animais", top: 80, left: 78 },
             { id: "zoo_rino", nome: "RINOCERONTE-INDIANO", tipo: "ANIMÁLIA RESERVA", legendaNome: "RINOCERONTE-INDIANO<br>Greater One-Horned Rhino", area: "Greater One-Horned Rhino", desc: "Recinto", icone: "icons/29.png", categoria: "animais", top: 72, left: 74 },
-
-
             { id: "zoo_lemur", nome: "LÊMURE-DE-CAUDA-ANELADA", tipo: "ANIMÁLIA RESERVA", legendaNome: "LÊMURE-DE-CAUDA-ANELADA<br>Ring-Tailed Lemur", area: "Ring-Tailed Lemur", desc: "Colocar descrição do animal", icone: "icons/30.png", categoria: "animais",  top: 68, left: 77 },
             { id: "zoo_mandril", nome: "MANDRIL", tipo: "ANIMÁLIA RESERVA", legendaNome: "MANDRIL<br>Mandrill", area: "Mandrill", desc: "Colocar descrição do animal", icone: "icons/31.png", categoria: "animais", top: 65, left: 75 },
-
-
+            { id: "zoo_hipo", nome: "HIPOPOTAMO", tipo: "ANIMÁLIA RESERVA", legendaNome: "HIPOPOTAMO<br>Hippopotamus", area: "Hippopotamus", desc: "Colocar descrição do animal", icone: "icons/32.png", categoria: "animais", top: 42, left: 63 },
+            { id: "zoo_camel", nome: "EMU-CAMELO", tipo: "ANIMÁLIA RESERVA", legendaNome: "EMU-CAMELO<br>Emu-Bactrian Camel", area: "Emu-Bactrian Camel", desc: "Colocar descrição do animal", icone: "icons/33.png", categoria: "animais", top: 45, left: 70 },
+            { id: "zoo_canguru", nome: "CANGURU-VERMELHO", tipo: "ANIMÁLIA RESERVA", legendaNome: "CANGURU-VERMELHO<br>Red Kangaroo", area: "Red Kangaroo", desc: "Colocar descrição do animal", icone: "icons/34.png", categoria: "animais", top: 43, left: 75 },
+            { id: "zoo_viveiro", nome: "VIVEIRO AVES ORNAMENTAIS", tipo: "ANIMÁLIA RESERVA", legendaNome: "VIVEIRO AVES ORNAMENTAIS<br>Ornamental Birds Aviary", area: "Ornamental Birds Aviary", desc: "Colocar descrição do animal", icone: "icons/35.png", categoria: "animais",  top: 23, left: 59 }
 
             
-            { id: "zoo_carn", nome: "PLANTAS CARNIVORAS", tipo: "ANIMÁLIA RESERVA", legendaNome: "PLANTAS CARNIVORAS<br>Carnivorous Plants", area: "Carnivorous Plants", desc: "Colocar descrição do animal", icone: "icons/32.png", categoria: "animais", top: 90, left: 00 },
-            { id: "zoo_hipo", nome: "HIPOPOTAMOs", tipo: "ANIMÁLIA RESERVA", legendaNome: "HIPOPOTAMO<br>Hippopotamus", area: "Hippopotamus", desc: "Colocar descrição do animal", icone: "icons/33.png", categoria: "animais", top: 42, left: 63 },
-            { id: "zoo_camel", nome: "EMU-CAMELO", tipo: "ANIMÁLIA RESERVA", legendaNome: "EMU-CAMELO<br>Emu-Bactrian Camel", area: "Emu-Bactrian Camel", desc: "Colocar descrição do animal", icone: "icons/34.png", categoria: "animais", top: 45, left: 70 },
-            { id: "zoo_canguru", nome: "CANGURU-VERMELHO", tipo: "ANIMÁLIA RESERVA", legendaNome: "CANGURU-VERMELHO<br>Red Kangaroo", area: "Red Kangaroo", desc: "Colocar descrição do animal", icone: "icons/35.png", categoria: "animais", top: 43, left: 75 },
-            { id: "zoo_viveiro", nome: "VIVEIRO AVES ORNAMENTAIS", tipo: "ANIMÁLIA RESERVA", legendaNome: "VIVEIRO AVES ORNAMENTAIS<br>Ornamental Birds Aviary", area: "Ornamental Birds Aviary", desc: "Colocar descrição do animal", icone: "icons/36.png", categoria: "animais",  top: 23, left: 59 }
         ]
     }
 };
