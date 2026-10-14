@@ -5,12 +5,12 @@ const dadosPark = {
     reserva: {
         imagem: "mapa.zoo.webp",
         categoriasLegenda: [
-            { id: 'alimentacao', texto: 'ALIMENTAÇÃO' },
-            { id: 'animais', texto: 'ZOOLOGICO' },
-            { id: 'atracao', texto: 'ATRAÇÕES' },
-            { id: 'souvenir', texto: 'SOUVENIR' },
-            { id: 'banheiros', texto: 'BANHEIROS' },
-            { id: 'servicos', texto: 'SERVIÇOS' }
+            { id: 'alimentacao',texto: 'ALIMENTAÇÃO'},
+            { id: 'animais',    texto: 'ZOOLOGICO'  },
+            { id: 'atracao',    texto: 'ATRAÇÕES'   },
+            { id: 'souvenir',   texto: 'SOUVENIR'   },
+            { id: 'banheiros',  texto: 'BANHEIROS'  },
+            { id: 'servicos',   texto: 'SERVIÇOS'   }
         ],
         pontos: [
             // Alimentação
@@ -36,17 +36,12 @@ const dadosPark = {
             { id: "alim_hotdog", nome: "HOTDOG DO KIRAN", tipo: "ALIMENTAÇÃO", legendaNome: "HOT DOG DO KIRAN", area: "Ambiente aconchegante para refeições e lembranças", desc: "🌭Hot Dog do Kiran (Hot Dog's)", icone: "icons/hotdog.png", categoria: "alimentacao", top: 23, left: 54 },
             { id: "alim_tratoria", nome: "VILA TRATORIA", tipo: "ALIMENTAÇÃO", legendaNome: "VILA TRATORIA", area: "Ambiente aconchegante para refeições e lembranças", desc: "🍝Vila Tratoria (Massas e Carnes)", icone: "icons/tratoria.png", categoria: "alimentacao", top: 22, left: 56 },
             { id: "alim_cantgira", nome: "CANTINHO DA GIRAFA", tipo: "ALIMENTAÇÃO", legendaNome: "CANTINHO DA GIRAFA", area: "Ambiente aconchegante para refeições e lembranças", desc: "🍨 Cantinho da Girafa (Picoles e massas)", icone: "icons/pontocantinho.png", categoria: "alimentacao", top: 26, left: 53 },
-            
             { id: "alim_cesta", nome: "CESTA PICNIC", tipo: "ALIMENTAÇÃO", legendaNome: "CESTA PIC NIC", area: "Diversão e refeição, tudo em um só lugar!", desc: "🍔 Cesta Pic Nic (Burgers e bebidas)", icone: "icons/cesta.png", categoria: "alimentacao", top: 15, left: 32 },
             { id: "alim_carrinho", nome: "CARRINHO DOCE e PIPOCA", tipo: "ALIMENTAÇÃO", legendaNome: "CARRINHO DE DOCE/PIPOCA", area: "Diversão e refeição, tudo em um só lugar!", desc: "🍿 Carrinho de Doce e Pipoca", icone: "icons/carrinho.png", categoria: "alimentacao", top: 18, left: 32 },
-
             { id: "alim_carrosel", nome: "CESTA CARROSEL", tipo: "ALIMENTAÇÃO", legendaNome: "CESTA CARROSEL", area: "Diversão e refeição, tudo em um só lugar!", desc: "☕ Carrossel (Porções e Cafés)", icone: "icons/carrosel.png", categoria: "alimentacao", top: 17.5, left: 35 },
             { id: "alim_deck", nome: "DECK PIC NIC", tipo: "ALIMENTAÇÃO", legendaNome: "DECK PIC NIC", area: "Diversão e refeição, tudo em um só lugar!", desc: "🍿 Deck Pic nic (Doce e Pipoca)", icone: "icons/deck.png", categoria: "alimentacao", top: 20.5, left: 35 },
-
             { id: "alim_mundodoce", nome: "MUNDO DOCE", tipo: "ALIMENTAÇÃO", legendaNome: "MUNDO DOCE", area: "Diversão e refeição, tudo em um só lugar!", desc: "🥮 Mundo Doce (Doces e Bebidas)", icone: "icons/mundodoce.png", categoria: "alimentacao", top: 20, left: 38 },
             { id: "alim_lego", nome: "LEGO", tipo: "ALIMENTAÇÃO", legendaNome: "QUIÓSQUE LEGO", area: "Diversão e refeição, tudo em um só lugar!", desc: "🥮 Lego (Doces e Bebidas)", icone: "icons/lego.png", categoria: "alimentacao", top: 23, left: 38 },
-
-            
             { id: "alim_splash", nome: "QUIOSQUE SPLASH", tipo: "ALIMENTAÇÃO", legendaNome: "QUIÓSQUE SPLASH", area: "🍿 Café, Salgados e pipocas", desc: "Localizado próximo ao vulcão.", icone: "icons/splash.png", categoria: "alimentacao", top: 7, left: 41 },
             { id: "alim_viking", nome: "QUIOSQUE VIKING", tipo: "ALIMENTAÇÃO", legendaNome: "QUIÓSQUE VIKING", area: "🍿 Café, Salgados e pipocas", desc: "Localizado na entrada do Outdoor.", icone: "icons/viking.png", categoria: "alimentacao", top: 14, left: 39 },
             { id: "alim_aviario", nome: "CAFÉ AVIÁRIO", tipo: "ALIMENTAÇÃO", legendaNome: "CAFÉ CAVERNA/AVIÁRIO", area: "Um dos Maiores Aviários da América Latina", desc: "☕ Café Caverna (Cafés e salgados)", icone: "icons/cafecaverna.png", categoria: "alimentacao", top: 60, left: 35 },
