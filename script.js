@@ -412,3 +412,191 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 });
+
+
+// ponto antigo, padrao google
+//   topLeft:     { lat: -23.620150, lng: -46.970820 }, // Canto superior esquerdo
+//   bottomRight: { lat: -23.626049, lng: -46.962151 }  // Canto inferior direito
+
+
+
+
+// 1. Defina as coordenadas dos cantos da sua imagem (Seus dados reais)
+const bounds = {
+      topLeft:     { lat: -23.619760, lng: -46.970712 }, // Canto superior esquerdo
+      bottomRight: { lat: -23.626049, lng: -46.962151 }  // Canto inferior direito
+};
+
+// Lista de pontos do trajeto (0% a 100%)
+const rotaTrilha = [
+
+  { percent: 0,     lat: -23.621428, lng: -46.966483 },
+  { percent: 1.15,  lat: -23.621730, lng: -46.966649 },
+  { percent: 2.30,  lat: -23.621820, lng: -46.967056 },
+  { percent: 3.45,  lat: -23.622071, lng: -46.967378 },
+  { percent: 4.60,  lat: -23.622449, lng: -46.967391 },
+  { percent: 5.75,  lat: -23.622691, lng: -46.967328 },
+  { percent: 6.90,  lat: -23.622922, lng: -46.967458 },
+  { percent: 8.05,  lat: -23.623004, lng: -46.967834 },
+  { percent: 9.20,  lat: -23.622984, lng: -46.968195 },
+  { percent: 10.34, lat: -23.622933, lng: -46.968453 },
+  { percent: 11.49, lat: -23.623048, lng: -46.968218 },
+  { percent: 12.64, lat: -23.623154, lng: -46.967953 },
+  { percent: 13.79, lat: -23.623251, lng: -46.967630 },
+  { percent: 14.94, lat: -23.623363, lng: -46.967427 },
+  { percent: 16.09, lat: -23.623589, lng: -46.967286 },
+  { percent: 17.24, lat: -23.623558, lng: -46.967046 },
+  { percent: 18.39, lat: -23.623425, lng: -46.966786 },
+  { percent: 19.54, lat: -23.623518, lng: -46.966553 },
+  { percent: 20.69, lat: -23.623492, lng: -46.966265 },
+  { percent: 21.84, lat: -23.623392, lng: -46.966020 },
+  { percent: 22.99, lat: -23.623759, lng: -46.966047 },
+  { percent: 24.14, lat: -23.623935, lng: -46.966018 },
+  { percent: 25.29, lat: -23.624144, lng: -46.965947 },
+  { percent: 26.44, lat: -23.624288, lng: -46.965890 },
+  { percent: 27.59, lat: -23.624402, lng: -46.965761 },
+  { percent: 28.74, lat: -23.624435, lng: -46.965666 },
+  { percent: 29.89, lat: -23.624425, lng: -46.965520 },
+  { percent: 31.03, lat: -23.624522, lng: -46.965336 },
+  { percent: 32.18, lat: -23.624616, lng: -46.965436 },
+  { percent: 33.33, lat: -23.624612, lng: -46.965588 },
+  { percent: 34.48, lat: -23.624738, lng: -46.965513 },
+  { percent: 35.63, lat: -23.624899, lng: -46.965427 },
+  { percent: 36.78, lat: -23.625056, lng: -46.965305 },
+  { percent: 37.93, lat: -23.625113, lng: -46.965438 },
+  { percent: 39.08, lat: -23.625073, lng: -46.965675 },
+  { percent: 40.23, lat: -23.625048, lng: -46.965932 },
+  { percent: 41.38, lat: -23.624900, lng: -46.965985 },
+  { percent: 42.53, lat: -23.624798, lng: -46.966071 },
+  { percent: 43.68, lat: -23.624796, lng: -46.965923 },
+  { percent: 44.83, lat: -23.624862, lng: -46.965817 },
+  { percent: 45.98, lat: -23.624974, lng: -46.965722 },
+  { percent: 47.13, lat: -23.624647, lng: -46.965186 },
+  { percent: 48.28, lat: -23.624801, lng: -46.965090 },
+  { percent: 49.43, lat: -23.625017, lng: -46.964966 },
+  { percent: 50.57, lat: -23.625179, lng: -46.964762 },
+  { percent: 51.72, lat: -23.625280, lng: -46.964542 },
+  { percent: 52.87, lat: -23.625175, lng: -46.964383 },
+  { percent: 54.02, lat: -23.625102, lng: -46.964177 },
+  { percent: 55.17, lat: -23.624912, lng: -46.964161 },
+  { percent: 56.32, lat: -23.624738, lng: -46.964274 },
+  { percent: 57.47, lat: -23.624587, lng: -46.964410 },
+  { percent: 58.62, lat: -23.624733, lng: -46.964425 },
+  { percent: 59.77, lat: -23.624836, lng: -46.964334 },
+  { percent: 60.92, lat: -23.624680, lng: -46.964178 },
+  { percent: 62.07, lat: -23.624403, lng: -46.964148 },
+  { percent: 63.22, lat: -23.623906, lng: -46.964427 },
+  { percent: 64.37, lat: -23.623840, lng: -46.964628 },
+  { percent: 65.52, lat: -23.623764, lng: -46.964486 },
+  { percent: 66.67, lat: -23.623597, lng: -46.964617 },
+  { percent: 67.82, lat: -23.623408, lng: -46.964752 },
+  { percent: 68.97, lat: -23.623345, lng: -46.965136 },
+  { percent: 70.11, lat: -23.623366, lng: -46.965383 },
+  { percent: 71.26, lat: -23.623212, lng: -46.965544 },
+  { percent: 72.41, lat: -23.623049, lng: -46.965636 },
+  { percent: 73.56, lat: -23.622884, lng: -46.965744 },
+  { percent: 74.71, lat: -23.622732, lng: -46.965826 },
+  { percent: 75.86, lat: -23.622509, lng: -46.965814 },
+  { percent: 77.01, lat: -23.622537, lng: -46.965540 },
+  { percent: 78.16, lat: -23.622438, lng: -46.965279 },
+  { percent: 79.31, lat: -23.622225, lng: -46.965061 },
+  { percent: 80.46, lat: -23.622330, lng: -46.964826 },
+  { percent: 81.61, lat: -23.622443, lng: -46.964575 },
+  { percent: 82.76, lat: -23.622445, lng: -46.964416 },
+  { percent: 83.91, lat: -23.622369, lng: -46.964667 },
+  { percent: 85.06, lat: -23.622277, lng: -46.964907 },
+  { percent: 86.21, lat: -23.622028, lng: -46.964970 },
+  { percent: 87.36, lat: -23.621845, lng: -46.965072 },
+  { percent: 88.51, lat: -23.621925, lng: -46.965249 },
+  { percent: 89.66, lat: -23.621946, lng: -46.965490 },
+  { percent: 90.80, lat: -23.621963, lng: -46.965843 },
+  { percent: 91.95, lat: -23.621899, lng: -46.965256 },
+  { percent: 93.10, lat: -23.621720, lng: -46.965068 },
+  { percent: 94.25, lat: -23.621630, lng: -46.964914 },
+  { percent: 95.40, lat: -23.621535, lng: -46.964757 },
+  { percent: 96.55, lat: -23.621463, lng: -46.964911 },
+  { percent: 97.70, lat: -23.621383, lng: -46.965239 },
+  { percent: 98.85, lat: -23.621283, lng: -46.965511 },
+  { percent: 100,   lat: -23.621090, lng: -46.965868 }
+
+];
+
+function atualizarLocalizacaoUsuario(lat, lng) {
+    const img = document.getElementById("imagemMapa");
+    const marker = document.getElementById("user-marker");
+    
+    if (!img || !marker) return;
+
+    // Pega o tamanho real que a imagem está ocupando na tela (já considerando o zoom)
+    const currentWidth = img.clientWidth;   
+    const currentHeight = img.clientHeight; 
+
+    // Calcula a posição X e Y proporcional em pixels
+    const x = ((lng - bounds.topLeft.lng) / (bounds.bottomRight.lng - bounds.topLeft.lng)) * currentWidth;
+    const y = ((bounds.topLeft.lat - lat) / (bounds.topLeft.lat - bounds.bottomRight.lat)) * currentHeight;
+    
+    // Posiciona o marcador e o torna visível
+    marker.style.left = `${x}px`;
+    marker.style.top = `${y}px`;
+    marker.style.display = "block";
+}
+
+// Função para calcular distância simples entre coordenadas
+function calcularDistancia(lat1, lon1, lat2, lon2) {
+    const x = lat2 - lat1;
+    const y = lon2 - lon1;
+    return Math.sqrt(x * x + y * y);
+}
+
+// Função para descobrir a porcentagem percorrida
+function calcularProgressoTrilha(userLat, userLng) {
+    let menorDistancia = Infinity;
+    let porcentagemAtual = 0;
+
+    for (let i = 0; i < rotaTrilha.length; i++) {
+        const ponto = rotaTrilha[i];
+        const distancia = calcularDistancia(userLat, userLng, ponto.lat, ponto.lng);
+
+        if (distancia < menorDistancia) {
+            menorDistancia = distancia;
+            porcentagemAtual = ponto.percent;
+        }
+    }
+
+    return porcentagemAtual;
+}
+
+// 2. Ativa o GPS do navegador em tempo real
+if ("geolocation" in navigator) {
+    navigator.geolocation.watchPosition(
+        (position) => {
+            const userLat = position.coords.latitude;
+            const userLng = position.coords.longitude;
+
+            // 1. Atualiza o ponto no mapa
+            atualizarLocalizacaoUsuario(userLat, userLng);
+            
+            // 2. Calcula o progresso do trajeto
+            const progresso = calcularProgressoTrilha(userLat, userLng);
+
+            // 3. Exibe os dados no console
+            console.log(`GPS Ativo -> Lat: ${userLat}, Lng: ${userLng} | Progresso: ${progresso}%`);
+
+            // 4. Se você tiver um elemento na tela para exibir a porcentagem (ex: <span id="progressoTexto"></span>)
+            const elementoProgresso = document.getElementById("progressoTexto");
+            if (elementoProgresso) {
+                elementoProgresso.innerText = `${progresso}% concluído`;
+            }
+        },
+        (error) => {
+            console.warn("Aviso de Geolocalização: ", error.message);
+        },
+        {
+            enableHighAccuracy: true, // Força alta precisão (ideal para celular)
+            maximumAge: 0,
+            timeout: 10000
+        }
+    );
+} else {
+    console.warn("Seu navegador não suporta geolocalização.");
+}
