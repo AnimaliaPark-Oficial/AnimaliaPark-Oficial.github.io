@@ -170,35 +170,47 @@ body, html {
     filter: drop-shadow(0px 2px 4px rgba(0,0,0,0.5));
 }
 
-/* Posição do usuário no mapa */
-.user-marker {
+/* Marcador de Geolocalização com Pin e Pulso Vermelho */
+.user-marker-container {
     position: absolute;
-    transform: translate(-50%, -50%);
-    z-index: 6;
-    font-size: 20px;
+    width: 30px;
+    height: 30px;
+    transform: translate(-50%, -95%); /* Alinha a ponta do pin na coordenada exata */
+    display: none;
+    z-index: 9999;ke
     pointer-events: none;
 }
 
-.pulsar {
+/* Anel Pulsante Vermelho */
+.user-marker-pulse {
     position: absolute;
-    width: 40px;
-    height: 40px;
-    background: rgba(0, 123, 255, 0.4);
+    width: 30px;
+    height: 30px;
+    background-color: rgba(239, 68, 68, 0.4); /* Vermelho com transparência */
     border-radius: 50%;
+    top: 0;
+    left: 0;
+    animation: user-pulse-red 1.8s infinite ease-out;
+}
+
+/* Emoji do Pin centralizado */
+.user-marker-emoji {
+    position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    animation: pulsarAnim 1.5s infinite;
+    font-size: 80px;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
 }
 
-@keyframes pulsarAnim {
+/* Animação do pulso */
+@keyframes user-pulse-red {
     0% {
-        transform: translate(-50%, -50%) scale(0.5);
-        opacity: 1;
+        transform: scale(0.6);
+        opacity: 0.9;
     }
-
     100% {
-        transform: translate(-50%, -50%) scale(2);
+        transform: scale(2.3);
         opacity: 0;
     }
 }
