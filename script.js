@@ -423,13 +423,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // 1. Defina as coordenadas dos cantos da sua imagem (Seus dados reais)
 const bounds = {
-      topLeft:     { lat: -23.619760, lng: -46.970712 }, // Canto superior esquerdo
-      bottomRight: { lat: -23.626049, lng: -46.962151 }  // Canto inferior direito
+    topLeft:     { lat: -23.619760, lng: -46.970712 }, // Canto superior esquerdo
+    bottomRight: { lat: -23.626049, lng: -46.962151 }  // Canto inferior direito
 };
 
 // Lista de pontos do trajeto (0% a 100%)
 const rotaTrilha = [
-
   { percent: 0,     lat: -23.621428, lng: -46.966483 },
   { percent: 1.15,  lat: -23.621730, lng: -46.966649 },
   { percent: 2.30,  lat: -23.621820, lng: -46.967056 },
@@ -516,10 +515,12 @@ const rotaTrilha = [
   { percent: 95.40, lat: -23.621535, lng: -46.964757 },
   { percent: 96.55, lat: -23.621463, lng: -46.964911 },
   { percent: 97.70, lat: -23.621383, lng: -46.965239 },
-  { percent: 98.85, lat: -23.621283, lng: -46.965511 },
-  { percent: 100,   lat: -23.621090, lng: -46.965868 }
-
+    { percent: 98.85, lat: -23.621283, lng: -46.965511 },
+    { percent: 100,    lat: -23.621090, lng: -46.965868 }
 ];
+
+// Variável de controle para guardar o ponto de partida onde o mapa foi aberto
+let porcentagemMinimaInicial = null;
 
 function atualizarLocalizacaoUsuario(lat, lng) {
     const img = document.getElementById("imagemMapa");
@@ -527,32 +528,28 @@ function atualizarLocalizacaoUsuario(lat, lng) {
     
     if (!img || !marker) return;
 
-    // Pega o tamanho real que a imagem está ocupando na tela (já considerando o zoom)
     const currentWidth = img.clientWidth;   
     const currentHeight = img.clientHeight; 
 
-    // Calcula a posição X e Y proporcional em pixels
     const x = ((lng - bounds.topLeft.lng) / (bounds.bottomRight.lng - bounds.topLeft.lng)) * currentWidth;
     const y = ((bounds.topLeft.lat - lat) / (bounds.topLeft.lat - bounds.bottomRight.lat)) * currentHeight;
     
-    // Posiciona o marcador e o torna visível
     marker.style.left = `${x}px`;
     marker.style.top = `${y}px`;
     marker.style.display = "block";
 }
 
-// Função para calcular distância simples entre coordenadas
 function calcularDistancia(lat1, lon1, lat2, lon2) {
     const x = lat2 - lat1;
     const y = lon2 - lon1;
     return Math.sqrt(x * x + y * y);
 }
 
-// Função para descobrir a porcentagem percorrida
 function calcularProgressoTrilha(userLat, userLng) {
     let menorDistancia = Infinity;
     let porcentagemAtual = 0;
 
+    // 1. Descobre qual o ponto da trilha está mais perto do usuário no momento
     for (let i = 0; i < rotaTrilha.length; i++) {
         const ponto = rotaTrilha[i];
         const distancia = calcularDistancia(userLat, userLng, ponto.lat, ponto.lng);
@@ -563,26 +560,32 @@ function calcularProgressoTrilha(userLat, userLng) {
         }
     }
 
+    // 2. Se for a primeira leitura de GPS (quando o usuário abre o mapa), definimos a base
+    if (porcentagemMinimaInicial === null) {
+        porcentagemMinimaInicial = porcentagemAtual;
+    }
+
+    // 3. Garante que o progresso nunca volte para trás do ponto onde ele abriu o mapa
+    if (porcentagemAtual < porcentagemMinimaInicial) {
+        porcentagemAtual = porcentagemMinimaInicial;
+    }
+
     return porcentagemAtual;
 }
 
-// 2. Ativa o GPS do navegador em tempo real
+// Ativa o GPS do navegador em tempo real
 if ("geolocation" in navigator) {
     navigator.geolocation.watchPosition(
         (position) => {
             const userLat = position.coords.latitude;
             const userLng = position.coords.longitude;
 
-            // 1. Atualiza o ponto no mapa
             atualizarLocalizacaoUsuario(userLat, userLng);
             
-            // 2. Calcula o progresso do trajeto
             const progresso = calcularProgressoTrilha(userLat, userLng);
 
-            // 3. Exibe os dados no console
             console.log(`GPS Ativo -> Lat: ${userLat}, Lng: ${userLng} | Progresso: ${progresso}%`);
 
-            // 4. Se você tiver um elemento na tela para exibir a porcentagem (ex: <span id="progressoTexto"></span>)
             const elementoProgresso = document.getElementById("progressoTexto");
             if (elementoProgresso) {
                 elementoProgresso.innerText = `${progresso}% concluído`;
@@ -592,7 +595,7 @@ if ("geolocation" in navigator) {
             console.warn("Aviso de Geolocalização: ", error.message);
         },
         {
-            enableHighAccuracy: true, // Força alta precisão (ideal para celular)
+            enableHighAccuracy: true,
             maximumAge: 0,
             timeout: 10000
         }
