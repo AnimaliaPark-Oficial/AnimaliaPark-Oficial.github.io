@@ -524,21 +524,35 @@ const rotaTrilha = [
 // Variável de controle para guardar o ponto de partida onde o mapa foi aberto
 let porcentagemMinimaInicial = null;
 
-function atualizarLocalizacaoUsuario(lat, lng) {
+function atualizarLocalizacaoUsuario(lat, lng, precisao) {
     const img = document.getElementById("imagemMapa");
     const marker = document.getElementById("user-marker");
-    
+    const circulo = document.getElementById("user-precisao");
+
     if (!img || !marker) return;
 
-    const currentWidth = img.clientWidth;   
-    const currentHeight = img.clientHeight; 
+    const currentWidth = img.clientWidth;
+    const currentHeight = img.clientHeight;
 
     const x = ((lng - bounds.topLeft.lng) / (bounds.bottomRight.lng - bounds.topLeft.lng)) * currentWidth;
     const y = ((bounds.topLeft.lat - lat) / (bounds.topLeft.lat - bounds.bottomRight.lat)) * currentHeight;
-    
+
     marker.style.left = `${x}px`;
     marker.style.top = `${y}px`;
     marker.style.display = "block";
+
+    // Círculo de precisão: o raio é a margem de erro do GPS, convertida de metros para pixels do mapa
+    if (circulo && precisao) {
+        const larguraDoMapaEmMetros = (bounds.bottomRight.lng - bounds.topLeft.lng) * 111320 * Math.cos(lat * Math.PI / 180);
+        const pixelsPorMetro = currentWidth / larguraDoMapaEmMetros;
+        const diametro = 2 * Math.min(precisao, 150) * pixelsPorMetro; // limita em 150 m para não cobrir o mapa todo
+
+        circulo.style.width = `${diametro}px`;
+        circulo.style.height = `${diametro}px`;
+        circulo.style.left = `${x}px`;
+        circulo.style.top = `${y}px`;
+        circulo.style.display = "block";
+    }
 }
 
 function calcularDistancia(lat1, lon1, lat2, lon2) {
@@ -576,7 +590,7 @@ function calcularProgressoTrilha(userLat, userLng) {
 }
 
 // ==========================================
-// GPS: mensagens de estado, precisão e "fora do parque"
+// GPS: estados, precisão, suavização e "fora do parque"
 // ==========================================
 
 // Leituras com margem de erro maior que isso (em metros) não definem o progresso
@@ -584,6 +598,13 @@ const PRECISAO_MAXIMA_METROS = 50;
 
 // Tolerância além das bordas do mapa (em graus; 0.0005 equivale a uns 50 metros)
 const MARGEM_FORA_PARQUE = 0.0005;
+
+// Suavização: o pin usa a média das últimas leituras boas
+const JANELA_SUAVIZACAO_MS = 10000; // só vale o que chegou nos últimos 10 segundos
+const MAX_LEITURAS_SUAVIZACAO = 5;  // e no máximo as 5 últimas
+
+let leiturasBoas = [];
+let ultimoProgresso = null;
 
 function mostrarStatusGPS(texto) {
     const el = document.getElementById("progressoTexto");
@@ -593,6 +614,8 @@ function mostrarStatusGPS(texto) {
 function esconderMarcadorUsuario() {
     const marker = document.getElementById("user-marker");
     if (marker) marker.style.display = "none";
+    const circulo = document.getElementById("user-precisao");
+    if (circulo) circulo.style.display = "none";
 }
 
 function estaDentroDoParque(lat, lng) {
@@ -600,6 +623,30 @@ function estaDentroDoParque(lat, lng) {
            lat >= bounds.bottomRight.lat - MARGEM_FORA_PARQUE &&
            lng >= bounds.topLeft.lng - MARGEM_FORA_PARQUE &&
            lng <= bounds.bottomRight.lng + MARGEM_FORA_PARQUE;
+}
+
+// Descarta as leituras que ficaram velhas demais
+function limparLeiturasAntigas() {
+    const agora = Date.now();
+    leiturasBoas = leiturasBoas.filter(l => agora - l.t <= JANELA_SUAVIZACAO_MS);
+}
+
+function registrarLeituraBoa(lat, lng, precisao) {
+    leiturasBoas.push({ lat, lng, precisao: Math.max(precisao, 1), t: Date.now() });
+    limparLeiturasAntigas();
+    leiturasBoas = leiturasBoas.slice(-MAX_LEITURAS_SUAVIZACAO);
+}
+
+// Média das leituras boas: quanto menor a margem de erro, mais peso a leitura tem
+function posicaoSuavizada() {
+    let somaPesos = 0, somaLat = 0, somaLng = 0;
+    leiturasBoas.forEach(l => {
+        const peso = 1 / (l.precisao * l.precisao);
+        somaPesos += peso;
+        somaLat += l.lat * peso;
+        somaLng += l.lng * peso;
+    });
+    return { lat: somaLat / somaPesos, lng: somaLng / somaPesos };
 }
 
 // Chamada toda vez que o GPS entrega uma nova posição
@@ -610,23 +657,43 @@ function aoReceberPosicao(position) {
 
     console.log(`GPS -> Lat: ${lat}, Lng: ${lng} | precisão: ±${Math.round(precisao)} m`);
 
-    // Fora da área do mapa: não mostra o pin e não calcula progresso
+    limparLeiturasAntigas();
+
+    // Leitura imprecisa
+    if (precisao > PRECISAO_MAXIMA_METROS) {
+        if (leiturasBoas.length > 0) {
+            // Já temos uma posição boa recente: mantém o pin onde está e só avisa
+            const progresso = ultimoProgresso !== null ? `${ultimoProgresso}% concluído · ` : "";
+            mostrarStatusGPS(`${progresso}sinal fraco (±${Math.round(precisao)} m)`);
+            return;
+        }
+        if (!estaDentroDoParque(lat, lng)) {
+            esconderMarcadorUsuario();
+            mostrarStatusGPS("Fora do parque");
+            return;
+        }
+        // Ainda sem nenhuma leitura boa: mostra o pin com um círculo grande
+        atualizarLocalizacaoUsuario(lat, lng, precisao);
+        mostrarStatusGPS(`Ajustando precisão (±${Math.round(precisao)} m)...`);
+        return;
+    }
+
+    // Leitura boa, mas fora da área do mapa
     if (!estaDentroDoParque(lat, lng)) {
+        leiturasBoas = [];
+        ultimoProgresso = null;
         esconderMarcadorUsuario();
         mostrarStatusGPS("Fora do parque");
         return;
     }
 
-    atualizarLocalizacaoUsuario(lat, lng);
+    // Leitura boa e dentro do parque: suaviza, desenha e calcula o progresso
+    registrarLeituraBoa(lat, lng, precisao);
+    const pos = posicaoSuavizada();
+    atualizarLocalizacaoUsuario(pos.lat, pos.lng, precisao);
 
-    // Leitura imprecisa: mostra o pin, mas ainda não define o progresso
-    if (precisao > PRECISAO_MAXIMA_METROS) {
-        mostrarStatusGPS(`Ajustando precisão (±${Math.round(precisao)} m)...`);
-        return;
-    }
-
-    const progresso = calcularProgressoTrilha(lat, lng);
-    mostrarStatusGPS(`${Math.round(progresso)}% concluído`);
+    ultimoProgresso = Math.round(calcularProgressoTrilha(pos.lat, pos.lng));
+    mostrarStatusGPS(`${ultimoProgresso}% concluído`);
 }
 
 // Chamada quando o GPS não consegue entregar a posição
