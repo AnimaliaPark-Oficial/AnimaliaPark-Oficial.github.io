@@ -223,6 +223,17 @@ body, html {
     }
 }
 
+@keyframes user-pulse-red {
+    0% {
+        transform: scale(0.6);
+        opacity: 0.9;
+    }
+    100% {
+        transform: scale(2.3);
+        opacity: 0;
+    }
+}
+
 /* CAIXA DE LEGENDA FLUTUANTE EM LISTA SUSPENSA */
 .painel-legenda-lateral {
     position: absolute;
