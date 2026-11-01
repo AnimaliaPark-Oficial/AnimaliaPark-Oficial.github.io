@@ -14,9 +14,18 @@ body, html {
     background-color: #121212;
 }
 
+/* O body é uma coluna: topo + filtros + mapa (o mapa ocupa o que sobrar) */
+body {
+    height: 100vh;  /* para navegadores antigos */
+    height: 100dvh; /* altura real visível, descontando a barra do navegador no celular */
+    display: flex;
+    flex-direction: column;
+}
+
 /* Topo Roxo Escuro (#4A154B) */
 .header-animalia {
     height: 70px;
+    flex-shrink: 0;
     background-color: #4A154B;
     position: relative;
     z-index: 100;
@@ -48,6 +57,7 @@ body, html {
 /* Barra de Filtros Roxo Claro (#8C1B91) */
 .filtros-superior-container {
     height: 55px;
+    flex-shrink: 0;
     background-color: #8C1B91;
     display: flex;
     align-items: center;
@@ -121,7 +131,8 @@ body, html {
 /* Layout principal do mapa */
 .layout-principal {
     width: 100%;
-    height: calc(100vh - 100px); 
+    flex: 1;
+    min-height: 0;
     display: flex;
     flex-direction: column;
     position: relative;
@@ -245,7 +256,7 @@ body, html {
     z-index: 60;
     width: 260px;
     backdrop-filter: blur(5px);
-    max-height: calc(100vh - 120px);
+    max-height: calc(100% - 30px);
     display: flex;
     flex-direction: column;
 }
@@ -339,7 +350,7 @@ body, html {
 .zoom-controls {
     position: absolute;
     right: 15px;
-    bottom: 50px;
+    bottom: 25px;
     display: flex;
     flex-direction: column;
     gap: 8px;
