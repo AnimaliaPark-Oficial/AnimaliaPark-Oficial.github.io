@@ -245,6 +245,24 @@ body {
     }
 }
 
+/* Círculo de precisão do GPS: quanto maior, mais incerta é a posição */
+.circulo-precisao {
+    position: absolute;
+    display: none;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    background-color: rgba(239, 68, 68, 0.15);
+    border: 3px solid rgba(239, 68, 68, 0.5);
+    pointer-events: none;
+    z-index: 9998;
+}
+
+/* O pin e o círculo deslizam até a nova posição em vez de pular */
+#user-marker,
+.circulo-precisao {
+    transition: left 1s linear, top 1s linear, width 1s linear, height 1s linear;
+}
+
 /* CAIXA DE LEGENDA FLUTUANTE EM LISTA SUSPENSA */
 .painel-legenda-lateral {
     position: absolute;
