@@ -575,33 +575,81 @@ function calcularProgressoTrilha(userLat, userLng) {
     return porcentagemAtual;
 }
 
+// ==========================================
+// GPS: mensagens de estado, precisão e "fora do parque"
+// ==========================================
+
+// Leituras com margem de erro maior que isso (em metros) não definem o progresso
+const PRECISAO_MAXIMA_METROS = 50;
+
+// Tolerância além das bordas do mapa (em graus; 0.0005 equivale a uns 50 metros)
+const MARGEM_FORA_PARQUE = 0.0005;
+
+function mostrarStatusGPS(texto) {
+    const el = document.getElementById("progressoTexto");
+    if (el) el.innerText = texto;
+}
+
+function esconderMarcadorUsuario() {
+    const marker = document.getElementById("user-marker");
+    if (marker) marker.style.display = "none";
+}
+
+function estaDentroDoParque(lat, lng) {
+    return lat <= bounds.topLeft.lat + MARGEM_FORA_PARQUE &&
+           lat >= bounds.bottomRight.lat - MARGEM_FORA_PARQUE &&
+           lng >= bounds.topLeft.lng - MARGEM_FORA_PARQUE &&
+           lng <= bounds.bottomRight.lng + MARGEM_FORA_PARQUE;
+}
+
+// Chamada toda vez que o GPS entrega uma nova posição
+function aoReceberPosicao(position) {
+    const lat = position.coords.latitude;
+    const lng = position.coords.longitude;
+    const precisao = position.coords.accuracy; // margem de erro, em metros
+
+    console.log(`GPS -> Lat: ${lat}, Lng: ${lng} | precisão: ±${Math.round(precisao)} m`);
+
+    // Fora da área do mapa: não mostra o pin e não calcula progresso
+    if (!estaDentroDoParque(lat, lng)) {
+        esconderMarcadorUsuario();
+        mostrarStatusGPS("Fora do parque");
+        return;
+    }
+
+    atualizarLocalizacaoUsuario(lat, lng);
+
+    // Leitura imprecisa: mostra o pin, mas ainda não define o progresso
+    if (precisao > PRECISAO_MAXIMA_METROS) {
+        mostrarStatusGPS(`Ajustando precisão (±${Math.round(precisao)} m)...`);
+        return;
+    }
+
+    const progresso = calcularProgressoTrilha(lat, lng);
+    mostrarStatusGPS(`${Math.round(progresso)}% concluído`);
+}
+
+// Chamada quando o GPS não consegue entregar a posição
+function aoFalharGPS(error) {
+    console.warn("Aviso de Geolocalização: ", error.message);
+
+    if (error.code === 1) {
+        mostrarStatusGPS("Localização negada");
+    } else if (error.code === 2) {
+        mostrarStatusGPS("Sem sinal de GPS");
+    } else {
+        mostrarStatusGPS("Procurando sinal de GPS...");
+    }
+}
+
 // Ativa o GPS do navegador em tempo real
 if ("geolocation" in navigator) {
-    navigator.geolocation.watchPosition(
-        (position) => {
-            const userLat = position.coords.latitude;
-            const userLng = position.coords.longitude;
-
-            atualizarLocalizacaoUsuario(userLat, userLng);
-            
-            const progresso = calcularProgressoTrilha(userLat, userLng);
-
-            console.log(`GPS Ativo -> Lat: ${userLat}, Lng: ${userLng} | Progresso: ${progresso}%`);
-
-            const elementoProgresso = document.getElementById("progressoTexto");
-            if (elementoProgresso) {
-                elementoProgresso.innerText = `${progresso}% concluído`;
-            }
-        },
-        (error) => {
-            console.warn("Aviso de Geolocalização: ", error.message);
-        },
-        {
-            enableHighAccuracy: true,
-            maximumAge: 0,
-            timeout: 10000
-        }
-    );
+    mostrarStatusGPS("Procurando sinal de GPS...");
+    navigator.geolocation.watchPosition(aoReceberPosicao, aoFalharGPS, {
+        enableHighAccuracy: true,
+        maximumAge: 0,
+        timeout: 10000
+    });
 } else {
-    console.warn("Seu navegador não suporta geolocalização.");
+    mostrarStatusGPS("GPS indisponível");
 }
