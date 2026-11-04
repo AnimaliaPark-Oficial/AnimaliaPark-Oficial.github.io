@@ -429,101 +429,6 @@ const bounds = {
     bottomRight: { lat: -23.626049, lng: -46.962151 }  // Canto inferior direito
 };
 
-// Lista de pontos do trajeto (0% a 100%)
-const rotaTrilha = [
-  { percent: 0,     lat: -23.621428, lng: -46.966483 },
-  { percent: 1.15,  lat: -23.621730, lng: -46.966649 },
-  { percent: 2.30,  lat: -23.621820, lng: -46.967056 },
-  { percent: 3.45,  lat: -23.622071, lng: -46.967378 },
-  { percent: 4.60,  lat: -23.622449, lng: -46.967391 },
-  { percent: 5.75,  lat: -23.622691, lng: -46.967328 },
-  { percent: 6.90,  lat: -23.622922, lng: -46.967458 },
-  { percent: 8.05,  lat: -23.623004, lng: -46.967834 },
-  { percent: 9.20,  lat: -23.622984, lng: -46.968195 },
-  { percent: 10.34, lat: -23.622933, lng: -46.968453 },
-  { percent: 11.49, lat: -23.623048, lng: -46.968218 },
-  { percent: 12.64, lat: -23.623154, lng: -46.967953 },
-  { percent: 13.79, lat: -23.623251, lng: -46.967630 },
-  { percent: 14.94, lat: -23.623363, lng: -46.967427 },
-  { percent: 16.09, lat: -23.623589, lng: -46.967286 },
-  { percent: 17.24, lat: -23.623558, lng: -46.967046 },
-  { percent: 18.39, lat: -23.623425, lng: -46.966786 },
-  { percent: 19.54, lat: -23.623518, lng: -46.966553 },
-  { percent: 20.69, lat: -23.623492, lng: -46.966265 },
-  { percent: 21.84, lat: -23.623392, lng: -46.966020 },
-  { percent: 22.99, lat: -23.623759, lng: -46.966047 },
-  { percent: 24.14, lat: -23.623935, lng: -46.966018 },
-  { percent: 25.29, lat: -23.624144, lng: -46.965947 },
-  { percent: 26.44, lat: -23.624288, lng: -46.965890 },
-  { percent: 27.59, lat: -23.624402, lng: -46.965761 },
-  { percent: 28.74, lat: -23.624435, lng: -46.965666 },
-  { percent: 29.89, lat: -23.624425, lng: -46.965520 },
-  { percent: 31.03, lat: -23.624522, lng: -46.965336 },
-  { percent: 32.18, lat: -23.624616, lng: -46.965436 },
-  { percent: 33.33, lat: -23.624612, lng: -46.965588 },
-  { percent: 34.48, lat: -23.624738, lng: -46.965513 },
-  { percent: 35.63, lat: -23.624899, lng: -46.965427 },
-  { percent: 36.78, lat: -23.625056, lng: -46.965305 },
-  { percent: 37.93, lat: -23.625113, lng: -46.965438 },
-  { percent: 39.08, lat: -23.625073, lng: -46.965675 },
-  { percent: 40.23, lat: -23.625048, lng: -46.965932 },
-  { percent: 41.38, lat: -23.624900, lng: -46.965985 },
-  { percent: 42.53, lat: -23.624798, lng: -46.966071 },
-  { percent: 43.68, lat: -23.624796, lng: -46.965923 },
-  { percent: 44.83, lat: -23.624862, lng: -46.965817 },
-  { percent: 45.98, lat: -23.624974, lng: -46.965722 },
-  { percent: 47.13, lat: -23.624647, lng: -46.965186 },
-  { percent: 48.28, lat: -23.624801, lng: -46.965090 },
-  { percent: 49.43, lat: -23.625017, lng: -46.964966 },
-  { percent: 50.57, lat: -23.625179, lng: -46.964762 },
-  { percent: 51.72, lat: -23.625280, lng: -46.964542 },
-  { percent: 52.87, lat: -23.625175, lng: -46.964383 },
-  { percent: 54.02, lat: -23.625102, lng: -46.964177 },
-  { percent: 55.17, lat: -23.624912, lng: -46.964161 },
-  { percent: 56.32, lat: -23.624738, lng: -46.964274 },
-  { percent: 57.47, lat: -23.624587, lng: -46.964410 },
-  { percent: 58.62, lat: -23.624733, lng: -46.964425 },
-  { percent: 59.77, lat: -23.624836, lng: -46.964334 },
-  { percent: 60.92, lat: -23.624680, lng: -46.964178 },
-  { percent: 62.07, lat: -23.624403, lng: -46.964148 },
-  { percent: 63.22, lat: -23.623906, lng: -46.964427 },
-  { percent: 64.37, lat: -23.623840, lng: -46.964628 },
-  { percent: 65.52, lat: -23.623764, lng: -46.964486 },
-  { percent: 66.67, lat: -23.623597, lng: -46.964617 },
-  { percent: 67.82, lat: -23.623408, lng: -46.964752 },
-  { percent: 68.97, lat: -23.623345, lng: -46.965136 },
-  { percent: 70.11, lat: -23.623366, lng: -46.965383 },
-  { percent: 71.26, lat: -23.623212, lng: -46.965544 },
-  { percent: 72.41, lat: -23.623049, lng: -46.965636 },
-  { percent: 73.56, lat: -23.622884, lng: -46.965744 },
-  { percent: 74.71, lat: -23.622732, lng: -46.965826 },
-  { percent: 75.86, lat: -23.622509, lng: -46.965814 },
-  { percent: 77.01, lat: -23.622537, lng: -46.965540 },
-  { percent: 78.16, lat: -23.622438, lng: -46.965279 },
-  { percent: 79.31, lat: -23.622225, lng: -46.965061 },
-  { percent: 80.46, lat: -23.622330, lng: -46.964826 },
-  { percent: 81.61, lat: -23.622443, lng: -46.964575 },
-  { percent: 82.76, lat: -23.622445, lng: -46.964416 },
-  { percent: 83.91, lat: -23.622369, lng: -46.964667 },
-  { percent: 85.06, lat: -23.622277, lng: -46.964907 },
-  { percent: 86.21, lat: -23.622028, lng: -46.964970 },
-  { percent: 87.36, lat: -23.621845, lng: -46.965072 },
-  { percent: 88.51, lat: -23.621925, lng: -46.965249 },
-  { percent: 89.66, lat: -23.621946, lng: -46.965490 },
-  { percent: 90.80, lat: -23.621963, lng: -46.965843 },
-  { percent: 91.95, lat: -23.621899, lng: -46.965256 },
-  { percent: 93.10, lat: -23.621720, lng: -46.965068 },
-  { percent: 94.25, lat: -23.621630, lng: -46.964914 },
-  { percent: 95.40, lat: -23.621535, lng: -46.964757 },
-  { percent: 96.55, lat: -23.621463, lng: -46.964911 },
-  { percent: 97.70, lat: -23.621383, lng: -46.965239 },
-    { percent: 98.85, lat: -23.621283, lng: -46.965511 },
-    { percent: 100,    lat: -23.621090, lng: -46.965868 }
-];
-
-// Variável de controle para guardar o ponto de partida onde o mapa foi aberto
-let porcentagemMinimaInicial = null;
-
 function atualizarLocalizacaoUsuario(lat, lng, precisao) {
     const img = document.getElementById("imagemMapa");
     const marker = document.getElementById("user-marker");
@@ -555,38 +460,158 @@ function atualizarLocalizacaoUsuario(lat, lng, precisao) {
     }
 }
 
-function calcularDistancia(lat1, lon1, lat2, lon2) {
-    const x = lat2 - lat1;
-    const y = lon2 - lon1;
-    return Math.sqrt(x * x + y * y);
+// ==========================================
+// PROGRESSO NA ROTA (os dados da rota ficam no arquivo rota.js)
+// ==========================================
+
+const PASSO_ROTA_M = 3;             // a rota é "esticada" em pontos a cada 3 metros
+const JANELA_FRENTE = 200;          // procura a posição até 600 m à frente na rota...
+const JANELA_TRAS = 30;             // ...e até 90 m atrás da posição atual
+const DIST_MAX_NA_ROTA_M = 30;      // mais longe que isso da rota: não atualiza o progresso
+const CONFIRMACOES_SALTO = 3;       // leituras seguidas para aceitar um salto (ex.: teleférico)
+const ATALHO_LARGURA_M = 15;        // faixa de aceitação em volta da linha do atalho
+const ATALHO_DISTANCIA_MIN_M = 25;  // quanto precisa andar no atalho para ele valer
+const ATALHO_RETOMADA_M = 20;       // voltou a menos disso do ponto de saída: retoma a rota
+
+// Converte latitude/longitude em metros (x para leste, y para sul), a partir do canto do mapa
+function paraMetros(lat, lng) {
+    return {
+        x: (lng - bounds.topLeft.lng) * 111320 * Math.cos(bounds.topLeft.lat * Math.PI / 180),
+        y: (bounds.topLeft.lat - lat) * 110574
+    };
 }
 
-function calcularProgressoTrilha(userLat, userLng) {
-    let menorDistancia = Infinity;
-    let porcentagemAtual = 0;
+// Transforma a lista de pontos da rota em pontos a cada 3 m, guardando a distância percorrida
+const rotaDensa = (function () {
+    const pontos = ROTA_PRINCIPAL.map(([lat, lng]) => paraMetros(lat, lng));
+    const densa = [];
+    let acumulado = 0;
+    for (let i = 0; i < pontos.length - 1; i++) {
+        const a = pontos[i], b = pontos[i + 1];
+        const comprimento = Math.hypot(b.x - a.x, b.y - a.y);
+        const n = Math.max(1, Math.round(comprimento / PASSO_ROTA_M));
+        for (let k = 0; k < n; k++) {
+            densa.push({
+                x: a.x + (b.x - a.x) * k / n,
+                y: a.y + (b.y - a.y) * k / n,
+                dist: acumulado + comprimento * k / n
+            });
+        }
+        acumulado += comprimento;
+    }
+    const ultimo = pontos[pontos.length - 1];
+    densa.push({ x: ultimo.x, y: ultimo.y, dist: acumulado });
+    return densa;
+})();
 
-    // 1. Descobre qual o ponto da trilha está mais perto do usuário no momento
-    for (let i = 0; i < rotaTrilha.length; i++) {
-        const ponto = rotaTrilha[i];
-        const distancia = calcularDistancia(userLat, userLng, ponto.lat, ponto.lng);
+const COMPRIMENTO_ROTA = rotaDensa[rotaDensa.length - 1].dist;
+const atalhoSaida = paraMetros(ATALHO_RESTAURANTE.saida[0], ATALHO_RESTAURANTE.saida[1]);
+const atalhoChegada = paraMetros(ATALHO_RESTAURANTE.chegada[0], ATALHO_RESTAURANTE.chegada[1]);
 
-        if (distancia < menorDistancia) {
-            menorDistancia = distancia;
-            porcentagemAtual = ponto.percent;
+// Ponto da rota mais perto de p, procurando só entre os índices "de" e "ate".
+// Quando "centro" é informado, pontos mais distantes dele na rota custam um pouco mais.
+function pontoMaisProximoNaRota(p, de, ate, centro) {
+    let melhor = null;
+    const inicio = Math.max(0, de), fim = Math.min(rotaDensa.length - 1, ate);
+    for (let i = inicio; i <= fim; i++) {
+        const q = rotaDensa[i];
+        const d = Math.hypot(p.x - q.x, p.y - q.y);
+        const custo = centro === undefined ? d : d + 0.1 * Math.abs(i - centro);
+        if (melhor === null || custo < melhor.custo) melhor = { i, d, custo };
+    }
+    return melhor;
+}
+
+// Distância de p até o segmento a-b, e quantos metros p está "ao longo" dele
+function distanciaAoSegmento(p, a, b) {
+    const dx = b.x - a.x, dy = b.y - a.y;
+    const t = Math.max(0, Math.min(1, ((p.x - a.x) * dx + (p.y - a.y) * dy) / (dx * dx + dy * dy)));
+    return {
+        d: Math.hypot(p.x - (a.x + t * dx), p.y - (a.y + t * dy)),
+        aoLongo: t * Math.hypot(dx, dy)
+    };
+}
+
+// Estado do progresso
+let idxRota = null;                 // onde o visitante está na rota (índice de rotaDensa)
+let progressoMaximo = 0;            // ponto mais longe já alcançado, em %
+let noAtalho = false;               // está indo ao restaurante pelo atalho?
+let saltoCandidato = null;          // para aceitar saltos (teleférico) só depois de confirmar
+let saltoConfirmacoes = 0;
+let foraDoAtalhoSeguidas = 0;
+const idxSaidaAtalho = pontoMaisProximoNaRota(atalhoSaida, 0, rotaDensa.length - 1).i;
+
+// Recebe a posição suavizada e devolve o progresso (0 a 100)
+function atualizarProgresso(lat, lng) {
+    const p = paraMetros(lat, lng);
+    const noSegmento = distanciaAoSegmento(p, atalhoSaida, atalhoChegada);
+    const dSaida = Math.hypot(p.x - atalhoSaida.x, p.y - atalhoSaida.y);
+
+    // 1) No atalho: o progresso fica parado até voltar ao ponto de saída
+    if (noAtalho) {
+        if (dSaida <= ATALHO_RETOMADA_M) {
+            noAtalho = false;
+            idxRota = idxSaidaAtalho;       // retoma exatamente de onde saiu
+            foraDoAtalhoSeguidas = 0;
+        } else if (noSegmento.d > ATALHO_LARGURA_M * 2.5) {
+            // saiu da faixa do atalho (seguiu por outro caminho)
+            foraDoAtalhoSeguidas++;
+            if (foraDoAtalhoSeguidas < CONFIRMACOES_SALTO) return progressoMaximo;
+            noAtalho = false;
+            foraDoAtalhoSeguidas = 0;
+        } else {
+            foraDoAtalhoSeguidas = 0;
+            return progressoMaximo;
         }
     }
 
-    // 2. Se for a primeira leitura de GPS (quando o usuário abre o mapa), definimos a base
-    if (porcentagemMinimaInicial === null) {
-        porcentagemMinimaInicial = porcentagemAtual;
+    // 2) Primeira posição: procura em toda a rota (o visitante pode abrir o mapa no meio do trajeto)
+    if (idxRota === null) {
+        const global = pontoMaisProximoNaRota(p, 0, rotaDensa.length - 1);
+        if (global.d > DIST_MAX_NA_ROTA_M) return progressoMaximo;
+        idxRota = global.i;
+    } else {
+        const local = pontoMaisProximoNaRota(p, idxRota - JANELA_TRAS, idxRota + JANELA_FRENTE, idxRota);
+
+        // 3) Entrou no atalho? (perto do ponto de saída, na linha do atalho, já longe da rota)
+        if (Math.abs(idxRota - idxSaidaAtalho) <= 20 &&
+            noSegmento.d <= ATALHO_LARGURA_M &&
+            noSegmento.aoLongo >= ATALHO_DISTANCIA_MIN_M &&
+            local.d > 15) {
+            noAtalho = true;
+            return progressoMaximo;
+        }
+
+        // 4) Caminhada normal: acompanha a rota perto da posição atual
+        if (local.d <= DIST_MAX_NA_ROTA_M) {
+            idxRota = local.i;
+            saltoConfirmacoes = 0;
+            saltoCandidato = null;
+        } else {
+            // 5) Longe da posição atual: só aceita o salto (ex.: teleférico) depois de algumas leituras iguais
+            const global = pontoMaisProximoNaRota(p, 0, rotaDensa.length - 1);
+            if (global.d <= DIST_MAX_NA_ROTA_M) {
+                if (saltoCandidato !== null && Math.abs(global.i - saltoCandidato) <= 20) {
+                    saltoConfirmacoes++;
+                } else {
+                    saltoCandidato = global.i;
+                    saltoConfirmacoes = 1;
+                }
+                if (saltoConfirmacoes >= CONFIRMACOES_SALTO) {
+                    idxRota = global.i;
+                    saltoConfirmacoes = 0;
+                    saltoCandidato = null;
+                }
+            } else {
+                saltoConfirmacoes = 0;
+                saltoCandidato = null;
+            }
+        }
     }
 
-    // 3. Garante que o progresso nunca volte para trás do ponto onde ele abriu o mapa
-    if (porcentagemAtual < porcentagemMinimaInicial) {
-        porcentagemAtual = porcentagemMinimaInicial;
-    }
-
-    return porcentagemAtual;
+    // O progresso mostra o ponto mais longe já alcançado e nunca diminui
+    progressoMaximo = Math.max(progressoMaximo, rotaDensa[idxRota].dist / COMPRIMENTO_ROTA * 100);
+    return Math.min(progressoMaximo, 100);
 }
 
 // ==========================================
@@ -687,12 +712,19 @@ function aoReceberPosicao(position) {
         return;
     }
 
-    // Leitura boa e dentro do parque: suaviza, desenha e calcula o progresso
+    // Leitura boa e dentro do parque: suaviza, desenha e calcula o progresso.
+    // Se a nova posição está a mais de 100 m da anterior, foi um "salto" de verdade
+    // (teleférico, GPS que ficou sem sinal): descarta as leituras antigas para não fazer média com elas.
+    if (leiturasBoas.length > 0) {
+        const anterior = paraMetros(posicaoSuavizada().lat, posicaoSuavizada().lng);
+        const nova = paraMetros(lat, lng);
+        if (Math.hypot(nova.x - anterior.x, nova.y - anterior.y) > 100) leiturasBoas = [];
+    }
     registrarLeituraBoa(lat, lng, precisao);
     const pos = posicaoSuavizada();
     atualizarLocalizacaoUsuario(pos.lat, pos.lng, precisao);
 
-    ultimoProgresso = Math.round(calcularProgressoTrilha(pos.lat, pos.lng));
+    ultimoProgresso = Math.round(atualizarProgresso(pos.lat, pos.lng));
     mostrarStatusGPS(`${ultimoProgresso}% concluído`);
 }
 
