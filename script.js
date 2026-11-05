@@ -81,8 +81,10 @@ const dadosPark = {
             { id: "atracao_tel_est1", nome: "WALK IN THE FOREST", tipo: "ATRAÇÕES", legendaNome: "ESTAÇÃO TELEFÉRICO<br>Vila Animália", area: "Estação teleférico Fazendinha", desc: "🚠 Estação Teleférico (Vai e Volta ou só vai)", icone: "icons/estacao.png", categoria: "atracao", top: 20, left: 53 },
 
                  // SAVANA AFRICANA
-            { id: "zoo_savanafricana", nome: "SAVANA AFRICANA", tipo: "ANIMÁLIA SAVANA AFRICANA", legendaNome: "SAVANA AFRICANA<br>African Savanna", area: "African Savanna", desc: "GIRAFA / Southern Giraffe<br>ZEBRA / Plains Zebra<br>AVESTRUZ COMUM / Ostrich<br>COBO-DO-NILO / Nile lechwe<br>ORYX / Gemsbok<br>CERVICABRA / Blackbuk<br>WATERBUCK<br>ADAX / Addax<br>FLAMINGO-ROSADO / Greater Flamingo<br>GALINHA-D'ANGOLA / Helmeted Guineafowl<br>GANSO-DO-EGITO / Egyptian Goose<br>", icone: "icons/1.png", categoria: "animais", top: 35, left: 52 },
-
+            { id: "zoo_savanafricana", nome: "SAVANA AFRICANA", tipo: "ANIMÁLIA RESERVA", legendaNome: "SAVANA AFRICANA<br>African Savanna", area: "(African Savanna)", desc: "<b>Espécies Presentes:</b> Girafa, Zebra, Avestruz, Antílopes (Oryx, Adax, Cervicabra, Waterbuck, Cobo-do-Nilo) e Aves (Flamingo, Galinha-d'Angola, Ganso-do-Egito)<br><b>Bioma:</b>Savana Africana e Campos Abertos<br><b>Destaque:</b>Recinto imersivo multiespécie que simula a convivência natural entre grandes herbívoros e aves da fauna africana<br>", icone: "icons/1.png", categoria: "animais", top: 35, left: 52 },
+ 
+                   // "<b>Dieta:</b> ***** <br><b>Origem:</b> ***** <br><b>Porte:</b> ***** <br><b>Hábitos:</b> ***** <br>"
+            
                  // ZOO 1
             { id: "zoo_leao", nome: "LEÃO", tipo: "ANIMÁLIA RESERVA", legendaNome: "LEÃO<br>Lion", area: "(Lion)", desc: "<b>Dieta:</b> Carnivoro<br><b>Origem:</b> Africa/India | Savana e Campos Abertos<br><b>Porte:</b> 150kg a 250kg | Até 1,20m de altura e 2,50m de Comprimento<br><b>Hábitos:</b> Crepuscular e Noturno | Social<br>", icone: "icons/2.png", categoria: "animais", top: 44, left: 38.5 },
             
