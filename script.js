@@ -84,7 +84,7 @@ const dadosPark = {
             { id: "zoo_savanafricana", nome: "SAVANA AFRICANA", tipo: "ANIMÁLIA SAVANA AFRICANA", legendaNome: "SAVANA AFRICANA<br>African Savanna", area: "African Savanna", desc: "GIRAFA / Southern Giraffe<br>ZEBRA / Plains Zebra<br>AVESTRUZ COMUM / Ostrich<br>COBO-DO-NILO / Nile lechwe<br>ORYX / Gemsbok<br>CERVICABRA / Blackbuk<br>WATERBUCK<br>ADAX / Addax<br>FLAMINGO-ROSADO / Greater Flamingo<br>GALINHA-D'ANGOLA / Helmeted Guineafowl<br>GANSO-DO-EGITO / Egyptian Goose<br>", icone: "icons/1.png", categoria: "animais", top: 35, left: 52 },
 
                  // ZOO 1
-{ id: "zoo_leao", nome: "LEÃO", tipo: "ANIMÁLIA RESERVA", legendaNome: "LEÃO<br>Lion", area: "Lion", desc: "-<b>Dieta:</b> Carnivoro<br>-<b>Origem:</b> Africa/India | Savana e Campos Abertos<br>-<b>Porte:</b> 150Kg a 250Kg | Até 1,20m de altura e 2,50m de Comprimento<br>-<b>Hábitos:</b> Crepuscular e Noturno | Social<br>", icone: "icons/2.png", categoria: "animais", top: 44, left: 38.5 },
+{ id: "zoo_leao", nome: "LEÃO", tipo: "ANIMÁLIA RESERVA", legendaNome: "LEÃO<br>Lion", area: "(Lion)", desc: "-<b>Dieta:</b> Carnivoro<br>-<b>Origem:</b> Africa/India | Savana e Campos Abertos<br>-<b>Porte:</b> 150Kg a 250Kg | Até 1,20m de altura e 2,50m de Comprimento<br>-<b>Hábitos:</b> Crepuscular e Noturno | Social<br>", icone: "icons/2.png", categoria: "animais", top: 44, left: 38.5 },
             //{ id: "zoo_leao", nome: "LEÃO", tipo: "ANIMÁLIA RESERVA", legendaNome: "LEÃO<br>Lion", area: "Lion", desc: "...", icone: "icons/2.png", categoria: "animais", top: 44, left: 38.5 },
 
             
