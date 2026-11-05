@@ -15,9 +15,7 @@ const dadosPark = {
         pontos: [
             // Alimentação
             { id: "alim_recepcao", nome: "CAFÉ RECEPÇÃO", tipo: "ALIMENTAÇÃO", legendaNome: "QUIÓSQUE CAFÉ RECEPÇÃO<br>Kiosk Cafe Reception", area: "Onde tudo começa e aonde damos um até breve!", desc: "☕ Cafeteria e Salgados", icone: "icons/caferecepcao.png", categoria: "alimentacao", top: 27, left: 48 },
-            
-            { id: "alim_leao", nome: "QUIOSQUE LEÃO", tipo: "ALIMENTAÇÃO", legendaNome: "QUIÓSQUE LEÃO<br>Kiosk Lion", area: "Logo após o recinto do Leão. ", desc: "🍿 Café, Salgados e pipocas", icone: "icons/pontoleao.png", categoria: "alimentacao", top: 48, left: 41 },
-            
+            { id: "alim_leao", nome: "QUIOSQUE LEÃO", tipo: "ALIMENTAÇÃO", legendaNome: "QUIÓSQUE LEÃO<br>Kiosk Lion", area: "Logo após o recinto do Leão. ", desc: "🍿 Café, Salgados e pipocas", icone: "icons/pontoleao.png", categoria: "alimentacao", top: 48, left: 41 },            
             { id: "alim_sucuarana", nome: "QUIOSQUE SUÇUARANA", tipo: "ALIMENTAÇÃO", legendaNome: "QUIÓSQUE SUÇUARANA<br>Kiosk Puma", area: "🍿 Salgados e pipocas", desc: "Em frente ao recinto Suçuarana.", icone: "icons/pontosucuarana.png", categoria: "alimentacao", top: 64, left: 43 },
             { id: "alim_tamandua", nome: "QUIOSQUE TAMANDUÁ", tipo: "ALIMENTAÇÃO", legendaNome: "QUIÓSQUE TAMANDUA<br>Kiosk Anteater", area: "🍿 Café, Salgados e pipocas", desc: "Localizado em frente ao recinto tamanduá.", icone: "icons/pontotamandua.png", categoria: "alimentacao", top: 60, left: 50 },
             { id: "alim_fazendinha", nome: "QUIOSQUE FAZENDINHA", tipo: "ALIMENTAÇÃO", legendaNome: "QUIÓSQUE FAZENDINHA", area: "Doces e Pipocas", desc: "🍿 Quiosque Fazendinha (Doces e Bebidas)", icone: "icons/pontofazendinha.png", categoria: "alimentacao", top: 78, left: 64 },  
@@ -86,7 +84,11 @@ const dadosPark = {
             { id: "zoo_savanafricana", nome: "SAVANA AFRICANA", tipo: "ANIMÁLIA SAVANA AFRICANA", legendaNome: "SAVANA AFRICANA<br>African Savanna", area: "African Savanna", desc: "GIRAFA / Southern Giraffe<br>ZEBRA / Plains Zebra<br>AVESTRUZ COMUM / Ostrich<br>COBO-DO-NILO / Nile lechwe<br>ORYX / Gemsbok<br>CERVICABRA / Blackbuk<br>WATERBUCK<br>ADAX / Addax<br>FLAMINGO-ROSADO / Greater Flamingo<br>GALINHA-D'ANGOLA / Helmeted Guineafowl<br>GANSO-DO-EGITO / Egyptian Goose<br>", icone: "icons/1.png", categoria: "animais", top: 35, left: 52 },
 
                  // ZOO 1
-            { id: "zoo_leao", nome: "LEÃO", tipo: "ANIMÁLIA RESERVA", legendaNome: "LEÃO<br>Lion", area: "Lion", desc: "...", icone: "icons/2.png", categoria: "animais", top: 44, left: 38.5 },
+            { id: "zoo_leao", nome: "LEÃO", tipo: "ANIMÁLIA RESERVA", legendaNome: "LEÃO<br>Lion", area: "Lion", desc: "-Dieta: Carnivoro<br>-Origem: Africa/India | Savana e Campos Abertos<br>-Porte 150Kg a 250Kg | Até 1,20m de altura e 2,50m de Comprimento<br>-Hábitos: Crepuscular e Noturno | Social", icone: "icons/2.png", categoria: "animais", top: 44, left: 38.5 },
+
+            //{ id: "zoo_leao", nome: "LEÃO", tipo: "ANIMÁLIA RESERVA", legendaNome: "LEÃO<br>Lion", area: "Lion", desc: "...", icone: "icons/2.png", categoria: "animais", top: 44, left: 38.5 },
+
+            
             { id: "zoo_Fig", nome: "MIRANTE-FIGUEIRA", tipo: "ANIMÁLIA RESERVA", legendaNome: "MIRANTE-FIGUEIRA<br>Fig tree belvedere", area: "Fig tree belvedere", desc: "...", icone: "icons/3.png", categoria: "animais", top: 48, left: 43 },
             { id: "zoo_orq", nome: "ORQUIDÁRIO", tipo: "ANIMÁLIA RESERVA", legendaNome: "ORQUIDÁRIO<br>Orchidary", area: "Orchidary", desc: "...", icone: "icons/4.png", categoria: "animais", top: 52, left: 35 },
             { id: "zoo_onça", nome: "ONÇA-PINTADA", tipo: "ANIMÁLIA RESERVA", legendaNome: "ONÇA-PINTADA<br>Jaguar", area: "Jaguar", desc: "...", icone: "icons/5.png", categoria: "animais", top: 51, left: 29 },
