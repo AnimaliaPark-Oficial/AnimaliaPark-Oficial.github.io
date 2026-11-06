@@ -94,8 +94,9 @@ const dadosPark = {
             { id: "zoo_sai", nome: "SAUIM-DE-COLEIRA", tipo: "ANIMÁLIA RESERVA", legendaNome: "SAUIM-DE-COLEIRA<br>Pied Tamarin", area: "Pied Tamarin", desc: "<b>Dieta:</b>Onívoro (Insetos, Frutos e Plantas) <br><b>Origem:</b>Brasil (Amazônia, região de Manaus e arredores) <br><b>Porte:</b>Pequeno | 300g á 400g <br><b>Hábitos:</b>Diurno, arborícola e vive em grupos sociais <br>", icone: "icons/6.png", categoria: "animais", top: 54, left: 35 },
 
                  // FOREST
-            { id: "zoo_aviário", nome: "Aviário Animália Park", tipo: "ANIMÁLIA FOREST", legendaNome: "ANIMÁLIA FOREST", area: "Animais que voce encontra aqui:", desc: "AVES / Birds<br>ANTA / Lowland Tapir<br>CUTIA / Azara's Agouti<br>LONTRA / Neotropical Otter<br>VEADO-CATINGUEIRO / Gray brocket<br>CAGADOS - JABUTIS / Chelidae - Tortoise<br>IGUANA<br>JIBOIAS - ARIRANHA / Boa - Giant Otter<br>", icone: "icons/7.png", categoria: "animais", top: 60, left: 35 },
+            { id: "zoo_aviário", nome: "Aviário Animália Park", tipo: "ANIMÁLIA FOREST", legendaNome: "ANIMÁLIA FOREST", area: "Animais que voce encontra aqui:", desc: "<b>Especies:</b>ves diversas, Anta, Cutia, Lontra, Veado-catingueiro, Cágados, Jabutis, Iguana, Jiboias e Ariranha<br><b>Bioma:</b>Recinto imersivo multiespécies / Floresta tropical adaptada<br><b>Caracteristicas:</b>Espaço de grande integração onde diferentes animais da fauna sul-americana convivem em harmonia em um habitat natural enriquecido<br>", icone: "icons/7.png", categoria: "animais", top: 60, left: 35 },
 
+            
                 // ZOO 2                      
 
             { id: "zoo_macaranha", nome: "MACACO-ARANHA / BUGIO-RUIVO", tipo: "ANIMÁLIA RESERVA", legendaNome: "MACACO-ARANHA / BUGIO-RUIVO", area: "Guiana Spider Monkey / Southern Brown Howler Monkey", desc: "<b>Bioma:</b>Florestas Tropicais e Mata Atlantica <br><b>Caracteristicas:</b>Recinto de primatas arborícolas conhecidos pela cauda preênsil e vocalizações marcantes<br>", icone: "icons/8.png", categoria: "animais", top: 57, left: 39 },
