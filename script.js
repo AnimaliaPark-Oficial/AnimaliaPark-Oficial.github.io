@@ -14,39 +14,37 @@ const dadosPark = {
         ],
         pontos: [
             // Alimentação
-  { id: "alim_recepcao", nome: "CAFÉ RECEPÇÃO", tipo: "ALIMENTAÇÃO", legendaNome: "QUIÓSQUE CAFÉ RECEPÇÃO<br>Kiosk Cafe Reception", area: "Onde tudo começa e aonde damos um até breve!", desc: "<b>Alimentos:</b> Cafés expressos, bebidas, salgados assados e pipoca quentinha <br><b>Caracteristica:</b> Um café para começar o dia bem e recarregar as energias logo na chegada! <br>", icone: "icons/caferecepcao.png", categoria: "alimentacao", top: 27, left: 48 },
-  { id: "alim_leao", nome: "QUIOSQUE LEÃO", tipo: "ALIMENTAÇÃO", legendaNome: "QUIÓSQUE LEÃO<br>Kiosk Lion", area: "Logo após o recinto do Leão.", desc: "<b>Alimentos:</b> Cafés expressos, bebidas, salgados e pipoca <br><b>Caracteristica:</b> Bateu aquela fominha no meio do passeio? Garanta sua pipoca e siga o mapa! <br>", icone: "icons/pontoleao.png", categoria: "alimentacao", top: 48, left: 41 },
-  { id: "alim_sucuarana", nome: "QUIOSQUE SUÇUARANA", tipo: "ALIMENTAÇÃO", legendaNome: "QUIÓSQUE SUÇUARANA<br>Kiosk Puma", area: "Em frente ao recinto Suçuarana.", desc: "<b>Alimentos:</b> Cafés, bebidas geladas, salgados e pipoca <br><b>Caracteristica:</b> Já se hidratou hoje? Aproveite para pegar uma bebida e um salgado quentinho! <br>", icone: "icons/pontosucuarana.png", categoria: "alimentacao", top: 64, left: 43 },
-  { id: "alim_tamandua", nome: "QUIOSQUE TAMANDUÁ", tipo: "ALIMENTAÇÃO", legendaNome: "QUIÓSQUE TAMANDUA<br>Kiosk Anteater", area: "Localizado em frente ao recinto tamanduá.", desc: "<b>Alimentos:</b> Cafés, bebidas, salgados e pipoca crocante <br><b>Caracteristica:</b> Pausa rápida para um lanche delicioso antes da próxima atração! <br>", icone: "icons/pontotamandua.png", categoria: "alimentacao", top: 60, left: 50 },
-  { id: "alim_fazendinha", nome: "QUIOSQUE FAZENDINHA", tipo: "ALIMENTAÇÃO", legendaNome: "QUIÓSQUE FAZENDINHA<br>Kios Little Farm", area: "Localizado em frente a loja de souvenir Estação.", desc: "<b>Alimentos:</b> Cafés, bebidas, salgados e pipoca <br><b>Caracteristica:</b> Lanchinho com gostinho de roça para renovar as energias da garotada! <br>", icone: "icons/pontofazendinha.png", categoria: "alimentacao", top: 78, left: 64 },
-  { id: "alim_hamb_est2", nome: "HAMBURGUERIA EST.2", tipo: "ALIMENTAÇÃO", legendaNome: "HAMBURGUERIA EST.2<br>Station 2 Burguer Joint", area: "Ambiente aconchegante para refeições e lembranças", desc: "<b>Alimentos:</b> Hambúrgueres suculentos, batata frita crocante e refrigerantes <br><b>Caracteristica:</b> Bateu aquela fome de leão? Nada como um burguer com fritas para dar um gás! <br>", icone: "icons/hambestacao.png", categoria: "alimentacao", top: 80, left: 65 },
-  { id: "alim_lobo_marinho", nome: "QUIOSQUE LOBO MARINHO", tipo: "ALIMENTAÇÃO", legendaNome: "QUIÓSQUE LOBO MARINHO<br>Sea Lion Kiosk", area: "Localizado na Reserva.", desc: "<b>Alimentos:</b> Cafés, bebidas geladas, salgados e pipoca <br><b>Caracteristica:</b> Vai uma água aí? Aproveite a vista refrescante com uma pipoca na mão! <br>", icone: "icons/pontolobomarinho.png", categoria: "alimentacao", top: 80, left: 80 },
-  { id: "alim_pastelaria", nome: "FOOD PARK PASTELARIA", tipo: "ALIMENTAÇÃO", legendaNome: "FOOD PARK PASTEL<br>Food Park Pastry Shop", area: "Natureza e uma boa alimentação", desc: "<b>Alimentos:</b> Pastéis fritos na hora com diversos recheios e bebidas <br><b>Caracteristica:</b> Pastel quentinho e crocante... Impossível comer um só! <br>", icone: "icons/foodpastel.png", categoria: "alimentacao", top: 60, left: 71 },
-  { id: "alim_yakisoba", nome: "FOOD PARK YAKISOBA", tipo: "ALIMENTAÇÃO", legendaNome: "FOOD PARK YAKISOBA<br>Food Park Yakisoba", area: "Natureza e uma boa alimentação", desc: "<b>Alimentos:</b> Yakisoba tradicional de carne, frango ou legumes e bebidas <br><b>Caracteristica:</b> O sabor da culinária oriental preparado na hora para o seu almoço! <br>", icone: "icons/foodyakisoba.png", categoria: "alimentacao", top: 63, left: 71 },
-  { id: "alim_chickenfries", nome: "FOOD PARK CHICKEN & FRIES", tipo: "ALIMENTAÇÃO", legendaNome: "FOOD PARK Frango & Batata<br>Food Park Chicken & Fries", area: "Natureza e uma boa alimentação", desc: "<b>Alimentos:</b> Frango frito crocante e bebidas <br><b>Caracteristica:</b> A combinação perfeita de frango e fritas para compartilhar. <br>", icone: "icons/foodchicken.png", categoria: "alimentacao", top: 60, left: 69 },
-  { id: "alim_espetaria", nome: "FOOD PARK ESPETARIA/LINGUIÇARIA", tipo: "ALIMENTAÇÃO", legendaNome: "FOOD PARK ESPETO/LINGUIÇA<br>Skewer and Sausage Food Park", area: "Natureza e uma boa alimentação", desc: "<b>Alimentos:</b> Lanches de linguiça artesanal, espetos de churrasco e bebidas <br><b>Caracteristica:</b> Aquele cheirinho de churrasco no ar que ninguém consegue resistir! <br>", icone: "icons/foodespeto.png", categoria: "alimentacao", top: 63, left: 69 },
-  { id: "alim_rest_central", nome: "RESTAURANTE CENTRAL BAOBÁ", tipo: "ALIMENTAÇÃO", legendaNome: "RESTAURANTE BAOBÁ<br>Baobá Restaurant", area: "Buffet a Vontade", desc: "<b>Alimentos:</b> Buffet à vontade (bebidas e sobremesas variadas à parte) <br><b>Caracteristica:</b> Comer à vontade com comida caseira de verdade para juntar toda a família na mesa! <br>", icone: "icons/restbaoba.png", categoria: "alimentacao", top: 45.5, left: 55.5 },
-  { id: "alim_iglu", nome: "MOBILE IGLU", tipo: "ALIMENTAÇÃO", legendaNome: "MOBILE KIBON IGLU<br>Kibon Igloo Mobile", area: "Sorvete para refrescar!", desc: "<b>Alimentos:</b> Picolés Kibon variados e sorvetes embalados <br><b>Caracteristica:</b> Um picolé trincando de gelado direto do iglu para dar aquela refrescada rápida no caminho! <br>", icone: "icons/mobileiglu.png", categoria: "alimentacao", top: 40, left: 70 },
-  { id: "alim_canguru", nome: "QUIOSQUE CANGURU", tipo: "ALIMENTAÇÃO", legendaNome: "QUIÓSQUE CANGURU<br>kangaroo Kiosk", area: "Australia de pertinho", desc: "<b>Alimentos:</b> Doces, bebidas refrescantes e salgadinhos <br><b>Caracteristica:</b> Dê um salto na fominha: pegue um lanche rápido e continue a aventura! <br>", icone: "icons/pontocanguru.png", categoria: "alimentacao", top: 40, left: 74.5 },
-  { id: "alim_hambvila", nome: "HAMBURGUERIA DA VILA", tipo: "ALIMENTAÇÃO", legendaNome: "HAMBURGUERIA DA VILA<br>Village Burguer joint", area: "Ambiente aconchegante para refeições e lembranças", desc: "<b>Alimentos:</b> Hambúrgueres artesanais, batata frita e bebidas <br><b>Caracteristica:</b> O clássico que todo mundo ama: hambúrguer caprichado e fritas quentinhas! <br>", icone: "icons/hambvila.png", categoria: "alimentacao", top: 21, left: 51 },
-  { id: "alim_cafevila", nome: "CAFETERIA DA VILA", tipo: "ALIMENTAÇÃO", legendaNome: "CAFETERIA DA VILA<br>Village Cafeteria", area: "Ambiente aconchegante para refeições e lembranças", desc: "<b>Alimentos:</b> Cafés expressos, bebidas, salgados assados e pipoca quentinha <br><b>Caracteristica:</b> Um café para recarregar as energias novamente! <br>", icone: "icons/cafevila.png", categoria: "alimentacao", top: 20.1, left: 53 },
-  { id: "alim_shakedobin", nome: "SHAKE DO BIN", tipo: "ALIMENTAÇÃO", legendaNome: "SHAKE DO BIN<br>Bin Shake", area: "Ambiente aconchegante para refeições e lembranças", desc: "<b>Alimentos:</b> Shakes de sorvete cremosos, milk-shakes especiais e doces variados <br><b>Caracteristica:</b> Muito recheio, cremosidade e doçura! O shake perfeito para dar aquele up na sua energia! <br>", icone: "icons/pontoshake.png", categoria: "alimentacao", top: 19.1, left: 55 },
-  { id: "alim_savana", nome: "RESTAURANTE SAVANA", tipo: "ALIMENTAÇÃO", legendaNome: "RESTAURANTE SAVANA<br>Savana Restaurant", area: "Ambiente aconchegante para refeições e lembranças", desc: "<b>Alimentos:</b> Pratos executivos com cortes de carnes nobres e acompanhamentos <br><b>Caracteristica:</b> Uma experiência gastronômica premium para quem não abre mão de uma boa carne! <br>", icone: "icons/restsavana.png", categoria: "alimentacao", top: 18.5, left: 57 },
-  { id: "alim_selva", nome: "SELVA DOS SABORES", tipo: "ALIMENTAÇÃO", legendaNome: "SELVA DOS SABORES<br>Jungle of Flavors", area: "Ambiente aconchegante para refeições e lembranças", desc: "<b>Alimentos:</b> Pizzas assadas na hora, crepes doces e salgados e bebidas <br><b>Caracteristica:</b> Uma verdadeira selva de delícias! Pizza quentinha ou crepe recheado? <br>", icone: "icons/selvasabores.png", categoria: "alimentacao", top: 23.5, left: 52 },
-  { id: "alim_hotdog", nome: "HOTDOG DO KIRAN", tipo: "ALIMENTAÇÃO", legendaNome: "HOT DOG DO KIRAN<br>Kiran's hot dog", area: "Ambiente aconchegante para refeições e lembranças", desc: "<b>Alimentos:</b> Hot dog de combos variados, doces e bebidas <br><b>Caracteristica:</b> Cachorro quente do Animália, bonzão!!! <br>", icone: "icons/hotdog.png", categoria: "alimentacao", top: 23, left: 54 },
-  { id: "alim_tratoria", nome: "VILA TRATORIA", tipo: "ALIMENTAÇÃO", legendaNome: "VILA TRATORIA<br>Trattoria Village", area: "Ambiente aconchegante para refeições e lembranças", desc: "<b>Alimentos:</b> Pratos de massas artesanais, molhos especiais e strogonoff cremoso <br><b>Caracteristica:</b> Aquele almoço aconchegante com sabor de receita familiar que reconforta! <br>", icone: "icons/tratoria.png", categoria: "alimentacao", top: 22, left: 56 },
-  { id: "alim_cantgira", nome: "CANTINHO DA GIRAFA", tipo: "ALIMENTAÇÃO", legendaNome: "CANTINHO DA GIRAFA<br>Giraffe's Little Corner", area: "Ambiente aconchegante para refeições e lembranças", desc: "<b>Alimentos:</b> Sorvetes de massa, casquinhas, sundaes e coberturas variadas <br><b>Caracteristica:</b> Para refrescar o passeio e adoçar o dia, nada melhor do que uma casquinha caprichada! <br>", icone: "icons/pontocantinho.png", categoria: "alimentacao", top: 26, left: 53 },
-  { id: "alim_cesta", nome: "CESTA PICNIC", tipo: "ALIMENTAÇÃO", legendaNome: "CESTA PIC NIC<br>Pic Nic Kiosk", area: "Diversão e refeição, tudo em um só lugar!", desc: "<b>Alimentos:</b> Hambúrgueres artesanais, batata frita e bebidas <br><b>Caracteristica:</b> O clássico que todo mundo ama: hambúrguer caprichado e fritas quentinhas! <br>", icone: "icons/cesta.png", categoria: "alimentacao", top: 15, left: 32 },
-  { id: "alim_carrinho", nome: "CARRINHO DOCE e PIPOCA", tipo: "ALIMENTAÇÃO", legendaNome: "CARRINHO DE DOCE/PIPOCA<br>Candy and Popcorn Cart", area: "Diversão e refeição, tudo em um só lugar!", desc: "<b>Alimentos:</b> Doces, pipoca e sorvete <br><b>Caracteristica:</b> Tá passando vontade porque quer, hein! <br>", icone: "icons/carrinho.png", categoria: "alimentacao", top: 18, left: 32 },
-  { id: "alim_carrosel", nome: "CESTA CARROSEL", tipo: "ALIMENTAÇÃO", legendaNome: "CESTA CARROSEL<br>Carousel Kiosk", area: "Diversão e refeição, tudo em um só lugar!", desc: "<b>Alimentos:</b> Salgados e cafés frescos <br><b>Caracteristica:</b> Dá para se divertir comendo também! <br>", icone: "icons/carrosel.png", categoria: "alimentacao", top: 17.5, left: 35 },
-  { id: "alim_deck", nome: "DECK PIC NIC", tipo: "ALIMENTAÇÃO", legendaNome: "DECK PIC NIC<br>Pic Nic Deck", area: "Diversão e refeição, tudo em um só lugar!", desc: "<b>Alimentos:</b> Bebidas, doces e sorvetes <br><b>Caracteristica:</b> Com vista para uma aventura! <br>", icone: "icons/deck.png", categoria: "alimentacao", top: 20.5, left: 35 },
-  { id: "alim_mundodoce", nome: "MUNDO DOCE", tipo: "ALIMENTAÇÃO", legendaNome: "MUNDO DOCE<br>Sweet Wolrd Kiosk", area: "Diversão e refeição, tudo em um só lugar!", desc: "<b>Alimentos:</b> Porções e bebidas <br><b>Caracteristica:</b> Relaxa a cabeça e come um pouquinho! <br>", icone: "icons/mundodoce.png", categoria: "alimentacao", top: 20, left: 38 },
-  { id: "alim_lego", nome: "LEGO", tipo: "ALIMENTAÇÃO", legendaNome: "QUIÓSQUE LEGO<br>Lego Kiosk", area: "Diversão e refeição, tudo em um só lugar!", desc: "<b>Alimentos:</b> Doces, sorvetes e bebidas <br><b>Caracteristica:</b> Igual Lego, monte seu lanchinho e se divirta! <br>", icone: "icons/lego.png", categoria: "alimentacao", top: 23, left: 38 },
-  { id: "alim_splash", nome: "QUIOSQUE SPLASH", tipo: "ALIMENTAÇÃO", legendaNome: "QUIÓSQUE SPLASH<br>Kiosk Splash", area: "Localizado próximo ao vulcão.", desc: "<b>Alimentos:</b> Doces, sorvetes e bebidas <br><b>Caracteristica:</b> Já está aqui, leva uma água, né? <br>", icone: "icons/splash.png", categoria: "alimentacao", top: 7, left: 41 },
-  { id: "alim_viking", nome: "QUIOSQUE VIKING", tipo: "ALIMENTAÇÃO", legendaNome: "QUIÓSQUE VIKING<br>Viking Kiosk", area: "Localizado na entrada do Outdoor.", desc: "<b>Alimentos:</b> Doces, salgados e bebidas <br><b>Caracteristica:</b> Assim como os vikings, se hidrate e se alimente! <br>", icone: "icons/viking.png", categoria: "alimentacao", top: 14, left: 39 },
-  { id: "alim_aviario", nome: "CAFÉ AVIÁRIO", tipo: "ALIMENTAÇÃO", legendaNome: "CAFÉ CAVERNA/AVIÁRIO<br>Cave Coffee/Poultry House.", area: "Um dos Maiores Aviários da América Latina", desc: "<b>Alimentos:</b> Cafés expressos, bebidas variadas, salgados e pipoca <br><b>Caracteristica:</b> Uma pausa estratégica na exploração para saborear um café reforçado! <br>", icone: "icons/cafecaverna.png", categoria: "alimentacao", top: 60, left: 35 },
-
-
+            { id: "alim_recepcao", nome: "CAFÉ RECEPÇÃO", tipo: "ALIMENTAÇÃO", legendaNome: "QUIÓSQUE CAFÉ RECEPÇÃO<br>Kiosk Cafe Reception", area: "Onde tudo começa e aonde damos um até breve!", desc: "☕ Cafeteria e Salgados", icone: "icons/caferecepcao.png", categoria: "alimentacao", top: 27, left: 48 },
+            { id: "alim_leao", nome: "QUIOSQUE LEÃO", tipo: "ALIMENTAÇÃO", legendaNome: "QUIÓSQUE LEÃO<br>Kiosk Lion", area: "Logo após o recinto do Leão. ", desc: "🍿 Café, Salgados e pipocas", icone: "icons/pontoleao.png", categoria: "alimentacao", top: 48, left: 41 },            
+            { id: "alim_sucuarana", nome: "QUIOSQUE SUÇUARANA", tipo: "ALIMENTAÇÃO", legendaNome: "QUIÓSQUE SUÇUARANA<br>Kiosk Puma", area: "🍿 Salgados e pipocas", desc: "Em frente ao recinto Suçuarana.", icone: "icons/pontosucuarana.png", categoria: "alimentacao", top: 64, left: 43 },
+            { id: "alim_tamandua", nome: "QUIOSQUE TAMANDUÁ", tipo: "ALIMENTAÇÃO", legendaNome: "QUIÓSQUE TAMANDUA<br>Kiosk Anteater", area: "🍿 Café, Salgados e pipocas", desc: "Localizado em frente ao recinto tamanduá.", icone: "icons/pontotamandua.png", categoria: "alimentacao", top: 60, left: 50 },
+            { id: "alim_fazendinha", nome: "QUIOSQUE FAZENDINHA", tipo: "ALIMENTAÇÃO", legendaNome: "QUIÓSQUE FAZENDINHA", area: "Doces e Pipocas", desc: "🍿 Quiosque Fazendinha (Doces e Bebidas)", icone: "icons/pontofazendinha.png", categoria: "alimentacao", top: 78, left: 64 },  
+            { id: "alim_hamb_est2", nome: "HAMBURGUERIA EST.2", tipo: "ALIMENTAÇÃO", legendaNome: "HAMBURGUERIA EST.2", area: "Ambiente aconchegante para refeições e lembranças", desc: "🍔 Hamburgueres, salgados e Bebidas", icone: "icons/hambestacao.png", categoria: "alimentacao", top: 80, left: 65 },
+            { id: "alim_lobo_marinho", nome: "QUIOSQUE LOBO MARINHO", tipo: "ALIMENTAÇÃO", legendaNome: "QUIÓSQUE LOBO MARINHO", area: "🍿 Café, Salgados e pipocas", desc: "Localizado na Reserva.", icone: "icons/pontolobomarinho.png", categoria: "alimentacao", top: 80, left: 80 },
+            { id: "alim_pastelaria", nome: "FOOD PARK PASTELARIA", tipo: "ALIMENTAÇÃO", legendaNome: "FOOD PARK PASTEL", area: "Natureza e uma boa alimentação", desc: "🥟 Pasteis sabores", icone: "icons/foodpastel.png", categoria: "alimentacao", top: 60, left: 71 },
+            { id: "alim_yakisoba", nome: "FOOD PARK YAKISOBA", tipo: "ALIMENTAÇÃO", legendaNome: "FOOD PARK YAKISOBRA", area: "Natureza e uma boa alimentação", desc: "🍜 Yakissoba Carne e Frango", icone: "icons/foodyakisoba.png", categoria: "alimentacao", top: 63, left: 71 },
+            { id: "alim_chickenfries", nome: "FOOD PARK CHICKEN & FRIES", tipo: "ALIMENTAÇÃO", legendaNome: "FOOD PARK CHICKEN & FRIES", area: "Natureza e uma boa alimentação", desc: "🍗 Chicken & Fries", icone: "icons/foodchicken.png", categoria: "alimentacao", top: 60, left: 69 },
+            { id: "alim_espetaria", nome: "FOOD PARK ESPETARIA/LINGUIÇARIA", tipo: "ALIMENTAÇÃO", legendaNome: "FOOD PARK ESPETO/LINGUIÇA", area: "Natureza e uma boa alimentação", desc: "🍖 Espetos e lanches de linguiça", icone: "icons/foodespeto.png", categoria: "alimentacao", top: 63, left: 69 },
+            { id: "alim_rest_central", nome: "RESTAURANTE CENTRAL BABOBÁ", tipo: "ALIMENTAÇÃO", legendaNome: "RESTAURANTE BAOBÁ", area: "Buffet a Vontade", desc: "🍽️ Buffet por pessoa (Adulto e Infantil)", icone: "icons/restbaoba.png", categoria: "alimentacao", top: 45.5, left: 55.5 },
+            { id: "alim_iglu", nome: "MOBILE IGLU", tipo: "ALIMENTAÇÃO", legendaNome: "MOBILE KIBON IGLU", area: "Sorvete para resfrescar!", desc: "Localizado na Reserva.", icone: "icons/mobileiglu.png", categoria: "alimentacao", top: 40, left: 70 },
+            { id: "alim_canguru", nome: "QUIOSQUE CANGURU", tipo: "ALIMENTAÇÃO", legendaNome: "QUIÓSQUE CANGURU", area: "🍿 Café, Salgados e pipocas", desc: "Localizado na Reserva.", icone: "icons/pontocanguru.png", categoria: "alimentacao", top: 40, left: 74.5 },
+            { id: "alim_hambvila", nome: "HAMBURGUERIA DA VILA", tipo: "ALIMENTAÇÃO", legendaNome: "HAMBURGUERIA DA VILA", area: "Ambiente aconchegante para refeições e lembranças", desc: "🍔Hamburgueres e Bebidas", icone: "icons/hambvila.png", categoria: "alimentacao", top: 21, left: 51 },
+            { id: "alim_cafevila", nome: "CAFETERIA DA VILA", tipo: "ALIMENTAÇÃO", legendaNome: "CAFETERIA DA VILA", area: "Ambiente aconchegante para refeições e lembranças", desc: "☕ Cafeteria e Salgados", icone: "icons/cafevila.png", categoria: "alimentacao", top: 20.1, left: 53 },
+            { id: "alim_shakedobin", nome: "SHAKE DO BIN", tipo: "ALIMENTAÇÃO", legendaNome: "SHAKE DO BIN", area: "Ambiente aconchegante para refeições e lembranças", desc: "🥤 Shakes e Sorvetes", icone: "icons/pontoshake.png", categoria: "alimentacao", top: 19.1, left: 55 },
+            { id: "alim_savana", nome: "RESTAURANTE SAVANA", tipo: "ALIMENTAÇÃO", legendaNome: "RESTAURANTE SAVANA", area: "Ambiente aconchegante para refeições e lembranças", desc: "🥩 Pratos pronto de carnes nobres", icone: "icons/restsavana.png", categoria: "alimentacao", top: 18.5, left: 57 },
+            { id: "alim_selva", nome: "SELVA DOS SABORES", tipo: "ALIMENTAÇÃO", legendaNome: "SELVA DOS SABORES", area: "Ambiente aconchegante para refeições e lembranças", desc: "🍕 Pizzas e Crepes", icone: "icons/selvasabores.png", categoria: "alimentacao", top: 23.5, left: 52 },
+            { id: "alim_hotdog", nome: "HOTDOG DO KIRAN", tipo: "ALIMENTAÇÃO", legendaNome: "HOT DOG DO KIRAN", area: "Ambiente aconchegante para refeições e lembranças", desc: "🌭 Hot Dog's Sabores", icone: "icons/hotdog.png", categoria: "alimentacao", top: 23, left: 54 },
+            { id: "alim_tratoria", nome: "VILA TRATORIA", tipo: "ALIMENTAÇÃO", legendaNome: "VILA TRATORIA", area: "Ambiente aconchegante para refeições e lembranças", desc: "🍝 Pratos de massas e Carnes", icone: "icons/tratoria.png", categoria: "alimentacao", top: 22, left: 56 },
+            { id: "alim_cantgira", nome: "CANTINHO DA GIRAFA", tipo: "ALIMENTAÇÃO", legendaNome: "CANTINHO DA GIRAFA", area: "Ambiente aconchegante para refeições e lembranças", desc: "🍨 Picolé e Sorvete por massa", icone: "icons/pontocantinho.png", categoria: "alimentacao", top: 26, left: 53 },
+            { id: "alim_cesta", nome: "CESTA PICNIC", tipo: "ALIMENTAÇÃO", legendaNome: "CESTA PIC NIC", area: "Diversão e refeição, tudo em um só lugar!", desc: "🍔 Hamburgueres e Bebidas", icone: "icons/cesta.png", categoria: "alimentacao", top: 15, left: 32 },
+            { id: "alim_carrinho", nome: "CARRINHO DOCE e PIPOCA", tipo: "ALIMENTAÇÃO", legendaNome: "CARRINHO DE DOCE/PIPOCA", area: "Diversão e refeição, tudo em um só lugar!", desc: "🍿 Carrinho de Doce e Pipoca", icone: "icons/carrinho.png", categoria: "alimentacao", top: 18, left: 32 },
+            { id: "alim_carrosel", nome: "CESTA CARROSEL", tipo: "ALIMENTAÇÃO", legendaNome: "CESTA CARROSEL", area: "Diversão e refeição, tudo em um só lugar!", desc: "☕ Porções e Cafés", icone: "icons/carrosel.png", categoria: "alimentacao", top: 17.5, left: 35 },
+            { id: "alim_deck", nome: "DECK PIC NIC", tipo: "ALIMENTAÇÃO", legendaNome: "DECK PIC NIC", area: "Diversão e refeição, tudo em um só lugar!", desc: "🍿 Doces, bebidas e Pipocas", icone: "icons/deck.png", categoria: "alimentacao", top: 20.5, left: 35 },
+            { id: "alim_mundodoce", nome: "MUNDO DOCE", tipo: "ALIMENTAÇÃO", legendaNome: "MUNDO DOCE", area: "Diversão e refeição, tudo em um só lugar!", desc: "🥮 Doces, salgados e Bebidas", icone: "icons/mundodoce.png", categoria: "alimentacao", top: 20, left: 38 },
+            { id: "alim_lego", nome: "LEGO", tipo: "ALIMENTAÇÃO", legendaNome: "QUIÓSQUE LEGO", area: "Diversão e refeição, tudo em um só lugar!", desc: "🥮 Doces e Bebidas", icone: "icons/lego.png", categoria: "alimentacao", top: 23, left: 38 },
+            { id: "alim_splash", nome: "QUIOSQUE SPLASH", tipo: "ALIMENTAÇÃO", legendaNome: "QUIÓSQUE SPLASH", area: "🍿 Café, Salgados e pipocas", desc: "Localizado próximo ao vulcão.", icone: "icons/splash.png", categoria: "alimentacao", top: 7, left: 41 },
+            { id: "alim_viking", nome: "QUIOSQUE VIKING", tipo: "ALIMENTAÇÃO", legendaNome: "QUIÓSQUE VIKING", area: "🍿 Café, Salgados e pipocas", desc: "Localizado na entrada do Outdoor.", icone: "icons/viking.png", categoria: "alimentacao", top: 14, left: 39 },
+            { id: "alim_aviario", nome: "CAFÉ AVIÁRIO", tipo: "ALIMENTAÇÃO", legendaNome: "CAFÉ CAVERNA/AVIÁRIO", area: "Um dos Maiores Aviários da América Latina", desc: "☕ Cafeteria e Salgados", icone: "icons/cafecaverna.png", categoria: "alimentacao", top: 60, left: 35 },
 
             // Banheiros
             { id: "wc_recepcao", nome: "WC RECEPÇÃO", tipo: "BANHEIROS", legendaNome: "RECEPÇÃO", area: "Localizado na Recepção", desc: "🚻 Banheiro (Comum e Acessível)", icone: "icons/banheiro.png", categoria: "banheiros", top: 27, left: 48 },
@@ -90,13 +88,12 @@ const dadosPark = {
             { id: "zoo_leao", nome: "LEÃO", tipo: "ANIMÁLIA RESERVA", legendaNome: "LEÃO<br>Lion", area: "Lion", desc: "<b>Dieta:</b> Carnivoro<br><b>Origem:</b> Africa/India | Savana e Campos Abertos<br><b>Porte:</b>Grande | 150kg a 250kg <br><b>Hábitos:</b> Crepuscular e Noturno | Social<br>", icone: "icons/2.png", categoria: "animais", top: 44, left: 38.5 },
             { id: "zoo_Fig", nome: "MIRANTE-FIGUEIRA", tipo: "ANIMÁLIA RESERVA", legendaNome: "MIRANTE-FIGUEIRA<br>Fig tree belvedere", area: "Fig tree belvedere", desc: "<b>Dieta:</b> Autótrofa (Fotossíntese)<br><b>Origem:</b> Ásia e Regiões Tropicais | Florestas e Áreas Arborizadas<br><b>Porte:</b> Grande (até 20m a 30m de altura)<br><b>Hábitos:</b> Perene (mantem folhas o ano todo) | Planta fixada e abrigo para fauna<br>", icone: "icons/3.png", categoria: "animais", top: 48, left: 43 },
             { id: "zoo_orq", nome: "ORQUIDÁRIO", tipo: "ANIMÁLIA RESERVA", legendaNome: "ORQUIDÁRIO<br>Orchidary", area: "Orchidary", desc: "<b>Dieta:</b>Autótrofa (Fotossinteses)br><b>Origem:</b>Cosmopolita (predominantemente em regiões tropicais e subtropicais de todo o mundo)<br><b>Porte:</b>Variável (desde espécies minúsculas até epífitas de médio porte)<br><b>Hábitos:</b>Epífitas (crescem sobre outras plantas), rupícolas (sobre rochas) ou terrestres; perenes<br>", icone: "icons/4.png", categoria: "animais", top: 52, left: 35 },
-            { id: "zoo_onça", nome: "ONÇA-PINTADA", tipo: "ANIMÁLIA RESERVA", legendaNome: "ONÇA-PINTADA<br>Jaguar", area: "Jaguar", desc: "<b>Dieta:</b> Carnívoro <br><b>Origem:</b>Américas (América do Sul e Central) <br><b>Porte:</b>Grande | 56kg a 130 kg <br><b>Hábitos:</b>Solitário, territorial e crepuscular/noturno <br>", icone: "icons/5.png", categoria: "animais", top: 52, left: 31 },
+            { id: "zoo_onça", nome: "ONÇA-PINTADA", tipo: "ANIMÁLIA RESERVA", legendaNome: "ONÇA-PINTADA<br>Jaguar", area: "Jaguar", desc: "<b>Dieta:</b> Carnívoro <br><b>Origem:</b>Américas (América do Sul e Central) <br><b>Porte:</b>Grande | 56kg a 130 kg <br><b>Hábitos:</b>Solitário, territorial e crepuscular/noturno <br>", icone: "icons/5.png", categoria: "animais", top: 51, left: 29 },
             { id: "zoo_sai", nome: "SAUIM-DE-COLEIRA", tipo: "ANIMÁLIA RESERVA", legendaNome: "SAUIM-DE-COLEIRA<br>Pied Tamarin", area: "Pied Tamarin", desc: "<b>Dieta:</b>Onívoro (Insetos, Frutos e Plantas) <br><b>Origem:</b>Brasil (Amazônia, região de Manaus e arredores) <br><b>Porte:</b>Pequeno | 300g á 400g <br><b>Hábitos:</b>Diurno, arborícola e vive em grupos sociais <br>", icone: "icons/6.png", categoria: "animais", top: 54, left: 35 },
 
                  // FOREST
-            { id: "zoo_aviário", nome: "Aviário Animália Park", tipo: "ANIMÁLIA FOREST", legendaNome: "ANIMÁLIA FOREST", area: "Animais que voce encontra aqui:", desc: "<b>Especies:</b>ves diversas, Anta, Cutia, Lontra, Veado-catingueiro, Cágados, Jabutis, Iguana, Jiboias e Ariranha<br><b>Bioma:</b>Recinto imersivo multiespécies / Floresta tropical adaptada<br><b>Caracteristicas:</b>Espaço de grande integração onde diferentes animais da fauna sul-americana convivem em harmonia em um habitat natural enriquecido<br>", icone: "icons/7.png", categoria: "animais", top: 60, left: 35 },
+            { id: "zoo_aviário", nome: "Aviário Animália Park", tipo: "ANIMÁLIA FOREST", legendaNome: "ANIMÁLIA FOREST", area: "Animais que voce encontra aqui:", desc: "AVES / Birds<br>ANTA / Lowland Tapir<br>CUTIA / Azara's Agouti<br>LONTRA / Neotropical Otter<br>VEADO-CATINGUEIRO / Gray brocket<br>CAGADOS - JABUTIS / Chelidae - Tortoise<br>IGUANA<br>JIBOIAS - ARIRANHA / Boa - Giant Otter<br>", icone: "icons/7.png", categoria: "animais", top: 60, left: 35 },
 
-            
                 // ZOO 2                      
 
             { id: "zoo_macaranha", nome: "MACACO-ARANHA / BUGIO-RUIVO", tipo: "ANIMÁLIA RESERVA", legendaNome: "MACACO-ARANHA / BUGIO-RUIVO", area: "Guiana Spider Monkey / Southern Brown Howler Monkey", desc: "<b>Bioma:</b>Florestas Tropicais e Mata Atlantica <br><b>Caracteristicas:</b>Recinto de primatas arborícolas conhecidos pela cauda preênsil e vocalizações marcantes<br>", icone: "icons/8.png", categoria: "animais", top: 57, left: 39 },
@@ -135,14 +132,44 @@ const dadosPark = {
 
 let scale = 1, pointX = 0, pointY = 0, startX = 0, startY = 0, isDragging = false;
 
+// Limites e ajustes de zoom/arraste (mexa aqui se quiser mudar o "jeito" do mapa)
+let escalaMinima = 0.1;             // zoom mínimo = mapa inteiro na tela (calculado em resetZoom)
+const ESCALA_MAXIMA = 3;            // zoom máximo
+const ESCALA_FOCO = 1.8;            // zoom ao tocar num item da legenda (o mesmo de antes)
+const LIMITE_ARRASTO_PX = 8;        // movimento maior que isso é "arrastar", e não "tocar"
+let arrastou = false;               // true se o dedo/mouse arrastou o mapa (evita abrir um local sem querer)
+let origemX = 0, origemY = 0;
+
 // ==========================================
 // FUNÇÕES DE MAPA E INTERFACE
 // ==========================================
 
+// Impede arrastar o mapa para fora da tela; se ele couber inteiro, fica centralizado
+function limitarPosicao() {
+    const container = document.getElementById("mapaContainer");
+    const img = document.getElementById("imagemMapa");
+    if (!container || !img || !img.naturalWidth) return;
+
+    const larguraMapa = img.naturalWidth * scale;
+    const alturaMapa = img.naturalHeight * scale;
+    const larguraTela = container.clientWidth;
+    const alturaTela = container.clientHeight;
+
+    pointX = larguraMapa <= larguraTela
+        ? (larguraTela - larguraMapa) / 2
+        : Math.min(0, Math.max(larguraTela - larguraMapa, pointX));
+    pointY = alturaMapa <= alturaTela
+        ? (alturaTela - alturaMapa) / 2
+        : Math.min(0, Math.max(alturaTela - alturaMapa, pointY));
+}
+
 function atualizarTransformacao() {
     const mapa = document.getElementById("mapa");
     if (!mapa) return;
+    limitarPosicao();
     mapa.style.transform = `translate(${pointX}px, ${pointY}px) scale(${scale})`;
+    // O pin do visitante usa o inverso do zoom para manter o mesmo tamanho na tela (veja o style.css)
+    mapa.style.setProperty("--inv", 1 / scale);
 }
 
 function renderizarPontos(categoriaFiltro = 'alimentacao') {
@@ -159,8 +186,13 @@ function renderizarPontos(categoriaFiltro = 'alimentacao') {
             el.className = "ponto";
             el.style.top = ponto.top + "%";
             el.style.left = ponto.left + "%";
-            el.innerHTML = `<img src="${ponto.icone}" alt="${ponto.nome}" class="icone-marcador">`;
-            el.onclick = (e) => { e.stopPropagation(); abrirLocal(ponto); };
+            el.innerHTML = `<img src="${ponto.icone}" alt="${ponto.nome}" class="icone-marcador" draggable="false">`;
+            el.onclick = (e) => {
+                e.stopPropagation();
+                if (arrastou) return;   // foi um arrasto, não um toque
+                abrirLocal(ponto);
+                focarNoPonto(ponto.top, ponto.left, { manterZoom: true });
+            };
             camada.appendChild(el);
 
             // Adiciona na lista que vai popular a legenda lateral
@@ -190,47 +222,71 @@ function atualizarLegendaLateral(pontos) {
 
         // AO CLICAR NO ITEM DA LEGENDA: Dá zoom suave no mapa e abre o card de detalhes do local
         item.onclick = () => {
-            focarNoPonto(ponto.top, ponto.left);
             abrirLocal(ponto);
+            focarNoPonto(ponto.top, ponto.left);
         };
 
         containerLegenda.appendChild(item);
     });
 }
 
-// NOVA FUNÇÃO: Foca e centraliza suavemente no ponto clicado na legenda
-function focarNoPonto(topPercent, leftPercent) {
+// Leva o ponto (em % do mapa) para a parte da tela que a janela de detalhes não cobre.
+// opcoes.manterZoom: não muda o zoom; e só move o mapa se o ponto estiver escondido.
+// opcoes.reservarModal: false para centralizar na tela inteira (ex.: botão "onde estou").
+function focarNoPonto(topPercent, leftPercent, opcoes = {}) {
     const container = document.getElementById("mapaContainer");
     const imgMapa = document.getElementById("imagemMapa");
     const mapaWrapper = document.getElementById("mapa");
-    
-    if (!container || !imgMapa) return;
+    if (!container || !imgMapa || !imgMapa.naturalWidth) return;
 
-    // Define o zoom ideal para focar no ponto (ex: 2.2x)
-    scale = 1.8; 
-    atualizarTransformacao();
+    const manterZoom = !!opcoes.manterZoom;
+    const reservarModal = opcoes.reservarModal !== false;
+    const novaEscala = manterZoom ? scale : Math.min(ESCALA_MAXIMA, Math.max(scale, ESCALA_FOCO));
 
-    const realWidth = imgMapa.naturalWidth * scale;
-    const realHeight = imgMapa.naturalHeight * scale;
-    const containerWidth = container.clientWidth;
-    const containerHeight = container.clientHeight;
+    const pontoX = (leftPercent / 100) * imgMapa.naturalWidth * novaEscala;
+    const pontoY = (topPercent / 100) * imgMapa.naturalHeight * novaEscala;
+    const larguraTela = container.clientWidth;
+    const alturaTela = container.clientHeight;
 
-    // Calcula a posição em pixels correspondente à porcentagem do ponto
-    const pontoXPx = (leftPercent / 100) * realWidth;
-    const pontoYPx = (topPercent / 100) * realHeight;
+    // Altura livre: da parte de cima do mapa até o topo da janela de detalhes
+    let alturaLivre = alturaTela;
+    if (reservarModal) {
+        const modal = document.querySelector("#janelaLocal .conteudo");
+        const topoMapa = container.getBoundingClientRect().top;
+        const livre = window.innerHeight - (modal ? modal.offsetHeight : 0) - topoMapa;
+        alturaLivre = Math.min(alturaTela, Math.max(140, livre));
+    }
 
-    // Centraliza o ponto no meio exato da tela
-    pointX = (containerWidth / 2) - pontoXPx;
-    pointY = (containerHeight / 2) - pontoYPx;
+    if (manterZoom) {
+        // Se o ponto já está visível, não mexe no mapa
+        const xTela = pointX + pontoX, yTela = pointY + pontoY;
+        const margem = 40;
+        if (xTela > margem && xTela < larguraTela - margem && yTela > margem && yTela < alturaLivre - margem) return;
+    }
 
-    // Aplica animação de transição suave
+    // Anima o movimento (a classe "animando" também suaviza o tamanho do pin do visitante)
+    mapaWrapper.classList.add("animando");
     mapaWrapper.style.transition = "transform 0.4s ease-in-out";
+    scale = novaEscala;
+    pointX = larguraTela / 2 - pontoX;
+    pointY = alturaLivre / 2 - pontoY;
     atualizarTransformacao();
 
-    // Remove a transição após o movimento para o arraste manual continuar livre
-    setTimeout(() => {
+    clearTimeout(focarNoPonto.temporizador);
+    focarNoPonto.temporizador = setTimeout(() => {
         mapaWrapper.style.transition = "none";
-    }, 400);
+        mapaWrapper.classList.remove("animando");
+    }, 420);
+}
+
+// Botão "onde estou?": centraliza o mapa no pin do visitante (se ele já aparece no mapa)
+function centralizarNoUsuario() {
+    const marker = document.getElementById("user-marker");
+    const img = document.getElementById("imagemMapa");
+    if (!marker || !img || !img.naturalWidth || marker.style.display === "none") return;
+    const x = parseFloat(marker.style.left), y = parseFloat(marker.style.top);
+    if (isNaN(x) || isNaN(y)) return;
+    focarNoPonto((y / img.naturalHeight) * 100, (x / img.naturalWidth) * 100, { reservarModal: false });
 }
 
 function atualizarLegendaHorizontal() {
@@ -256,7 +312,7 @@ function resetZoom() {
     const container = document.getElementById("mapaContainer");
     const imgMapa = document.getElementById("imagemMapa");
     const mapaWrapper = document.getElementById("mapa");
-    
+
     if (!container || !imgMapa || !imgMapa.naturalWidth || imgMapa.naturalWidth === 0) return;
 
     const realWidth = imgMapa.naturalWidth;
@@ -266,10 +322,13 @@ function resetZoom() {
 
     const containerWidth = container.clientWidth;
     const containerHeight = container.clientHeight;
-    
+
     if (containerWidth === 0 || containerHeight === 0) return;
 
-    scale = Math.min(containerWidth / realWidth, containerHeight / realHeight);
+    // Mínimo: o mapa inteiro cabe na tela. Abertura: o mapa preenche a altura da tela
+    // (o visitante arrasta para os lados para ver o resto do parque).
+    escalaMinima = Math.min(containerWidth / realWidth, containerHeight / realHeight);
+    scale = Math.max(escalaMinima, containerHeight / realHeight);
     pointX = (containerWidth - realWidth * scale) / 2;
     pointY = (containerHeight - realHeight * scale) / 2;
     atualizarTransformacao();
@@ -305,15 +364,20 @@ function fecharAoClicarFora(e) {
     if (e.target.id === "janelaLocal") fecharLocal(); 
 }
 
-function zoomIn() { 
-    scale = Math.min(scale + 0.25, 3.0); 
-    atualizarTransformacao(); 
+// Muda o zoom mantendo o centro da tela no mesmo lugar do mapa
+function zoomCentralizado(fator) {
+    const container = document.getElementById("mapaContainer");
+    if (!container) return;
+    const cx = container.clientWidth / 2, cy = container.clientHeight / 2;
+    const nova = Math.min(ESCALA_MAXIMA, Math.max(escalaMinima, scale * fator));
+    pointX = cx - (cx - pointX) * (nova / scale);
+    pointY = cy - (cy - pointY) * (nova / scale);
+    scale = nova;
+    atualizarTransformacao();
 }
 
-function zoomOut() { 
-    scale = Math.max(scale - 0.25, 0.2); 
-    atualizarTransformacao(); 
-}
+function zoomIn() { zoomCentralizado(1.4); }
+function zoomOut() { zoomCentralizado(1 / 1.4); }
 
 // ==========================================
 // EVENTOS DE GESTO E ARRASTO (MOUSE & TOUCH)
@@ -345,32 +409,44 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
+    // Evita que o navegador "arraste a imagem" (isso cancelava o soltar do mouse e travava o mapa)
+    container.addEventListener("dragstart", (e) => e.preventDefault());
+    window.addEventListener("blur", () => { isDragging = false; });
+
     // Eventos de Mouse
     container.addEventListener("mousedown", (e) => {
-        isDragging = true; 
-        startX = e.clientX - pointX; 
+        isDragging = true;
+        arrastou = false;
+        origemX = e.clientX;
+        origemY = e.clientY;
+        startX = e.clientX - pointX;
         startY = e.clientY - pointY;
     });
 
     window.addEventListener("mousemove", (e) => {
         if (!isDragging) return;
-        pointX = e.clientX - startX; 
+        if (Math.hypot(e.clientX - origemX, e.clientY - origemY) > LIMITE_ARRASTO_PX) arrastou = true;
+        pointX = e.clientX - startX;
         pointY = e.clientY - startY;
         atualizarTransformacao();
     });
 
-    window.addEventListener("mouseup", () => { 
-        isDragging = false; 
+    window.addEventListener("mouseup", () => {
+        isDragging = false;
     });
 
     // Eventos de Toque (Mobile - Arraste e Zoom focado na pinça)
     container.addEventListener("touchstart", (e) => {
         if (e.targetTouches.length === 1) {
             isDragging = true;
-            startX = e.targetTouches[0].clientX - pointX;
-            startY = e.targetTouches[0].clientY - pointY;
+            arrastou = false;
+            origemX = e.targetTouches[0].clientX;
+            origemY = e.targetTouches[0].clientY;
+            startX = origemX - pointX;
+            startY = origemY - pointY;
         } else if (e.targetTouches.length === 2) {
             isDragging = false;
+            arrastou = true;
             initialDistance = getDistance(e.targetTouches);
             initialScale = scale;
 
@@ -382,14 +458,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
     container.addEventListener("touchmove", (e) => {
         if (e.targetTouches.length === 1 && isDragging) {
-            pointX = e.targetTouches[0].clientX - startX;
-            pointY = e.targetTouches[0].clientY - startY;
+            const t = e.targetTouches[0];
+            if (Math.hypot(t.clientX - origemX, t.clientY - origemY) > LIMITE_ARRASTO_PX) arrastou = true;
+            pointX = t.clientX - startX;
+            pointY = t.clientY - startY;
             atualizarTransformacao();
         } else if (e.targetTouches.length === 2) {
             const currentDistance = getDistance(e.targetTouches);
             if (initialDistance > 0) {
                 const zoomFactor = currentDistance / initialDistance;
-                let newScale = Math.min(Math.max(initialScale * zoomFactor, 0.2), 3.0);
+                let newScale = Math.min(Math.max(initialScale * zoomFactor, escalaMinima), ESCALA_MAXIMA);
 
                 pointX = focalPointX - (focalPointX - pointX) * (newScale / scale);
                 pointY = focalPointY - (focalPointY - pointY) * (newScale / scale);
@@ -691,8 +769,7 @@ function aoReceberPosicao(position) {
     if (precisao > PRECISAO_MAXIMA_METROS) {
         if (leiturasBoas.length > 0) {
             // Já temos uma posição boa recente: mantém o pin onde está e só avisa
-            const progresso = ultimoProgresso !== null ? `${ultimoProgresso}% concluído · ` : "";
-            mostrarStatusGPS(`${progresso}sinal fraco (±${Math.round(precisao)} m)`);
+            mostrarStatusGPS(ultimoProgresso !== null ? `${ultimoProgresso}% · sinal fraco` : "Sinal fraco");
             return;
         }
         if (!estaDentroDoParque(lat, lng)) {
@@ -702,7 +779,7 @@ function aoReceberPosicao(position) {
         }
         // Ainda sem nenhuma leitura boa: mostra o pin com um círculo grande
         atualizarLocalizacaoUsuario(lat, lng, precisao);
-        mostrarStatusGPS(`Ajustando precisão (±${Math.round(precisao)} m)...`);
+        mostrarStatusGPS("Ajustando precisão...");
         return;
     }
 
