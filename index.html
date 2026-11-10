@@ -64,9 +64,9 @@
         </div>
     </main>
                         <!-- NOVO - BOTÃO DE SUGESTÃO -->        
-    <a class="botao-sugestoes" href="/PainelAtendimento/?origem=mapa" target="_blank" rel="noopener">
-        <span aria-hidden="true">💬</span> Sugestões e Elogios
-    </a>
+        <a class="botao-sugestoes" href="/PainelAtendimento/?origem=mapa" onclick="return abrirSugestoes(event)">
+    <span aria-hidden="true">💬</span> Sugestões e Elogios
+       </a>
              
     <div id="janelaLocal" class="janela" onclick="fecharAoClicarFora(event)">
         <div class="conteudo">
@@ -78,6 +78,17 @@
             <p id="descricaoLocal"></p>
         </div>
     </div>
+}
+
+    <script>
+    // Abre o site de sugestões em outra aba (o mapa continua vivo por baixo).
+    // Se o navegador bloquear a nova aba, o link abre na mesma aba, normalmente.
+    function abrirSugestoes(e) {
+        const nova = window.open('/PainelAtendimento/?origem=mapa', '_blank');
+        if (nova) { e.preventDefault(); return false; }
+        return true;
+    }
+</script>
 
     <script src="rota.js"></script>
     <script src="script.js"></script>
