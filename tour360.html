@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tour Virtual 360° - Galpão</title>
+  
+  <!-- Biblioteca Pannellum (Carregada via Internet) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css"/>
+  <script src="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.js"></script>
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body, html { width: 100%; height: 100%; overflow: hidden; font-family: sans-serif; }
+
+    /* Tela inteira para a foto 360 */
+    #panorama { width: 100vw; height: 100vh; }
+
+    /* Botão de voltar para o seu mapa interativo */
+    .btn-voltar {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      z-index: 9999;
+      background: rgba(15, 23, 42, 0.85);
+      color: #fff;
+      padding: 10px 16px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: bold;
+      border: 1px solid rgba(255,255,255,0.2);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    }
+    .btn-voltar:hover { background: #000; }
+  </style>
+</head>
+<body>
+
+  <!-- Botão de Voltar -->
+  <a href="index.html" class="btn-voltar">⬅ Voltar ao Mapa Interativo</a>
+
+  <!-- Onde a foto 360 vai aparecer -->
+  <div id="panorama"></div>
+
+  <script>
+    pannellum.viewer('panorama', {
+      "default": {
+        "firstScene": "ponto1",
+        "sceneFadeDuration": 1000,
+        "autoLoad": true
+      },
+      "scenes": {
+        "ponto1": {
+          "title": "Ponto 1 - Entrada Principal",
+          "type": "equirectangular",
+          "panorama": "ponto1.jpg",
+          "hotspots": [
+            {
+              "pitch": -5,
+              "yaw": 10,
+              "type": "scene",
+              "text": "Ir para o Ponto 2",
+              "sceneId": "ponto2"
+            }
+          ]
+        },
+        "ponto2": {
+          "title": "Ponto 2 - Setor Central",
+          "type": "equirectangular",
+          "panorama": "ponto2.jpg",
+          "hotspots": [
+            {
+              "pitch": -5,
+              "yaw": 180,
+              "type": "scene",
+              "text": "Voltar para o Ponto 1",
+              "sceneId": "ponto1"
+            }
+          ]
+        }
+      }
+    });
+  </script>
+
+</body>
+</html>
