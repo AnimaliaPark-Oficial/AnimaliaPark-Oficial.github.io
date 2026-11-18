@@ -5,12 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tour Virtual 360° - Galpão</title>
   
-  <!-- Biblioteca Pannellum (Carregada via CDN) -->
+  <!-- Biblioteca Pannellum -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css"/>
   <script src="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.js"></script>
 
   <style>
-    /* Correção do seletor global */
     * { 
       margin: 0; 
       padding: 0; 
@@ -25,13 +24,12 @@
       background-color: #0f172a;
     }
 
-    /* Tela inteira para a foto 360 */
     #panorama { 
       width: 100vw; 
       height: 100vh; 
     }
 
-    /* Botão de voltar aprimorado com transição e hover suave */
+    /* Botão de voltar para o mapa */
     .btn-voltar {
       position: absolute;
       top: 20px;
@@ -55,32 +53,6 @@
 
     .btn-voltar:hover { 
       background: rgba(30, 41, 59, 0.95);
-      border-color: rgba(255, 255, 255, 0.3);
-      transform: translateY(-1px);
-      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.5);
-    }
-
-    .btn-voltar:active {
-      transform: translateY(0);
-    }
-
-    /* Estilo do Botão de Hotspot 360 */
-    .botao-hotspot {
-      background: rgba(15, 23, 42, 0.9);
-      color: #ffffff;
-      padding: 8px 16px;
-      border-radius: 20px;
-      font-size: 14px;
-      font-weight: bold;
-      border: 2px solid #3b82f6;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
-      cursor: pointer;
-      white-space: nowrap;
-      transition: background 0.2s;
-    }
-
-    .botao-hotspot:hover {
-      background: #2563eb;
     }
   </style>
 </head>
@@ -113,9 +85,9 @@
               "pitch": 0,
               "yaw": 0,
               "type": "scene",
-              "text": "➡️ Ir para o Ponto 2",
-              "sceneId": "ponto2",
-              "cssClass": "botao-hotspot"
+              "text": "Ir para o Ponto 2",
+              "sceneId": "ponto2"
+              // Removido o cssClass customizado para usar o indicador padrão nativo visível
             }
           ]
         },
@@ -128,9 +100,8 @@
               "pitch": 0,
               "yaw": 0,
               "type": "scene",
-              "text": "⬅️ Voltar para o Ponto 1",
-              "sceneId": "ponto1",
-              "cssClass": "botao-hotspot"
+              "text": "Voltar para o Ponto 1",
+              "sceneId": "ponto1"
             }
           ]
         }
