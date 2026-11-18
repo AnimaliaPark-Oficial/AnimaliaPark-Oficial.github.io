@@ -10,6 +10,7 @@
   <script src="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.js"></script>
 
   <style>
+    /* CORRIGIDO: de '-' para '*' */
     * { 
       margin: 0; 
       padding: 0; 
@@ -166,10 +167,8 @@
       const cenaAtual = viewer.getScene();
       let indiceAtual = listaCenas.indexOf(cenaAtual);
       
-      // Soma ou subtrai a direção (-1 para voltar, +1 para avançar)
       let novoIndice = indiceAtual + direcao;
 
-      // Faz o loop infinito (se estiver no último e apertar próximo, volta para o primeiro)
       if (novoIndice >= listaCenas.length) {
         novoIndice = 0;
       } else if (novoIndice < 0) {
@@ -178,10 +177,7 @@
 
       const proximaCena = listaCenas[novoIndice];
       
-      // Carrega a nova cena no Pannellum
       viewer.loadScene(proximaCena);
-      
-      // Atualiza o texto descritivo na barra inferior
       document.getElementById("info-local").innerText = descricoesCenas[proximaCena];
     }
   </script>
