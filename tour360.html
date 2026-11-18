@@ -5,50 +5,84 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tour Virtual 360° - Galpão</title>
   
-  <!-- Biblioteca Pannellum (Carregada via Internet) -->
+  <!-- Biblioteca Pannellum (Carregada via CDN) -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css"/>
   <script src="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.js"></script>
 
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body, html { width: 100%; height: 100%; overflow: hidden; font-family: sans-serif; }
+    /* Correção do seletor global */
+    * { 
+      margin: 0; 
+      padding: 0; 
+      box-sizing: border-box; 
+    }
+
+    body, html { 
+      width: 100%; 
+      height: 100%; 
+      overflow: hidden; 
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: #0f172a;
+    }
 
     /* Tela inteira para a foto 360 */
-    #panorama { width: 100vw; height: 100vh; }
+    #panorama { 
+      width: 100vw; 
+      height: 100vh; 
+    }
 
-    /* Botão de voltar para o seu mapa interativo */
+    /* Botão de voltar aprimorado com transição e hover suave */
     .btn-voltar {
       position: absolute;
       top: 20px;
       left: 20px;
       z-index: 9999;
       background: rgba(15, 23, 42, 0.85);
-      color: #fff;
-      padding: 10px 16px;
+      color: #ffffff;
+      padding: 10px 18px;
       border-radius: 8px;
       text-decoration: none;
       font-size: 14px;
-      font-weight: bold;
-      border: 1px solid rgba(255,255,255,0.2);
-      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      font-weight: 600;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(4px);
+      transition: all 0.2s ease-in-out;
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
-    .btn-voltar:hover { background: #000; }
+
+    .btn-voltar:hover { 
+      background: rgba(30, 41, 59, 0.95);
+      border-color: rgba(255, 255, 255, 0.3);
+      transform: translateY(-1px);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.5);
+    }
+
+    .btn-voltar:active {
+      transform: translateY(0);
+    }
   </style>
 </head>
 <body>
 
   <!-- Botão de Voltar -->
-  <a href="index.html" class="btn-voltar">⬅ Voltar ao Mapa Interativo</a>
+  <a href="index.html" class="btn-voltar">
+    <span>←</span> Voltar ao Mapa
+  </a>
 
-  <!-- Onde a foto 360 vai aparecer -->
+  <!-- Container do Panorama -->
   <div id="panorama"></div>
 
   <script>
     pannellum.viewer('panorama', {
       "default": {
         "firstScene": "ponto1",
-        "sceneFadeDuration": 1000,
-        "autoLoad": true
+        "sceneFadeDuration": 1000, // Suaviza a transição entre cenas (1 segundo)
+        "autoLoad": true,          // Carrega automaticamente sem precisar clicar na tela
+        "compass": true,           // Opcional: exibe bússola indicando a orientação
+        "hfov": 100                // Campo de visão inicial padrão
       },
       "scenes": {
         "ponto1": {
@@ -60,7 +94,7 @@
               "pitch": -5,
               "yaw": 10,
               "type": "scene",
-              "text": "Ir para o Ponto 2",
+              "text": "Ir para o Setor Central",
               "sceneId": "ponto2"
             }
           ]
@@ -74,7 +108,7 @@
               "pitch": -5,
               "yaw": 180,
               "type": "scene",
-              "text": "Voltar para o Ponto 1",
+              "text": "Voltar para a Entrada Principal",
               "sceneId": "ponto1"
             }
           ]
