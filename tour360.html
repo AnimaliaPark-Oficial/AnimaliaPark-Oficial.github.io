@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tour Virtual 360° - Galpão</title>
+  <title>Tour Virtual 360° - Galpão (4 Pontos)</title>
   
   <!-- Biblioteca Pannellum -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css"/>
@@ -55,7 +55,7 @@
       background: rgba(30, 41, 59, 0.95);
     }
 
-    /* Caixa de navegação flutuante estilo Google Maps na parte inferior */
+    /* Painel de Navegação Flutuante Inferior para Múltiplos Pontos */
     .painel-navegacao {
       position: absolute;
       bottom: 30px;
@@ -63,21 +63,21 @@
       transform: translateX(-50%);
       z-index: 9999;
       background: rgba(15, 23, 42, 0.9);
-      padding: 10px 20px;
+      padding: 12px 24px;
       border-radius: 30px;
       border: 1px solid rgba(255, 255, 255, 0.2);
       box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
       backdrop-filter: blur(6px);
       display: flex;
       align-items: center;
-      gap: 15px;
+      gap: 20px;
     }
 
     .btn-navegacao {
       background: #3b82f6;
       color: #ffffff;
       border: none;
-      padding: 10px 20px;
+      padding: 10px 18px;
       border-radius: 20px;
       font-size: 14px;
       font-weight: bold;
@@ -97,8 +97,6 @@
       color: #ffffff;
       font-size: 14px;
       font-weight: 500;
-      padding-right: 10px;
-      border-right: 1px solid rgba(255, 255, 255, 0.2);
     }
   </style>
 </head>
@@ -109,18 +107,28 @@
     <span>←</span> Voltar ao Mapa
   </a>
 
-  <!-- Painel de Navegação Flutuante (Estilo Street View moderno) -->
+  <!-- Painel Flutuante com Botões de Avançar e Voltar -->
   <div class="painel-navegacao">
-    <span id="info-local">📍 Ponto 1: Entrada Principal</span>
-    <button id="btnMudarPonto" class="btn-navegacao" onclick="trocarPonto()">
-      Avançar para Ponto 2 ➡️
-    </button>
+    <button class="btn-navegacao" onclick="mudarCena(-1)">⬅️ Anterior</button>
+    <span id="info-local">📍 Ponto 1 - Entrada Principal</span>
+    <button class="btn-navegacao" onclick="mudarCena(1)">Próximo ➡️</button>
   </div>
 
   <!-- Container do Panorama -->
   <div id="panorama"></div>
 
   <script>
+    // Lista de todas as cenas do tour em ordem
+    const listaCenas = ["ponto1", "ponto2", "ponto3", "ponto4"];
+    
+    // Descrições amigáveis para aparecer na barra inferior
+    const descricoesCenas = {
+      "ponto1": "📍 Ponto 1 - Entrada Principal",
+      "ponto2": "📍 Ponto 2 - Setor Central",
+      "ponto3": "📍 Ponto 3 - Área de Estoque",
+      "ponto4": "📍 Ponto 4 - Saída dos Fundos"
+    };
+
     // Inicializa o visualizador 360°
     const viewer = pannellum.viewer('panorama', {
       "default": {
@@ -131,33 +139,50 @@
       },
       "scenes": {
         "ponto1": {
-          "title": "Ponto 1 - Entrada Principal",
+          "title": "Ponto 1",
           "type": "equirectangular",
           "panorama": "ponto1.jpg"
         },
         "ponto2": {
-          "title": "Ponto 2 - Setor Central",
+          "title": "Ponto 2",
           "type": "equirectangular",
           "panorama": "ponto2.jpg"
+        },
+        "ponto3": {
+          "title": "Ponto 3",
+          "type": "equirectangular",
+          "panorama": "ponto3.jpg"
+        },
+        "ponto4": {
+          "title": "Ponto 4",
+          "type": "equirectangular",
+          "panorama": "ponto4.jpg"
         }
       }
     });
 
-    // Função que gerencia a troca de cenas e atualiza a interface
-    function trocarPonto() {
+    // Função inteligente que calcula a próxima cena ou a anterior na lista
+    function mudarCena(direcao) {
       const cenaAtual = viewer.getScene();
-      const infoLocal = document.getElementById("info-local");
-      const btnMudar = document.getElementById("btnMudarPonto");
+      let indiceAtual = listaCenas.indexOf(cenaAtual);
       
-      if (cenaAtual === "ponto1") {
-        viewer.loadScene("ponto2");
-        infoLocal.innerText = "📍 Ponto 2: Setor Central";
-        btnMudar.innerHTML = "Voltar para Ponto 1 ⬅️";
-      } else {
-        viewer.loadScene("ponto1");
-        infoLocal.innerText = "📍 Ponto 1: Entrada Principal";
-        btnMudar.innerHTML = "Avançar para Ponto 2 ➡️";
+      // Soma ou subtrai a direção (-1 para voltar, +1 para avançar)
+      let novoIndice = indiceAtual + direcao;
+
+      // Faz o loop infinito (se estiver no último e apertar próximo, volta para o primeiro)
+      if (novoIndice >= listaCenas.length) {
+        novoIndice = 0;
+      } else if (novoIndice < 0) {
+        novoIndice = listaCenas.length - 1;
       }
+
+      const proximaCena = listaCenas[novoIndice];
+      
+      // Carrega a nova cena no Pannellum
+      viewer.loadScene(proximaCena);
+      
+      // Atualiza o texto descritivo na barra inferior
+      document.getElementById("info-local").innerText = descricoesCenas[proximaCena];
     }
   </script>
 
