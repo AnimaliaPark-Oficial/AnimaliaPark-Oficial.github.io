@@ -29,7 +29,7 @@
       height: 100vh; 
     }
 
-    /* Botão de voltar para o mapa (canto superior esquerdo) */
+    /* Botão de voltar para o mapa */
     .btn-voltar {
       position: absolute;
       top: 20px;
@@ -45,43 +45,6 @@
       border: 1px solid rgba(255, 255, 255, 0.15);
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
       backdrop-filter: blur(4px);
-      transition: all 0.2s ease-in-out;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .btn-voltar:hover { 
-      background: rgba(30, 41, 59, 0.95);
-    }
-
-/* Estilo de Seta Estilo Google Maps para o Hotspot */
-    .seta-mapa {
-      background: rgba(255, 255, 255, 0.9);
-      color: #0f172a;
-      
-      /* O TAMANHO DO ÍCONE É DECIDIDO AQUI: */
-      width: 50px;   /* Largura do botão */
-      height: 50px;  /* Altura do botão (deixe igual à largura para ficar redondo) */
-      
-      border-radius: 50%; /* Mantém o formato circular (50% de raio) */
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      
-      /* O TAMANHO DO TEXTO/SETA DENTRO DO ÍCONE É DECIDIDO AQUI: */
-      font-size: 20px; 
-      
-      font-weight: bold;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
-      cursor: pointer;
-      transition: transform 0.2s ease, background 0.2s ease;
-      border: 2px solid #ffffff;
-    }
-
-    .seta-mapa:hover {
-      background: #ffffff;
-      transform: scale(2.00); /* Efeito de zoom quando o mouse passa por cima */
     }
   </style>
 </head>
@@ -111,12 +74,12 @@
           "panorama": "ponto1.jpg",
           "hotspots": [
             {
-              "pitch": 8,         // Valor negativo joga a seta mais para baixo (simulando o chão)
-              "yaw": 0,            // Direção horizontal para onde a seta aponta no galpão
+              "pitch": 0,
+              "yaw": 0,
               "type": "scene",
-              "text": "Ir para o Setor Central",
-              "sceneId": "ponto2",
-              "cssClass": "seta-mapa" // Aplica o design de ícone circular igual ao Google Maps
+              "text": "Ir para o Ponto 2",
+              "sceneId": "ponto2"
+              // SEM cssClass: Usando o marcador padrão nativo do Pannellum
             }
           ]
         },
@@ -127,11 +90,10 @@
           "hotspots": [
             {
               "pitch": 0,
-              "yaw": 0,          // Direção oposta para voltar
+              "yaw": 0,
               "type": "scene",
-              "text": "Voltar para a Entrada",
-              "sceneId": "ponto1",
-              "cssClass": "seta-mapa"
+              "text": "Voltar para o Ponto 1",
+              "sceneId": "ponto1"
             }
           ]
         }
