@@ -55,17 +55,23 @@
       background: rgba(30, 41, 59, 0.95);
     }
 
-    /* Estilo de Seta Estilo Google Maps para o Hotspot */
+/* Estilo de Seta Estilo Google Maps para o Hotspot */
     .seta-mapa {
       background: rgba(255, 255, 255, 0.9);
       color: #0f172a;
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
+      
+      /* O TAMANHO DO ÍCONE É DECIDIDO AQUI: */
+      width: 50px;   /* Largura do botão */
+      height: 50px;  /* Altura do botão (deixe igual à largura para ficar redondo) */
+      
+      border-radius: 50%; /* Mantém o formato circular (50% de raio) */
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 18px;
+      
+      /* O TAMANHO DO TEXTO/SETA DENTRO DO ÍCONE É DECIDIDO AQUI: */
+      font-size: 20px; 
+      
       font-weight: bold;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
       cursor: pointer;
@@ -75,7 +81,7 @@
 
     .seta-mapa:hover {
       background: #ffffff;
-      transform: scale(1.15);
+      transform: scale(2.00); /* Efeito de zoom quando o mouse passa por cima */
     }
   </style>
 </head>
