@@ -91,11 +91,12 @@
           "panorama": "ponto1.jpg",
           "hotspots": [
             {
-               "pitch": -10,          // Altura onde o botão vai aparecer (-90 a 90)
-              "yaw": 45,             // Direção horizontal onde o botão vai ficar (-180 a 180)
+               "pitch": 0,          // Altura onde o botão vai aparecer (-90 a 90)
+              "yaw": 0,             // Direção horizontal onde o botão vai ficar (-180 a 180)
               "type": "scene",       // Define que o clique vai mudar de cena
-              "text": "Ir para o Setor Central (Ponto 2)", // Texto que aparece ao passar o mouse
+              "text": "➡️ Ir para o Ponto 2", // Texto que aparece ao passar o mouse
               "sceneId": "ponto2"    // ID da cena de destino configurada abaixo
+              "cssClass": "custom-hotspot" // Classe para estilizar se quiser      
             }
           ]
         },
@@ -106,10 +107,10 @@
           "panorama": "ponto2.jpg",
           "hotspots": [
             {
-              "pitch": -10,
-              "yaw": 135,      // Direção oposta para voltar ao ponto 1
+              "pitch": 0,
+              "yaw": 0,      // Direção oposta para voltar ao ponto 1
               "type": "scene",
-              "text": "Voltar para o Ponto 1",
+              "text": "⬅️ Voltar para o Ponto 1",
               "sceneId": "ponto1"     // ID da cena de destino
             }
           ]
