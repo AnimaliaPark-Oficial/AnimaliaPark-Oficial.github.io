@@ -5,7 +5,7 @@ const dadosPark = {
     reserva: {
         imagem: "mapa.zoo.webp",
         categoriasLegenda: [
-            { id: 'alimentacao',texto: 'ALIMENTAÇÃO<br>food'},
+            { id: 'alimentacao',texto: 'ALIMENTAÇÃO''food'},
             { id: 'animais',    texto: 'ZOOLOGICO'  },
             { id: 'atracao',    texto: 'ATRAÇÕES'   },
             { id: 'souvenir',   texto: 'SOUVENIR'   },
