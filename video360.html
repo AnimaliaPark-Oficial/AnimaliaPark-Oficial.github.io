@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vídeo - Animália Park</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #0f172a;
+      color: #fff;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      overflow: hidden;
+    }
+    .btn-voltar {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      z-index: 20;
+      background: rgba(15, 23, 42, 0.88);
+      color: #fff;
+      padding: 10px 16px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    video {
+      width: 100%;
+      max-width: 960px;
+      max-height: 85vh;
+      border-radius: 12px;
+      background: #000;
+    }
+  </style>
+</head>
+<body>
+  <a href="index.html" class="btn-voltar">← Voltar ao Mapa</a>
+
+  <video id="player" controls autoplay playsinline preload="metadata">
+    Seu navegador não suporta reprodução de vídeo.
+  </video>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const caminhoBruto = params.get("v") || "";
+    // Evita caminho externo ou ../
+    const caminhoSeguro = caminhoBruto.replace(/^(\.\.[/\\])+/, "").replace(/^\/+/, "");
+    const videoEl = document.getElementById("player");
+
+    if (caminhoSeguro.endsWith(".mp4")) {
+      videoEl.src = caminhoSeguro;
+    }
+  </script>
+</body>
+</html>
