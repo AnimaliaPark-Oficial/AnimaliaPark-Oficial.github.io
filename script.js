@@ -5,12 +5,12 @@ const dadosPark = {
     reserva: {
         imagem: "mapa.zoo.webp",
         categoriasLegenda: [
-            { id: 'alimentacao',texto: 'ALIMENTAÇÃO''food'},
-            { id: 'animais',    texto: 'ZOOLOGICO'  },
-            { id: 'atracao',    texto: 'ATRAÇÕES'   },
-            { id: 'souvenir',   texto: 'SOUVENIR'   },
-            { id: 'banheiros',  texto: 'BANHEIROS'  },
-            { id: 'servicos',   texto: 'SERVIÇOS'   }
+            { id: 'alimentacao', texto: 'ALIMENTAÇÃO', subtexto: 'food'},
+            { id: 'animais',     texto: 'ZOOLOGICO',   subtexto: 'zoo'},
+            { id: 'atracao',     texto: 'ATRAÇÕES',    subtexto: 'attractions'},
+            { id: 'souvenir',    texto: 'SOUVENIR',    subtexto: 'souvenir'},
+            { id: 'banheiros',   texto: 'BANHEIROS',   subtexto: 'bathrooms'},
+            { id: 'servicos',    texto: 'SERVIÇOS' ,   subtexto: 'services'}
         ],
         pontos: [
             // Alimentação
