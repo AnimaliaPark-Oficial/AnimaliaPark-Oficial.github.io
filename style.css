@@ -494,6 +494,19 @@ body {
     background: #4A154B;
 }
 
+/* Empilha português em cima e inglês embaixo dentro dos 44px */
+.botao-sugestoes .texto-sugestoes {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.15;
+}
+
+.botao-sugestoes .sub-en {
+    font-size: 10px;
+    font-weight: normal;
+    opacity: 0.85;
+}
+
 /* Tarja inferior: mesmo visual do rodapé do Painel de Atendimento, com o texto centralizado */
 .rodape-animalia {
     flex-shrink: 0;                 /* o mapa encolhe, a tarja não */
