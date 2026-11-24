@@ -67,6 +67,14 @@
         </div>
     </main>
 
+
+
+                            <!-- NOVO - rodapé -->        
+                   <footer class="rodape-animalia">
+        <p>Animália Park Empreendimentos © 2026 — Todos os direitos reservados. vs1.0</p>
+                   </footer>
+
+             
     <div id="janelaLocal" class="janela" onclick="fecharAoClicarFora(event)">
         <div class="conteudo">
             <div class="barra-arraste"></div>
@@ -78,6 +86,16 @@
         </div>
     </div>
 
+    <script>
+    // Abre o site de sugestões em outra aba (o mapa continua vivo por baixo).
+    // Se o navegador bloquear a nova aba, o link abre na mesma aba, normalmente.
+    function abrirSugestoes(e) {
+        const nova = window.open('/PainelAtendimento/?origem=mapa', '_blank');
+        if (nova) { e.preventDefault(); return false; }
+        return true;
+    }
+</script>
+
     <script src="rota.js"></script>
     <script src="script.js"></script>
     <script>
@@ -88,3 +106,4 @@
     </script>
 </body>
 </html>
+
