@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Mapa Animália Park</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#4A154B">
+    <link rel="apple-touch-icon" href="icon-192.png">
 </head>
 <body>
 
@@ -64,14 +67,6 @@
         </div>
     </main>
 
-
-
-                            <!-- NOVO - rodapé -->        
-                   <footer class="rodape-animalia">
-        <p>Animália Park Empreendimentos © 2026 — Todos os direitos reservados. vs1.0</p>
-                   </footer>
-
-             
     <div id="janelaLocal" class="janela" onclick="fecharAoClicarFora(event)">
         <div class="conteudo">
             <div class="barra-arraste"></div>
@@ -83,18 +78,13 @@
         </div>
     </div>
 
-    <script>
-    // Abre o site de sugestões em outra aba (o mapa continua vivo por baixo).
-    // Se o navegador bloquear a nova aba, o link abre na mesma aba, normalmente.
-    function abrirSugestoes(e) {
-        const nova = window.open('/PainelAtendimento/?origem=mapa', '_blank');
-        if (nova) { e.preventDefault(); return false; }
-        return true;
-    }
-</script>
-
     <script src="rota.js"></script>
     <script src="script.js"></script>
+    <script>
+        // Permite usar o mapa sem internet depois da primeira visita
+        if ("serviceWorker" in navigator) {
+            window.addEventListener("load", () => navigator.serviceWorker.register("sw.js"));
+        }
+    </script>
 </body>
 </html>
-
